@@ -1,0 +1,57 @@
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+
+import {FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+
+import {DocumentComponent} from "./document/document.component";
+import {ContactComponent} from "./contact/contact.component";
+import {EventComponent} from "./event/event.component";
+import {AboutComponent} from "./about/about.component";
+import {BreadcrumbsComponent} from "./breadcrumbs/breadcrumbs.component";
+import {ValuesComponent} from "./values/values.component";
+import {PartnerComponent} from "./partner/partner.component";
+import {HistoryComponent} from "./history/history.component";
+import {ValueComponent} from "./value/value.component";
+
+
+
+
+
+
+@NgModule({
+  declarations: [
+    DocumentComponent,
+    ContactComponent,
+    EventComponent,
+    AboutComponent,
+    BreadcrumbsComponent,
+    ValuesComponent,
+    PartnerComponent,
+    HistoryComponent,
+    ValueComponent
+  ],
+  imports: [
+    NgbModule,
+    RouterModule,
+    FormsModule,
+    CommonModule,
+  ],
+  exports: [
+    DocumentComponent,
+    ContactComponent,
+    EventComponent,
+    AboutComponent,
+    BreadcrumbsComponent,
+    ValuesComponent,
+    PartnerComponent,
+    HistoryComponent,
+    ValueComponent
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+
+
+})
+export class ComponentsModule {
+}

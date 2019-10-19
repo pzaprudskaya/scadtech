@@ -1,0 +1,144 @@
+*
+  margin: 0
+  padding: 0
+
+header
+  display: block
+.header
+  position: relative
+  padding: 27px 0 10px
+  background-color: #fff
+  flex-shrink: 0
+  .logo-wrapper
+    -ms-flex-direction: column
+    flex-direction: column
+    margin: 32px 50px 0 0
+  .menu-wrapper
+    width: 508px
+    margin-right: 43px
+    flex-shrink: 0
+  .menu-title
+    margin-bottom: 13px
+    color: #333
+    letter-spacing: .16px
+  .header-menu
+    display: -ms-flexbox
+    display: flex
+    -ms-flex-wrap: wrap
+    flex-wrap: wrap
+    -ms-flex-pack: justify
+    justify-content: space-between
+    list-style: none
+    padding: 0
+
+.header .content-wrapper, .header .logo-wrapper
+  display: -ms-flexbox
+  display: flex
+
+.content-wrapper
+  margin: 0 auto
+  width: 100%
+  max-width: 1140px
+  box-sizing: border-box
+
+.header-contacts
+  display: -ms-flexbox
+  display: flex
+  -ms-flex-direction: column
+  flex-direction: column
+  -ms-flex-pack: center
+  justify-content: center
+  -ms-flex-align: end
+  align-items: flex-end
+  text-align: right
+  margin-left: 28px
+  height: 76px
+
+
+header.fixed
+  transition: transform .3s ease
+  display: block
+  position: fixed
+  width: 100vw
+  top: 0
+  left: 0
+  padding: 0
+  background-color: #fff
+  box-shadow: 0 0 1px 1px rgba(238,238,238,.3)
+  z-index: 5000
+  .menu-title
+    display: none
+  .content-wrapper
+    display: -ms-flexbox
+    display: flex
+    -ms-flex-align: stretch
+    align-items: stretch
+    -ms-flex-pack: justify
+    justify-content: space-between
+    height: 63px
+  .logo-wrapper
+    width: 109px
+    margin: 0
+    -ms-flex-pack: center
+    justify-content: center
+  .menu-wrapper
+    width: 550px
+    padding: 0
+    margin: 0
+  .header-contacts
+    -ms-flex-direction: row
+    flex-direction: row
+    margin-left: 0
+    height: auto
+
+.header.fixed .header-contacts, .header.fixed .logo-wrapper, .header.fixed .menu-wrapper
+  display: -ms-flexbox
+  display: flex
+  -ms-flex-align: center
+  align-items: center
+
+
+
+
+
+ul
+  list-style: none
+  margin: 0
+  padding: 0
+
+.header-menu > li
+  display: inline-block
+  margin-right: 20px
+  position: relative
+
+
+.list
+  display: none
+ul li:hover .list
+  display: block
+
+
+
+.header .header-menu li ul
+  transition: opacity .3s ease
+  list-style: none
+  top: 100%
+  left: 0
+  position: absolute
+  width: 196px
+  padding: 15px 5px
+  box-sizing: border-box
+  pointer-events: none
+  background-color: #fff
+  transition-delay: .2s
+  box-shadow: 0 0 6px 1px rgba(0,0,0,.1)
+  z-index: 100
+
+.header .header-menu a
+  display: inline-block
+  text-decoration: none
+  padding: 10px 0 5px
+  color: #333
+  font: 400 14px/1 'Roboto',sans-serif
+  border-bottom: 1px solid #f2264d
+  transition: .3s color,.3s border-color

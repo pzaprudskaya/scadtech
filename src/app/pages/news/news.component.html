@@ -1,0 +1,40 @@
+<main><div class="content-wrapper">
+  <div class="breadcrumbs-wrapper">
+    <div class="breadcrumb-item" id="breadcrumb-main" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-0">
+      <a href="/" title="Главная" itemprop="url"><span itemprop="title">Главная</span></a>
+    </div>
+    <div class="breadcrumb-item" id="breadcrumb-0" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="/about/" title="О компании" itemprop="url"><span itemprop="title">О компании</span></a>
+    </div>
+    <div class="breadcrumb-item">
+      <span>Новости</span>
+    </div></div>
+  <div class="page-header">
+    <h1>Новости</h1>
+  </div>
+
+  <div class="block-content js-block-content">
+    <div>
+      <div class="grid-row">
+        <div *ngFor="let event of events">
+          <app-event id="contact"  routerLink='/about/news/{{toTranslit(event.title)}}/'
+                       [event]="event"></app-event>
+        </div>
+      </div>
+
+
+      <div class="navigation js-ajax-pagination">
+        <!-- Previous page link -->
+        <span class="disabled arrow back"></span>
+
+        <!-- Numbered page links -->
+        <span class="active">1</span>
+        <a href="/about/news/page-2/">
+          2            </a>
+
+        <!-- Next page link -->
+        <a href="/about/news/page-2/" class="arrow next"></a>
+      </div>
+    </div>
+  </div></div>
+</main>
