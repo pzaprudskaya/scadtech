@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    window.onscroll = function() {
+    window.onscroll = function () {
       myFunction()
     };
 
@@ -22,8 +22,9 @@ export class HeaderComponent implements OnInit {
         header.classList.add("fixed");
       } else {
         header.classList.remove("fixed");
-      }}
+      }
     }
+  }
 
 }
 
