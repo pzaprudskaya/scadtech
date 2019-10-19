@@ -1,1 +1,30 @@
-<p>our-leadership works!</p>
+<div class="page-header">
+  <h1>Наше руководство</h1>
+</div>
+<div class="block-content wysiwyg">
+  <div class="grid-row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="leader-slider js-leader-slider">
+        <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+          <ng-template ngbSlide *ngFor="let leadership of ourLeadership">
+            <div class="image">
+              <img [src]='leadership.image' alt="{{leadership.name}}">
+            </div>
+            <div class="info">
+              <div class="info-content">
+                <div class="name">{{leadership.name}}</div>
+                <div class="post">{{leadership.post}}<br></div>
+                <div class="controls">
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
