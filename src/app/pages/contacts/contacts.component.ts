@@ -8,10 +8,17 @@ import { contacts} from "../../data";
 })
 export class ContactsComponent implements OnInit {
   contacts;
-  
+  selectedContact: number;
+  state: boolean;
+
   constructor() { }
 
   ngOnInit() {
     this.contacts = contacts;
   }
+
+  openInformation(index: number) {
+    this.selectedContact = index;
+  }
+
 }

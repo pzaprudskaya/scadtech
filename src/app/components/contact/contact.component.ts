@@ -7,23 +7,11 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ContactComponent implements OnInit {
   @Input() contact;
-  state: boolean;
+  @Input() selected: boolean;
   constructor() { }
 
   ngOnInit() {
-    this.state = false;
-    if (this.contact.name === 'Главный офис в Москве'){
-      const contact = document.getElementById("contact");
-      contact.classList.add('big-card');
-    }
+
   }
-  openInformation() {
-    this.state = !this.state;
-    const contact = document.getElementById("contact");
-    if (this.state === true) {
-      contact.classList.add("selected");
-    } else {
-      contact.classList.remove("selected");
-    }
-  }
+
 }
