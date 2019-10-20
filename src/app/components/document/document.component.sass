@@ -1,22 +1,45 @@
-.block-content
-  box-sizing: border-box
-  position: relative
-  min-height: 1px
-  padding-left: 15px
-  padding-right: 15px
-  flex-shrink: 0
-  flex-grow: 0
-  max-width: 100%
-
-a
+a:hover
   background-color: transparent
   color: #f2264d
   text-decoration: underline
   cursor: pointer
-.icon
+
+
+.document
+  position: relative
+  padding-left: 50px
+  margin-bottom: 27px
+  display: flex
+.icon-file-by-ext
+  position: absolute
+  left: 0
+  top: 3px
   width: 32px
   height: 33px
-  background: url(src/assets/pdf-icon.png) -117px -746px no-repeat
-  position: relative
+  background: url(/site/src/assets/pdf-icon.png) -117px -746px no-repeat
   display: inline-block
   font-style: normal
+.icon-file-by-ext:before
+  content: attr(data-ext)
+  position: absolute
+  top: 16px
+  left: 11px
+  text-transform: uppercase
+  color: #fff
+  font-size: 10px
+  line-height: 1
+.title
+  margin-bottom: 8px
+  display: block
+  font-weight: bold
+  font-size: 19px
+  color: #333
+  text-decoration: none
+.date
+  margin-bottom: 6px
+  font: 14px/30px
+  color: #999
+.description
+  margin-bottom: 10px
+  font: 14px/20px
+  color: #666

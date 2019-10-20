@@ -9,7 +9,6 @@ import {ComponentsModule} from "../components/components.module";
 import {AboutCompanyComponent} from './about-company/about-company.component';
 import {ContactsComponent} from "./contacts/contacts.component";
 import {NewsComponent} from "./news/news.component";
-import {VacanciesComponent} from "./vacancies/vacancies.component";
 import {PartnersAndCertificationsComponent} from "./partners-and-certifications/partners-and-certifications.component";
 import {OurLeadershipComponent} from "./our-leadership/our-leadership.component";
 import {ProduktsiyaComponent} from "./produktsiya/produktsiya.component";
@@ -24,7 +23,6 @@ import {EventsComponent} from "./events/events.component";
     AboutCompanyComponent,
     ContactsComponent,
     NewsComponent,
-    VacanciesComponent,
     PartnersAndCertificationsComponent,
     OurLeadershipComponent,
     ProduktsiyaComponent,
@@ -44,7 +42,6 @@ import {EventsComponent} from "./events/events.component";
     AboutCompanyComponent,
     ContactsComponent,
     NewsComponent,
-    VacanciesComponent,
     PartnersAndCertificationsComponent,
     OurLeadershipComponent,
     ProduktsiyaComponent,

@@ -9,7 +9,6 @@ import {DocumentComponent} from "./document/document.component";
 import {ContactComponent} from "./contact/contact.component";
 import {EventComponent} from "./event/event.component";
 import {AboutComponent} from "./about/about.component";
-import {BreadcrumbsComponent} from "./breadcrumbs/breadcrumbs.component";
 import {ValuesComponent} from "./values/values.component";
 import {PartnerComponent} from "./partner/partner.component";
 import {HistoryComponent} from "./history/history.component";
@@ -26,7 +25,6 @@ import {ValueComponent} from "./value/value.component";
     ContactComponent,
     EventComponent,
     AboutComponent,
-    BreadcrumbsComponent,
     ValuesComponent,
     PartnerComponent,
     HistoryComponent,
@@ -43,7 +41,6 @@ import {ValueComponent} from "./value/value.component";
     ContactComponent,
     EventComponent,
     AboutComponent,
-    BreadcrumbsComponent,
     ValuesComponent,
     PartnerComponent,
     HistoryComponent,

@@ -1,4 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
+import 'hammerjs';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -6,6 +7,7 @@ import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
 import {PagesModule} from "./pages/pages.module";
 import {ComponentsModule} from "./components/components.module";
+import { NgxHmCarouselModule } from 'ngx-hm-carousel';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import {ComponentsModule} from "./components/components.module";
     AppRoutingModule,
     CoreModule,
     PagesModule,
-    ComponentsModule
+    ComponentsModule,
+    NgxHmCarouselModule
   ],
   providers: [],
   entryComponents: [],

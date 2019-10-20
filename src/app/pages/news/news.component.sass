@@ -1,9 +1,41 @@
+main
+  flex: 1 0 auto
+.content-wrapper
+  margin: 0 auto
+  width: 100%
+  max-width: 1140px
+  box-sizing: border-box
+
+.page-header
+  padding: 0 0 0 20px
+  margin-bottom: 25px
 .block-content
   padding-bottom: 100px
 .grid-row
-  display: -ms-grid
-  display: grid
-  grid-template-columns: repeat(4,calc((100% - 30px*3)/4))
-  grid-auto-rows: max-content
-  grid-auto-flow: row dense
-  grid-gap: 30px
+  display: -ms-flexbox
+  display: flex
+  -ms-flex-wrap: wrap
+  flex-wrap: wrap
+  box-sizing: border-box
+  margin-left: -15px
+  margin-right: -15px
+.event
+  width: 25%
+
+
+
+h1
+  position: relative
+  font-size: 48px
+h1:before
+  content: ' '
+  position: absolute
+  width: 140px
+  height: 2px
+  right: calc(100% + 28px)
+  top: 29px
+  background-color: #f2264d
+
+h1
+  display: block
+  font-weight: bold

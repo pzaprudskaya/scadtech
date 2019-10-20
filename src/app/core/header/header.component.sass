@@ -7,6 +7,7 @@
   position: relative
   padding: 27px 0 10px
   background-color: #fff
+  margin-bottom: 30px
   .logo-wrapper
     flex-direction: column
     margin: 32px 50px 0 0
@@ -37,6 +38,7 @@
   text-align: right
   height: 76px
 
+
 header.fixed
   transition: transform .3s ease
   display: block
@@ -57,7 +59,7 @@ header.fixed
     height: 63px
   .logo-wrapper
     width: 109px
-    margin: 0
+    margin: 0 20px
     justify-content: center
   .menu-wrapper
     width: 550px
@@ -67,6 +69,8 @@ header.fixed
     flex-direction: row
     margin-left: 0
     height: auto
+    a
+      margin: 0 20px
 
 .header.fixed .header-contacts, .header.fixed .logo-wrapper, .header.fixed .menu-wrapper
   display: flex
@@ -81,7 +85,7 @@ ul
   display: none
   position: absolute
   padding: 15px 5px
-  background-color: #f9f9f9
+  background-color: #fff
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
   z-index: 1
 
@@ -107,13 +111,11 @@ ul
 
 
 .list li:hover
-  background-color: #f1f1f1
+  background-color: #fff
 
 .header-menu li:hover .list
   display: block
 
-.header-menu:hover .dropbtn
-  background-color: #3e8e41
 
 .header-menu a
   display: inline-block
@@ -129,3 +131,12 @@ ul
   display: inline-block
   margin-right: 20px
   position: relative
+.active
+  color: #f2264d !important
+a .header-phone, a .header-mail
+  text-decoration: none
+.header-mail
+  color: #f2264d
+  border-bottom: 1px solid #f2264d
+.header-phone
+  color: #333

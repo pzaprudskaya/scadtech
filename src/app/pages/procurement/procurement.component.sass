@@ -5,16 +5,29 @@ main
   width: 100%
   max-width: 1140px
   box-sizing: border-box
+.page-header
+  margin-bottom: 75px
+  padding: 0 0 0 20px
 
 .page-header
   padding: 0 0 0 20px
   margin-bottom: 25px
-
 h1
   position: relative
-  font: 500 48px/1.25
+  font-size: 48px
+h1:before
+  content: ' '
+  position: absolute
+  width: 140px
+  height: 2px
+  right: calc(100% + 28px)
+  top: 29px
+  background-color: #f2264d
+
+h1
   display: block
-  font-size: 2em
+  font-weight: bold
+
 .wysiwyg .image:not(:empty)
   float: left
   margin-right: 28px
@@ -48,3 +61,12 @@ a
   padding: 50px 0 60px
 .files-list.selected
   border-top: 2px solid #e0e0e0
+ol>li:before, .wysiwyg ul ol>li:before, ol>li:before, ul ol>li:before
+  position: absolute
+  left: 0
+  top: 0
+  counter-increment: olCounter
+  content: counter(olCounter)
+  color: #f2264d
+  font-weight: 700
+  margin: 0 2px 0 0

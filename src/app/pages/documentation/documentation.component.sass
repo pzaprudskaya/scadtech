@@ -1,7 +1,24 @@
+main
+  flex: 1 0 auto
+  .content-wrapper
+    padding-bottom: 45px
+    margin-bottom: 5px
+
+
+.content-wrapper
+  margin: 0 auto
+  width: 100%
+  max-width: 1140px
+  box-sizing: border-box
+
 .document
   width: 50%
   padding-top: 12px
   padding-left: 20px
+
+
+
+
 
 .documents
   display: -ms-flexbox
@@ -15,5 +32,19 @@
   padding: 0 0 0 20px
   margin-bottom: 25px
 h1
-  font: 500 48px/1.25
+  position: relative
+  font-size: 48px
+h1:before
+  content: ' '
+  position: absolute
+  width: 140px
+  height: 2px
+  right: calc(100% + 28px)
+  top: 29px
+  background-color: #f2264d
+
+h1
+  display: block
+  font-weight: bold
+
 

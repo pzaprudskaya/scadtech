@@ -4,7 +4,6 @@ import {PageComponent} from './core/page/page.component';
 import {AboutCompanyComponent} from './pages/about-company/about-company.component';
 import {ContactsComponent} from './pages/contacts/contacts.component';
 import {NewsComponent} from './pages/news/news.component';
-import {VacanciesComponent} from './pages/vacancies/vacancies.component';
 import {PartnersAndCertificationsComponent} from './pages/partners-and-certifications/partners-and-certifications.component';
 import {OurLeadershipComponent} from './pages/our-leadership/our-leadership.component';
 import {ProduktsiyaComponent} from './pages/produktsiya/produktsiya.component';
@@ -20,7 +19,6 @@ const itemRoutes: Routes = [
   { path: 'contacts', component: ContactsComponent},
   { path: 'about/news', component: NewsComponent},
   { path: 'about/news/:event', component: EventsComponent},
-  { path: 'about/vacancies', component: VacanciesComponent},
   { path: 'about/partners-and-certifications', component: PartnersAndCertificationsComponent},
   { path: 'about/our-leadership', component: OurLeadershipComponent},
   { path: 'production/produktsiya-', component: ProduktsiyaComponent},

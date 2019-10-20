@@ -10,8 +10,23 @@ import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class OurLeadershipComponent implements OnInit {
   ourLeadership;
-  showNavigationArrows = true;
-  showNavigationIndicators = false;
+  follow = true;
+  enablePan = true;
+
+  index = 8;
+  speed = 3000;
+  infinite = true;
+  direction = 'right';
+  directionToggle = true;
+  autoplay = true;
+  avatars = '123456789'.split('').map((x, i) => {
+    const num = i;
+    // const num = Math.floor(Math.random() * 1000);
+    return {
+      url: `https://picsum.photos/600/400/?${num}`,
+      title: `${num}`
+    };
+  });
   constructor(config: NgbCarouselConfig) {
     config.showNavigationArrows = true;
     config.showNavigationIndicators = false;
@@ -20,4 +35,30 @@ export class OurLeadershipComponent implements OnInit {
   ngOnInit() {
     this.ourLeadership = leaderships;
   }
+  push() {
+    this.avatars.push(
+      {
+        url: `https://picsum.photos/600/400/?${this.avatars.length + 1}`,
+        title: `${this.avatars.length + 1}`
+      }
+    );
+  }
+
+  remove() {
+    this.avatars.splice(this.avatars.length - 1, 1);
+  }
+
+
+  indexChanged(index) {
+    console.log(index);
+  }
+
+  toggleDirection($event) {
+    this.direction = this.directionToggle ? 'right' : 'left';
+  }
+
+  a(i) {
+    console.log(i);
+  }
+
 }
