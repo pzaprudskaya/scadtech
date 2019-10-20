@@ -13,6 +13,7 @@ import {ValuesComponent} from "./values/values.component";
 import {PartnerComponent} from "./partner/partner.component";
 import {HistoryComponent} from "./history/history.component";
 import {ValueComponent} from "./value/value.component";
+import {FeedbackWindowComponent} from "./feedback-window/feedback-window.component";
 
 
 
@@ -28,7 +29,8 @@ import {ValueComponent} from "./value/value.component";
     ValuesComponent,
     PartnerComponent,
     HistoryComponent,
-    ValueComponent
+    ValueComponent,
+    FeedbackWindowComponent,
   ],
   imports: [
     NgbModule,
@@ -44,7 +46,8 @@ import {ValueComponent} from "./value/value.component";
     ValuesComponent,
     PartnerComponent,
     HistoryComponent,
-    ValueComponent
+    ValueComponent,
+    FeedbackWindowComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

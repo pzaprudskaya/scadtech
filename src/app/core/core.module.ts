@@ -7,6 +7,7 @@ import {CommonModule} from '@angular/common';
 import {FooterComponent} from "./footer/footer.component";
 import {HeaderComponent} from "./header/header.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {ComponentsModule} from "../components/components.module";
 
 
 
@@ -24,6 +25,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     RouterModule,
     FormsModule,
     CommonModule,
+    ComponentsModule
   ],
   exports: [
     PageComponent,

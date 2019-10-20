@@ -8,10 +8,11 @@ import {CoreModule} from './core/core.module';
 import {PagesModule} from "./pages/pages.module";
 import {ComponentsModule} from "./components/components.module";
 import { NgxHmCarouselModule } from 'ngx-hm-carousel';
+import {FeedbackWindowComponent} from "./components/feedback-window/feedback-window.component";
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +23,7 @@ import { NgxHmCarouselModule } from 'ngx-hm-carousel';
     NgxHmCarouselModule
   ],
   providers: [],
-  entryComponents: [],
+  entryComponents: [FeedbackWindowComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
