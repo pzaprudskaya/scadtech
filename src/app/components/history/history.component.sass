@@ -1,0 +1,101 @@
+*
+  margin: 0
+  padding: 0
+  overflow: hidden
+h2
+  position: relative
+  margin: 93px 0 35px
+  font-size: 36px
+  font-weight: 500
+h2:before
+  content: ''
+  position: absolute
+  width: 140px
+  height: 2px
+  right: calc(100% + 28px)
+  top: 22.4px
+  background-color: #f2264d
+
+
+.history
+  padding: 50px 0 0
+  background: #eee url('http://scadtech.ru/local/images/about/history-bg.png') center bottom no-repeat
+  min-height: 790px
+
+.about-block
+  padding: 52px 0 10px
+
+.slidee
+  width: 2180px
+  height: 100%
+  margin: 0
+  cursor: -webkit-grab
+  cursor: grab
+
+
+.content-wrapper
+  margin: 0 auto
+  width: 100%
+  max-width: 1140px
+  box-sizing: border-box
+
+
+.history .history-frame
+  width: 100%
+  height: 655px
+  padding: 0 30px 0 calc(50% - 1140px/2 + 20px)
+
+.history-items
+  position: relative
+  height: 82px
+  top: 50%
+  -ms-transform: translateY(-50%)
+  transform: translateY(-50%)
+.history-items:before
+  content: ' '
+  position: absolute
+  display: block
+  left: 0
+  top: calc(50% - 1px)
+  height: 2px
+  width: 100%
+  background: #f2264d
+.history-item:nth-child(odd)
+  bottom: 100%
+.history-item
+  position: absolute
+  display: block
+  width: 400px
+  max-width: 400px
+  height: 209px
+  white-space: normal
+  padding: 15px 30px 20px
+  color: #fff
+  background: #f2264d
+.history-item:before
+  width: 10px
+  height: 10px
+  content: ' '
+  position: absolute
+  display: block
+  background: #f2264d
+  left: 0
+.history-item:nth-child(odd):before
+  top: calc(100% + 36px)
+.inner
+  max-height: 100%
+  overflow: hidden
+
+.year
+  font-size: 50px
+  font-weight: 900
+  line-height: 1
+  margin-bottom: 10px
+.caption
+  font-size: 18px
+  font-weight: 500
+  line-height: 1.25
+  margin-bottom: 9px
+.description
+  font-size: 14px
+  line-height: 1.45
