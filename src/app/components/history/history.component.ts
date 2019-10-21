@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
+
+
   constructor() { }
 
   ngOnInit() {
+    // const innerWidth = window.innerWidth;
+    // this.innerWidth = innerWidth;
+    // this.width = innerWidth / 0.6;
+    // this.transform = innerWidth / 3.2;
+  }
+
+  drag(event) {
+    console.log(event);
   }
 
 }

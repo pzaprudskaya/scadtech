@@ -51,37 +51,47 @@ h2:before
   top: 50%
   -ms-transform: translateY(-50%)
   transform: translateY(-50%)
-.history-items:before
-  content: ' '
-  position: absolute
-  display: block
-  left: 0
-  top: calc(50% - 1px)
-  height: 2px
-  width: 100%
-  background: #f2264d
-.history-item:nth-child(odd)
-  bottom: 100%
+
 .history-item
-  position: absolute
   display: block
   width: 400px
   max-width: 400px
   height: 209px
   white-space: normal
   padding: 15px 30px 20px
+  margin: 3rem 1rem
   color: #fff
   background: #f2264d
-.history-item:before
-  width: 10px
-  height: 10px
-  content: ' '
-  position: absolute
-  display: block
-  background: #f2264d
-  left: 0
-.history-item:nth-child(odd):before
-  top: calc(100% + 36px)
+
+
+.first-line
+  margin-bottom: -6px
+  & .history-item-wrapper
+    position: relative
+    &:before
+      width: 10px
+      height: 10px
+      content: ' '
+      position: absolute
+      display: block
+      background: #f2264d
+      left: 1rem
+      bottom: 0
+
+.second-line
+  margin-top: -6px
+  .history-item-wrapper
+    position: relative
+    &:before
+      width: 10px
+      height: 10px
+      content: ' '
+      position: absolute
+      display: block
+      background: #f2264d
+      left: 1rem
+      top: 0
+
 .inner
   max-height: 100%
   overflow: hidden
@@ -99,3 +109,15 @@ h2:before
 .description
   font-size: 14px
   line-height: 1.45
+
+.first-line, .second-line
+  display: flex
+  flex-direction: row
+
+.second-line
+  margin-left: 200px
+
+.line
+  width: calc(100% - 2rem - 2px)
+  margin: 0 auto
+  border: 1px solid #f2264d
