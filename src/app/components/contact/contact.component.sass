@@ -18,4 +18,55 @@
 .selected
   grid-row-end: span 2
   grid-column-end: span 2
+.detail-info
+  height: 292px
+  overflow: hidden
+  background: #fff
+  box-shadow: 0 0 6px 6px rgba(154, 154, 154, 0.6)
 
+.contact
+  position: relative
+  font-size: 20px
+  color: #666
+  padding: 10px 0 10px 40px
+.contact.phone:before
+  width: 20px
+  height: 20px
+  background: url(/local/css/../images/sprite.svg?6bbfd266) -98px -711px no-repeat
+.contacts-list .contact:before
+  content: ' '
+  position: absolute
+  display: block
+  left: 0
+  top: 12px
+.contact a
+  color: #666
+  text-decoration: none
+.contact.location:before
+  width: 18px
+  height: 23px
+  background: url(/local/css/../images/sprite.svg?6bbfd266) -76px -711px no-repeat
+.contact.fax:before
+  width: 23px
+  height: 21px
+  background: url(/local/css/../images/sprite.svg?6bbfd266) -480px -642px no-repeat
+.contact.mail:before
+  width: 23px
+  height: 16px
+  background: url(/local/css/../images/sprite.svg?6bbfd266) -507px -642px no-repeat
+  top: 15px
+
+.inner:before
+  content: ' '
+  position: absolute
+  left: 0
+  top: 0
+  height: 2px
+  width: 57px
+  background: #f2264d
+.inner
+  position: relative
+  margin: 40px 30px
+  padding-top: 25px
+  max-height: 180px
+  overflow-y: auto

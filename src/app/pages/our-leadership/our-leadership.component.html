@@ -1,85 +1,34 @@
-<div class="page-header">
-  <h1>Наше руководство</h1>
-</div>
-<!--
-<div class="block-content wysiwyg">
-  <div class="grid-row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-      <div class="leader-slider js-leader-slider">
-        <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
-          <ng-template ngbSlide *ngFor="let leadership of ourLeadership">
-            <div class="image">
-              <img [src]='leadership.image' alt="{{leadership.name}}">
-            </div>
-            <div class="info">
-              <div class="info-content">
-                <div class="name">{{leadership.name}}</div>
-                <div class="post">{{leadership.post}}<br></div>
-                <div class="controls">
+<main>
+  <div class="content-wrapper">
+
+
+    <div class="page-header">
+      <h1>Наше руководство</h1>
+    </div>
+
+    <div class="block-content wysiwyg">
+      <div class="grid-row">
+        <div class="col">
+          <div class="leader-slider js-leader-slider">
+            <ngb-carousel [showNavigationArrows]="true" [showNavigationIndicators]=false>
+              <ng-template ngbSlide *ngFor="let leadership of ourLeadership">
+                <div class="image">
+                  <img [src]='leadership.image' alt="{{leadership.name}}">
                 </div>
-              </div>
-            </div>
-          </ng-template>
-        </ngb-carousel>
+                <div class="info">
+                  <div class="info-content">
+                    <div class="name">{{leadership.name}}</div>
+                    <div class="post">{{leadership.post}}<br></div>
+                    <div class="controls">
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
--->
-
-
-<ngx-hm-carousel
-                 [(ngModel)]="index"
-                 (ngModelChange)="indexChanged($event)"
-                 [autoplay-speed]="speed"
-                 [autoplay]="autoplay"
-                 [autoplay-direction]="direction"
-                 [infinite]="infinite"
-                 [between-delay]="2000"
-                 [mourse-enable]="true"
-                 [data]="avatars"
-                 [aniTime]="300"
-                 class="carousel c-accent">
-
-  <section ngx-hm-carousel-container class="content">
-    <article class="item cursor-pointer"
-             ngx-hm-carousel-item
-             *ngFor="let avatar of avatars">
-      <div class="img"
-           [style.backgroundImage]="'url('+avatar.url+')'">
-      </div>
-    </article>
-    <ng-template ></ng-template>
-  </section>
-
-  <ng-template let-avatar let-i="index">
-    <article class="item cursor-pointer">
-      <div class="img"
-           [style.backgroundImage]="'url('+avatar.url+')'">
-      </div>
-    </article>
-  </ng-template>
-
-  <ng-template>
-    <div class="click-area">
-      <i class="material-icons">keyboard_arrow_left</i>
-    </div>
-  </ng-template>
-  <ng-template>
-    <div class="click-area">
-      <i class="material-icons">keyboard_arrow_right</i>
-    </div>
-  </ng-template>
-
-  <ng-template let-model>
-    <div class="ball bg-accent"
-         [class.visible]="model.index === model.currentIndex"></div>
-  </ng-template>
-
-  <ng-template>
-    <div class="progress"></div>
-  </ng-template>
-
-</ngx-hm-carousel>
+</main>
 

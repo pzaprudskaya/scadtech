@@ -7,14 +7,13 @@ import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
 import {PagesModule} from "./pages/pages.module";
 import {ComponentsModule} from "./components/components.module";
-import { NgxHmCarouselModule } from 'ngx-hm-carousel';
 import {FeedbackWindowComponent} from "./components/feedback-window/feedback-window.component";
-import { HistoryItemComponent } from './history-item/history-item.component';
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+import {MenuItem} from 'primeng/api';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HistoryItemComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +21,7 @@ import { HistoryItemComponent } from './history-item/history-item.component';
     CoreModule,
     PagesModule,
     ComponentsModule,
-    NgxHmCarouselModule
+    AccordionModule,
   ],
   providers: [],
   entryComponents: [FeedbackWindowComponent],

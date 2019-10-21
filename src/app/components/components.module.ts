@@ -14,7 +14,7 @@ import {PartnerComponent} from "./partner/partner.component";
 import {HistoryComponent} from "./history/history.component";
 import {ValueComponent} from "./value/value.component";
 import {FeedbackWindowComponent} from "./feedback-window/feedback-window.component";
-
+import { HistoryItemComponent } from './history-item/history-item.component';
 
 
 
@@ -31,6 +31,7 @@ import {FeedbackWindowComponent} from "./feedback-window/feedback-window.compone
     HistoryComponent,
     ValueComponent,
     FeedbackWindowComponent,
+    HistoryItemComponent
   ],
   imports: [
     NgbModule,
@@ -47,7 +48,8 @@ import {FeedbackWindowComponent} from "./feedback-window/feedback-window.compone
     PartnerComponent,
     HistoryComponent,
     ValueComponent,
-    FeedbackWindowComponent
+    FeedbackWindowComponent,
+    HistoryItemComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

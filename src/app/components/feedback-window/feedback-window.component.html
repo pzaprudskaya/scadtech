@@ -2,8 +2,68 @@
   <div class="popup-title">
     Обратная связь
   </div>
+  <div class="form-row">
+    <div class="form-col">
+      <div class="input fluid">
+        <label class="label" for="form_text_1">Фамилия </label>
+        <div class="input-container">
+          <input type="text" name="form_text_1" class="input-controller -name" id="form_text_1" value=""></div>
+      </div>
 
-  <form action="/ajax/feedback/add/" method="post"
+      <div class="input fluid">
+        <label class="label" for="form_text_2">Имя </label>
+        <div class="input-container">
+          <input type="text" name="form_text_2" class="input-controller -required -name" id="form_text_2" value="">
+        </div>
+      </div>
+
+      <div class="input fluid">
+        <label class="label" for="form_text_3">Отчество </label>
+        <div class="input-container">
+          <input type="text" name="form_text_3" class="input-controller -name" id="form_text_3" value=""></div>
+      </div>
+
+      <div class="input fluid">
+        <label class="label" for="form_email_4">E-mail </label>
+        <div class="input-container">
+          <input type="text" name="form_email_4" class="input-controller one-of-many -email" id="form_email_4"
+                 data-msg-require_from_group="Пожалуйста, заполните телефон или email" value=""></div>
+      </div>
+    </div>
+
+    <div class="form-col">
+      <div class="input fluid">
+        <label class="label" for="form_text_5">Телефон </label>
+        <div class="input-container">
+          <input type="text" name="form_text_5" class="input-controller one-of-many -phone" id="form_text_5"
+                 data-msg-require_from_group="Пожалуйста, заполните телефон или email"
+                 placeholder="+7 (___) ___-__-__" value=""></div>
+      </div>
+
+      <div class="input fluid textarea">
+        <label class="label" for="form_textarea_6">Текст вопроса </label>
+        <div class="input-container">
+            <textarea name="form_textarea_6" class="input-controller -required -comment"
+                      id="form_textarea_6"></textarea></div>
+      </div>
+
+      <div class="file-input js-file-input">
+        <label class="js-file-upload label upload-file-control dz-clickable" data-url-save="/ajax/file-upload/save/"
+               data-url-delete="/ajax/file-upload/delete/" data-name="FILES" for="FILES">Прикрепить файлы </label>
+        <input type="hidden" name="FILES" class="input-controller" id="FILES" value="">
+        <div class="file-list"></div>
+        <div class="files-errors"></div>
+      </div>
+    </div>
+  </div>
+  <div class="terms-agreement">Нажимая на&nbsp;кнопку «Отправить», я&nbsp;соглашаюсь с&nbsp;<a href="/politika-obrabotki-personalnykh-dannykh/" target="_blank">политикой обработки персональных
+    данных</a>.</div>
+  <div class="submit-wrap">
+    <button type="submit" name="web_form_submit" class="input-controller btn js-feedback-submit"
+            value="">Отправить
+    </button>
+  </div>
+  <!--<form action="/ajax/feedback/add/" method="post"
         class="js-ajax-form popup-content ajax-form-control loop-form-control" novalidate="novalidate"><input
     type="hidden" name="sessid" class="input-controller -required" id="sessid" value="745d41bd89809c5be31c6f034b1c3bd0">
     <input type="hidden" name="form_hidden_8" class="input-controller -required" id="form_hidden_8" value="/">
@@ -76,6 +136,6 @@
 
     <div class="form-error-messages"></div>
   </form>
-  <button data-fancybox-close="" class="fancybox-close-small" title="Закрыть"></button>
+  <button data-fancybox-close="" class="fancybox-close-small" title="Закрыть"></button>-->
 </div>
 
