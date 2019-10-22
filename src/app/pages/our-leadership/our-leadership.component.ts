@@ -1,6 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {leaderships} from "../../data";
-import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCarousel, NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-our-leadership',
@@ -10,11 +10,13 @@ import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class OurLeadershipComponent implements OnInit {
   ourLeadership;
+  @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 
   constructor() { }
 
   ngOnInit() {
     this.ourLeadership = leaderships;
+    this.carousel.pause();
   }
 
 }

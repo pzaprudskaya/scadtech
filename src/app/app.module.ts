@@ -8,8 +8,6 @@ import { CoreModule } from './core/core.module';
 import { PagesModule } from "./pages/pages.module";
 import { ComponentsModule } from "./components/components.module";
 import { FeedbackWindowComponent } from "./components/feedback-window/feedback-window.component";
-import { AccordionModule } from 'primeng/accordion';     //accordion and accordion tab
-import { MenuItem } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -20,8 +18,7 @@ import { MenuItem } from 'primeng/api';
     AppRoutingModule,
     CoreModule,
     PagesModule,
-    ComponentsModule,
-    AccordionModule,
+    ComponentsModule
   ],
   providers: [],
   entryComponents: [ FeedbackWindowComponent ],
