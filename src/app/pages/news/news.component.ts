@@ -8,6 +8,8 @@ import { events} from "../../data";
 })
 export class NewsComponent implements OnInit {
   events;
+  pageSize = 8;
+  page = 1;
   constructor() { }
 
   ngOnInit() {

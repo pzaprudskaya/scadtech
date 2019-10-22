@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { events} from "../../data";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, NavigationStart, Router} from "@angular/router";
+import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'app-events',
@@ -8,19 +9,40 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./events.component.sass']
 })
 export class EventsComponent implements OnInit {
+
   event;
   title;
-  constructor(private route: ActivatedRoute) { }
+  prev;
+  next;
+  constructor(private route: ActivatedRoute, private router: Router) {
+    router.events.pipe(filter((event) => event instanceof NavigationStart))
+      .subscribe((event: NavigationStart) => {
+        console.log('vhbkjnlm;,');
+        this.ngOnInit();
+
+      });
+  }
 
   ngOnInit() {
     this.title = this.route.snapshot.params.event;
+    let count = 0;
     events.forEach((item) => {
       if(this.toTranslit(item.title) === this.title) {
         this.event = item;
+        if(count === 0) {
+          this.next = events[count+1];
+        } else if (count-1 === -1) {
+          this.prev = events[count-1];
+        } else {
+          this.prev = events[count-1];
+          this.next = events[count+1];
+        }
       }
+      count++;
     });
 
   }
+
   toTranslit(title: string): string {
     return title.replace(/([а-яё])|([\s_-])|([^a-z\d])/gi,
       function (all, ch, space, words, i) {

@@ -6,25 +6,17 @@
   <div class="block-content js-block-content">
     <div>
       <div class="grid-row">
-        <div *ngFor="let event of events" class="event">
+        <div *ngFor="let event of events | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" class="event">
           <app-event id="contact"  routerLink='/about/news/{{toTranslit(event.title)}}/'
                        [event]="event"></app-event>
         </div>
+        <div class="navigation">
+          <ngb-pagination [collectionSize]="events.length" [pageSize]="pageSize" [(page)]="page" [boundaryLinks]="false"></ngb-pagination>
+        </div>
+
       </div>
 
 
-      <div class="navigation js-ajax-pagination">
-        <!-- Previous page link -->
-        <span class="disabled arrow back"></span>
-
-        <!-- Numbered page links -->
-        <span class="active">1</span>
-        <a href="/about/news/page-2/">
-          2            </a>
-
-        <!-- Next page link -->
-        <a href="/about/news/page-2/" class="arrow next"></a>
-      </div>
-    </div>
+     </div>
   </div></div>
 </main>

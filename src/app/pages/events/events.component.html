@@ -27,16 +27,8 @@
           {{event.information}}
         </p></div>
       <div class="news-pagination">
-        <div class="prev">
-        </div>
-
-        <div class="next">
-          <a href="/about/news/preobrazovateli-chastoty-serii-skad-drayv-2000-voshli-v-reestr-ovp-transneft/" class="classic-link">
-            <span>Преобразователи частоты серии СКАД Драйв 2000 вошли в реестр ОВП «Транснефть»</span>
-          </a>
-
-          <img src="/upload/resize_cache/iblock/6e6/155_96_1/6e6c8f34f4bebdc434d28dd1836b7edc.jpg" alt="Преобразователи частоты серии СКАД Драйв 2000 вошли в реестр ОВП «Транснефть»" class="preview">
-        </div>
+        <div class="prev"> <a routerLink='/about/news/{{toTranslit(event.title)}}'><span>{{prev.title}}</span></a></div>
+        <div class="next"> <a routerLink='/about/news/{{toTranslit(next.title)}}'><span>{{next.title}}</span></a></div>
       </div>
 
 
