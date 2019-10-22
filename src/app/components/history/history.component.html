@@ -13,16 +13,18 @@
     </div>
   </div>
 
-  <div
-    class="history-frame"
-    style="width: 3220px;"
-  >
+  <div class="history-frame">
     <div
       cdkDragLockAxis="x"
       cdkDrag
-      cdkDragBoundary=".history-frame"
-      (cdkDragMoved)="drag($event)"
-      class="slidee"
+      #item
+      class="item"
+      cdkDrag
+      (cdkDragEnded)="drag($event)"
+      [style.top.px]="initialPosition.y"
+      [style.left.px]="initialPosition.x"
+      [cdkDragFreeDragPosition]="initialPosition"
+      class="slide"
     >
       <div class="first-line">
         <div class="history-item-wrapper">
