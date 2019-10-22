@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import 'hammerjs';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +19,8 @@ import { FeedbackWindowComponent } from "./components/feedback-window/feedback-w
     AppRoutingModule,
     CoreModule,
     PagesModule,
-    ComponentsModule
+    ComponentsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   entryComponents: [ FeedbackWindowComponent ],
