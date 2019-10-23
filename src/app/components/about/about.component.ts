@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.sass']
 })
 export class AboutComponent implements OnInit {
-
+  headline = 'Компания SCAD tech';
   constructor() { }
 
   ngOnInit() {

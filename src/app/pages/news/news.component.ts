@@ -7,6 +7,7 @@ import { events} from "../../data";
   styleUrls: ['./news.component.sass']
 })
 export class NewsComponent implements OnInit {
+  headline = 'Новости';
   events;
   pageSize = 8;
   page = 1;

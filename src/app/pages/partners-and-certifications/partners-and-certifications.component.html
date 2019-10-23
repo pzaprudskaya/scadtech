@@ -1,17 +1,11 @@
-<main>
-  <div class="content-wrapper">
-    <div class="page-header">
-      <h1>Партнеры и сертификаты</h1>
-    </div>
-    <div class="block-content">
-      <div class="partners-list-wrapper">
-        <div class="grid-row">
-          <div *ngFor="let partner of partners" class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <app-partner [partner]="partner"></app-partner>
-          </div>
-
-        </div>
+<app-headline [title]="headline"></app-headline>
+<div class="block-content">
+  <div class="partners-list-wrapper">
+    <div class="grid-row">
+      <div *ngFor="let partner of partners" class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <app-partner [partner]="partner"></app-partner>
       </div>
     </div>
   </div>
-</main>
+</div>
+

@@ -9,6 +9,7 @@ import {NgbCarousel, NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbCarouselConfig]
 })
 export class OurLeadershipComponent implements OnInit {
+  headline = 'Наше руководство';
   ourLeadership;
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 

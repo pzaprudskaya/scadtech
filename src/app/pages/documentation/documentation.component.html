@@ -1,14 +1,6 @@
-<main>
-  <div class="content-wrapper">
-    <div class="page-header">
-      <h1>Разрешительная документация</h1>
-    </div>
-      <div class="documents">
-        <div *ngFor="let document of documents" class="document">
-          <app-document [document]="document" ></app-document>
-        </div>
-      </div>
-
-
+<app-headline [title]="headline"></app-headline>
+<div class="documents">
+  <div *ngFor="let document of documents" class="document">
+    <app-document [document]="document"></app-document>
   </div>
-</main>
+</div>

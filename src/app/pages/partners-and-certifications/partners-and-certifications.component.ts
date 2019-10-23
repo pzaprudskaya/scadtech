@@ -7,6 +7,7 @@ import {partners} from "../../data";
   styleUrls: ['./partners-and-certifications.component.sass']
 })
 export class PartnersAndCertificationsComponent implements OnInit {
+  headline = 'Партнеры и сертификаты';
   partners;
   constructor() { }
 

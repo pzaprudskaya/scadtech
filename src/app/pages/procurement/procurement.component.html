@@ -1,113 +1,55 @@
-<main>
-  <div class="content-wrapper">
-    <div class="page-header">
-      <h1>Закупки</h1>
-    </div>
+    <app-headline [title]="headline"></app-headline>
     <div class="block-content">
       <div class="wysiwyg clearfix">
-               <p style="text-align: left;">
-          <img width="342" alt="DSC_4716.jpg" src="http://scadtech.ru/upload/medialibrary/1db/1db5e5a8e8ee710173b2ae871be14537.jpg"
-               height="512" title="DSC_4716.jpg" align="right">
-        </p>
-        <p>Отдел контроля и сопровождения цепей поставок Группы компаний "СКАД тех" <br> отвечает за подбор поставщиков,
-          их оценку на соответствие требованиям Группы компаний, управление данными поставщиков, а также их развитие -
-          поддержку организаций, стремящихся войти в Реестр поставщиков ГК "СКАД тех", но не соответствующих тeм или
-          иным требованиям<br>
-        </p>
-        Потребность ГК "СКАД тех" в привлечении новых поставщиков продукции и/или услуг связана с:<br>
-        <ol>
-          <li>монопольным положением одного или двух поставщиков по определенному виду продукции/услуг (стимулирование
-            конкуренции);<br>
-          </li>
-          <li>ожидаемым снижением затрат на закупку какого-либо вида продукции/услуг при переходе на договор с новым
-            поставщиком;<br>
-          </li>
-          <li>неудовлетворительным качеством исполнения условий договора тем или иным поставщиком и необходимость найти
-            ему альтернативу;<br>
-          </li>
-          <li>появлением новых видов продукции/услуг в номенклатуре ДМТО;<br>
-          </li>
-          <li>появлением на рынке инновационных решений, применение которых технически и экономически оправдано для ГК
-            "СКАД тех".&nbsp;
-          </li>
-        </ol>
+        <div class="content">
+          <p style="text-align: left;">
+            <img width="342" alt="DSC_4716.jpg" src="http://scadtech.ru/upload/medialibrary/1db/1db5e5a8e8ee710173b2ae871be14537.jpg"
+                 height="512" title="DSC_4716.jpg" align="right">
+          </p>
+          <p>Отдел контроля и сопровождения цепей поставок Группы компаний "СКАД тех" <br> отвечает за подбор поставщиков,
+            их оценку на соответствие требованиям Группы компаний, управление данными поставщиков, а также их развитие -
+            поддержку организаций, стремящихся войти в Реестр поставщиков ГК "СКАД тех", но не соответствующих тeм или
+            иным требованиям<br>
+          </p>
+          Потребность ГК "СКАД тех" в привлечении новых поставщиков продукции и/или услуг связана с:<br>
+          <ol>
+            <li>монопольным положением одного или двух поставщиков по определенному виду продукции/услуг (стимулирование
+              конкуренции);<br>
+            </li>
+            <li>ожидаемым снижением затрат на закупку какого-либо вида продукции/услуг при переходе на договор с новым
+              поставщиком;<br>
+            </li>
+            <li>неудовлетворительным качеством исполнения условий договора тем или иным поставщиком и необходимость найти
+              ему альтернативу;<br>
+            </li>
+            <li>появлением новых видов продукции/услуг в номенклатуре ДМТО;<br>
+            </li>
+            <li>появлением на рынке инновационных решений, применение которых технически и экономически оправдано для ГК
+              "СКАД тех".&nbsp;
+            </li>
+          </ol>
+        </div>
         <a href="http://scadtech.ru/production/procurement/podbor-i-otsenka-postavshchikov/?clear_cache=Y">Информация
           для новых поставщиков</a><br>
         <br>
         <a href="http://scadtech.ru/production/procurement/podbor-i-otsenka-postavshchikov/regulyarnye-/?clear_cache=Y">Регулярные
           закупки</a>
-        <p>
-        </p>
-        <p>
-        </p>
+        <br><br>
         <div class="btn-wrapper">
-          <a href="javascript:void(0)" data-type="ajax" data-src="/popup/feedback-procurement/" class="js-popup btn">Обратная
-            связь по закупкам</a>
+          <a (click)="open()" class="feedback btn">Обратная связь по закупкам</a>
         </div>
       </div>
 
-      <div class="files-list">
-        <a href="/upload/uf/2ac/2ac4b0730de09494ccdeb43f81ae9584.pdf" class="file-download" target="_blank" download="">
-          <i class="icon-file-by-ext" data-ext="pdf"></i>
-          <div class="file-name">
-            Типовой договор
-          </div>
-          <div class="file-desc">
-            <time datetime="2018-05-18T00:00:00">16.07.2018</time>
-            <p>
-              Типовой договор поставки </p>
-          </div>
-        </a>
-        <a href="/upload/uf/966/966d57d2f34295150db083bf96000e20.docx" class="file-download" target="_blank"
-           download="">
-          <i class="icon-file-by-ext" data-ext="docx"></i>
-          <div class="file-name">
-            Анкета поставщика
-          </div>
-          <div class="file-desc">
-            <time datetime="2018-05-18T00:00:00">16.07.2018</time>
-            <p>
-            </p>
-          </div>
-        </a>
-        <a href="/upload/uf/838/838e8314518e4e08b34a887fc24833de.pdf" class="file-download" target="_blank" download="">
-          <i class="icon-file-by-ext" data-ext="pdf"></i>
-          <div class="file-name">
-            Кодекс делового поведения
-          </div>
-          <div class="file-desc">
-            <time datetime="2018-05-18T00:00:00">16.07.2018</time>
-            <p>
-            </p>
-          </div>
-        </a>
-        <a href="/upload/uf/e5e/e5ec7bf4df4105ce639c0ed57e57163b.pdf" class="file-download" target="_blank" download="">
-          <i class="icon-file-by-ext" data-ext="pdf"></i>
-          <div class="file-name">
-            Политика в организации закупок
-          </div>
-          <div class="file-desc">
-            <time datetime="2018-05-18T00:00:00">16.07.2018</time>
-            <p>
-            </p>
-          </div>
-        </a>
+      <div class="files-list" >
+        <div class="file-download" *ngFor="let file of files">
+          <app-file [file]="file"></app-file>
+        </div>
       </div>
 
       <div class="files-list selected">
-        <a href="/upload/uf/790/790859894065bcc743dc24937559760a.xlsm" class="file-download" target="_blank"
-           download="">
-          <i class="icon-file-by-ext" data-ext="xlsm"></i>
-          <div class="file-name">
-            Список актуальных закупок
-          </div>
-          <div class="file-desc">
-            <time datetime="2018-05-18T00:00:00">16.07.2018</time>
-            <p>
-            </p>
-          </div>
-        </a>
+        <div class="file-download" *ngFor="let file of selectedFiles">
+          <app-file [file]="file"></app-file>
+        </div>
       </div>
     </div>
-  </div>
-</main>
+

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./documentation.component.sass']
 })
 export class DocumentationComponent implements OnInit {
-
+  headline = 'Разрешительная документация';
   documents = [
     {
       title: "Выписка из реестра членов саморегулируемой организации",

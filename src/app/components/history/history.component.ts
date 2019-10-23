@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import {historyEvents} from "../../data";
 
 @Component({
   selector: 'app-history',
@@ -6,8 +7,7 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular
   styleUrls: [ './history.component.sass' ]
 })
 export class HistoryComponent implements OnInit {
-
-  @ViewChild("item")
+  historyEvents;
   item: ElementRef;
 
   spacing = 370;
@@ -19,6 +19,7 @@ export class HistoryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.historyEvents = historyEvents;
     this.calculate();
   }
 

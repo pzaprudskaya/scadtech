@@ -1,37 +1,31 @@
-<main>
-  <div class="content-wrapper">
-    <div class="page-header">
-      <h1>{{event.title}}</h1>
-    </div>
-    <div class="wysiwyg js-content">
-      <div class="block-content">
-        <time>{{event.date}}</time>
+<app-headline [title]="event.title"></app-headline>
+<div class="wysiwyg js-content">
+  <div class="block-content">
+    <time>{{event.date}}</time>
 
-
-        <div class="news-gallery-wrapper">
-          <div class="gallery ">
-            <div class="img-wrap">
-              <img src='{{event.image}}' alt="">
-            </div>
-          </div>
-
+    <div class="news-gallery-wrapper">
+      <div class="gallery ">
+        <div class="img-wrap">
+          <img src='{{event.image}}' alt="">
         </div>
-        <div class="preview-text">
-          <p>
-            {{event.description}}
-          </p></div>
-
-        <div class="clearfix"></div>
-
-        <p>
-          {{event.information}}
-        </p></div>
-      <div class="news-pagination">
-        <div class="prev"> <a routerLink='/about/news/{{toTranslit(event.title)}}'><span>{{prev.title}}</span></a></div>
-        <div class="next"> <a routerLink='/about/news/{{toTranslit(next.title)}}'><span>{{next.title}}</span></a></div>
       </div>
 
-
     </div>
+    <div class="preview-text">
+      <p>
+        {{event.description}}
+      </p></div>
+
+    <div class="clearfix"></div>
+
+    <p>
+      {{event.information}}
+    </p></div>
+  <div class="news-pagination">
+    <div class="prev"><a routerLink='/about/news/{{toTranslit(prev)}}'><span>{{prev}}</span></a></div>
+    <div class="next"><a routerLink='/about/news/{{toTranslit(next)}}'><span>{{next}}</span></a></div>
   </div>
-</main>
+
+
+</div>
+

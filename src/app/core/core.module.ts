@@ -8,6 +8,7 @@ import {FooterComponent} from "./footer/footer.component";
 import {HeaderComponent} from "./header/header.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {ComponentsModule} from "../components/components.module";
+import {BlockComponent} from "./block/block.component";
 
 
 
@@ -18,7 +19,8 @@ import {ComponentsModule} from "../components/components.module";
   declarations: [
     PageComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BlockComponent
   ],
   imports: [
     NgbModule,
@@ -30,7 +32,8 @@ import {ComponentsModule} from "../components/components.module";
   exports: [
     PageComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BlockComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

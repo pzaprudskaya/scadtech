@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./production.component.sass']
 })
 export class ProductionComponent implements OnInit {
-
+  headline = 'Продукция';
   constructor() { }
 
   ngOnInit() {

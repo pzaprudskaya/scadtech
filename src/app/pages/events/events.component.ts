@@ -12,33 +12,30 @@ export class EventsComponent implements OnInit {
 
   event;
   title;
-  prev;
-  next;
+  prev = '';
+  next = '';
   constructor(private route: ActivatedRoute, private router: Router) {
     router.events.pipe(filter((event) => event instanceof NavigationStart))
       .subscribe((event: NavigationStart) => {
-        console.log('vhbkjnlm;,');
+        console.log(event);
         this.ngOnInit();
-
       });
   }
 
   ngOnInit() {
     this.title = this.route.snapshot.params.event;
-    let count = 0;
-    events.forEach((item) => {
+    events.forEach((item, index) => {
       if(this.toTranslit(item.title) === this.title) {
         this.event = item;
-        if(count === 0) {
-          this.next = events[count+1];
-        } else if (count-1 === -1) {
-          this.prev = events[count-1];
+        if(index === 0) {
+          this.next = events[index+1].title;
+        } else if (index === events.length) {
+          this.prev = events[index-1].title;
         } else {
-          this.prev = events[count-1];
-          this.next = events[count+1];
+          this.prev = events[index-1].title;
+          this.next = events[index+1].title;
         }
       }
-      count++;
     });
 
   }

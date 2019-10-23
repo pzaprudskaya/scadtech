@@ -15,7 +15,7 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
   }
-  open(content) {
+  open() {
     this.modalService.open(FeedbackWindowComponent, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

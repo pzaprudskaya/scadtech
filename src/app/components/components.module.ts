@@ -16,6 +16,8 @@ import { HistoryComponent } from "./history/history.component";
 import { ValueComponent } from "./value/value.component";
 import { FeedbackWindowComponent } from "./feedback-window/feedback-window.component";
 import { HistoryItemComponent } from './history-item/history-item.component';
+import {FileComponent} from "./file/file.component";
+import {HeadlineComponent} from "./headline/headline.component";
 
 
 
@@ -32,7 +34,9 @@ import { HistoryItemComponent } from './history-item/history-item.component';
     HistoryComponent,
     ValueComponent,
     FeedbackWindowComponent,
-    HistoryItemComponent
+    HistoryItemComponent,
+    FileComponent,
+    HeadlineComponent
   ],
   imports: [
     NgbModule,
@@ -43,6 +47,7 @@ import { HistoryItemComponent } from './history-item/history-item.component';
   ],
   exports: [
     DocumentComponent,
+    HeadlineComponent,
     ContactComponent,
     EventComponent,
     AboutComponent,
@@ -51,7 +56,8 @@ import { HistoryItemComponent } from './history-item/history-item.component';
     HistoryComponent,
     ValueComponent,
     FeedbackWindowComponent,
-    HistoryItemComponent
+    HistoryItemComponent,
+    FileComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

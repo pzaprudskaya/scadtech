@@ -7,6 +7,7 @@ import { contacts} from "../../data";
   styleUrls: ['./contacts.component.sass']
 })
 export class ContactsComponent implements OnInit {
+  headline = 'Контакты';
   contacts;
   selectedContact: number;
   state: boolean;

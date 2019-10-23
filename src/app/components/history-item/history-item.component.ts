@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-history-item',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history-item.component.sass']
 })
 export class HistoryItemComponent implements OnInit {
-
+  @Input() historyEvent;
   constructor() { }
 
   ngOnInit() {
