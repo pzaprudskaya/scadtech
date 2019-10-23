@@ -8,6 +8,7 @@ import {historyEvents} from "../../data";
 })
 export class HistoryComponent implements OnInit {
   historyEvents;
+  @ViewChild("item", { static: false })
   item: ElementRef;
 
   spacing = 370;
