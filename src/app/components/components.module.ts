@@ -18,6 +18,7 @@ import { FeedbackWindowComponent } from "./feedback-window/feedback-window.compo
 import { HistoryItemComponent } from './history-item/history-item.component';
 import {FileComponent} from "./file/file.component";
 import {HeadlineComponent} from "./headline/headline.component";
+import { EventItemComponent } from './event-item/event-item.component';
 
 
 
@@ -36,7 +37,8 @@ import {HeadlineComponent} from "./headline/headline.component";
     FeedbackWindowComponent,
     HistoryItemComponent,
     FileComponent,
-    HeadlineComponent
+    HeadlineComponent,
+    EventItemComponent
   ],
   imports: [
     NgbModule,
@@ -57,7 +59,8 @@ import {HeadlineComponent} from "./headline/headline.component";
     ValueComponent,
     FeedbackWindowComponent,
     HistoryItemComponent,
-    FileComponent
+    FileComponent,
+    EventItemComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 
