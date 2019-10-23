@@ -55,3 +55,31 @@ h2:before
   width: calc(100% - 2rem - 2px)
   margin: 0 auto
   border: 1px solid #f2264d
+
+.first-line
+  margin-bottom: -6px
+  & .history-item-wrapper
+    position: relative
+    &:before
+      width: 10px
+      height: 10px
+      content: ' '
+      position: absolute
+      display: block
+      background: #f2264d
+      left: 1rem
+      bottom: 0
+
+.second-line
+  margin-top: -6px
+  .history-item-wrapper
+    position: relative
+    &:before
+      width: 10px
+      height: 10px
+      content: ' '
+      position: absolute
+      display: block
+      background: #f2264d
+      left: 1rem
+      top: 0
