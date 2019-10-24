@@ -1,0 +1,121 @@
+.map-container
+  width: 100vw
+  height: 100vh
+  position: absolute
+  background: #ccc
+  min-height: 600px
+  left: 0
+  top: 0
+
+.map-canvas
+  width: 974px
+  height: 599px
+  //background: url(http://scadtech.ru/local/images/sprite.svg?6bbfd266) -2px -2px no-repeat
+  position: absolute
+  display: block
+  left: 50%
+  top: 50%
+  margin-left: -205px
+  -ms-transform: translateY(-50%)
+  transform: translateY(-50%)
+
+.content-wrapper
+  pointer-events: none
+
+.content-wrapper
+  margin: 0 auto
+  width: 100%
+  max-width: 1140px
+  box-sizing: border-box
+
+.map-info
+  position: relative
+  width: 362px
+  padding: 105px 20px 0
+  box-sizing: border-box
+  pointer-events: auto
+  z-index: 100
+
+.map-info:before
+  content: ''
+  position: absolute
+  width: 50vw
+  height: 100vh
+  right: 0
+  top: 0
+  background-color: #fff
+  opacity: .9
+.map-info-wrapper
+  position: relative
+.section-title
+  margin-bottom: 38px
+
+.section-title
+  position: relative
+  color: #333
+  font: 500 30px/1.2 'Roboto',sans-serif
+
+p
+  margin-top: 0
+  margin-bottom: 24px
+  font: 18px/1.333 'Roboto',sans-serif
+p.small, .wysiwyg table td
+  font: 14px/1.428 'Roboto',sans-serif
+
+.btn
+  margin-top: 13px
+
+.btn.btn-arrow
+  min-width: 213px
+
+.btn, .btn.bg-red:hover
+  background-color: transparent
+  color: #f2264d
+
+.btn
+  display: inline-block
+  text-align: center
+  vertical-align: middle
+  min-width: 146px
+  height: 38px
+  padding: 9px 6px
+  box-sizing: border-box
+  border: 1px solid #f2264d
+  font: 14px/1.42 'Roboto',sans-serif
+  text-decoration: none
+  cursor: pointer
+  transition: .3s color,.3s background-color
+  -webkit-appearance: none
+
+a
+  background-color: transparent
+  -text-decoration-skip: objects
+  color: #f2264d
+  text-decoration: underline
+
+span, .btn.btn-arrow.white, .btn.btn-arrow.white:hover span
+  background-color: #f2264d
+
+.btn.btn-arrow span
+  width: 27px
+  height: 1px
+  margin-left: 10px
+  margin-right: -14px
+  top: -4px
+  display: inline-block
+  position: relative
+  transition: .3s background-color,.3s width,.3s margin
+
+
+span:before
+  content: ''
+  position: absolute
+  transition: border-color .3s ease
+  right: 0
+  top: -1px
+  border-style: solid
+  border-width: 1.5px 0 1.5px 2px
+
+
+
+

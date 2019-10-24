@@ -16,6 +16,7 @@ import {ProcurementComponent} from "./procurement/procurement.component";
 import {ProductionComponent} from "./production/production.component";
 import {DocumentationComponent} from "./documentation/documentation.component";
 import {EventsComponent} from "./events/events.component";
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {EventsComponent} from "./events/events.component";
     ProcurementComponent,
     ProductionComponent,
     DocumentationComponent,
-    EventsComponent
+    EventsComponent,
+    HomeComponent
   ],
   imports: [
     NgbModule,
@@ -48,7 +50,8 @@ import {EventsComponent} from "./events/events.component";
     ProcurementComponent,
     ProductionComponent,
     DocumentationComponent,
-    EventsComponent
+    EventsComponent,
+    HomeComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

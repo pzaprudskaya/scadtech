@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import { events} from "../../data";
+import {Component, OnChanges, OnInit} from '@angular/core';
+import {events} from "../../data";
 import {ActivatedRoute, NavigationStart, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
 
@@ -8,12 +8,13 @@ import {filter} from "rxjs/operators";
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.sass']
 })
-export class EventsComponent implements OnInit {
+export class EventsComponent implements OnInit{
 
   event;
   title;
   prev = '';
   next = '';
+
   constructor(private route: ActivatedRoute, private router: Router) {
     router.events.pipe(filter((event) => event instanceof NavigationStart))
       .subscribe((event: NavigationStart) => {
@@ -25,15 +26,15 @@ export class EventsComponent implements OnInit {
   ngOnInit() {
     this.title = this.route.snapshot.params.event;
     events.forEach((item, index) => {
-      if(this.toTranslit(item.title) === this.title) {
+      if (this.toTranslit(item.title) === this.title) {
         this.event = item;
-        if(index === 0) {
-          this.next = events[index+1].title;
+        if (index === 0) {
+          this.next = events[index + 1].title;
         } else if (index === events.length) {
-          this.prev = events[index-1].title;
+          this.prev = events[index - 1].title;
         } else {
-          this.prev = events[index-1].title;
-          this.next = events[index+1].title;
+          this.prev = events[index - 1].title;
+          this.next = events[index + 1].title;
         }
       }
     });

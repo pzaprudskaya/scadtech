@@ -11,6 +11,7 @@ import {ProcurementComponent} from './pages/procurement/procurement.component';
 import {ProductionComponent} from './pages/production/production.component';
 import {DocumentationComponent} from './pages/documentation/documentation.component';
 import {EventsComponent} from './pages/events/events.component';
+import {HomeComponent} from './pages/home/home.component';
 
 const itemRoutes: Routes = [
   { path: 'about', component: AboutCompanyComponent},
@@ -22,7 +23,8 @@ const itemRoutes: Routes = [
   { path: 'about/partners-and-certifications', component: PartnersAndCertificationsComponent},
   { path: 'about/our-leadership', component: OurLeadershipComponent},
   { path: 'production/produktsiya-', component: ProduktsiyaComponent},
-  { path: 'production/procurement', component: ProcurementComponent}
+  { path: 'production/procurement', component: ProcurementComponent},
+  { path: '', component: HomeComponent},
 ];
 const routes: Routes = [
   { path: '', component: PageComponent, children: itemRoutes},

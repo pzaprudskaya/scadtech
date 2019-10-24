@@ -18,6 +18,10 @@ import { FeedbackWindowComponent } from "./feedback-window/feedback-window.compo
 import { HistoryItemComponent } from './history-item/history-item.component';
 import {FileComponent} from "./file/file.component";
 import {HeadlineComponent} from "./headline/headline.component";
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ScadTechComponent } from './scad-tech/scad-tech.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { ProcessesComponent } from './processes/processes.component';
 
 
 
@@ -36,7 +40,11 @@ import {HeadlineComponent} from "./headline/headline.component";
     FeedbackWindowComponent,
     HistoryItemComponent,
     FileComponent,
-    HeadlineComponent
+    HeadlineComponent,
+    AboutUsComponent,
+    ScadTechComponent,
+    ProjectsComponent,
+    ProcessesComponent
   ],
   imports: [
     NgbModule,
@@ -57,7 +65,11 @@ import {HeadlineComponent} from "./headline/headline.component";
     ValueComponent,
     FeedbackWindowComponent,
     HistoryItemComponent,
-    FileComponent
+    FileComponent,
+    AboutUsComponent,
+    ScadTechComponent,
+    ProjectsComponent,
+    ProcessesComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 
