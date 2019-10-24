@@ -1,29 +1,41 @@
+<<<<<<< HEAD
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {events} from "../../data";
 import {ActivatedRoute, NavigationStart, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
+=======
+import { Component, OnInit } from '@angular/core';
+import { events } from "../../data";
+import { ActivatedRoute, NavigationStart, Router } from "@angular/router";
+import { filter } from "rxjs/operators";
+>>>>>>> ab97b727502114b544ec114f35c1a73e12e74e64
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.sass']
+  styleUrls: [ './events.component.sass' ]
 })
 export class EventsComponent implements OnInit{
 
   event;
   title;
+
+  events;
+  currentNews: number;
+  newsLength: number;
+
   prev = '';
   next = '';
 
   constructor(private route: ActivatedRoute, private router: Router) {
     router.events.pipe(filter((event) => event instanceof NavigationStart))
       .subscribe((event: NavigationStart) => {
-        console.log(event);
-        this.ngOnInit();
+        this.init();
       });
   }
 
   ngOnInit() {
+<<<<<<< HEAD
     this.title = this.route.snapshot.params.event;
     events.forEach((item, index) => {
       if (this.toTranslit(item.title) === this.title) {
@@ -38,7 +50,18 @@ export class EventsComponent implements OnInit{
         }
       }
     });
+=======
+    const event = events.filter((el, index) => this.toTranslit(el.title) === this.route.snapshot.params.event);
+    this.newsLength = events.length;
+    this.currentNews = event[0].id;
+    this.events = events;
+    this.init();
+  }
+>>>>>>> ab97b727502114b544ec114f35c1a73e12e74e64
 
+  init() {
+    this.title = this.route.snapshot.params.event;
+    this.event = events[this.currentNews];
   }
 
   toTranslit(title: string): string {
@@ -50,12 +73,12 @@ export class EventsComponent implements OnInit{
         let code = ch.charCodeAt(0),
           index = code == 1025 || code == 1105 ? 0 :
             code > 1071 ? code - 1071 : code - 1039,
-          t = ['yo', 'a', 'b', 'v', 'g', 'd', 'e', 'zh',
+          t = [ 'yo', 'a', 'b', 'v', 'g', 'd', 'e', 'zh',
             'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p',
             'r', 's', 't', 'u', 'f', 'h', 'c', 'ch', 'sh',
             'shch', '', 'y', '', 'e', 'yu', 'ya'
           ];
-        return t[index];
+        return t[ index ];
       });
   }
 }

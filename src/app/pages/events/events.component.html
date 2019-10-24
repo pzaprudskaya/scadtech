@@ -1,26 +1,6 @@
 <app-headline [title]="event.title"></app-headline>
 <div class="wysiwyg js-content">
-  <div class="block-content">
-    <time>{{event.date}}</time>
-
-    <div class="news-gallery-wrapper">
-      <div class="gallery ">
-        <div class="img-wrap">
-          <img src='{{event.image}}' alt="">
-        </div>
-      </div>
-
-    </div>
-    <div class="preview-text">
-      <p>
-        {{event.description}}
-      </p></div>
-
-    <div class="clearfix"></div>
-
-    <p>
-      {{event.information}}
-    </p></div>
+  <app-event-item [event]="event"></app-event-item>
   <div class="news-pagination">
     <div class="prev"><a routerLink='/about/news/{{toTranslit(prev)}}'><span>{{prev}}</span></a></div>
     <div class="next"><a routerLink='/about/news/{{toTranslit(next)}}'><span>{{next}}</span></a></div>
