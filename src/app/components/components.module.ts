@@ -18,14 +18,11 @@ import { FeedbackWindowComponent } from "./feedback-window/feedback-window.compo
 import { HistoryItemComponent } from './history-item/history-item.component';
 import {FileComponent} from "./file/file.component";
 import {HeadlineComponent} from "./headline/headline.component";
-<<<<<<< HEAD
-import { AboutUsComponent } from './about-us/about-us.component';
-import { ScadTechComponent } from './scad-tech/scad-tech.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { ProcessesComponent } from './processes/processes.component';
-=======
-import { EventItemComponent } from './event-item/event-item.component';
->>>>>>> ab97b727502114b544ec114f35c1a73e12e74e64
+import {ProcessesComponent} from "./processes/processes.component";
+import {ProjectsComponent} from "./projects/projects.component";
+import {ScadTechComponent} from "./scad-tech/scad-tech.component";
+import {AboutUsComponent} from "./about-us/about-us.component";
+import {PopupComponent} from "./popup/popup.component";
 
 
 
@@ -45,14 +42,11 @@ import { EventItemComponent } from './event-item/event-item.component';
     HistoryItemComponent,
     FileComponent,
     HeadlineComponent,
-<<<<<<< HEAD
     AboutUsComponent,
     ScadTechComponent,
     ProjectsComponent,
-    ProcessesComponent
-=======
-    EventItemComponent
->>>>>>> ab97b727502114b544ec114f35c1a73e12e74e64
+    ProcessesComponent,
+    PopupComponent
   ],
   imports: [
     NgbModule,
@@ -74,14 +68,11 @@ import { EventItemComponent } from './event-item/event-item.component';
     FeedbackWindowComponent,
     HistoryItemComponent,
     FileComponent,
-<<<<<<< HEAD
     AboutUsComponent,
     ScadTechComponent,
     ProjectsComponent,
-    ProcessesComponent
-=======
-    EventItemComponent
->>>>>>> ab97b727502114b544ec114f35c1a73e12e74e64
+    ProcessesComponent,
+    PopupComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

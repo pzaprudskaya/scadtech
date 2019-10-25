@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { PagesModule } from "./pages/pages.module";
 import { ComponentsModule } from "./components/components.module";
 import { FeedbackWindowComponent } from "./components/feedback-window/feedback-window.component";
+import {AngularFullpageModule} from "@fullpage/angular-fullpage";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FeedbackWindowComponent } from "./components/feedback-window/feedback-w
     PagesModule,
     ComponentsModule,
     BrowserAnimationsModule,
+    AngularFullpageModule
   ],
   providers: [],
   entryComponents: [ FeedbackWindowComponent ],

@@ -31,11 +31,7 @@
       </div>
       <hr class="line" />
       <div class="second-line">
-<<<<<<< HEAD
-        <div *ngFor="let historyEvent of historyEvents; let i = index" >
-=======
         <div *ngFor="let historyEvent of historyEvents; let i = index" class="history-item-wrapper">
->>>>>>> ab97b727502114b544ec114f35c1a73e12e74e64
           <app-history-item [historyEvent]="historyEvent" *ngIf="i !== 0 && i%2 === 0 "></app-history-item>
         </div>
       </div>

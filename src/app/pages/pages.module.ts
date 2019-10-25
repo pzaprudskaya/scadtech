@@ -17,6 +17,7 @@ import {ProductionComponent} from "./production/production.component";
 import {DocumentationComponent} from "./documentation/documentation.component";
 import {EventsComponent} from "./events/events.component";
 import { HomeComponent } from './home/home.component';
+import {AngularFullpageModule} from "@fullpage/angular-fullpage";
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { HomeComponent } from './home/home.component';
     RouterModule,
     FormsModule,
     CommonModule,
-    ComponentsModule
+    ComponentsModule,
+    AngularFullpageModule
   ],
   exports: [
     AboutCompanyComponent,

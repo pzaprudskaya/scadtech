@@ -34,7 +34,10 @@
               "./node_modules/primeng/resources/themes/nova-light/theme.css",
               "./node_modules/primeng/resources/primeng.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/fullpage.scrollHorizontally.min.js",
+              "node_modules/fullpage.js/vendors/scrolloverflow.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -128,6 +131,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "site"
 }

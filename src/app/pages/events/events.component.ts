@@ -1,14 +1,8 @@
-<<<<<<< HEAD
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {events} from "../../data";
 import {ActivatedRoute, NavigationStart, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
-=======
-import { Component, OnInit } from '@angular/core';
-import { events } from "../../data";
-import { ActivatedRoute, NavigationStart, Router } from "@angular/router";
-import { filter } from "rxjs/operators";
->>>>>>> ab97b727502114b544ec114f35c1a73e12e74e64
+
 
 @Component({
   selector: 'app-events',
@@ -21,8 +15,6 @@ export class EventsComponent implements OnInit{
   title;
 
   events;
-  currentNews: number;
-  newsLength: number;
 
   prev = '';
   next = '';
@@ -30,12 +22,11 @@ export class EventsComponent implements OnInit{
   constructor(private route: ActivatedRoute, private router: Router) {
     router.events.pipe(filter((event) => event instanceof NavigationStart))
       .subscribe((event: NavigationStart) => {
-        this.init();
+          this.ngOnInit();
       });
   }
 
   ngOnInit() {
-<<<<<<< HEAD
     this.title = this.route.snapshot.params.event;
     events.forEach((item, index) => {
       if (this.toTranslit(item.title) === this.title) {
@@ -50,18 +41,6 @@ export class EventsComponent implements OnInit{
         }
       }
     });
-=======
-    const event = events.filter((el, index) => this.toTranslit(el.title) === this.route.snapshot.params.event);
-    this.newsLength = events.length;
-    this.currentNews = event[0].id;
-    this.events = events;
-    this.init();
-  }
->>>>>>> ab97b727502114b544ec114f35c1a73e12e74e64
-
-  init() {
-    this.title = this.route.snapshot.params.event;
-    this.event = events[this.currentNews];
   }
 
   toTranslit(title: string): string {
