@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
-import {historyEvents} from "../../data";
+import {historyEvents} from '../../data';
 
 @Component({
   selector: 'app-history',
@@ -8,7 +8,7 @@ import {historyEvents} from "../../data";
 })
 export class HistoryComponent implements OnInit {
   historyEvents;
-  @ViewChild("item", { static: false })
+  @ViewChild('item', { static: false })
   item: ElementRef;
 
   spacing = 370;
@@ -44,9 +44,9 @@ export class HistoryComponent implements OnInit {
     this.position.y = this.initialPosition.y + this.offset.y;
 
     if (this.offset.x > this.spacing) {
-      this.initialPosition = { x: this.spacing, y: 0 }
+      this.initialPosition = { x: this.spacing, y: 0 };
     } else if (this.offset.x < this.innerWidth - 2200) {
-      this.initialPosition = { x: this.innerWidth - 2200 - this.spacing, y: 0 }
+      this.initialPosition = { x: this.innerWidth - 2200 - this.spacing, y: 0 };
     }
 
   }

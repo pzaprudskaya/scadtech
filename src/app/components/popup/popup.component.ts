@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {files, selectedFiles} from "../../data";
-import {FeedbackWindowComponent} from "../feedback-window/feedback-window.component";
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {files, selectedFiles} from '../../data';
+import {FeedbackWindowComponent} from '../feedback-window/feedback-window.component';
 
 @Component({
   selector: 'app-popup',

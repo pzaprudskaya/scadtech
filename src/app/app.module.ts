@@ -6,10 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { PagesModule } from "./pages/pages.module";
-import { ComponentsModule } from "./components/components.module";
-import { FeedbackWindowComponent } from "./components/feedback-window/feedback-window.component";
-import {AngularFullpageModule} from "@fullpage/angular-fullpage";
+import { PagesModule } from './pages/pages.module';
+import { ComponentsModule } from './components/components.module';
+import { FeedbackWindowComponent } from './components/feedback-window/feedback-window.component';
+import {AngularFullpageModule} from '@fullpage/angular-fullpage';
 
 @NgModule({
   declarations: [

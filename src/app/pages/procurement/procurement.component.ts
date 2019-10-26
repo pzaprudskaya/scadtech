@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {FeedbackWindowComponent} from "../../components/feedback-window/feedback-window.component";
-import {files, selectedFiles} from "../../data";
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FeedbackWindowComponent} from '../../components/feedback-window/feedback-window.component';
+import {files, selectedFiles} from '../../data';
 
 @Component({
   selector: 'app-procurement',

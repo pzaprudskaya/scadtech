@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
       // fullpage callbacks
       afterResize: () => {
-        console.log("After resize");
+        console.log('After resize');
       },
       afterLoad: (origin, destination, direction) => {
         console.log(origin.index);

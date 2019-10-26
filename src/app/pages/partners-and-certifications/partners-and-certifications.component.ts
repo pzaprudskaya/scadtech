@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {partners} from "../../data";
+import {partners} from '../../data';
 
 @Component({
   selector: 'app-partners-and-certifications',

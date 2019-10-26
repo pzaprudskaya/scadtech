@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {FeedbackWindowComponent} from "../../components/feedback-window/feedback-window.component";
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FeedbackWindowComponent} from '../../components/feedback-window/feedback-window.component';
 
 @Component({
   selector: 'app-footer',

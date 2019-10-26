@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {leaderships} from "../../data";
+import {leaderships} from '../../data';
 import {NgbCarousel, NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
