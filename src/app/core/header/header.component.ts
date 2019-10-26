@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,20 +9,22 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  @ViewChild('header', { static: false })
+  header: ElementRef;
+
+  @ViewChild('fixed', { static: false })
+  fixed: ElementRef;
+
   ngOnInit() {
-    window.onscroll = function() {
-      myFunction();
-    };
+  }
 
-    const header = document.getElementById('myHeader');
-    const sticky = header.offsetTop;
-
-    function myFunction() {
-      if (window.pageYOffset > sticky) {
-        header.classList.add('fixed');
-      } else {
-        header.classList.remove('fixed');
-      }
+  @HostListener('window:scroll', ['$event'])
+  onScroll() {
+    const { offsetHeight } = this.header.nativeElement;
+    if (offsetHeight + 20 < window.pageYOffset) {
+      this.fixed.nativeElement.classList.add('active');
+    } else {
+      this.fixed.nativeElement.classList.remove('active');
     }
   }
 

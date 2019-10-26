@@ -2,6 +2,29 @@
   margin: 0
   padding: 0
 
+.header.fixed
+  position: fixed
+  width: 100%
+  margin: 0
+  padding: 0
+  transform: translateY(-100%)
+  transition: transform .3s ease
+  .logo-wrapper
+    margin: 0
+  .header-logo
+    transform: scale(.5)
+  .header-contacts
+    flex-direction: row
+    .header-phone
+      margin-right: 1rem
+  .header-menu
+    li
+      margin-right: 10px
+
+.header.fixed.active
+  transform: translateY(0)
+  z-index: 100
+
 .header
   display: block
   position: relative
@@ -26,6 +49,7 @@
 .content-wrapper
   display: flex
   justify-content: space-between
+  align-items: center
   margin: 0 auto
   width: 100%
   max-width: 1140px
