@@ -23,6 +23,7 @@ import {ProjectsComponent} from "./projects/projects.component";
 import {ScadTechComponent} from "./scad-tech/scad-tech.component";
 import {AboutUsComponent} from "./about-us/about-us.component";
 import {PopupComponent} from "./popup/popup.component";
+import {EventItemComponent} from "./event-item/event-item.component";
 
 
 
@@ -46,7 +47,8 @@ import {PopupComponent} from "./popup/popup.component";
     ScadTechComponent,
     ProjectsComponent,
     ProcessesComponent,
-    PopupComponent
+    PopupComponent,
+    EventItemComponent
   ],
   imports: [
     NgbModule,
@@ -72,7 +74,8 @@ import {PopupComponent} from "./popup/popup.component";
     ScadTechComponent,
     ProjectsComponent,
     ProcessesComponent,
-    PopupComponent
+    PopupComponent,
+    EventItemComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

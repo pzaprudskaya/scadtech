@@ -1,14 +1,3 @@
-main
-  flex: 1 0 auto
-.content-wrapper
-  margin: 0 auto
-  width: 100%
-  max-width: 1140px
-  box-sizing: border-box
-
-.page-header
-  padding: 0 0 0 20px
-  margin-bottom: 25px
 .block-content
   padding-bottom: 100px
 .grid-row
@@ -21,24 +10,6 @@ main
   margin-right: -15px
 .event
   width: 25%
-
-
-
-h1
-  position: relative
-  font-size: 48px
-h1:before
-  content: ' '
-  position: absolute
-  width: 140px
-  height: 2px
-  right: calc(100% + 28px)
-  top: 29px
-  background-color: #f2264d
-
-h1
-  display: block
-  font-weight: bold
 .navigation
   display: -ms-flexbox
   display: flex
@@ -47,6 +18,45 @@ h1
   -ms-flex-align: center
   align-items: center
   height: 32px
-  margin-top: 10px
+  margin: 20px auto
 
 
+ngb-pagination::ng-deep
+  .pagination
+    background: transparent
+  .page-item.active .page-link
+    color: #fff
+    background-color: #f2264d
+    border: none
+  .page-link
+    color: #f2264d
+    background-color: transparent
+    border: none
+
+  .page-link span:before
+    content: ''
+    position: absolute
+    width: 27px
+    height: 4px
+    background: url(/assets/sprite.svg) -308px -605px no-repeat
+    left: 50%
+    top: 50%
+    -ms-transform: translateX(-50%) translateY(-50%)
+    transform: translateX(-50%) translateY(-50%)
+
+  .disabled span:before
+    content: ''
+    position: absolute
+    width: 27px
+    height: 4px
+    background: url(/assets/sprite.svg) -277px -605px no-repeat
+    left: 50%
+    top: 50%
+    -ms-transform: translateX(-50%) translateY(-50%)
+    transform: translateX(-50%) translateY(-50%)
+  span
+    color: transparent
+  [aria-label = 'Previous']
+    transform: rotateY(180deg)
+  .page-item
+    margin: 0 5px

@@ -10,7 +10,6 @@ export class ContactsComponent implements OnInit {
   headline = 'Контакты';
   contacts;
   selectedContact: number;
-  state: boolean;
 
   constructor() { }
 
