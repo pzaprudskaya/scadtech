@@ -48,7 +48,7 @@ import {EventItemComponent} from './event-item/event-item.component';
     ProjectsComponent,
     ProcessesComponent,
     PopupComponent,
-    EventItemComponent
+    EventItemComponent,
   ],
   imports: [
     NgbModule,
@@ -75,7 +75,7 @@ import {EventItemComponent} from './event-item/event-item.component';
     ProjectsComponent,
     ProcessesComponent,
     PopupComponent,
-    EventItemComponent
+    EventItemComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

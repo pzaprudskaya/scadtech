@@ -9,10 +9,7 @@ import {HeaderComponent} from './header/header.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ComponentsModule} from '../components/components.module';
 import {BlockComponent} from './block/block.component';
-
-
-
-
+import {MenuComponent} from './menu/menu.component';
 
 
 @NgModule({
@@ -20,7 +17,8 @@ import {BlockComponent} from './block/block.component';
     PageComponent,
     HeaderComponent,
     FooterComponent,
-    BlockComponent
+    BlockComponent,
+    MenuComponent
   ],
   imports: [
     NgbModule,
@@ -33,7 +31,8 @@ import {BlockComponent} from './block/block.component';
     PageComponent,
     HeaderComponent,
     FooterComponent,
-    BlockComponent
+    BlockComponent,
+    MenuComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

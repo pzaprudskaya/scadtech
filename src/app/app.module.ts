@@ -10,6 +10,7 @@ import { PagesModule } from './pages/pages.module';
 import { ComponentsModule } from './components/components.module';
 import { FeedbackWindowComponent } from './components/feedback-window/feedback-window.component';
 import {AngularFullpageModule} from '@fullpage/angular-fullpage';
+import {EditPagesModule} from './admin/edit-pages/edit-pages.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {AngularFullpageModule} from '@fullpage/angular-fullpage';
     AppRoutingModule,
     CoreModule,
     PagesModule,
+    EditPagesModule,
     ComponentsModule,
     BrowserAnimationsModule,
     AngularFullpageModule
