@@ -1,32 +1,32 @@
 export const MENU_ITEMS = [
   {
     title: 'News',
-    icon: 'home-outline',
-    link: '/news',
+    icon: 'view_module',
+    link: '/edit-news',
   },
   {
     title: 'Contacts',
     icon: 'home-outline',
-    link: '/contacts',
+    link: '/edit-contacts',
   },
   {
     title: 'Documentation',
     icon: 'home-outline',
-    link: '/documentation',
+    link: '/edit-documentation',
   },
   {
     title: 'Partners-and-sertificates',
     icon: 'home-outline',
-    link: '/partners-and-sertificates',
+    link: '/edit-partners',
   },
   {
     title: 'Our leadership',
     icon: 'home-outline',
-    link: '/our-leadership',
+    link: '/edit-our-leadership',
   },
   {
     title: 'About company',
     icon: 'home-outline',
-    link: '/about-company',
+    link: '/edit-about-company',
   },
 ];

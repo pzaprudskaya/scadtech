@@ -17,6 +17,9 @@ import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {ComponentsModule} from '../components/components.module';
+import {HeaderComponent} from "./header/header.component";
+import {FooterComponent} from "./footer/footer.component";
+import {BlockComponent} from "./block/block.component";
 
 
 @NgModule({
@@ -30,6 +33,9 @@ import {ComponentsModule} from '../components/components.module';
   ],
   declarations: [
     PagesComponent,
+    HeaderComponent,
+    FooterComponent,
+    BlockComponent,
     AboutCompanyComponent,
     ContactsComponent,
     DocumentationComponent,

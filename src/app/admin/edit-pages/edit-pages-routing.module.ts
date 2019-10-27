@@ -16,9 +16,11 @@ const routes: Routes = [
   { path: 'edit-our-leadership', component: EditOurLeadershipComponent},
   { path: 'edit-about-company', component: EditAboutCompanyComponent},
 ];
-
+const rootRouters: Routes = [
+  { path: '', component: EditPagesComponent, children: routes  }
+]
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(rootRouters)],
   exports: [RouterModule]
 })
 export class EditPagesRoutingModule { }

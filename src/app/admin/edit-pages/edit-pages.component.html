@@ -1,1 +1,23 @@
-<router-outlet></router-outlet>
+<div class="header">
+  <header>
+    <img
+      alt="logo"
+      src="http://scadtech.ru/upload/iblock/648/64831c0ef8d72a7defc35754cca477af.svg"/>
+    <p>Admin page</p>
+  </header>
+
+</div>
+<div class="container">
+  <div class="menu">
+    <div *ngFor="let itemMenu of menu" class="menu-list-item">
+      <i class="material-icons">{{itemMenu.menu}}</i>
+      <p routerLink="{{itemMenu.link}}">{{itemMenu.title}}</p>
+    </div>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+
+

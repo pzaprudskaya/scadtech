@@ -11,6 +11,7 @@ import {ProduktsiyaComponent} from './produktsiya/produktsiya.component';
 import {ProductionComponent} from './production/production.component';
 import {PartnersAndCertificationsComponent} from './partners-and-certifications/partners-and-certifications.component';
 import {ProcurementComponent} from './procurement/procurement.component';
+import {PagesComponent} from "./pages.component";
 
 
 const routes: Routes = [
@@ -18,8 +19,8 @@ const routes: Routes = [
   { path: 'production', component: ProductionComponent},
   { path: 'documentation', component: DocumentationComponent},
   { path: 'contacts', component: ContactsComponent},
-  { path: 'about/edit-news', component: NewsComponent},
-  { path: 'about/edit-news/:event', component: EventsComponent},
+  { path: 'about/news', component: NewsComponent},
+  { path: 'about/news/:event', component: EventsComponent},
   { path: 'about/partners-and-certifications', component: PartnersAndCertificationsComponent},
   { path: 'about/our-leadership', component: OurLeadershipComponent},
   { path: 'production/produktsiya-', component: ProduktsiyaComponent},
@@ -27,9 +28,11 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
 ];
 
-
+const rootRouter: Routes = [
+  { path: '', component: PagesComponent, children: routes},
+];
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(rootRouter)],
   exports: [RouterModule]
 })
 export class PagesRoutingModule { }
