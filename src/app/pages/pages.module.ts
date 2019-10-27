@@ -12,11 +12,11 @@ import {ProcurementComponent} from './procurement/procurement.component';
 import {ProductionComponent} from './production/production.component';
 import {ProduktsiyaComponent} from './produktsiya/produktsiya.component';
 import {PagesComponent} from './pages.component';
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {RouterModule} from "@angular/router";
-import {FormsModule} from "@angular/forms";
-import {CommonModule} from "@angular/common";
-import {ComponentsModule} from "../components/components.module";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
+import {ComponentsModule} from '../components/components.module';
 
 
 @NgModule({
