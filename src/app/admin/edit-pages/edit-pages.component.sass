@@ -1,5 +1,8 @@
-
 .header
+  background: white
+  z-index: 6
+  width: 100%
+  position: fixed
   max-width: 1920px
   margin: 0 auto
   box-shadow: 0 0.5rem 1rem 0 rgba(44,51,73,.1)
@@ -14,7 +17,7 @@ header
   padding: 0 20px
   display: flex
 .menu-link
-  padding: 10px
+  padding: 20px 10px 10px 10px
   i
     font-size: 17px
     color: #C2CFE0
@@ -25,8 +28,9 @@ header
     font-weight: 500
     letter-spacing: 0.01em
     color: #334D6E
-    font-size: 13px
+    font-size: 18px
     i
+      font-size: 18px
       margin: 0 5px 0
       vertical-align: -3px
 .container
@@ -39,13 +43,25 @@ header
   height: 100%
 
 mat-drawer
-  width: 256px
-  height: 100%
+  background: white
+  z-index: 5
+  width: 15%
   box-shadow: 5px 0 5px -5px rgba(44,51,73,.1)
-
+  position: fixed
+mat-drawer-content
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEUAAACZmZl+9SADAAAAAnRSTlMAM8lDrC4AAAAOSURBVAjXY0AGPCCEDAABkgAZ9NAiqAAAAABJRU5ErkJggg==)
+  width: 85%
+  margin-left: auto
 .content
+  margin-top: 80px
   display: flex
 
 .menu-link
-  a:active
-    color: #109CF1
+  a
+    margin-left: 10px
+  a:active, a:focus, i:active, i:focus
+    color: #f2264d
+.edit-container
+
+  width: 85%
+  margin: 0 auto

@@ -1,1 +1,62 @@
-<h1>Hello. I'm Contacts Page</h1>
+<div class="container">
+  <div>
+    <app-headline [title]="'All contacts'"></app-headline>
+    <button class="save" >Save</button>
+    <hr>
+    <table>
+      <tbody>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Second phone</th>
+        <th>Address</th>
+        <th>Fax</th>
+        <th>E-mail</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let contact of contacts">
+        <td><img src="{{contact.image}}" class="image" /></td>
+        <td>{{contact.name}}</td>
+        <td>{{contact.number}}</td>
+        <td>{{contact.secondNumber}}</td>
+        <td>{{contact.address}}</td>
+        <td>{{contact.fax}}</td>
+        <td>{{contact.email}}</td>
+        <td><i class="material-icons" (click)="delete(contact)">close</i></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <app-headline [title]="'Add new contact'"></app-headline>
+  <div class="title">
+    <h2>Name</h2>
+    <input value="" id="name" >
+  </div>
+  <div class="img">
+    <h2>Image</h2>
+    <input value="" id="image">
+  </div>
+  <div class="phone">
+    <h2>Phone</h2>
+    <input value="" id="number">
+  </div>
+  <div class="phone">
+    <h2>Second phone</h2>
+    <input value="" id="secondNumber">
+  </div>
+  <div class="address">
+    <h2>Address</h2>
+    <input value="" id="address">
+  </div>
+  <div class="fax">
+    <h2>Fax</h2>
+    <input value="" id="fax">
+  </div>
+  <div class="email">
+    <h2>E-mail</h2>
+    <input value="" id="email">
+  </div>
+  <button (click)="add()">Add new</button>
+</div>

@@ -7,11 +7,11 @@ import {EditDocumentationComponent} from './documentation/documentation.componen
 import {EditNewsPageComponent} from './news-page/news-page.component';
 import {EditAboutCompanyComponent} from './about-company/about-company.component';
 import {EditPagesRoutingModule} from './edit-pages-routing.module';
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {RouterModule} from "@angular/router";
-import {FormsModule} from "@angular/forms";
-import {CommonModule} from "@angular/common";
-import {ComponentsModule} from "../../components/components.module";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
+import {ComponentsModule} from '../../components/components.module';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import {ComponentsModule} from "../../components/components.module";
     RouterModule,
     FormsModule,
     CommonModule,
-    ComponentsModule
+    ComponentsModule,
   ],
   declarations: [
     EditPagesComponent,

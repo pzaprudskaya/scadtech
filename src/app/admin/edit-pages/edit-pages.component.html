@@ -12,13 +12,16 @@
       <div class="menu">
         <div *ngFor="let itemMenu of menu" class="menu-link">
           <a routerLink="/{{itemMenu.link}}" routerLinkActive="active"><i
-            class="material-icons"></i>{{itemMenu.title}}</a>
+            class="material-icons" routerLinkActive="active">{{itemMenu.icon}}</i>{{itemMenu.title}}</a>
         </div>
       </div>
     </mat-drawer>
 
-    <mat-drawer-content>
-      <router-outlet></router-outlet>
+    <mat-drawer-content >
+      <div class="edit-container">
+        <router-outlet></router-outlet>
+      </div>
+
     </mat-drawer-content>
   </mat-drawer-container>
 

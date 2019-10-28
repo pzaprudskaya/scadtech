@@ -1,4 +1,88 @@
+<div class="container">
+  <div>
+    <app-headline [title]="'Information about company'"></app-headline>
+    <hr>
+    <div class="title">
+      <h3>Title</h3>
+      <input>
+    </div>
+    <div class="content">
+      <h3>Content</h3>
+      <app-textarea></app-textarea>
+    </div>
+    <button>Edit</button>
+  </div>
+  <div>
+    <app-headline [title]="'Information about history'"></app-headline>
+    <hr>
+    <table>
+      <tbody>
+        <tr>
+          <th>Year</th>
+          <th>Caption</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let row of historyEvents">
+          <td>{{row.year}}</td>
+          <td>{{row.caption}}</td>
+          <td>{{row.description}}</td>
+          <td><i class="material-icons" (click)="deleteHistoryEvent(row)">close</i></td>
+        </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td>
+          <input placeholder="year" value="" id="year">
+        </td>
+        <td>
+          <input placeholder="caption" value="" id="caption">
+        </td>
+        <td>
+          <input placeholder="description" value="" id="description">
+        </td>
+        <td><i class="material-icons" (click)="addHistoryEvent()">done</i></td>
+      </tr>
+      </tfoot>
+    </table>
+    <button class="save">Save</button>
 
-  <h1>Hello. I'm About company Page</h1>
+  </div>
+  <div>
+    <app-headline [title]="'Information about values'"></app-headline>
+    <hr>
+    <table>
+      <tbody>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let value of values">
+        <td><img src="{{value.image}}" class="image" /></td>
+        <td>{{value.name}}</td>
+        <td>{{value.description}}</td>
+        <td><i class="material-icons" (click)="deleteValue(value)">close</i></td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td>
+          <input placeholder="value" value="" id="image">
+        </td>
+        <td>
+          <input placeholder="name" value="" id="name">
+        </td>
+        <td>
+          <input placeholder="descriptionValue" value="" id="descriptionValue">
+        </td>
+        <td><i class="material-icons" (click)="addValue()">done</i></td>
+      </tr>
+      </tfoot>
+    </table>
+    <button class="save">Save</button>
+  </div>
+</div>
 
 

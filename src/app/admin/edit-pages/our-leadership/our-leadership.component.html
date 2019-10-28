@@ -1,1 +1,38 @@
-<h1>Hello. I'm Our leadership Page</h1>
+<div class="container">
+  <app-headline [title]="'Leaderships'"></app-headline>
+  <button class="save">Save</button>
+  <div>
+    <hr>
+    <table>
+      <tbody>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Post</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let leader of leaderships">
+        <td><img class="image" src="{{leader.image}}"></td>
+        <td>{{leader.name}}</td>
+        <td>{{leader.post}}</td>
+        <td><i class="material-icons" (click)="delete(leader)">close</i></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <app-headline [title]="'Add new leader'"></app-headline>
+  <div class="img">
+    <h2>Image</h2>
+    <input value="" id="image">
+  </div>
+  <div class="name">
+    <h2>Name</h2>
+    <input value="" id="name">
+  </div>
+  <div class="post">
+    <h2>Post</h2>
+    <input value="" id="post">
+  </div>
+  <button (click)="add()">Add new</button>
+</div>

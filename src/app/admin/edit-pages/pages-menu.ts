@@ -6,27 +6,27 @@ export const MENU_ITEMS = [
   },
   {
     title: 'Contacts',
-    icon: 'home-outline',
+    icon: 'map',
     link: '/edit-contacts',
   },
   {
     title: 'Documentation',
-    icon: 'home-outline',
+    icon: 'list',
     link: '/edit-documentation',
   },
   {
     title: 'Partners-and-sertificates',
-    icon: 'home-outline',
+    icon: 'work',
     link: '/edit-partners',
   },
   {
     title: 'Our leadership',
-    icon: 'home-outline',
+    icon: 'supervised_user_circle',
     link: '/edit-our-leadership',
   },
   {
     title: 'About company',
-    icon: 'home-outline',
+    icon: 'account_balance',
     link: '/edit-about-company',
   },
 ];
