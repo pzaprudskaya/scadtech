@@ -24,6 +24,8 @@ import {ScadTechComponent} from './scad-tech/scad-tech.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {PopupComponent} from './popup/popup.component';
 import {EventItemComponent} from './event-item/event-item.component';
+import {TextareaComponent} from './textarea/textarea.component';
+import {EditorModule} from "@tinymce/tinymce-angular";
 
 
 
@@ -49,6 +51,7 @@ import {EventItemComponent} from './event-item/event-item.component';
     ProcessesComponent,
     PopupComponent,
     EventItemComponent,
+    TextareaComponent
   ],
   imports: [
     NgbModule,
@@ -56,6 +59,7 @@ import {EventItemComponent} from './event-item/event-item.component';
     FormsModule,
     CommonModule,
     DragDropModule,
+    EditorModule,
   ],
   exports: [
     DocumentComponent,
@@ -76,6 +80,7 @@ import {EventItemComponent} from './event-item/event-item.component';
     ProcessesComponent,
     PopupComponent,
     EventItemComponent,
+    TextareaComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

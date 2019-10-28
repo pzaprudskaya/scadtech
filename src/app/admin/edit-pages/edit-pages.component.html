@@ -1,23 +1,26 @@
-<div class="header">
-  <header>
-    <img
-      alt="logo"
-      src="http://scadtech.ru/upload/iblock/648/64831c0ef8d72a7defc35754cca477af.svg"/>
-    <p>Admin page</p>
-  </header>
-
-</div>
-<div class="container">
-  <div class="menu">
-    <div *ngFor="let itemMenu of menu" class="menu-list-item">
-      <i class="material-icons">{{itemMenu.menu}}</i>
-      <p routerLink="{{itemMenu.link}}">{{itemMenu.title}}</p>
-    </div>
+<mat-drawer-container class="container">
+  <div class="header">
+    <header>
+      <img
+        alt="logo"
+        src="http://scadtech.ru/upload/iblock/648/64831c0ef8d72a7defc35754cca477af.svg"/>
+      <p>Admin page</p>
+    </header>
   </div>
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
+  <mat-drawer-container class="content">
+    <mat-drawer mode="side" opened>
+      <div class="menu">
+        <div *ngFor="let itemMenu of menu" class="menu-link">
+          <a routerLink="/{{itemMenu.link}}" routerLinkActive="active"><i
+            class="material-icons"></i>{{itemMenu.title}}</a>
+        </div>
+      </div>
+    </mat-drawer>
 
-</div>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
 
+</mat-drawer-container>
 

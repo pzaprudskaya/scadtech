@@ -10,12 +10,14 @@ import { ComponentsModule } from './components/components.module';
 import { FeedbackWindowComponent } from './components/feedback-window/feedback-window.component';
 import {AngularFullpageModule} from '@fullpage/angular-fullpage';
 import {EditPagesModule} from './admin/edit-pages/edit-pages.module';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     PagesModule,
