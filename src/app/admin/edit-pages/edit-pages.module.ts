@@ -12,6 +12,7 @@ import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {ComponentsModule} from '../../components/components.module';
+import {EditorModule} from "@tinymce/tinymce-angular";
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {ComponentsModule} from '../../components/components.module';
     FormsModule,
     CommonModule,
     ComponentsModule,
+    EditorModule,
   ],
   declarations: [
     EditPagesComponent,

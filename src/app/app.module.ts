@@ -11,6 +11,7 @@ import { FeedbackWindowComponent } from './components/feedback-window/feedback-w
 import {AngularFullpageModule} from '@fullpage/angular-fullpage';
 import {EditPagesModule} from './admin/edit-pages/edit-pages.module';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     EditPagesModule,
     ComponentsModule,
     BrowserAnimationsModule,
-    AngularFullpageModule
+    AngularFullpageModule,
+    HttpClientModule
   ],
   providers: [],
   entryComponents: [ FeedbackWindowComponent ],

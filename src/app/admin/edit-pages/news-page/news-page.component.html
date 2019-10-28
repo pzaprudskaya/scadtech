@@ -1,3 +1,4 @@
+<script src="news-page.service.ts"></script>
 <div class="container">
   <div>
     <app-headline [title]="'All news'"></app-headline>
@@ -8,12 +9,14 @@
       <tr>
         <th>Title</th>
         <th>Date</th>
+        <th>Preview</th>
         <th>Content</th>
         <th></th>
       </tr>
       <tr *ngFor="let event of events">
         <td>{{event.title}}</td>
         <td>{{event.date}}</td>
+        <td>{{event.preview}}</td>
         <td>{{event.content}}</td>
         <td><i class="material-icons" (click)="deleteEvent(event)">close</i></td>
       </tr>
@@ -36,7 +39,23 @@
   </div>
   <div class="content">
     <h2>Content</h2>
-    <app-textarea id="content"></app-textarea>
+    <editor id="content"
+      initialValue="<p>This is the initial content of the editor</p>"
+      [init]="{
+        height: 500,
+        plugins: [
+          'advlist autolink lists link image imagetools code charmap print preview anchor',
+          'searchreplace visualblocks code fullscreen',
+          'insertdatetime media table paste code help wordcount'
+        ],
+        menubar: 'file edit insert view format table help',
+        image_uploadtab: true,
+        imagetools_toolbar: 'rotateleft rotateright | flipv fliph | editimage imageoptions',
+        toolbar:
+          ' formatselect | bold italic underline forecolor backcolor | \ alignleft aligncenter alignright alignjustify | \ bullist numlist outdent indent | removeformat '
+      }"
+    >
+    </editor>
   </div>
   <button (click)="addEvent()">Add new</button>
 </div>
