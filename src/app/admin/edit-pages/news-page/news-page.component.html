@@ -25,23 +25,24 @@
 
   </div>
   <app-headline [title]="'Add new event'"></app-headline>
-  <div class="title">
-    <h2>Title</h2>
-    <input value="" id="title">
-  </div>
-  <div class="date">
-    <h2>Date</h2>
-    <input value="" id="date">
-  </div>
-  <div class="preview">
-    <h2>Preview</h2>
-    <input value="" id="preview">
-  </div>
-  <div class="content">
-    <h2>Content</h2>
-    <editor id="content"
-      initialValue="<p>This is the initial content of the editor</p>"
-      [init]="{
+  <form [formGroup]="'addNews'">
+    <div class="form-group">
+      <h2>Title</h2>
+      <input type="text" [formControlName]="'title'" value="" >
+    </div>
+    <div class="form-group">
+      <h2>Date</h2>
+      <input value="" type="text" [formControlName]="'date'">
+    </div>
+    <div class="form-group">
+      <h2>Preview</h2>
+      <input value="" type="text" [formControlName]="'preview'">
+    </div>
+    <div class="form-group">
+      <h2>Content</h2>
+      <editor type="text" [formControlName]="'content'"
+              initialValue="<p>This is the initial content of the editor</p>"
+              [init]="{
         height: 500,
         plugins: [
           'advlist autolink lists link image imagetools code charmap print preview anchor',
@@ -54,9 +55,11 @@
         toolbar:
           ' formatselect | bold italic underline forecolor backcolor | \ alignleft aligncenter alignright alignjustify | \ bullist numlist outdent indent | removeformat '
       }"
-    >
-    </editor>
-  </div>
+      >
+      </editor>
+    </div>
+  </form>
+
   <button (click)="addEvent()">Add new</button>
 </div>
 

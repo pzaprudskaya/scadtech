@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {IEvent} from './news-page.model';
 import {NewsPageService} from './news-page.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-news',
@@ -9,8 +10,16 @@ import {NewsPageService} from './news-page.service';
 })
 export class EditNewsPageComponent implements OnInit {
   events: IEvent[];
+  addNews = new FormGroup({
+    title: new FormControl(''),
+    date: new FormControl(''),
+    preview: new FormControl(''),
+    content: new FormControl(''),
+  });
+  news: IEvent;
 
-  constructor(private newsService: NewsPageService) { }
+  constructor(private newsService: NewsPageService) {
+  }
 
   ngOnInit() {
     this.events = [];
@@ -20,15 +29,13 @@ export class EditNewsPageComponent implements OnInit {
   }
 
   addEvent() {
+    debugger;
+    this.news.title = this.addNews.get('title').value;
+    this.news.date = this.addNews.get('date').value;
+    this.news.preview = this.addNews.get('preview').value;
+    this.news.content = this.addNews.get('content').value;
 
-    const obj = {
-      title: (document.getElementById('title') as HTMLInputElement).value,
-      date: (document.getElementById('date') as HTMLInputElement).value,
-      preview: (document.getElementById('preview') as HTMLInputElement).value,
-      content: 'DNC;SNCL;S',
-    };
-    this.newsService.addEvent(obj).subscribe((addEvent) => {
-      debugger;
+    this.newsService.addEvent(this.news).subscribe((addEvent) => {
       this.events.push(addEvent);
     });
   }

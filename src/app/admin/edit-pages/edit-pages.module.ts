@@ -9,10 +9,10 @@ import {EditAboutCompanyComponent} from './about-company/about-company.component
 import {EditPagesRoutingModule} from './edit-pages-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {ComponentsModule} from '../../components/components.module';
-import {EditorModule} from "@tinymce/tinymce-angular";
+import {EditorModule} from '@tinymce/tinymce-angular';
 
 
 @NgModule({
@@ -24,6 +24,7 @@ import {EditorModule} from "@tinymce/tinymce-angular";
     CommonModule,
     ComponentsModule,
     EditorModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     EditPagesComponent,
