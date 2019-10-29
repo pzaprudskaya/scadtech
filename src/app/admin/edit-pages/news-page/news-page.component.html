@@ -25,23 +25,22 @@
 
   </div>
   <app-headline [title]="'Add new event'"></app-headline>
-  <form [formGroup]="'addNews'">
+  <form [formGroup]="addNews">
     <div class="form-group">
       <h2>Title</h2>
-      <input type="text" [formControlName]="'title'" value="" >
+      <input type="text" formControlName="title">
     </div>
     <div class="form-group">
       <h2>Date</h2>
-      <input value="" type="text" [formControlName]="'date'">
+      <input type="text" formControlName="date">
     </div>
     <div class="form-group">
       <h2>Preview</h2>
-      <input value="" type="text" [formControlName]="'preview'">
+      <input type="text" formControlName="preview">
     </div>
     <div class="form-group">
       <h2>Content</h2>
-      <editor type="text" [formControlName]="'content'"
-              initialValue="<p>This is the initial content of the editor</p>"
+      <editor type="text" formControlName="content"
               [init]="{
         height: 500,
         plugins: [

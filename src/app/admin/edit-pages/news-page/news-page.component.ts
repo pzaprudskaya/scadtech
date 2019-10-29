@@ -1,24 +1,38 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {IEvent} from './news-page.model';
-import {NewsPageService} from './news-page.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IEvent } from './news-page.model';
+import { NewsPageService } from './news-page.service';
+import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-news',
-  styleUrls: ['./news-page.component.sass'],
+  styleUrls: [ './news-page.component.sass' ],
   templateUrl: './news-page.component.html',
 })
 export class EditNewsPageComponent implements OnInit {
+
+  newsModel = {
+    title: [ null, [ Validators.required ] ],
+    date: [ null, [ Validators.required ] ],
+    preview: [ null, [ Validators.required ] ],
+    content: [ '<p>This is the initial content of the editor</p>', [ Validators.required ] ],
+  };
+
+
   events: IEvent[];
-  addNews = new FormGroup({
-    title: new FormControl(''),
-    date: new FormControl(''),
-    preview: new FormControl(''),
-    content: new FormControl(''),
-  });
+  addNews = this.fb.group(this.newsModel);
   news: IEvent;
 
-  constructor(private newsService: NewsPageService) {
+
+  get f() {
+    return this.addNews.controls as {
+      [ K in keyof (this[ 'newsModel' ]) ]: AbstractControl;
+    };
+  }
+
+  constructor(
+    private fb: FormBuilder,
+    private newsService: NewsPageService
+  ) {
   }
 
   ngOnInit() {
@@ -29,13 +43,13 @@ export class EditNewsPageComponent implements OnInit {
   }
 
   addEvent() {
-    debugger;
-    this.news.title = this.addNews.get('title').value;
-    this.news.date = this.addNews.get('date').value;
-    this.news.preview = this.addNews.get('preview').value;
-    this.news.content = this.addNews.get('content').value;
+    this.addNews.markAllAsTouched();
 
-    this.newsService.addEvent(this.news).subscribe((addEvent) => {
+    if (this.addNews.invalid) {
+      return;
+    }
+
+    this.newsService.addEvent(this.addNews.value).subscribe((addEvent) => {
       this.events.push(addEvent);
     });
   }
