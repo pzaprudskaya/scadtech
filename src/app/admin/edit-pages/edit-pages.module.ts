@@ -13,6 +13,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {ComponentsModule} from '../../components/components.module';
 import {EditorModule} from '@tinymce/tinymce-angular';
+import { TestPageComponent } from './test-page/test-page.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     EditDocumentationComponent,
     EditNewsPageComponent,
     EditOurLeadershipComponent,
-    EditPartnersAndSertificatesComponent
+    EditPartnersAndSertificatesComponent,
+    TestPageComponent
   ],
   exports: [
     EditPagesComponent,

@@ -1,5 +1,5 @@
-<mat-drawer-container class="container">
-  <div class="header">
+<div class="page">
+  <div id="header" class="header">
     <header>
       <img
         alt="logo"
@@ -7,23 +7,17 @@
       <p>Admin page</p>
     </header>
   </div>
-  <mat-drawer-container class="content">
-    <mat-drawer mode="side" opened>
-      <div class="menu">
-        <div *ngFor="let itemMenu of menu" class="menu-link">
-          <a routerLink="/{{itemMenu.link}}" routerLinkActive="active"><i
-            class="material-icons" routerLinkActive="active">{{itemMenu.icon}}</i>{{itemMenu.title}}</a>
-        </div>
+  <div class="content">
+    <div id="sidebar" class="side-bar open">
+      <div *ngFor="let itemMenu of menu" class="menu-link">
+        <a routerLink="/{{itemMenu.link}}" routerLinkActive="active"><i
+          class="material-icons" routerLinkActive="active">{{itemMenu.icon}}</i>{{itemMenu.title}}</a>
       </div>
-    </mat-drawer>
-
-    <mat-drawer-content >
+    </div>
+    <div class="main-bar">
       <div class="edit-container">
         <router-outlet></router-outlet>
       </div>
-
-    </mat-drawer-content>
-  </mat-drawer-container>
-
-</mat-drawer-container>
-
+    </div>
+  </div>
+</div>

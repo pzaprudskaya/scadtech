@@ -63,6 +63,12 @@ export class EditNewsPageComponent implements OnInit {
     this.newsService.deleteEvent(event).subscribe(() => console.log('Delete!'));
   }
 
+  editEvent(event) {
+    this.addNews.controls.title.value(event.title);
+    this.addNews.controls.date.value(event.value);
+    this.addNews.controls.preview.value(event.preview);
+    this.addNews.controls.content.value(event.content);
+  }
   updateEvent(event) {
     this.newsService.updateEvent(event).subscribe(() => console.log('Update!'));
   }

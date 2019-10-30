@@ -1,0 +1,18 @@
+<app-headline [title]="headline"></app-headline>
+
+<div class="block-content js-block-content">
+  <div>
+    <div class="grid-row">
+      <div *ngFor="let event of events | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" class="event">
+        <app-event id="contact"  routerLink='/admin/edit-news/edit/'
+                   [event]="event"></app-event>
+      </div>
+      <div class="navigation">
+        <ngb-pagination [collectionSize]="events.length" [pageSize]="pageSize" [(page)]="page" [boundaryLinks]="false"></ngb-pagination>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

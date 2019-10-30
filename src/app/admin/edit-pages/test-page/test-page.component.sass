@@ -1,0 +1,62 @@
+.block-content
+  padding-bottom: 100px
+.grid-row
+  display: -ms-flexbox
+  display: flex
+  -ms-flex-wrap: wrap
+  flex-wrap: wrap
+  box-sizing: border-box
+  margin-left: -15px
+  margin-right: -15px
+.event
+  width: 20%
+.navigation
+  display: -ms-flexbox
+  display: flex
+  -ms-flex-pack: center
+  justify-content: center
+  -ms-flex-align: center
+  align-items: center
+  height: 32px
+  margin: 20px auto
+
+
+ngb-pagination::ng-deep
+  .pagination
+    background: transparent
+  .page-item.active .page-link
+    color: #fff
+    background-color: #f2264d
+    border: none
+  .page-link
+    color: #f2264d
+    background-color: transparent
+    border: none
+
+  .page-link span:before
+    content: ''
+    position: absolute
+    width: 27px
+    height: 4px
+    background: url(/assets/sprite.svg) -308px -605px no-repeat
+    left: 50%
+    top: 50%
+    -ms-transform: translateX(-50%) translateY(-50%)
+    transform: translateX(-50%) translateY(-50%)
+
+  .disabled span:before
+    content: ''
+    position: absolute
+    width: 27px
+    height: 4px
+    background: url(/assets/sprite.svg) -277px -605px no-repeat
+    left: 50%
+    top: 50%
+    -ms-transform: translateX(-50%) translateY(-50%)
+    transform: translateX(-50%) translateY(-50%)
+  span
+    color: transparent
+  [aria-label = 'Previous']
+    transform: rotateY(180deg)
+  .page-item
+    margin: 0 5px

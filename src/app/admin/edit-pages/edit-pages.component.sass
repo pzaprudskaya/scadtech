@@ -1,21 +1,49 @@
-.header
-  background: white
-  z-index: 6
-  width: 100%
-  position: fixed
-  max-width: 1920px
-  margin: 0 auto
-  box-shadow: 0 0.5rem 1rem 0 rgba(44,51,73,.1)
-.header p
-  padding-top: 20px
-  padding-left: 20px
-  font-size: 1.75rem
-  white-space: nowrap
-  text-decoration: none
-  color: #999
-header
-  padding: 0 20px
+.page
+  min-height: 100%
+  min-height: 100vh
+  height: 100vh
   display: flex
+  flex-direction: column
+
+  .header p
+    padding-top: 20px
+    padding-left: 20px
+    font-size: 1.75rem
+    white-space: nowrap
+    text-decoration: none
+    color: #999
+  header
+    padding: 0 20px
+    display: flex
+  .header
+    background: white
+    min-height: 80px
+    height: 80px
+    display: flex
+    flex-direction: row
+    box-shadow: 0 0.5rem 1rem 0 rgba(44,51,73,.1)
+
+  .content
+    flex: 1 1 auto
+    overflow-y: auto
+    min-height: 0px
+    display: flex
+    flex-direction: row
+
+  .side-bar
+    min-width: 100px
+    width: 200px
+    overflow-y: auto
+    min-height: 0px
+
+
+  .main-bar
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEUAAACZmZl+9SADAAAAAnRSTlMAM8lDrC4AAAAOSURBVAjXY0AGPCCEDAABkgAZ9NAiqAAAAABJRU5ErkJggg==)
+    box-shadow: 5px 0 5px -5px rgba(44,51,73,.1)
+    flex: 1 1 auto
+    overflow-y: auto
+    min-height: 0px
+
 .menu-link
   padding: 20px 10px 10px 10px
   i
@@ -33,35 +61,8 @@ header
       font-size: 18px
       margin: 0 5px 0
       vertical-align: -3px
-.container
-  margin: 0
-  padding: 0
-  position: absolute
-  top: 0
-  left: 0
-  min-width: 100%
-  height: 100%
-
-mat-drawer
-  background: white
-  z-index: 5
-  width: 15%
-  box-shadow: 5px 0 5px -5px rgba(44,51,73,.1)
-  position: fixed
-mat-drawer-content
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEUAAACZmZl+9SADAAAAAnRSTlMAM8lDrC4AAAAOSURBVAjXY0AGPCCEDAABkgAZ9NAiqAAAAABJRU5ErkJggg==)
-  width: 85%
-  margin-left: auto
-.content
-  margin-top: 80px
-  display: flex
-
 .menu-link
   a
     margin-left: 10px
   a:active, a:focus, i:active, i:focus
     color: #f2264d
-.edit-container
-
-  width: 85%
-  margin: 0 auto

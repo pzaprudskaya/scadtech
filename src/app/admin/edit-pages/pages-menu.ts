@@ -29,4 +29,9 @@ export const MENU_ITEMS = [
     icon: 'account_balance',
     link: '/edit-about-company',
   },
+  {
+    title: 'Test',
+    icon: '',
+    link: '/test',
+  },
 ];
