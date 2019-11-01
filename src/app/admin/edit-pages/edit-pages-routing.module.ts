@@ -11,7 +11,6 @@ import {TestPageComponent} from './test-page/test-page.component';
 
 const routes: Routes = [
   { path: 'edit-news', component: EditNewsPageComponent},
-  { path: 'edit-news/add', component: TestPageComponent},
   { path: 'edit-news/:id', component: TestPageComponent},
 
   { path: 'edit-contacts', component: EditContactsComponent},

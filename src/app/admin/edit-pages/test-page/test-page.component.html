@@ -1,5 +1,6 @@
 <div class="container">
-  <app-headline [title]="'Add new event'"></app-headline>
+  <app-headline *ngIf="state === true" [title]="'Add new event'"></app-headline>
+  <app-headline *ngIf="state === false" [title]="'Edit event'"></app-headline>
   <form [formGroup]="addNews">
     <div class="form-group">
       <h2>Title</h2>
@@ -33,5 +34,6 @@
       </editor>
     </div>
   </form>
-  <button (click)="addEvent()">Save</button>
+  <button *ngIf="state === true" (click)="addEvent()">Add</button>
+  <button *ngIf="state === false" (click)="updateEvent()">Update</button>
 </div>

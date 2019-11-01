@@ -28,7 +28,7 @@ export class NewsPageService {
   }
 
   getEvent(id: string): Observable<IEvent> {
-    return this.http.get<IEvent>(`this.API_URL/${id}`, this.httpOptions).pipe(
+    return this.http.get<IEvent>(`${this.API_URL}/${id}`, this.httpOptions).pipe(
       tap((data: IEvent) => console.log('Event: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
@@ -41,13 +41,13 @@ export class NewsPageService {
   }
 
   updateEvent(event: IEvent) {
-    return this.http.put<void>(`${this.API_URL}/${event.id}`, JSON.stringify(event), this.httpOptions).pipe(
+    return this.http.put<void>(`${this.API_URL}/${event._id}`, JSON.stringify(event), this.httpOptions).pipe(
       tap(updateEvent => console.log('Update event: ' + JSON.stringify(updateEvent))),
       catchError(this.handleError));
   }
 
   deleteEvent(event: IEvent) {
-    return this.http.delete<void>(`${this.API_URL}/${event.id}`, this.httpOptions).pipe(
+    return this.http.delete<void>(`${this.API_URL}/${event._id}`, this.httpOptions).pipe(
       tap(deleteEvent => console.log('Delete event: ' + JSON.stringify(deleteEvent))),
       catchError(this.handleError));
   }

@@ -17,7 +17,7 @@ export class TestPageComponent implements OnInit {
     preview: [null, [Validators.required]],
     content: ['<p>This is the initial content of the editor</p>', [Validators.required]],
   };
-
+  state: boolean;
   events: IEvent[];
   addNews = this.fb.group(this.newsModel);
   event: IEvent;
@@ -28,38 +28,28 @@ export class TestPageComponent implements OnInit {
     };
   }
 
-  constructor(
-    private fb: FormBuilder,
-    private newsService: NewsPageService,
-    private route: ActivatedRoute
-  ) {
+  constructor( private fb: FormBuilder,
+               private newsService: NewsPageService,
+               private route: ActivatedRoute ) {
   }
 
   ngOnInit() {
-
-    this.events = [];
-    this.newsService.getEvents().subscribe((events: IEvent[]) => {
-      this.events = events;
-      events.forEach((item) => {
-        if (item.title === this.route.snapshot.params.id) {
-          this.addNews.controls.title.value(item.title);
-          this.addNews.controls.date.value(item.date);
-          this.addNews.controls.preview.value(item.preview);
-          this.addNews.controls.content.value(item.content);
-          debugger;
-        }
+    if (this.route.snapshot.params.id === 'add') {
+      this.state = true;
+      this.addNews.controls.title.setValue('');
+      this.addNews.controls.date.setValue('');
+      this.addNews.controls.preview.setValue('');
+      this.addNews.controls.content.setValue('');
+    } else {
+      this.state = false;
+      this.newsService.getEvent(this.route.snapshot.params.id).subscribe((news: IEvent) => {
+        this.event = news[0];
+        this.addNews.controls.title.setValue(this.event.title);
+        this.addNews.controls.date.setValue(this.event.date);
+        this.addNews.controls.preview.setValue(this.event.preview);
+        this.addNews.controls.content.setValue(this.event.content);
       });
-    });
-    /*
-    this.newsService.getEvent(this.route.snapshot.params.id).subscribe((news: IEvent) => {
-      this.event = news;
-      this.addNews.controls.title.value(this.event.title);
-      this.addNews.controls.date.value(this.event.date);
-      this.addNews.controls.preview.value(this.event.preview);
-      this.addNews.controls.content.value(this.event.content);
-    });
-
-    */
+    }
   }
 
   addEvent() {
@@ -73,13 +63,18 @@ export class TestPageComponent implements OnInit {
     });
   }
 
-  updateEvent(event) {
+  updateEvent() {
+
     this.addNews.markAllAsTouched();
 
     if (this.addNews.invalid) {
       return;
     }
-    this.newsService.updateEvent(event).subscribe(() => console.log('Update!'));
+    this.event.title = this.addNews.value.title;
+    this.event.date = this.addNews.value.date;
+    this.event.preview = this.addNews.value.preview;
+    this.event.content = this.addNews.value.content;
+    this.newsService.updateEvent(this.event).subscribe(() => console.log('Update!'));
   }
 }
 

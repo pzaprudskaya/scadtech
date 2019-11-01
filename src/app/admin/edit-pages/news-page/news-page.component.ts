@@ -23,7 +23,7 @@ export class EditNewsPageComponent implements OnInit {
 
   deleteItem(event) {
     this.events.forEach((item, i) => {
-      if (item.id === event.id) {
+      if (item._id === event._id) {
         this.events.splice(i, 1);
       }
     });

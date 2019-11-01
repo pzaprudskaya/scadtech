@@ -5,7 +5,7 @@
   </div>
   <div class="contacts-list">
     <div *ngFor="let item of events | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" class="event">
-      <app-item routerLink='/edit-news/{{item.title}}'
+      <app-item routerLink='/edit-news/{{item._id}}'
                 [item]="item"></app-item>
       <i (click)="deleteItem(item)" class="close material-icons">close</i>
     </div>
