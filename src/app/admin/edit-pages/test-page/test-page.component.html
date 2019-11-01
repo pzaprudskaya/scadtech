@@ -1,13 +1,37 @@
-<app-headline [title]="headline"></app-headline>
-<div class="contacts-list">
-  <div *ngFor="let event of events | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" class="event">
-    <app-contact id="contact"  routerLink='/admin/edit-news/edit/'
-               [contact]="event"></app-contact>
-  </div>
+<div class="container">
+  <app-headline [title]="'Add new event'"></app-headline>
+  <form [formGroup]="addNews">
+    <div class="form-group">
+      <h2>Title</h2>
+      <input type="text" formControlName="title">
+    </div>
+    <div class="form-group">
+      <h2>Date</h2>
+      <input type="text" formControlName="date">
+    </div>
+    <div class="form-group">
+      <h2>Preview</h2>
+      <input type="text" formControlName="preview">
+    </div>
+    <div class="form-group">
+      <h2>Content</h2>
+      <editor type="text" formControlName="content"
+              [init]="{
+        height: 500,
+        plugins: [
+          'advlist autolink lists link image imagetools code charmap print preview anchor',
+          'searchreplace visualblocks code fullscreen',
+          'insertdatetime media table paste code help wordcount'
+        ],
+        menubar: 'file edit insert view format table help',
+        image_uploadtab: true,
+        imagetools_toolbar: 'rotateleft rotateright | flipv fliph | editimage imageoptions',
+        toolbar:
+          ' formatselect | bold italic underline forecolor backcolor | \ alignleft aligncenter alignright alignjustify | \ bullist numlist outdent indent | removeformat '
+      }"
+      >
+      </editor>
+    </div>
+  </form>
+  <button (click)="addEvent()">Save</button>
 </div>
-
-      <div class="navigation">
-        <ngb-pagination [collectionSize]="events.length" [pageSize]="pageSize" [(page)]="page" [boundaryLinks]="false"></ngb-pagination>
-      </div>
-
-

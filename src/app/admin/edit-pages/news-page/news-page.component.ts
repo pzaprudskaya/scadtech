@@ -1,39 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IEvent } from './news-page.model';
-import { NewsPageService } from './news-page.service';
-import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { NewsPageService } from '../../services/news-page.service';
+import { IEvent } from '../../models/news-page.model';
 
 @Component({
-  selector: 'app-edit-news',
-  styleUrls: [ './news-page.component.sass' ],
+  selector: 'app-news-page',
   templateUrl: './news-page.component.html',
+  styleUrls: ['./news-page.component.sass']
 })
 export class EditNewsPageComponent implements OnInit {
-
-  newsModel = {
-    title: [ null, [ Validators.required ] ],
-    date: [ null, [ Validators.required ] ],
-    preview: [ null, [ Validators.required ] ],
-    content: [ '<p>This is the initial content of the editor</p>', [ Validators.required ] ],
-  };
-
-
-  events: IEvent[];
-  addNews = this.fb.group(this.newsModel);
-  news: IEvent;
-
-
-  get f() {
-    return this.addNews.controls as {
-      [ K in keyof (this[ 'newsModel' ]) ]: AbstractControl;
-    };
-  }
-
-  constructor(
-    private fb: FormBuilder,
-    private newsService: NewsPageService
-  ) {
-  }
+  headline = 'Новости';
+  events;
+  pageSize = 8;
+  page = 1;
+  constructor(private newsService: NewsPageService) { }
 
   ngOnInit() {
     this.events = [];
@@ -42,34 +21,12 @@ export class EditNewsPageComponent implements OnInit {
     });
   }
 
-  addEvent() {
-    this.addNews.markAllAsTouched();
-
-    if (this.addNews.invalid) {
-      return;
-    }
-
-    this.newsService.addEvent(this.addNews.value).subscribe((addEvent) => {
-      this.events.push(addEvent);
-    });
-  }
-
-  deleteEvent(event) {
+  deleteItem(event) {
     this.events.forEach((item, i) => {
       if (item.id === event.id) {
         this.events.splice(i, 1);
       }
     });
     this.newsService.deleteEvent(event).subscribe(() => console.log('Delete!'));
-  }
-
-  editEvent(event) {
-    this.addNews.controls.title.value(event.title);
-    this.addNews.controls.date.value(event.value);
-    this.addNews.controls.preview.value(event.preview);
-    this.addNews.controls.content.value(event.content);
-  }
-  updateEvent(event) {
-    this.newsService.updateEvent(event).subscribe(() => console.log('Update!'));
   }
 }
