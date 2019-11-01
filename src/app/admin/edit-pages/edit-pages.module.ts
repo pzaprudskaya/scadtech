@@ -12,8 +12,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {ComponentsModule} from '../../components/components.module';
 import {EditorModule} from '@tinymce/tinymce-angular';
-import {TestPageComponent} from './test-page/test-page.component';
 import {EditNewsPageComponent} from './news-page/news-page.component';
+import {EditComponentsModule} from '../edit-components/edit-components.module';
+import {EditAddModule} from '../edit-add/edit-add-pages.module';
+
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import {EditNewsPageComponent} from './news-page/news-page.component';
     ComponentsModule,
     EditorModule,
     ReactiveFormsModule,
+    EditComponentsModule,
+    EditAddModule
   ],
   declarations: [
     EditPagesComponent,
@@ -35,7 +39,6 @@ import {EditNewsPageComponent} from './news-page/news-page.component';
     EditNewsPageComponent,
     EditOurLeadershipComponent,
     EditPartnersAndSertificatesComponent,
-    TestPageComponent
   ],
   exports: [
     EditPagesComponent,
@@ -43,9 +46,8 @@ import {EditNewsPageComponent} from './news-page/news-page.component';
     EditContactsComponent,
     EditDocumentationComponent,
     EditNewsPageComponent,
-    TestPageComponent,
     EditOurLeadershipComponent,
-    EditPartnersAndSertificatesComponent
+    EditPartnersAndSertificatesComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })

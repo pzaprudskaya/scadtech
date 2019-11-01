@@ -1,44 +1,16 @@
 <div class="container">
-  <app-headline [title]="'Partners and sertificates'"></app-headline>
-  <button class="save">Save</button>
-  <div>
-    <hr>
-    <table>
-      <tbody>
-      <tr>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>File</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let partner of partners">
-        <td><img class="image" src="{{partner.image}}"></td>
-        <td>{{partner.name}}</td>
-        <td>{{partner.description}}</td>
-        <td>{{partner.file}}</td>
-        <td><i class="material-icons" (click)="delete(partner)">close</i></td>
-      </tr>
-      </tbody>
-    </table>
-
+  <div class="inline">
+    <app-headline [title]="headline"></app-headline>
+    <button routerLink='/edit-partners/add'>Add new</button>
   </div>
-  <app-headline [title]="'Add new partner and sertificate'"></app-headline>
-  <div class="img">
-    <h2>Image</h2>
-    <input value="" id="image">
+  <div class="contacts-list">
+    <div *ngFor="let item of partners | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" class="event">
+      <app-item routerLink='/edit-partners/{{item._id}}'
+                [item]="item"
+                [key]="'partners'"></app-item>
+      <i (click)="deletePartner(item)" class="close material-icons">close</i>
+    </div>
   </div>
-  <div class="name">
-    <h2>Name</h2>
-    <input value="" id="name">
-  </div>
-  <div class="description">
-    <h2>Description</h2>
-    <input value="" id="description">
-  </div>
-  <div class="file">
-    <h2>File</h2>
-    <input value="" id="file">
-  </div>
-  <button (click)="add()">Add new</button>
+  <ngb-pagination [collectionSize]="partners.length" [pageSize]="pageSize" [(page)]="page"
+                  [boundaryLinks]="false"></ngb-pagination>
 </div>

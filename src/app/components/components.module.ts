@@ -25,8 +25,7 @@ import {AboutUsComponent} from './about-us/about-us.component';
 import {PopupComponent} from './popup/popup.component';
 import {EventItemComponent} from './event-item/event-item.component';
 import {TextareaComponent} from './textarea/textarea.component';
-import {EditorModule} from "@tinymce/tinymce-angular";
-import { ItemComponent } from './item/item.component';
+import {EditorModule} from '@tinymce/tinymce-angular';
 
 
 
@@ -53,7 +52,6 @@ import { ItemComponent } from './item/item.component';
     PopupComponent,
     EventItemComponent,
     TextareaComponent,
-    ItemComponent
   ],
   imports: [
     NgbModule,
@@ -83,7 +81,6 @@ import { ItemComponent } from './item/item.component';
     PopupComponent,
     EventItemComponent,
     TextareaComponent,
-    ItemComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

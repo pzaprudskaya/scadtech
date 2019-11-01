@@ -1,0 +1,22 @@
+<div class="container">
+  <app-headline *ngIf="state === true" [title]="'Add new leader'"></app-headline>
+  <app-headline *ngIf="state === false" [title]="'Edit leader'"></app-headline>
+
+  <form [formGroup]="leader">
+    <div class="form-group">
+      <h2>Image</h2>
+      <input type="text" formControlName="image">
+    </div>
+    <div class="form-group">
+      <h2>Name</h2>
+      <input type="text" formControlName="name">
+    </div>
+    <div class="form-group">
+      <h2>Post</h2>
+      <input type="text" formControlName="post">
+    </div>
+  </form>
+
+  <button *ngIf="state === true" (click)="addLeader()">Add</button>
+  <button *ngIf="state === false" (click)="updateLeader()">Update</button>
+</div>

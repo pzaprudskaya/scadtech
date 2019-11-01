@@ -1,0 +1,66 @@
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
+import {IPartners} from '../models/partners-page.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+
+
+export class PartnersPageService {
+  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/partners';
+
+  httpOptions = {
+    mode: 'no-cors',
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
+
+  constructor(private http: HttpClient) {
+  }
+
+  getPartners(): Observable<IPartners[]> {
+    return this.http.get<IPartners[]>(this.API_URL, this.httpOptions).pipe(
+      tap((data: IPartners[]) => console.log('Partners: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  getPartner(id: string): Observable<IPartners> {
+    return this.http.get<IPartners>(`${this.API_URL}/${id}`, this.httpOptions).pipe(
+      tap((data: IPartners) => console.log('Partner: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  addPartner(partner: IPartners) {
+    return this.http.post<IPartners>(this.API_URL, JSON.stringify(partner), this.httpOptions).pipe(
+      tap(addPartner => console.log('Add partner: ' + JSON.stringify(addPartner))),
+      catchError(this.handleError));
+  }
+
+  updatePartner(partner: IPartners) {
+    return this.http.put<void>(`${this.API_URL}/${partner._id}`, JSON.stringify(partner), this.httpOptions).pipe(
+      tap(updatePartner => console.log('Update partner: ' + JSON.stringify(updatePartner))),
+      catchError(this.handleError));
+  }
+
+  deletePartner(partner: IPartners) {
+    return this.http.delete<void>(`${this.API_URL}/${partner._id}`, this.httpOptions).pipe(
+      tap(deletePartner => console.log('Delete partner: ' + JSON.stringify(deletePartner))),
+      catchError(this.handleError));
+  }
+
+  private handleError(err: HttpErrorResponse) {
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  }
+
+}

@@ -7,18 +7,24 @@ import {EditPartnersAndSertificatesComponent} from './partners-and-sertificates/
 import {EditDocumentationComponent} from './documentation/documentation.component';
 import {EditOurLeadershipComponent} from './our-leadership/our-leadership.component';
 import {EditAboutCompanyComponent} from './about-company/about-company.component';
-import {TestPageComponent} from './test-page/test-page.component';
+import {EditAddNewsComponent} from '../edit-add/edit-add-news/edit-add-news.component';
+import {EditAddLeadershipsComponent} from '../edit-add/edit-add-leaderships/edit-add-leaderships.component';
+import {EditAddPartnersComponent} from '../edit-add/edit-add-partners/edit-add-partners.component';
 
 const routes: Routes = [
   { path: 'edit-news', component: EditNewsPageComponent},
-  { path: 'edit-news/:id', component: TestPageComponent},
+  { path: 'edit-news/:id', component: EditAddNewsComponent},
+
+  { path: 'edit-our-leadership', component: EditOurLeadershipComponent},
+  { path: 'edit-our-leaderships/:id', component: EditAddLeadershipsComponent},
+
+  { path: 'edit-partners', component: EditPartnersAndSertificatesComponent},
+  { path: 'edit-partners/:id', component: EditAddPartnersComponent},
+
 
   { path: 'edit-contacts', component: EditContactsComponent},
   { path: 'edit-documentation', component: EditDocumentationComponent},
-  { path: 'edit-partners', component: EditPartnersAndSertificatesComponent},
-  { path: 'edit-our-leadership', component: EditOurLeadershipComponent},
   { path: 'edit-about-company', component: EditAboutCompanyComponent},
-  { path: 'test', component: TestPageComponent},
 ];
 const rootRouters: Routes = [
   { path: '', component: EditPagesComponent, children: routes  }

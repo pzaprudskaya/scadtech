@@ -11,6 +11,7 @@ import { FeedbackWindowComponent } from './components/feedback-window/feedback-w
 import {AngularFullpageModule} from '@fullpage/angular-fullpage';
 import {EditPagesModule} from './admin/edit-pages/edit-pages.module';
 import { HttpClientModule } from '@angular/common/http';
+import {EditAddModule} from './admin/edit-add/edit-add-pages.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     PagesModule,
     EditPagesModule,
+    EditAddModule,
     ComponentsModule,
     BrowserAnimationsModule,
     AngularFullpageModule,
