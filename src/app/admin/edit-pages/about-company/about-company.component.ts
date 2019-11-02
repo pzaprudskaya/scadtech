@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {historyEvents} from "../../../data";
+import {AboutService} from '../../services/about.service';
+import {IAbout, IAllHistoryEvents, IHistoryEvent, IValue} from '../../models/about-company-page.model';
+import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {ValuesService} from '../../services/values.service';
+import {HistoryEventsService} from '../../services/history-events.service';
 
 
 @Component({
@@ -9,119 +13,80 @@ import {historyEvents} from "../../../data";
 })
 export class EditAboutCompanyComponent implements OnInit {
   pageSizeForHistory = 4;
+  countHistoryEvents;
   pageSizeForValues = 3;
+  countValues;
   page = 1;
-  historyEvents = [
-    {
-      year: '1999',
-      caption: 'Создание компании ООО «РОССКАТавто»',
-      description: 'Производство каталитических нейтрализаторов, каталитических  коллекторов, систем выпуска отработавших газов, глушителей-нейтрализаторов.'
-    },
-    {
-      year: '2010',
-      caption: 'Создание компании «СКАД тех»',
-      description: 'Представительство западных компаний - мировых лидеров автопрома: Continental Emitec GmbH, FEV GmbH, Eldor Corporation, Siemens AG. Продвижение их продуктов и решений на российском рынке.'
-    },
-    {
-      year: '2012',
-      caption: 'Запуск нового направления — «Нефтегаз»',
-      description: 'Компания Разработка АСУ технологическими процессами (АСУ ТП) и АС пожаротушения (АС ПТ) для предприятий нефтегазовой отрасли.'
-    },
-    {
-      year: '2013',
-      caption: 'Создание компании «АСК Инжиниринг»',
-      description: 'Специализация: создание автоматизированных систем управления и телемеханики в сфере трубопроводного транспорта нефти и нефтепродуктов, SCADA системы.'
-    },
-    {
-      year: '2015',
-      caption: 'Открытие новых подразделений',
-      description: 'Открылись обособленные подразделения «СКАД тех» в Тольятти, Уфе, Нижнем Новгороде и Томске. Сегодня ОП г. Тольятти — главная производственная площадка компании.'
-    },
-    {
-      year: '2016',
-      caption: 'Создание компании «НексусСистемс»',
-      description: 'Открылось и новое подразделение в г. Самара. Началась масштабная реконструкция производственных площадок «СКАД тех».'
-    },
-    {
-      year: '2017',
-      caption: 'Реструктуризация бизнеса в&nbsp;направлении «Автопром»',
-      description: 'Направление бизнеса «Автопром» теперь сосредоточено в одной структуре — ООО «Техноком».'
-    },
-    {
-      year: '2017',
-      caption: 'Открытие новых подразделений',
-      description: 'Создание обособленного подразделения «СКАД тех» в Тюмени.'
-    },
-    {
-      year: '2018',
-      caption: 'Развитие продолжается',
-      description: 'Открылось обособленное подразделение в г. Хабаровск. Создано новое инновационное решение — пакет программного обеспечения для диспетчеров и&nbsp;инженеров «SCAD CC Pipeline Kit».'
-    },
-  ];
-  values = [
-    {
-      image: '',
-      name: 'Имя',
-      description: 'Имя «СКАД тех» — наивысшая ценность, которую мы гордо несем вот уже 7 лет. Это визитная карточка предприятия, поставляющего своим заказчикам первоклассную продукцию, выполняющего работы с высоким качеством и в установленные сроки. Это то, что узнают о нас заказчики, партнеры и&nbsp;контрагенты в&nbsp;первую очередь, что позволяет нам удерживать существующих и завоевывать новых заказчиков, партнеров и контрагентов, поддерживая рост нашего бизнеса. Мы гордимся, что вносим свой вклад в укрепление ИМЕНИ и деловой РЕПУТАЦИИ нашей компании. Дискредитация или потеря доверия со стороны заказчиков, партнеров и контрагентов для нас не допустимы! Мы следуем законам и соблюдаем бизнес этику.',
-    },
-    {
-      image: 'http://scadtech.ru/upload/resize_cache/iblock/8d7/270_170_1/8d7e5be1350d22a1a477555bd1208195.jpg',
-      name: 'Надежность',
-      description: 'Успех партнера — наша цель. Нам важно, чтобы в словах и делах, как и в наших услугах, чувствовалась и имела подтверждение в реальности надежность. Надежно — это когда честно, открыто, наверняка, профессионально, безопасно, когда слова не расходятся с делом, это когда все в обещанный срок, как договаривались, когда заранее предупрежден и т. д., когда продукция работает так, как обещает производитель.',
-    },
-    {
-      image: 'http://scadtech.ru/upload/resize_cache/iblock/4d5/270_170_1/4d53046daad2d4377727f2059ce4be91.jpg',
-      name: 'Результат',
-      description: 'Для нас важно достижение поставленной цели, поэтому нам важен результат, а не процесс его достижения. Не важны красивые слова, дела, движения, активность, если они не приводят к требуемому результату.',
-    },
-    {
-      image: 'http://scadtech.ru/upload/resize_cache/iblock/3f0/270_170_1/3f09bb9a1bb75f86637ac65dd65556e3.jpg',
-      name: 'Клиентоориентированность',
-      description: 'Заказчик — на первом месте. Нам важно чтобы клиент знал, что от нас ожидать, чтобы ему было надежно работать с нами и с нашими продуктами и решениями, чтобы он был удовлетворен тем, что получил от нас что ожидал.',
-    },
-    {
-      image: 'http://scadtech.ru/upload/resize_cache/iblock/605/270_170_1/605a0b14c637bdfec8e8f4d665d9fa3e.jpg',
-      name: 'Команда',
-      description: ' Наш главный актив — команда. Нам важно, когда мы кого-то принимаем в команду, работать на согласованные результаты команды, а не каждого конкретного члена команды. Пока ты или я в команде, ты помогаешь и тебе помогают. Мы открыто просим покинуть команду, если на то есть веские причины. Есть правила работы в команде и мы их выполняем.',
-    },
-    {
-      image: 'http://scadtech.ru/upload/iblock/396/3968c80fe96740379be1c3750ab52b88.jpg',
-      name: 'Эффективность',
-      description: 'Эффективность отличает нас от конкурентов. Нам важны эффективные решения и действия. А это значит получать требуемый результат с минимальными затратами денег и времени. Важен коэффициент вложенного на полученное, а не абсолютная цифра минимальной стоимости.',
-    },
 
-  ];
-  constructor() {}
-  ngOnInit(): void {}
+  aboutModel = {
+    title: [null, [Validators.required]],
+    content: ['<p>This is the initial content of the editor</p>', [Validators.required]],
+  };
+  aboutCompany = this.fb.group(this.aboutModel);
 
-  addHistoryEvent() {
-    const obj = {
-      year: (document.getElementById('year') as HTMLInputElement).value,
-      caption: (document.getElementById('caption') as HTMLInputElement).value,
-      description: (document.getElementById('description') as HTMLInputElement).value,
+  about;
+  historyEvents: IHistoryEvent[];
+  values: IValue[];
+
+  get f() {
+    return this.aboutCompany.controls as {
+      [K in keyof (this[ 'aboutModel' ])]: AbstractControl;
     };
-    this.historyEvents.push(obj);
   }
+
+  constructor(private fb: FormBuilder,
+              private aboutService: AboutService,
+              private valuesService: ValuesService,
+              private historyEventsService: HistoryEventsService) {
+  }
+
+  ngOnInit(): void {
+    this.about = {};
+    this.historyEvents = [];
+    this.values = [];
+
+    this.aboutService.getAbout().subscribe((about: IAbout[]) => {
+      [this.about] = about;
+      this.aboutCompany.controls.title.setValue(this.about.title);
+      this.aboutCompany.controls.content.setValue(this.about.content);
+    });
+    this.valuesService.getValues().subscribe((values: IValue[]) => {
+      this.values = values;
+    });
+    this.historyEventsService.getHistoryEvents(this.pageSizeForHistory, this.pageSizeForHistory * (this.page - 1)).subscribe((historyEvents: IAllHistoryEvents) => {
+      this.countHistoryEvents = historyEvents.count;
+      this.historyEvents = historyEvents.data;
+    });
+  }
+
+  saveInformationAC() {
+    this.about.title = this.aboutCompany.value.title;
+    this.about.content = this.aboutCompany.value.content;
+    this.aboutService.updateAbout(this.about).subscribe(() => console.log('Update'));
+  }
+
   deleteHistoryEvent(row) {
     this.historyEvents.forEach((item, i) => {
       if (item.caption === row.caption) {
         this.historyEvents.splice(i, 1);
       }
     });
+    this.historyEventsService.deleteHistoryEvent(row).subscribe(() => console.log('Delete!'));
   }
-  addValue() {
-    const obj = {
-      image: (document.getElementById('image') as HTMLInputElement).value,
-      name: (document.getElementById('name') as HTMLInputElement).value,
-      description: (document.getElementById('descriptionValue') as HTMLInputElement).value,
-    };
-    this.values.push(obj);
-  }
+
   deleteValue(value) {
     this.values.forEach((item, i) => {
       if (item.name === value.name) {
         this.values.splice(i, 1);
       }
+    });
+    this.valuesService.deleteValue(value).subscribe(() => console.log('Delete!'));
+  }
+
+  changePage(page) {
+    debugger;
+    this.historyEventsService.getHistoryEvents(this.pageSizeForHistory, this.pageSizeForHistory * (page - 1)).subscribe((historyEvents: IAllHistoryEvents) => {
+      this.historyEvents = historyEvents.data;
     });
   }
 }

@@ -1,21 +1,41 @@
 <div class="container">
   <div>
-    <app-headline [title]="'Information about company'"></app-headline>
-    <hr>
-    <div class="title">
-      <h3>Title</h3>
-      <input>
+    <div class="inline">
+      <app-headline [title]="'Information about company'"></app-headline>
+      <button (click)="saveInformationAC()">Save</button>
     </div>
-    <div class="content">
-      <h3>Content</h3>
-      <app-textarea></app-textarea>
-    </div>
-    <button>Edit</button>
+    <form [formGroup]="aboutCompany">
+      <div class="form-group">
+        <h2>Title</h2>
+        <input type="text" formControlName="title">
+      </div>
+      <div class="form-group">
+        <h3>Content</h3>
+        <editor type="text" formControlName="content"
+                [init]="{
+        height: 500,
+        plugins: [
+          'advlist autolink lists link image imagetools code charmap print preview anchor',
+          'searchreplace visualblocks code fullscreen',
+          'insertdatetime media table paste code help wordcount'
+        ],
+        menubar: 'file edit insert view format table help',
+        image_uploadtab: true,
+        imagetools_toolbar: 'rotateleft rotateright | flipv fliph | editimage imageoptions',
+        toolbar:
+          ' formatselect | bold italic underline forecolor backcolor | \ alignleft aligncenter alignright alignjustify | \ bullist numlist outdent indent | removeformat '
+      }"
+        >
+        </editor>
+      </div>
+    </form>
   </div>
   <div>
-    <app-headline [title]="'Information about history'"></app-headline>
-    <button class="add" routerLink="/edit-history-event/add">Add new</button>
-    <hr>
+    <div class="inline">
+      <app-headline [title]="'Information about history'"></app-headline>
+      <button class="add" routerLink="/edit-history-event/add">Add new</button>
+    </div>
+
     <table class="table">
       <thead>
       <tr>
@@ -29,39 +49,42 @@
       <tbody>
 
 
-        <tr *ngFor="let row of historyEvents | slice: (page-1) * pageSizeForHistory : (page-1) * pageSizeForHistory + pageSizeForHistory">
-          <td>{{row.year}}</td>
-          <td>{{row.caption}}</td>
-          <td>{{row.description}}</td>
-          <td routerLink='/edit-history-event/{{row._id}}'><i class="material-icons">edit</i></td>
-          <td><i class="material-icons" (click)="deleteHistoryEvent(row)">close</i></td>
-        </tr>
+      <tr
+        *ngFor="let row of historyEvents | slice: (page-1) * pageSizeForHistory : (page-1) * pageSizeForHistory + pageSizeForHistory">
+        <td>{{row.year}}</td>
+        <td>{{row.caption}}</td>
+        <td>{{row.description}}</td>
+        <td routerLink='/edit-history-event/{{row._id}}'><i class="material-icons">edit</i></td>
+        <td><i class="material-icons" (click)="deleteHistoryEvent(row)">close</i></td>
+      </tr>
       </tbody>
     </table>
     <div class="navigation">
-      <ngb-pagination [collectionSize]="historyEvents.length" [pageSize]="pageSizeForHistory" [(page)]="page"
+      <ngb-pagination (pageChange)="changePage(page)" [collectionSize]="countHistoryEvents" [pageSize]="pageSizeForHistory" [(page)]="page"
                       [boundaryLinks]="false"></ngb-pagination>
     </div>
 
   </div>
   <div>
-    <app-headline [title]="'Information about values'"></app-headline>
-    <button class="add" routerLink="/edit-values/add">Add new</button>
-    <hr>
+    <div class="inline">
+      <app-headline [title]="'Information about values'"></app-headline>
+      <button class="add" routerLink="/edit-values/add">Add new</button>
+    </div>
     <table class="table">
       <thead>
-        <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th></th>
-          <th></th>
-        </tr>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+        <th></th>
+      </tr>
       </thead>
 
       <tbody>
-      <tr *ngFor="let value of values | slice: (page-1) * pageSizeForValues : (page-1) * pageSizeForValues + pageSizeForValues">
-        <td><img src="{{value.image}}" class="image" /></td>
+      <tr
+        *ngFor="let value of values | slice: (page-1) * pageSizeForValues : (page-1) * pageSizeForValues + pageSizeForValues">
+        <td><img src="{{value.image}}" class="image"/></td>
         <td>{{value.name}}</td>
         <td>{{value.description}}</td>
         <td routerLink='/edit-values/{{value._id}}'><i class="material-icons">edit</i></td>
@@ -70,7 +93,7 @@
       </tbody>
     </table>
     <div class="navigation">
-      <ngb-pagination [collectionSize]="values.length" [pageSize]="pageSizeForValues" [(page)]="page"
+      <ngb-pagination (pageChange)="changePageValues(page)" [collectionSize]="countValues" [pageSize]="pageSizeForValues" [(page)]="page"
                       [boundaryLinks]="false"></ngb-pagination>
     </div>
 
