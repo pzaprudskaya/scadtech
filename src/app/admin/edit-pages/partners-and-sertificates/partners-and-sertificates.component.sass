@@ -1,24 +1,57 @@
 .container
+  margin: 20px 0
+.inline
+  width: 1000px
   margin: 20px 100px
+button
+  margin-left: auto
+  margin-top: 10px
+  margin-bottom: 30px
+  font-size: 18px
+  padding: 10px
+  color: #f2264d
+  background: white
+  border: 1px solid #f2264d
+button:hover
+  color: white
+  background: #f2264d
+.inline, .event
+  display: flex
+i
+  font-size: 30px
+  cursor: pointer
 
-.contacts-list
-  position: relative
-  padding-top: 20px
-  padding-bottom: 100px
 
-.contacts-list:not(.ie-detected)
-  display: -ms-grid
-  display: grid
-  grid-template-columns: repeat(4, calc((100% - 30px*3)/4))
-  grid-auto-rows: max-content
-  grid-auto-flow: row dense
-  grid-gap: 30px
+
+
+td
+  padding: 10px
+table
+  margin: 20px 0
+  background: white
+  width: 80%
+  th
+    padding: 0 10px
+  tr
+    height: 50px
+    border: 1px solid #f2264d
+  thead
+    font-size: 30px
+    background: #f2264d
+    color: white
+
+  tbody
+    font-size: 23px
+  img
+    height: 40px
+    margin: 0 20px
 
 ngb-pagination::ng-deep
   .pagination
     display: flex
     justify-content: center
     background: transparent
+    margin-bottom: 40px
   .page-item.active .page-link
     color: #fff
     background-color: #f2264d
@@ -55,20 +88,11 @@ ngb-pagination::ng-deep
     transform: rotateY(180deg)
   .page-item
     margin: 0 5px
-button
-  margin-left: auto
-  margin-top: 10px
-  margin-bottom: 30px
-  font-size: 18px
-  padding: 10px
-  color: #f2264d
-  background: white
-  border: 1px solid #f2264d
-button:hover
-  color: white
-  background: #f2264d
-.inline, .event
+
+
+
+.table
+  height: 500px
   display: flex
-i
-  color: red
-  cursor: pointer
+  justify-content: center
+

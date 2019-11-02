@@ -7,7 +7,7 @@
     <div *ngFor="let item of leaderships | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" class="event">
       <app-item routerLink='/edit-our-leaderships/{{item._id}}'
                 [item]="item"
-                [key]="'news'"></app-item>
+                [key]="'leaderships'"></app-item>
       <i (click)="deleteItem(item)" class="close material-icons">close</i>
     </div>
   </div>

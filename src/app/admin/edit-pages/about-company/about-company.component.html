@@ -14,74 +14,66 @@
   </div>
   <div>
     <app-headline [title]="'Information about history'"></app-headline>
+    <button class="add" routerLink="/edit-history-event/add">Add new</button>
     <hr>
-    <table>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Year</th>
+        <th>Caption</th>
+        <th>Description</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
       <tbody>
-        <tr>
-          <th>Year</th>
-          <th>Caption</th>
-          <th>Description</th>
-          <th></th>
-        </tr>
-        <tr *ngFor="let row of historyEvents">
+
+
+        <tr *ngFor="let row of historyEvents | slice: (page-1) * pageSizeForHistory : (page-1) * pageSizeForHistory + pageSizeForHistory">
           <td>{{row.year}}</td>
           <td>{{row.caption}}</td>
           <td>{{row.description}}</td>
+          <td routerLink='/edit-history-event/{{row._id}}'><i class="material-icons">edit</i></td>
           <td><i class="material-icons" (click)="deleteHistoryEvent(row)">close</i></td>
         </tr>
       </tbody>
-      <tfoot>
-      <tr>
-        <td>
-          <input placeholder="year" value="" id="year">
-        </td>
-        <td>
-          <input placeholder="caption" value="" id="caption">
-        </td>
-        <td>
-          <input placeholder="description" value="" id="description">
-        </td>
-        <td><i class="material-icons" (click)="addHistoryEvent()">done</i></td>
-      </tr>
-      </tfoot>
     </table>
-    <button class="save">Save</button>
+    <div class="navigation">
+      <ngb-pagination [collectionSize]="historyEvents.length" [pageSize]="pageSizeForHistory" [(page)]="page"
+                      [boundaryLinks]="false"></ngb-pagination>
+    </div>
 
   </div>
   <div>
     <app-headline [title]="'Information about values'"></app-headline>
+    <button class="add" routerLink="/edit-values/add">Add new</button>
     <hr>
-    <table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
       <tbody>
-      <tr>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let value of values">
+      <tr *ngFor="let value of values | slice: (page-1) * pageSizeForValues : (page-1) * pageSizeForValues + pageSizeForValues">
         <td><img src="{{value.image}}" class="image" /></td>
         <td>{{value.name}}</td>
         <td>{{value.description}}</td>
+        <td routerLink='/edit-values/{{value._id}}'><i class="material-icons">edit</i></td>
         <td><i class="material-icons" (click)="deleteValue(value)">close</i></td>
       </tr>
       </tbody>
-      <tfoot>
-      <tr>
-        <td>
-          <input placeholder="value" value="" id="image">
-        </td>
-        <td>
-          <input placeholder="name" value="" id="name">
-        </td>
-        <td>
-          <input placeholder="descriptionValue" value="" id="descriptionValue">
-        </td>
-        <td><i class="material-icons" (click)="addValue()">done</i></td>
-      </tr>
-      </tfoot>
     </table>
-    <button class="save">Save</button>
+    <div class="navigation">
+      <ngb-pagination [collectionSize]="values.length" [pageSize]="pageSizeForValues" [(page)]="page"
+                      [boundaryLinks]="false"></ngb-pagination>
+    </div>
+
   </div>
 </div>
 

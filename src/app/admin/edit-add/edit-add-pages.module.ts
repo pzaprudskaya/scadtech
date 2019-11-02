@@ -9,6 +9,7 @@ import {EditComponentsModule} from '../edit-components/edit-components.module';
 import {EditAddLeadershipsComponent} from './edit-add-leaderships/edit-add-leaderships.component';
 import {EditAddPartnersComponent} from './edit-add-partners/edit-add-partners.component';
 import {EditAddNewsComponent} from './edit-add-news/edit-add-news.component';
+import {EditAddConactsComponent} from './edit-add-conacts/edit-add-conacts.component';
 
 
 @NgModule({
@@ -25,12 +26,14 @@ import {EditAddNewsComponent} from './edit-add-news/edit-add-news.component';
   declarations: [
     EditAddNewsComponent,
     EditAddLeadershipsComponent,
-    EditAddPartnersComponent
+    EditAddPartnersComponent,
+    EditAddConactsComponent,
   ],
   exports: [
     EditAddNewsComponent,
     EditAddLeadershipsComponent,
-    EditAddPartnersComponent
+    EditAddPartnersComponent,
+    EditAddConactsComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })

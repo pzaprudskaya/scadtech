@@ -10,6 +10,7 @@ import {EditAboutCompanyComponent} from './about-company/about-company.component
 import {EditAddNewsComponent} from '../edit-add/edit-add-news/edit-add-news.component';
 import {EditAddLeadershipsComponent} from '../edit-add/edit-add-leaderships/edit-add-leaderships.component';
 import {EditAddPartnersComponent} from '../edit-add/edit-add-partners/edit-add-partners.component';
+import {EditAddConactsComponent} from "../edit-add/edit-add-conacts/edit-add-conacts.component";
 
 const routes: Routes = [
   { path: 'edit-news', component: EditNewsPageComponent},
@@ -21,8 +22,9 @@ const routes: Routes = [
   { path: 'edit-partners', component: EditPartnersAndSertificatesComponent},
   { path: 'edit-partners/:id', component: EditAddPartnersComponent},
 
-
   { path: 'edit-contacts', component: EditContactsComponent},
+  { path: 'edit-contacts/:id', component: EditAddConactsComponent},
+
   { path: 'edit-documentation', component: EditDocumentationComponent},
   { path: 'edit-about-company', component: EditAboutCompanyComponent},
 ];

@@ -10,7 +10,7 @@ import {IPartners} from '../../models/partners-page.model';
 export class EditPartnersAndSertificatesComponent implements OnInit {
   headline = 'Partners and sertificates';
   partners;
-  pageSize = 8;
+  pageSize = 6;
   page = 1;
 
   constructor(private partnersService: PartnersPageService) {

@@ -8,7 +8,9 @@ import {historyEvents} from "../../../data";
   templateUrl: './about-company.component.html',
 })
 export class EditAboutCompanyComponent implements OnInit {
-
+  pageSizeForHistory = 4;
+  pageSizeForValues = 3;
+  page = 1;
   historyEvents = [
     {
       year: '1999',

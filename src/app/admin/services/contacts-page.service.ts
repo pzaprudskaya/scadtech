@@ -1,0 +1,66 @@
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
+import {IContact} from '../models/contacts-page.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+
+
+export class ContactsPageService {
+  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/contacts';
+
+  httpOptions = {
+    mode: 'no-cors',
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
+
+  constructor(private http: HttpClient) {
+  }
+
+  getContacts(): Observable<IContact[]> {
+    return this.http.get<IContact[]>(this.API_URL, this.httpOptions).pipe(
+      tap((data: IContact[]) => console.log('Contacts: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  getContact(id: string): Observable<IContact> {
+    return this.http.get<IContact>(`${this.API_URL}/${id}`, this.httpOptions).pipe(
+      tap((data: IContact) => console.log('Contact: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  addContact(contact: IContact) {
+    return this.http.post<IContact>(this.API_URL, JSON.stringify(contact), this.httpOptions).pipe(
+      tap(addContact => console.log('Add contact: ' + JSON.stringify(addContact))),
+      catchError(this.handleError));
+  }
+
+  updateContact(contact: IContact) {
+    return this.http.put<void>(`${this.API_URL}/${contact._id}`, JSON.stringify(contact), this.httpOptions).pipe(
+      tap(updateContact => console.log('Update contact: ' + JSON.stringify(updateContact))),
+      catchError(this.handleError));
+  }
+
+  deleteContact(contact: IContact) {
+    return this.http.delete<void>(`${this.API_URL}/${contact._id}`, this.httpOptions).pipe(
+      tap(deleteContact => console.log('Delete contact: ' + JSON.stringify(deleteContact))),
+      catchError(this.handleError));
+  }
+
+  private handleError(err: HttpErrorResponse) {
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  }
+
+}

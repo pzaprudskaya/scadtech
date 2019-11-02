@@ -1,0 +1,34 @@
+<div class="container">
+  <app-headline *ngIf="state === true" [title]="'Add new contact'"></app-headline>
+  <app-headline *ngIf="state === false" [title]="'Edit contact'"></app-headline>
+
+  <form [formGroup]="contact">
+    <div class="form-group">
+      <h2>Name</h2>
+      <input type="text" formControlName="name">
+    </div>
+    <div class="form-group">
+      <h2>Image</h2>
+      <input type="text" formControlName="image">
+    </div>
+    <div class="form-group">
+      <h2>Phone</h2>
+      <input type="text" formControlName="numbers">
+    </div>
+    <div class="form-group">
+      <h2>Address</h2>
+      <input type="text" formControlName="addresses">
+    </div>
+    <div class="form-group">
+      <h2>Fax</h2>
+      <input type="text" formControlName="faxes">
+    </div>
+    <div class="form-group">
+      <h2>Email</h2>
+      <input type="text" formControlName="emails">
+    </div>
+  </form>
+
+  <button *ngIf="state === true" (click)="addContact()">Add</button>
+  <button *ngIf="state === false" (click)="updateContact()">Update</button>
+</div>

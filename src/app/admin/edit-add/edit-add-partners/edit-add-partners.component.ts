@@ -33,7 +33,6 @@ export class EditAddPartnersComponent implements OnInit {
 
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
-      debugger;
       this.state = true;
       this.partner.controls.name.setValue('');
       this.partner.controls.image.setValue('');
