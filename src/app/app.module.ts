@@ -12,13 +12,14 @@ import {AngularFullpageModule} from '@fullpage/angular-fullpage';
 import {EditPagesModule} from './admin/edit-pages/edit-pages.module';
 import { HttpClientModule } from '@angular/common/http';
 import {EditAddModule} from './admin/edit-add/edit-add-pages.module';
+import {AuthModule} from './admin/auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-
+    AuthModule,
     BrowserModule,
     AppRoutingModule,
     PagesModule,

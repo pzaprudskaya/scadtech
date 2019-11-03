@@ -11,6 +11,9 @@ import {EditAddPartnersComponent} from './edit-add-partners/edit-add-partners.co
 import {EditAddNewsComponent} from './edit-add-news/edit-add-news.component';
 import {EditAddConactsComponent} from './edit-add-conacts/edit-add-conacts.component';
 import {EditAddHistoryEventComponent} from './edit-add-history-event/edit-add-history-event.component';
+import {EditAddValuesComponent} from "./edit-add-values/edit-add-values.component";
+import {EditAddDocumentComponent} from "./edit-add-document/edit-add-document.component";
+import {EditAddProductComponent} from "./edit-add-product/edit-add-product.component";
 
 
 @NgModule({
@@ -29,14 +32,20 @@ import {EditAddHistoryEventComponent} from './edit-add-history-event/edit-add-hi
     EditAddLeadershipsComponent,
     EditAddPartnersComponent,
     EditAddConactsComponent,
-    EditAddHistoryEventComponent
+    EditAddHistoryEventComponent,
+    EditAddValuesComponent,
+    EditAddDocumentComponent,
+    EditAddProductComponent
   ],
   exports: [
     EditAddNewsComponent,
     EditAddLeadershipsComponent,
     EditAddPartnersComponent,
     EditAddConactsComponent,
-    EditAddHistoryEventComponent
+    EditAddHistoryEventComponent,
+    EditAddValuesComponent,
+    EditAddDocumentComponent,
+    EditAddProductComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })

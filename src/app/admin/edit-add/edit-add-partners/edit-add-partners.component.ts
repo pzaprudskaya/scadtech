@@ -13,7 +13,7 @@ export class EditAddPartnersComponent implements OnInit {
   partnerModel = {
     name: [null, [Validators.required]],
     image: [null, [Validators.required]],
-    descendants: [null, [Validators.required]],
+    description: [null, [Validators.required]],
     file: [null, [Validators.required]],
   };
   state: boolean;
@@ -41,6 +41,7 @@ export class EditAddPartnersComponent implements OnInit {
     } else {
       this.state = false;
       this.partnersService.getPartner(this.route.snapshot.params.id).subscribe((member: IPartners) => {
+        debugger;
         this.partner.controls.name.setValue(member[0].name);
         this.partner.controls.image.setValue(member[0].image);
         this.partner.controls.description.setValue(member[0].description);

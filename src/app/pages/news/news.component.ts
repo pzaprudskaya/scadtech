@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { events} from '../../data';
+import {IAllEvents} from "../../admin/models/news-page.model";
+import {NewsPageService} from "../../admin/services/news-page.service";
 
 @Component({
   selector: 'app-news',
@@ -11,10 +13,15 @@ export class NewsComponent implements OnInit {
   events;
   pageSize = 8;
   page = 1;
-  constructor() { }
+  countEvents;
+  constructor(private newsService: NewsPageService) { }
 
   ngOnInit() {
-    this.events = events;
+    this.events = [];
+    this.newsService.getEvents(this.pageSize, this.pageSize * (this.page - 1)).subscribe((news: IAllEvents) => {
+      this.countEvents = news.count;
+      this.events = news.data;
+    });
   }
   toTranslit(title: string): string {
     return title.replace(/([а-яё])|([\s_-])|([^a-z\d])/gi,
@@ -32,5 +39,10 @@ export class NewsComponent implements OnInit {
           ];
         return t[index];
       });
+  }
+  changePage(page) {
+    this.newsService.getEvents(this.pageSize, this.pageSize * (page - 1)).subscribe((news: IAllEvents) => {
+      this.events = news.data;
+    });
   }
 }

@@ -1,34 +1,34 @@
 <div class="container">
-  <app-headline *ngIf="state === true" [title]="'Add new contact'"></app-headline>
-  <app-headline *ngIf="state === false" [title]="'Edit contact'"></app-headline>
+  <app-headline *ngIf="state === true" [title]="'Добавление нового контакта'"></app-headline>
+  <app-headline *ngIf="state === false" [title]="'Редактирование контакта'"></app-headline>
 
   <form [formGroup]="contact">
     <div class="form-group">
-      <h2>Name</h2>
+      <h2>Название</h2>
       <input type="text" formControlName="name">
     </div>
     <div class="form-group">
-      <h2>Image</h2>
+      <h2>Фотография</h2>
       <input type="text" formControlName="image">
     </div>
     <div class="form-group">
-      <h2>Phone</h2>
+      <h2>Телефон</h2>
       <input type="text" formControlName="numbers">
     </div>
     <div class="form-group">
-      <h2>Address</h2>
+      <h2>Адрес</h2>
       <input type="text" formControlName="addresses">
     </div>
     <div class="form-group">
-      <h2>Fax</h2>
+      <h2>Факс</h2>
       <input type="text" formControlName="faxes">
     </div>
     <div class="form-group">
-      <h2>Email</h2>
+      <h2>Электронная почта</h2>
       <input type="text" formControlName="emails">
     </div>
   </form>
 
-  <button *ngIf="state === true" (click)="addContact()">Add</button>
-  <button *ngIf="state === false" (click)="updateContact()">Update</button>
+  <button *ngIf="state === true" (click)="addContact()">Добавить</button>
+  <button *ngIf="state === false" (click)="updateContact()">Сохранить</button>
 </div>

@@ -12,6 +12,11 @@ const routes: Routes = [
     loadChildren: () => import('./admin/edit-pages/edit-pages.module')
       .then(m => m.EditPagesModule)
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./admin/auth/auth.module')
+      .then(m => m.AuthModule)
+  },
 ];
 
 @NgModule({

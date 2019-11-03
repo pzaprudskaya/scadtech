@@ -3,12 +3,13 @@
   <div class="block-content js-block-content">
     <div>
       <div class="grid-row">
-        <div *ngFor="let event of events | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" class="event">
-          <app-event id="contact"  routerLink='/about/news/{{toTranslit(event.title)}}/'
+        <div *ngFor="let event of events" class="event">
+          <app-event id="contact"  routerLink='/about/news/{{toTranslit(event._id)}}/'
                        [event]="event"></app-event>
         </div>
         <div class="navigation">
-          <ngb-pagination [collectionSize]="events.length" [pageSize]="pageSize" [(page)]="page" [boundaryLinks]="false"></ngb-pagination>
+          <ngb-pagination (pageChange)="changePage($event)" [collectionSize]="countEvents" [pageSize]="pageSize" [(page)]="page"
+                          [boundaryLinks]="false"></ngb-pagination>
         </div>
 
       </div>

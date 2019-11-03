@@ -1,16 +1,16 @@
 <div class="container">
   <div>
     <div class="inline">
-      <app-headline [title]="'Information about company'"></app-headline>
-      <button (click)="saveInformationAC()">Save</button>
+      <app-headline [title]="'О компании'"></app-headline>
+      <button (click)="saveInformationAC()">Сохранить</button>
     </div>
     <form [formGroup]="aboutCompany">
       <div class="form-group">
-        <h2>Title</h2>
+        <h2>Название</h2>
         <input type="text" formControlName="title">
       </div>
       <div class="form-group">
-        <h3>Content</h3>
+        <h3>Контент</h3>
         <editor type="text" formControlName="content"
                 [init]="{
         height: 500,
@@ -32,16 +32,16 @@
   </div>
   <div>
     <div class="inline">
-      <app-headline [title]="'Information about history'"></app-headline>
-      <button class="add" routerLink="/edit-about-company/history-event/add">Add new</button>
+      <app-headline [title]="'История'"></app-headline>
+      <button class="add" routerLink="/edit-about-company/history-event/add"><i class="material-icons">add</i>событие</button>
     </div>
 
     <table class="table">
       <thead>
       <tr>
-        <th>Year</th>
-        <th>Caption</th>
-        <th>Description</th>
+        <th>Год</th>
+        <th>Заголовок</th>
+        <th>Описание</th>
         <th></th>
         <th></th>
       </tr>
@@ -67,15 +67,15 @@
   </div>
   <div>
     <div class="inline">
-      <app-headline [title]="'Information about values'"></app-headline>
-      <button class="add" routerLink="/edit-values/add">Add new</button>
+      <app-headline [title]="'Ценности'"></app-headline>
+      <button class="add" routerLink="/edit-values/add"><i class="material-icons">add</i>ценность</button>
     </div>
     <table class="table">
       <thead>
       <tr>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Description</th>
+        <th>Фотография</th>
+        <th>Название</th>
+        <th>Описание</th>
         <th></th>
         <th></th>
       </tr>

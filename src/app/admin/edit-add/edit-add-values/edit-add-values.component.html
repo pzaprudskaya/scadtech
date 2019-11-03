@@ -1,0 +1,22 @@
+<div class="container">
+  <app-headline *ngIf="state === true" [title]="'Добавление новой ценности'"></app-headline>
+  <app-headline *ngIf="state === false" [title]="'Редактирование ценности'"></app-headline>
+
+  <form [formGroup]="value">
+    <div class="form-group">
+      <h2>Фотография</h2>
+      <input type="text" formControlName="image">
+    </div>
+    <div class="form-group">
+      <h2>Название</h2>
+      <input type="text" formControlName="name">
+    </div>
+    <div class="form-group">
+      <h2>Описание</h2>
+      <textarea class="description" type="text" formControlName="description"></textarea>
+    </div>
+  </form>
+
+  <button *ngIf="state === true" (click)="addValue()">Добавить</button>
+  <button *ngIf="state === false" (click)="updateValue()">Сохранить</button>
+</div>

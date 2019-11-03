@@ -15,6 +15,8 @@ import {EditorModule} from '@tinymce/tinymce-angular';
 import {EditNewsPageComponent} from './news-page/news-page.component';
 import {EditComponentsModule} from '../edit-components/edit-components.module';
 import {EditAddModule} from '../edit-add/edit-add-pages.module';
+import {EditProductionComponent} from './production/production.component';
+import { AuthComponent } from '../auth/auth.component';
 
 
 
@@ -39,6 +41,7 @@ import {EditAddModule} from '../edit-add/edit-add-pages.module';
     EditNewsPageComponent,
     EditOurLeadershipComponent,
     EditPartnersAndSertificatesComponent,
+    EditProductionComponent
   ],
   exports: [
     EditPagesComponent,
@@ -48,6 +51,7 @@ import {EditAddModule} from '../edit-add/edit-add-pages.module';
     EditNewsPageComponent,
     EditOurLeadershipComponent,
     EditPartnersAndSertificatesComponent,
+    EditProductionComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })

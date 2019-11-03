@@ -1,7 +1,7 @@
 <div class="container">
   <div class="inline">
-    <app-headline [title]="'All contacts'"></app-headline>
-    <button routerLink='/edit-contacts/add'>Add new</button>
+    <app-headline [title]="'Контакты'"></app-headline>
+    <button routerLink='/edit-contacts/add'><i class="material-icons">add</i>контакт</button>
   </div>
   <div class="contacts-list">
     <div *ngFor="let item of contacts" class="event">

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PartnersPageService} from '../../services/partners-page.service';
-import {IAllPartners, IPartners} from '../../models/partners-page.model';
+import {IAllPartners} from '../../models/partners-page.model';
 
 @Component({
   selector: 'app-partners-and-sertificates',
@@ -8,7 +8,7 @@ import {IAllPartners, IPartners} from '../../models/partners-page.model';
   templateUrl: './partners-and-sertificates.component.html',
 })
 export class EditPartnersAndSertificatesComponent implements OnInit {
-  headline = 'Partners and sertificates';
+  headline = 'Партнеры и сертификаты';
   partners;
   countPartners;
   pageSize = 6;

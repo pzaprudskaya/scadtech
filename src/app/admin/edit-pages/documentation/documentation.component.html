@@ -1,62 +1,34 @@
+<div class="inline">
+  <app-headline [title]="'Документация'"></app-headline>
+  <button routerLink='/edit-document/add'><i class="material-icons">add</i>документ</button>
+</div>
 <div class="container">
-  <app-headline [title]="'All documents'"></app-headline>
-  <button class="save">Save</button>
-  <div>
-    <hr>
+  <div class="table">
     <table>
+      <thead>
+        <tr>
+          <th>Название</th>
+          <th>Номер</th>
+          <th>Дата</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
       <tbody>
-      <tr>
-        <th>Title</th>
-        <th>Number</th>
-        <th>Date</th>
-        <th>Description issued by</th>
-        <th>Description types of jobs</th>
-        <th>File link</th>
-        <th>Validity</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let doc of documents">
-        <td>{{doc.title}}</td>
-        <td>{{doc.number}}</td>
-        <td>{{doc.date}}</td>
-        <td>{{doc.descriptionIssuedBy}}</td>
-        <td>{{doc.descriptionTypesOfJobs}}</td>
-        <td>{{doc.link}}</td>
-        <td>{{doc.validity}}</td>
-        <td><i class="material-icons" (click)="delete(doc)">close</i></td>
-      </tr>
+        <tr *ngFor="let doc of documents">
+          <td>{{doc.title}}</td>
+          <td>{{doc.number}}</td>
+          <td>{{doc.date}}</td>
+          <td routerLink='/edit-document/{{doc._id}}'><i class="material-icons">edit</i></td>
+          <td><i class="material-icons" (click)="deleteDocument(doc)">close</i></td>
+        </tr>
       </tbody>
     </table>
+  </div>
 
+  <div class="navigation">
+    <ngb-pagination (pageChange)="changePage($event)" [collectionSize]="countDocuments" [pageSize]="pageSize" [(page)]="page"
+                    [boundaryLinks]="false"></ngb-pagination>
   </div>
-  <app-headline [title]="'Add new document'"></app-headline>
-  <div class="title">
-    <h2>Name</h2>
-    <input value="" id="title">
-  </div>
-  <div class="number">
-    <h2>Number</h2>
-    <input value="" id="number">
-  </div>
-  <div class="date">
-    <h2>Date</h2>
-    <input value="" id="date">
-  </div>
-  <div class="descriptionIssuedBy">
-    <h2>Description issued by</h2>
-    <input value="" id="descriptionIssuedBy">
-  </div>
-  <div class="descriptionTypesOfJobs">
-    <h2>Description types of jobs</h2>
-    <input value="" id="descriptionTypesOfJobs">
-  </div>
-  <div class="link">
-    <h2>File link</h2>
-    <input value="" id="link">
-  </div>
-  <div class="validity">
-    <h2>Validity</h2>
-    <input value="" id="validity">
-  </div>
-  <button (click)="add()">Add new</button>
 </div>
+

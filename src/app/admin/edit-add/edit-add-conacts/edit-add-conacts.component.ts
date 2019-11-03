@@ -9,7 +9,6 @@ import {IContact} from '../../models/contacts-page.model';
   templateUrl: './edit-add-conacts.component.html',
 })
 export class EditAddConactsComponent implements OnInit {
-
   contactModel = {
     name: [null, [Validators.required]],
     image: [null, [Validators.required]],
@@ -30,7 +29,7 @@ export class EditAddConactsComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
                private contactsService: ContactsPageService,
-               private route: ActivatedRoute ) {
+               private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -78,5 +77,6 @@ export class EditAddConactsComponent implements OnInit {
     this.member.emails = this.contact.value.emails;
     this.contactsService.updateContact(this.member).subscribe(() => console.log('Update!'));
   }
+
 }
 

@@ -1,26 +1,26 @@
 <div class="container">
-  <app-headline *ngIf="state === true" [title]="'Add new partner and sertificate'"></app-headline>
-  <app-headline *ngIf="state === false" [title]="'Edit partner and sertificate'"></app-headline>
+  <app-headline *ngIf="state === true" [title]="'Добавление нового партнера и сертификата'"></app-headline>
+  <app-headline *ngIf="state === false" [title]="'Редактирование партнера и сертификата'"></app-headline>
 
   <form [formGroup]="partner">
     <div class="form-group">
-      <h2>Image</h2>
+      <h2>Фотография</h2>
       <input type="text" formControlName="image">
     </div>
     <div class="form-group">
-      <h2>Name</h2>
+      <h2>Название</h2>
       <input type="text" formControlName="name">
     </div>
     <div class="form-group">
-      <h2>Description</h2>
+      <h2>Описание</h2>
       <input type="text" formControlName="description">
     </div>
     <div class="form-group">
-      <h2>File</h2>
+      <h2>Сертификат(файл)</h2>
       <input type="text" formControlName="file">
     </div>
   </form>
 
-  <button *ngIf="state === true" (click)="addPartner()">Add</button>
-  <button *ngIf="state === false" (click)="updatePartner()">Update</button>
+  <button *ngIf="state === true" (click)="addPartner()">Добавить</button>
+  <button *ngIf="state === false" (click)="updatePartner()">Сохранить</button>
 </div>
