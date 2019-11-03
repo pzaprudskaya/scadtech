@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LeadershipsPageService} from '../../services/leaderships-page.service';
-import {ILeadership} from '../../models/leaderships-page.model';
+import {IAllLeaderships, ILeadership} from '../../models/leaderships-page.model';
 
 @Component({
   selector: 'app-edit-our-leadership',
@@ -10,6 +10,7 @@ import {ILeadership} from '../../models/leaderships-page.model';
 export class EditOurLeadershipComponent implements OnInit {
   headline = 'Наше руководство';
   leaderships;
+  countLeaderships;
   pageSize = 8;
   page = 1;
 
@@ -17,8 +18,9 @@ export class EditOurLeadershipComponent implements OnInit {
 
   ngOnInit() {
     this.leaderships = [];
-    this.leadershipService.getLeaderships().subscribe((leaderships: ILeadership[]) => {
-      this.leaderships = leaderships;
+    this.leadershipService.getLeaderships(this.pageSize, this.pageSize * (this.page - 1)).subscribe((leaderships: IAllLeaderships) => {
+      this.countLeaderships = leaderships.count;
+      this.leaderships = leaderships.data;
     });
   }
 
@@ -29,5 +31,11 @@ export class EditOurLeadershipComponent implements OnInit {
       }
     });
     this.leadershipService.deleteLeadership(leader).subscribe(() => console.log('Delete!'));
+  }
+
+  changePage(page) {
+    this.leadershipService.getLeaderships(this.pageSize, this.pageSize * (page - 1)).subscribe((leaderships: IAllLeaderships) => {
+      this.leaderships = leaderships.data;
+    });
   }
 }

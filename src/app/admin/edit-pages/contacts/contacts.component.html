@@ -4,13 +4,13 @@
     <button routerLink='/edit-contacts/add'>Add new</button>
   </div>
   <div class="contacts-list">
-    <div *ngFor="let item of contacts | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" class="event">
+    <div *ngFor="let item of contacts" class="event">
       <app-item routerLink='/edit-contacts/{{item._id}}'
                 [item]="item"
                 [key]="'contacts'"></app-item>
       <i (click)="deleteItem(item)" class="close material-icons">close</i>
     </div>
   </div>
-  <ngb-pagination [collectionSize]="contacts.length" [pageSize]="pageSize" [(page)]="page"
+  <ngb-pagination (pageChange)="changePage($event)" [collectionSize]="countContacts" [pageSize]="pageSize" [(page)]="page"
                   [boundaryLinks]="false"></ngb-pagination>
 </div>

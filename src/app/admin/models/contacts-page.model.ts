@@ -23,3 +23,8 @@ export interface IContact {
   faxes: Fax[];
   emails: Email[];
 }
+
+export interface IAllContacts {
+  count: string;
+  data: IContact[];
+}

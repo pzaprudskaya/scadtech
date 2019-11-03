@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {IEvent} from '../models/news-page.model';
-import {ILeadership} from "../models/leaderships-page.model";
+import {IAllLeaderships, ILeadership} from "../models/leaderships-page.model";
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +21,17 @@ export class LeadershipsPageService {
   constructor(private http: HttpClient) {
   }
 
-  getLeaderships(): Observable<ILeadership[]> {
-    return this.http.get<ILeadership[]>(this.API_URL, this.httpOptions).pipe(
-      tap((data: ILeadership[]) => console.log('Leaderships: ' + JSON.stringify(data))),
+  getLeaderships(viewPages, skipPages): Observable<IAllLeaderships> {
+    const p = new HttpParams()
+      .set('top', viewPages)
+      .set('skip', skipPages);
+    const httpOptions = {
+      mode: 'no-cors',
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: p,
+    };
+    return this.http.get<IAllLeaderships>(this.API_URL, httpOptions).pipe(
+      tap((data: IAllLeaderships) => console.log('Leaderships: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }

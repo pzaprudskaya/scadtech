@@ -21,3 +21,7 @@ export interface IAllHistoryEvents {
   count: string;
   data: IHistoryEvent[];
 }
+export interface IAllValues {
+  count: string;
+  data: IValue[];
+}

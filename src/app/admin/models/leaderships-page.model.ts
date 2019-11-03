@@ -4,3 +4,7 @@ export interface ILeadership {
   image: string;
   post: string;
 }
+export interface IAllLeaderships {
+  count: string;
+  data: ILeadership[];
+}

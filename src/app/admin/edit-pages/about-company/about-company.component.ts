@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AboutService} from '../../services/about.service';
-import {IAbout, IAllHistoryEvents, IHistoryEvent, IValue} from '../../models/about-company-page.model';
+import {IAbout, IAllHistoryEvents, IAllValues, IHistoryEvent, IValue} from '../../models/about-company-page.model';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {ValuesService} from '../../services/values.service';
 import {HistoryEventsService} from '../../services/history-events.service';
@@ -50,8 +50,9 @@ export class EditAboutCompanyComponent implements OnInit {
       this.aboutCompany.controls.title.setValue(this.about.title);
       this.aboutCompany.controls.content.setValue(this.about.content);
     });
-    this.valuesService.getValues().subscribe((values: IValue[]) => {
-      this.values = values;
+    this.valuesService.getValues(this.pageSizeForHistory, this.pageSizeForHistory * (this.page - 1)).subscribe((values: IAllValues) => {
+      this.countValues = values.count;
+      this.values = values.data;
     });
     this.historyEventsService.getHistoryEvents(this.pageSizeForHistory, this.pageSizeForHistory * (this.page - 1)).subscribe((historyEvents: IAllHistoryEvents) => {
       this.countHistoryEvents = historyEvents.count;
@@ -84,9 +85,13 @@ export class EditAboutCompanyComponent implements OnInit {
   }
 
   changePage(page) {
-    debugger;
     this.historyEventsService.getHistoryEvents(this.pageSizeForHistory, this.pageSizeForHistory * (page - 1)).subscribe((historyEvents: IAllHistoryEvents) => {
       this.historyEvents = historyEvents.data;
+    });
+  }
+  changePageValues(page) {
+    this.valuesService.getValues(this.pageSizeForValues, this.pageSizeForValues * (page - 1)).subscribe((values: IAllValues) => {
+      this.values = values.data;
     });
   }
 }

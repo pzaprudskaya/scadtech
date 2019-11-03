@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {IValue} from "../models/about-company-page.model";
+import {IAllValues, IValue} from '../models/about-company-page.model';
 
 @Injectable({
   providedIn: 'root'
 })
-
 
 export class ValuesService {
   private API_URL = 'https://boxing-wizards-jump.herokuapp.com/worth';
@@ -19,9 +18,17 @@ export class ValuesService {
 
   constructor(private http: HttpClient) {}
 
-  getValues(): Observable<IValue[]> {
-    return this.http.get<IValue[]>(this.API_URL, this.httpOptions).pipe(
-      tap((data: IValue[]) => console.log('Values: ' + JSON.stringify(data))),
+  getValues(viewPages, skipPages): Observable<IAllValues> {
+    const p = new HttpParams()
+      .set('top', viewPages)
+      .set('skip', skipPages);
+    const httpOptions = {
+      mode: 'no-cors',
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: p,
+    };
+    return this.http.get<IAllValues>(this.API_URL, httpOptions).pipe(
+      tap((data: IAllValues) => console.log('Values: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }

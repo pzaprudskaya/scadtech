@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IContact} from '../../models/contacts-page.model';
+import {IAllContacts, IContact} from '../../models/contacts-page.model';
 import {ContactsPageService} from '../../services/contacts-page.service';
 
 @Component({
@@ -11,12 +11,14 @@ export class EditContactsComponent implements OnInit {
   contacts;
   pageSize = 8;
   page = 1;
+  countContacts;
   constructor(private contactsService: ContactsPageService) { }
 
   ngOnInit() {
     this.contacts = [];
-    this.contactsService.getContacts().subscribe((contacts: IContact[]) => {
-      this.contacts = contacts;
+    this.contactsService.getContacts(this.pageSize, this.pageSize * (this.page - 1)).subscribe((contacts: IAllContacts) => {
+      this.countContacts = contacts.count;
+      this.contacts = contacts.data;
     });
   }
 
@@ -27,5 +29,10 @@ export class EditContactsComponent implements OnInit {
       }
     });
     this.contactsService.deleteContact(contact).subscribe(() => console.log('Delete!'));
+  }
+  changePage(page) {
+    this.contactsService.getContacts(this.pageSize, this.pageSize * (page - 1)).subscribe((contacts: IAllContacts) => {
+      this.contacts = contacts.data;
+    });
   }
 }

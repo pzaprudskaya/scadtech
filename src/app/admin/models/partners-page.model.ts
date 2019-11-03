@@ -5,3 +5,7 @@ export interface IPartners {
   description: string;
   file: string;
 }
+export interface IAllPartners {
+  count: string;
+  data: IPartners[];
+}

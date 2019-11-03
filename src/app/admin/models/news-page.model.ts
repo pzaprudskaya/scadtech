@@ -7,3 +7,8 @@ export interface IEvent {
   preview: string;
   content: string;
 }
+
+export interface IAllEvents {
+  count: string;
+  data: IEvent[];
+}

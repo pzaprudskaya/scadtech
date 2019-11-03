@@ -11,6 +11,7 @@ import {EditAddNewsComponent} from '../edit-add/edit-add-news/edit-add-news.comp
 import {EditAddLeadershipsComponent} from '../edit-add/edit-add-leaderships/edit-add-leaderships.component';
 import {EditAddPartnersComponent} from '../edit-add/edit-add-partners/edit-add-partners.component';
 import {EditAddConactsComponent} from "../edit-add/edit-add-conacts/edit-add-conacts.component";
+import {EditAddHistoryEventComponent} from "../edit-add/edit-add-history-event/edit-add-history-event.component";
 
 const routes: Routes = [
   { path: 'edit-news', component: EditNewsPageComponent},
@@ -26,7 +27,9 @@ const routes: Routes = [
   { path: 'edit-contacts/:id', component: EditAddConactsComponent},
 
   { path: 'edit-documentation', component: EditDocumentationComponent},
+
   { path: 'edit-about-company', component: EditAboutCompanyComponent},
+  { path: 'edit-about-company/history-event/:id', component: EditAddHistoryEventComponent}
 ];
 const rootRouters: Routes = [
   { path: '', component: EditPagesComponent, children: routes  }

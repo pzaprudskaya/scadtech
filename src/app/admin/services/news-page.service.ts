@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {IEvent} from '../models/news-page.model';
+import {IAllEvents, IEvent} from '../models/news-page.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,17 @@ export class NewsPageService {
   constructor(private http: HttpClient) {
   }
 
-  getEvents(): Observable<IEvent[]> {
-    return this.http.get<IEvent[]>(this.API_URL, this.httpOptions).pipe(
-      tap((data: IEvent[]) => console.log('Events: ' + JSON.stringify(data))),
+  getEvents(viewPages, skipPages): Observable<IAllEvents> {
+    const p = new HttpParams()
+      .set('top', viewPages)
+      .set('skip', skipPages);
+    const httpOptions = {
+      mode: 'no-cors',
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: p,
+    };
+    return this.http.get<IAllEvents>(this.API_URL, httpOptions).pipe(
+      tap((data: IAllEvents) => console.log('Events: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {IContact} from '../models/contacts-page.model';
+import {IAllContacts, IContact} from '../models/contacts-page.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,17 @@ export class ContactsPageService {
   constructor(private http: HttpClient) {
   }
 
-  getContacts(): Observable<IContact[]> {
-    return this.http.get<IContact[]>(this.API_URL, this.httpOptions).pipe(
-      tap((data: IContact[]) => console.log('Contacts: ' + JSON.stringify(data))),
+  getContacts(viewPages, skipPages): Observable<IAllContacts> {
+    const p = new HttpParams()
+      .set('top', viewPages)
+      .set('skip', skipPages);
+    const httpOptions = {
+      mode: 'no-cors',
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: p,
+    };
+    return this.http.get<IAllContacts>(this.API_URL, httpOptions).pipe(
+      tap((data: IAllContacts) => console.log('Contacts: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }

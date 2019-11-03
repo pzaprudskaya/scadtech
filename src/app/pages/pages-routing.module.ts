@@ -11,7 +11,7 @@ import {ProduktsiyaComponent} from './produktsiya/produktsiya.component';
 import {ProductionComponent} from './production/production.component';
 import {PartnersAndCertificationsComponent} from './partners-and-certifications/partners-and-certifications.component';
 import {ProcurementComponent} from './procurement/procurement.component';
-import {PagesComponent} from "./pages.component";
+import {PagesComponent} from './pages.component';
 
 
 const routes: Routes = [

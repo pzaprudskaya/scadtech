@@ -33,7 +33,7 @@
   <div>
     <div class="inline">
       <app-headline [title]="'Information about history'"></app-headline>
-      <button class="add" routerLink="/edit-history-event/add">Add new</button>
+      <button class="add" routerLink="/edit-about-company/history-event/add">Add new</button>
     </div>
 
     <table class="table">
@@ -50,17 +50,17 @@
 
 
       <tr
-        *ngFor="let row of historyEvents | slice: (page-1) * pageSizeForHistory : (page-1) * pageSizeForHistory + pageSizeForHistory">
+        *ngFor="let row of historyEvents">
         <td>{{row.year}}</td>
         <td>{{row.caption}}</td>
         <td>{{row.description}}</td>
-        <td routerLink='/edit-history-event/{{row._id}}'><i class="material-icons">edit</i></td>
+        <td routerLink='/edit-about-company/history-event/{{row._id}}'><i class="material-icons">edit</i></td>
         <td><i class="material-icons" (click)="deleteHistoryEvent(row)">close</i></td>
       </tr>
       </tbody>
     </table>
     <div class="navigation">
-      <ngb-pagination (pageChange)="changePage(page)" [collectionSize]="countHistoryEvents" [pageSize]="pageSizeForHistory" [(page)]="page"
+      <ngb-pagination (pageChange)="changePage($event)" [collectionSize]="countHistoryEvents" [pageSize]="pageSizeForHistory" [(page)]="page"
                       [boundaryLinks]="false"></ngb-pagination>
     </div>
 
@@ -83,7 +83,7 @@
 
       <tbody>
       <tr
-        *ngFor="let value of values | slice: (page-1) * pageSizeForValues : (page-1) * pageSizeForValues + pageSizeForValues">
+        *ngFor="let value of values">
         <td><img src="{{value.image}}" class="image"/></td>
         <td>{{value.name}}</td>
         <td>{{value.description}}</td>
@@ -93,7 +93,7 @@
       </tbody>
     </table>
     <div class="navigation">
-      <ngb-pagination (pageChange)="changePageValues(page)" [collectionSize]="countValues" [pageSize]="pageSizeForValues" [(page)]="page"
+      <ngb-pagination (pageChange)="changePageValues($event)" [collectionSize]="countValues" [pageSize]="pageSizeForValues" [(page)]="page"
                       [boundaryLinks]="false"></ngb-pagination>
     </div>
 

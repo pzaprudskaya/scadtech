@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {IPartners} from '../models/partners-page.model';
+import {IAllPartners, IPartners} from '../models/partners-page.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,17 @@ export class PartnersPageService {
   constructor(private http: HttpClient) {
   }
 
-  getPartners(): Observable<IPartners[]> {
-    return this.http.get<IPartners[]>(this.API_URL, this.httpOptions).pipe(
-      tap((data: IPartners[]) => console.log('Partners: ' + JSON.stringify(data))),
+  getPartners(viewPages, skipPages): Observable<IAllPartners> {
+    const p = new HttpParams()
+      .set('top', viewPages)
+      .set('skip', skipPages);
+    const httpOptions = {
+      mode: 'no-cors',
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: p,
+    };
+    return this.http.get<IAllPartners>(this.API_URL, httpOptions).pipe(
+      tap((data: IAllPartners) => console.log('Partners: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }

@@ -4,14 +4,14 @@
     <button routerLink='/edit-news/add'>Add new</button>
   </div>
   <div class="contacts-list">
-    <div *ngFor="let item of events | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" class="event">
+    <div *ngFor="let item of events" class="event">
       <app-item routerLink='/edit-news/{{item._id}}'
                 [item]="item"
                 [key]="'news'"></app-item>
       <i (click)="deleteItem(item)" class="close material-icons">close</i>
     </div>
   </div>
-  <ngb-pagination [collectionSize]="events.length" [pageSize]="pageSize" [(page)]="page"
+  <ngb-pagination (pageChange)="changePage($event)" [collectionSize]="countEvents" [pageSize]="pageSize" [(page)]="page"
                   [boundaryLinks]="false"></ngb-pagination>
 </div>
 

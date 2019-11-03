@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PartnersPageService} from '../../services/partners-page.service';
-import {IPartners} from '../../models/partners-page.model';
+import {IAllPartners, IPartners} from '../../models/partners-page.model';
 
 @Component({
   selector: 'app-partners-and-sertificates',
@@ -10,6 +10,7 @@ import {IPartners} from '../../models/partners-page.model';
 export class EditPartnersAndSertificatesComponent implements OnInit {
   headline = 'Partners and sertificates';
   partners;
+  countPartners;
   pageSize = 6;
   page = 1;
 
@@ -18,8 +19,9 @@ export class EditPartnersAndSertificatesComponent implements OnInit {
 
   ngOnInit() {
     this.partners = [];
-    this.partnersService.getPartners().subscribe((leaderships: IPartners[]) => {
-      this.partners = leaderships;
+    this.partnersService.getPartners(this.pageSize, this.pageSize * (this.page - 1)).subscribe((partners: IAllPartners) => {
+      this.countPartners = partners.count;
+      this.partners = partners.data;
     });
   }
 
@@ -30,5 +32,11 @@ export class EditPartnersAndSertificatesComponent implements OnInit {
       }
     });
     this.partnersService.deletePartner(partner).subscribe(() => console.log('Delete!'));
+  }
+  changePage(page) {
+    this.partnersService.getPartners(this.pageSize, this.pageSize * (page - 1)).subscribe((partners: IAllPartners) => {
+      this.countPartners = partners.count;
+      this.partners = partners.data;
+    });
   }
 }

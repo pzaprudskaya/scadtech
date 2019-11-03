@@ -1,0 +1,22 @@
+<div class="container">
+  <app-headline *ngIf="state === true" [title]="'Add new history event'"></app-headline>
+  <app-headline *ngIf="state === false" [title]="'Edit history event'"></app-headline>
+
+  <form [formGroup]="historyEvent">
+    <div class="form-group">
+      <h2>Year</h2>
+      <input type="text" formControlName="year">
+    </div>
+    <div class="form-group">
+      <h2>Caption</h2>
+      <input type="text" formControlName="caption">
+    </div>
+    <div class="form-group">
+      <h2>Description</h2>
+      <textarea class="description" type="text" formControlName="description"></textarea>
+    </div>
+  </form>
+
+  <button *ngIf="state === true" (click)="addHistoryEvent()">Add</button>
+  <button *ngIf="state === false" (click)="updateHistoryEvent()">Update</button>
+</div>
