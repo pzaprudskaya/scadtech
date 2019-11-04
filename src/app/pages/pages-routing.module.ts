@@ -25,7 +25,10 @@ const routes: Routes = [
   { path: 'about/our-leadership', component: OurLeadershipComponent},
   { path: 'production/produktsiya-', component: ProduktsiyaComponent},
   { path: 'production/procurement', component: ProcurementComponent},
-  { path: '', component: HomeComponent},
+  { path: '',
+    redirectTo: '/about',
+    pathMatch: 'full'
+  },
 ];
 
 const rootRouter: Routes = [

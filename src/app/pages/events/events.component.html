@@ -1,16 +1,20 @@
-<app-headline [title]="event.title"></app-headline>
-<div class="wysiwyg js-content">
-  <div class="block-content">
-    <time>{{event.date}}</time>
-    <div class="html" [innerHTML]="event.content"></div>
+
+<main>
+  <div class="content-wrapper">
+    <app-headline [title]="event.title"></app-headline>
+    <div class="wysiwyg js-content">
+      <div class="block-content">
+        <time>{{event.date}}</time>
+        <div class="html" [innerHTML]="event.content"></div>
+      </div>
+
+      <!--
+      <div class="news-pagination">
+        <div class="prev"><a routerLink='/about/news/{{toTranslit(prev)}}'><span>{{prev}}</span></a></div>
+        <div class="next"><a routerLink='/about/news/{{toTranslit(next)}}'><span>{{next}}</span></a></div>
+      </div>
+    -->
+
+    </div>
   </div>
-
-  <!--
-  <div class="news-pagination">
-    <div class="prev"><a routerLink='/about/news/{{toTranslit(prev)}}'><span>{{prev}}</span></a></div>
-    <div class="next"><a routerLink='/about/news/{{toTranslit(next)}}'><span>{{next}}</span></a></div>
-  </div>
--->
-
-</div>
-
+</main>

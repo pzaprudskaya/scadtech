@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { contacts} from '../../data';
+import {Component, OnInit} from '@angular/core';
+import {contacts} from '../../data';
 
 @Component({
   selector: 'app-contacts',
@@ -11,7 +11,8 @@ export class ContactsComponent implements OnInit {
   contacts;
   selectedContact: number;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.contacts = contacts;

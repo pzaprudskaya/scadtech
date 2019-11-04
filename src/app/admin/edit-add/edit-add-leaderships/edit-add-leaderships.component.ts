@@ -12,7 +12,7 @@ export class EditAddLeadershipsComponent implements OnInit {
 
   leaderModel = {
     name: [null, [Validators.required]],
-    post: [null, [Validators.required]],
+    position: [null, [Validators.required]],
     image: [null, [Validators.required]],
   };
   state: boolean;
@@ -44,7 +44,7 @@ export class EditAddLeadershipsComponent implements OnInit {
         this.leadership = Leadership[0];
         this.leader.controls.name.setValue(this.leadership.name);
         this.leader.controls.image.setValue(this.leadership.image);
-        this.leader.controls.post.setValue(this.leadership.post);
+        this.leader.controls.position.setValue(this.leadership.position);
       });
     }
   }
@@ -69,7 +69,7 @@ export class EditAddLeadershipsComponent implements OnInit {
     }
     this.leadership.name = this.leader.value.name;
     this.leadership.image = this.leader.value.image;
-    this.leadership.post = this.leader.value.post;
+    this.leadership.position = this.leader.value.position;
     this.leadershipsService.updateLeadership(this.leadership).subscribe(() => console.log('Update!'));
   }
 }

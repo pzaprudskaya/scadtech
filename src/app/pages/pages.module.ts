@@ -48,6 +48,9 @@ import {BlockComponent} from "./block/block.component";
     ProductionComponent,
     ProduktsiyaComponent
   ],
+  exports: [
+    BlockComponent
+  ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class PagesModule {

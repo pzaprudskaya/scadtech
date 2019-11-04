@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -22,9 +22,7 @@ import {ProcessesComponent} from './processes/processes.component';
 import {ProjectsComponent} from './projects/projects.component';
 import {ScadTechComponent} from './scad-tech/scad-tech.component';
 import {AboutUsComponent} from './about-us/about-us.component';
-import {PopupComponent} from './popup/popup.component';
 import {EventItemComponent} from './event-item/event-item.component';
-import {TextareaComponent} from './textarea/textarea.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
 
 
@@ -49,9 +47,7 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     ScadTechComponent,
     ProjectsComponent,
     ProcessesComponent,
-    PopupComponent,
     EventItemComponent,
-    TextareaComponent,
   ],
   imports: [
     NgbModule,
@@ -60,6 +56,8 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     CommonModule,
     DragDropModule,
     EditorModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     DocumentComponent,
@@ -78,9 +76,7 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     ScadTechComponent,
     ProjectsComponent,
     ProcessesComponent,
-    PopupComponent,
     EventItemComponent,
-    TextareaComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

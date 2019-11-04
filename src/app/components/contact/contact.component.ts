@@ -10,8 +10,6 @@ export class ContactComponent implements OnInit {
   @Input() selected: boolean;
   constructor() { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
 }
