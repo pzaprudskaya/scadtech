@@ -3,6 +3,7 @@ import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
 import {IValue} from "../../admin/models/about-company-page.model";
 import {ValuesService} from "../../admin/services/values.service";
 import {ActivatedRoute} from "@angular/router";
+import {FeedbackService} from "../../admin/services/feedback.service";
 
 @Component({
   selector: 'app-feedback-window',
@@ -28,8 +29,7 @@ export class FeedbackWindowComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder,
-              private valuesService: ValuesService,
-              private route: ActivatedRoute) {
+              private feedbackService: FeedbackService) {
   }
 
   ngOnInit() {
@@ -47,6 +47,6 @@ export class FeedbackWindowComponent implements OnInit {
     if (this.feedbackForm.invalid) {
       return;
     }
-    this.valuesService.addValue(this.feedbackForm.value).subscribe(() => console.log('Add!'));
+    this.feedbackService.addFeedback(this.feedbackForm.value).subscribe(() => console.log('Add!'));
   }
 }
