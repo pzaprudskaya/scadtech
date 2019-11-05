@@ -1,0 +1,41 @@
+<div class="container">
+    <app-headline [title]="'Обратная связь'"></app-headline>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>ФИО</th>
+          <th>Эл. почта</th>
+          <th>Моб. телефон</th>
+          <th>Текст</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let feedback of feedbacks">
+          <td *ngIf="feedback.unread === true">
+            <div class="circle__true"></div>
+          </td>
+          <td *ngIf="feedback.unread === false">
+            <div class="circle__false"></div>
+          </td>
+          <td (click)="openFeedback(feedback)">{{feedback.surname}} {{feedback.name[0]}} {{feedback.middleName[0]}}</td>
+          <td>{{feedback.email}}</td>
+          <td>{{feedback.phone}}</td>
+          <td>{{feedback.text.slice(0, 30)}}...</td>
+          <td ><i class="material-icons">edit</i></td>
+          <td><i class="material-icons" (click)="deleteFeedback(feedback)">close</i></td>
+        </tr>x
+      </tbody>
+    </table>
+    <div class="navigation">
+      <ngb-pagination (pageChange)="changePage($event)" [collectionSize]="countFeedbacks" [pageSize]="pageSizeFeedbacks" [(page)]="page"
+                      [boundaryLinks]="false"></ngb-pagination>
+    </div>
+
+  </div>
+
+
+

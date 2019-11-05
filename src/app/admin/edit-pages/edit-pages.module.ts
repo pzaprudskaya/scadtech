@@ -17,6 +17,7 @@ import {EditComponentsModule} from '../edit-components/edit-components.module';
 import {EditAddModule} from '../edit-add/edit-add-pages.module';
 import {EditProductionComponent} from './production/production.component';
 import { AuthComponent } from '../auth/auth.component';
+import {FeedbackViewComponent} from "./view-feedback/feedback-view.component";
 
 
 
@@ -41,7 +42,8 @@ import { AuthComponent } from '../auth/auth.component';
     EditNewsPageComponent,
     EditOurLeadershipComponent,
     EditPartnersAndSertificatesComponent,
-    EditProductionComponent
+    EditProductionComponent,
+    FeedbackViewComponent
   ],
   exports: [
     EditPagesComponent,
@@ -51,7 +53,8 @@ import { AuthComponent } from '../auth/auth.component';
     EditNewsPageComponent,
     EditOurLeadershipComponent,
     EditPartnersAndSertificatesComponent,
-    EditProductionComponent
+    EditProductionComponent,
+    FeedbackViewComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })

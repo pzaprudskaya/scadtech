@@ -1,0 +1,112 @@
+.container
+  margin: 20px 100px
+
+button
+  margin-left: auto
+  margin-top: 10px
+  margin-bottom: 30px
+  font-size: 18px
+  padding: 10px
+  color: #f2264d
+  background: white
+  border: 1px solid #f2264d
+  display: flex
+  align-items: center
+  justify-content: center
+button:hover
+  color: white
+  background: #f2264d
+  i
+    color: white
+.inline, .event
+  display: flex
+i
+  font-size: 30px
+  cursor: pointer
+input
+  width: 100%
+  height: 40px
+  margin-bottom: 20px
+.content
+  margin-bottom: 20px
+
+.add i
+  color: #f2264d
+table
+  margin: 20px 0
+  background: white
+  width: 100%
+  td
+    padding: 10px
+  th
+    padding: 0 10px
+  tr
+    height: 50px
+    border: 1px solid #f2264d
+  thead
+    font-size: 20px
+    background: #f2264d
+    color: white
+
+  tbody
+    font-size: 16px
+  img
+    height: 80px
+    margin: 0 20px
+
+ngb-pagination::ng-deep
+  .pagination
+    display: flex
+    justify-content: center
+    background: transparent
+    margin-bottom: 40px
+  .page-item.active .page-link
+    color: #fff
+    background-color: #f2264d
+    border: none
+  .page-link
+    color: #f2264d
+    background-color: transparent
+    border: none
+
+  .page-link span:before
+    content: ''
+    position: absolute
+    width: 27px
+    height: 4px
+    background: url(/assets/sprite.svg) -308px -605px no-repeat
+    left: 50%
+    top: 50%
+    -ms-transform: translateX(-50%) translateY(-50%)
+    transform: translateX(-50%) translateY(-50%)
+
+  .disabled span:before
+    content: ''
+    position: absolute
+    width: 27px
+    height: 4px
+    background: url(/assets/sprite.svg) -277px -605px no-repeat
+    left: 50%
+    top: 50%
+    -ms-transform: translateX(-50%) translateY(-50%)
+    transform: translateX(-50%) translateY(-50%)
+  span
+    color: transparent
+  [aria-label = 'Previous']
+    transform: rotateY(180deg)
+  .page-item
+    margin: 0 5px
+
+
+
+.table
+  height: 500px
+.circle__true
+  border-radius: 50%
+  width: 10px
+  background-color: #f2264d
+.circle__false
+  border-radius: 50%
+  width: 10px
+  border: 1px solid #f2264d
+  background-color: white
