@@ -61,10 +61,15 @@ export class EditAddValuesComponent implements OnInit {
     if (this.value.invalid) {
       return;
     }
+    const formData = new FormData();
+    formData.append('image', this.value.value.image);
     this.worth.image = this.value.value.image;
     this.worth.name = this.value.value.name;
     this.worth.description = this.value.value.description;
-    this.valuesService.updateValue(this.worth).subscribe(() => console.log('Update!'));
+    this.valuesService.updateValue(this.worth).subscribe((value) => {
+      this.valuesService.addImage(value[0]._id, formData).subscribe(() => console.log('Add Image!'));
+    });
+
   }
 }
 

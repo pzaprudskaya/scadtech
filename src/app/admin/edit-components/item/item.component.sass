@@ -1,3 +1,4 @@
+@import 'src/styles'
 .col
   box-sizing: border-box
   min-height: 1px
@@ -20,7 +21,7 @@
 
 .col:hover
   .title
-    color: #f2264d
+    color: $main-color
   .icon
     color: white
     background: rgba(black, 0.5)
@@ -28,7 +29,7 @@
 
 a
   background-color: transparent
-  color: #f2264d
+  color: $main-color
   text-decoration: underline
 .cover
   display: table-footer-group
@@ -54,7 +55,7 @@ p
   color: #333
 
 .close
-  color: red
+  color: $main-color
   cursor: pointer
 .inline
   display: flex

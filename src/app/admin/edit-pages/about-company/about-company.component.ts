@@ -17,6 +17,7 @@ export class EditAboutCompanyComponent implements OnInit {
   pageSizeForValues = 3;
   countValues;
   page = 1;
+  pageValue = 1;
 
   aboutModel = {
     title: [null, [Validators.required]],
@@ -50,7 +51,7 @@ export class EditAboutCompanyComponent implements OnInit {
       this.aboutCompany.controls.title.setValue(this.about.title);
       this.aboutCompany.controls.content.setValue(this.about.content);
     });
-    this.valuesService.getValues(this.pageSizeForHistory, this.pageSizeForHistory * (this.page - 1)).subscribe((values: IAllValues) => {
+    this.valuesService.getValues(this.pageSizeForHistory, this.pageSizeForHistory * (this.pageValue - 1)).subscribe((values: IAllValues) => {
       this.countValues = values.count;
       this.values = values.data;
     });

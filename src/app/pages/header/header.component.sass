@@ -1,3 +1,4 @@
+@import 'src/styles'
 *
   margin: 0
   padding: 0
@@ -116,7 +117,7 @@ ul
 
 .header-menu li:hover
   a
-    color: #f2264d
+    color: $main-color
     border-color: transparent
 
 .list li
@@ -131,7 +132,7 @@ ul
     color: black !important
     transition: background-color .3s linear
     &:hover
-      background-color: #f2264d
+      background-color: $main-color
       color: white
 
 
@@ -149,7 +150,7 @@ ul
   color: #333
   font-size: 14px
   font-weight: 400
-  border-bottom: 1px solid #f2264d
+  border-bottom: 1px solid $main-color
   transition: .3s color,.3s border-color
 
 .header-menu > li
@@ -157,11 +158,11 @@ ul
   margin-right: 20px
   position: relative
 .active
-  color: #f2264d !important
+  color: $main-color !important
 a .header-phone, a .header-mail
   text-decoration: none
 .header-mail
-  color: #f2264d
-  border-bottom: 1px solid #f2264d
+  color: $main-color
+  border-bottom: 1px solid $main-color
 .header-phone
   color: #333

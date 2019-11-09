@@ -1,3 +1,4 @@
+@import 'src/styles'
 main
   flex: 1 0 auto
 .content-wrapper
@@ -19,7 +20,7 @@ main
   padding-top: 35px
   padding-bottom: 80px
   color: #fefefe
-  background-color: #f2264d
+  background-color: $main-color
   z-index: 200
 .info-content
   height: 100%
@@ -71,7 +72,7 @@ h1:before
   height: 2px
   right: calc(100% + 28px)
   top: 29px
-  background-color: #f2264d
+  background-color: $main-color
 
 h1
   display: block
@@ -106,13 +107,13 @@ main
 .carousel-control-next-icon:after
   content: '>'
   font-size: 55px
-  color: red
+  color: $main-color
 
 
 .carousel-control-prev-icon:after
   content: '<'
   font-size: 55px
-  color: red
+  color: $main-color
 .image_two
   margin-left: auto
 .carousel__

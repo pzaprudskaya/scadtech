@@ -1,3 +1,4 @@
+@import 'src/styles'
 .map-container
   width: 100vw
   height: 100vh
@@ -70,7 +71,7 @@ p.small, .wysiwyg table td
 
 .btn, .btn.bg-red:hover
   background-color: transparent
-  color: #f2264d
+  color: $main-color
 
 .btn
   display: inline-block
@@ -80,7 +81,7 @@ p.small, .wysiwyg table td
   height: 38px
   padding: 9px 6px
   box-sizing: border-box
-  border: 1px solid #f2264d
+  border: 1px solid $main-color
   font: 14px/1.42 'Roboto',sans-serif
   text-decoration: none
   cursor: pointer
@@ -90,11 +91,11 @@ p.small, .wysiwyg table td
 a
   background-color: transparent
   -text-decoration-skip: objects
-  color: #f2264d
+  color: $main-color
   text-decoration: underline
 
 span, .btn.btn-arrow.white, .btn.btn-arrow.white:hover span
-  background-color: #f2264d
+  background-color: $main-color
 
 .btn.btn-arrow span
   width: 27px

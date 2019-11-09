@@ -1,3 +1,4 @@
+@import 'src/styles'
 main
   flex: 1 0 auto
 .content-wrapper
@@ -26,7 +27,7 @@ h1:before
   height: 2px
   right: calc(100% + 28px)
   top: 29px
-  background-color: #f2264d
+  background-color: $main-color
 
 
 
@@ -47,7 +48,7 @@ h1:before
 a
   background-color: transparent
   -text-decoration-skip: objects
-  color: #f2264d
+  color: $main-color
   text-decoration: underline
 .page-procurement .btn-wrapper
   text-align: center
@@ -67,7 +68,7 @@ a
   top: 0
   counter-increment: olCounter
   content: counter(olCounter)
-  color: #f2264d
+  color: $main-color
   font-weight: 700
   margin: 0 2px 0 0
 
@@ -76,7 +77,7 @@ a
   margin: 30px 0
 .btn, .btn.bg-red:hover
   background-color: transparent
-  color: #f2264d
+  color: $main-color
 
 .btn
   display: inline-block
@@ -85,7 +86,7 @@ a
   min-width: 146px
   height: 38px
   padding: 9px 6px
-  border: 1px solid #f2264d
+  border: 1px solid $main-color
   font-size: 14px
   text-decoration: none
   cursor: pointer
@@ -123,12 +124,12 @@ button
   margin-top: 20px
   font-size: 14px
   padding: 10px 30px
-  color: #f2264d
+  color: $main-color
   background: white
-  border: 1px solid #f2264d
+  border: 1px solid $main-color
 button:hover
   color: white
-  background: #f2264d
+  background: $main-color
 .button
   display: flex
   justify-content: center

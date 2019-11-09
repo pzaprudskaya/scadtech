@@ -1,3 +1,4 @@
+@import 'src/styles'
 main
   flex: 1 0 auto
 .content-wrapper
@@ -57,7 +58,7 @@ ol>li:before, .wysiwyg ul ol>li:before, ol>li:before, ul ol>li:before
   top: 0
   counter-increment: olCounter
   content: counter(olCounter)
-  color: #f2264d
+  color: $main-color
   font-weight: 700
   margin: 0 2px 0 0
 
@@ -72,8 +73,8 @@ ol>li:before, .wysiwyg ul ol>li:before, ol>li:before, ul ol>li:before
   min-width: 215px
   height: 38px
   box-sizing: border-box
-  border: 1px solid #f2264d
-  color: #f2264d
+  border: 1px solid $main-color
+  color: $main-color
   font: 14px/1.42 'Roboto',sans-serif
   transition: .3s color,.3s background-color
   margin-top: 3px
@@ -81,7 +82,7 @@ ol>li:before, .wysiwyg ul ol>li:before, ol>li:before, ul ol>li:before
 a
   background-color: transparent
   -text-decoration-skip: objects
-  color: #f2264d
+  color: $main-color
   text-decoration: underline
 
 .link span
@@ -90,7 +91,7 @@ a
   margin-left: 10px
   margin-right: -14px
   display: inline-block
-  background-color: #f2264d
+  background-color: $main-color
   position: relative
   transition: .3s background-color,.3s width,.3s margin
 
@@ -102,15 +103,15 @@ a
   top: -1px
   border-style: solid
   border-width: 1.5px 0 1.5px 2px
-  border-color: transparent transparent transparent #f2264d
+  border-color: transparent transparent transparent $main-color
 button
   margin-top: 20px
   font-size: 14px
   padding: 10px 50px
-  color: #f2264d
+  color: $main-color
   background: white
-  border: 1px solid #f2264d
+  border: 1px solid $main-color
 button:hover
   color: white
-  background: #f2264d
+  background: $main-color
 

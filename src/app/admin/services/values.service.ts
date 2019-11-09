@@ -9,7 +9,7 @@ import {IAllValues, IValue} from '../models/about-company-page.model';
 })
 
 export class ValuesService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/worth';
+  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/worths';
 
   httpOptions = {
     mode: 'no-cors',
@@ -68,5 +68,9 @@ export class ValuesService {
     console.error(errorMessage);
     return throwError(errorMessage);
   }
-
+  addImage(id: string, formData) {
+    return this.http.post<IValue>(`this.API_URL/${id}/image`, formData, this.httpOptions).pipe(
+      tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+      catchError(this.handleError));
+  }
 }

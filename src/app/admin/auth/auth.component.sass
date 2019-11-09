@@ -1,3 +1,4 @@
+@import 'src/styles'
 .content
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEUAAACZmZl+9SADAAAAAnRSTlMAM8lDrC4AAAAOSURBVAjXY0AGPCCEDAABkgAZ9NAiqAAAAABJRU5ErkJggg==)
   height: -webkit-fill-available
@@ -6,7 +7,7 @@
   align-items: center
 .form
   background: white
-  border: 1px solid #f2264d
+  border: 1px solid $main-color
   width: 500px
   padding: 30px
   input
@@ -18,12 +19,12 @@ button
   margin-top: 20px
   font-size: 18px
   padding: 10px
-  color: #f2264d
+  color: $main-color
   background: white
-  border: 1px solid #f2264d
+  border: 1px solid $main-color
 button:hover
   color: white
-  background: #f2264d
+  background: $main-color
 .button, .logo
   display: flex
   justify-content: center

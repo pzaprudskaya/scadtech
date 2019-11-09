@@ -75,10 +75,11 @@ export class EditAddNewsComponent implements OnInit {
     }
     this.event.title = this.addNews.value.title;
     this.event.date = this.addNews.value.date;
+    debugger;
     this.event.previewImage = this.addNews.value.previewImage;
     this.event.preview = this.addNews.value.preview;
     this.event.content = this.addNews.value.content;
-    this.newsService.updateEvent(this.event).subscribe(() => console.log('Update!'));
+    this.newsService.updateEvent(this.event).subscribe((event) => {console.log('Update!')});
   }
 }
 

@@ -2,7 +2,7 @@
   <div *ngIf="item.previewImage.length !== 0" class="cover" [ngStyle]="{'background-image': 'url(' + item.previewImage + ')'}">
     <i class="icon material-icons">edit</i>
   </div>
-  <div *ngIf="item.previewImage.length === 0" class="cover" [ngStyle]="{'background-color': '#f2264d'}">
+  <div *ngIf="item.previewImage.length === 0" class="cover" [ngStyle]="{'background-color': '$main-color'}">
     <i class="icon material-icons">edit</i>
   </div>
   <p class="date">{{item.date}}</p>
@@ -12,7 +12,7 @@
   <div *ngIf="item.image.length !== 0" class="cover" [ngStyle]="{'background-image': 'url(' + item.image + ')'}">
     <i class="icon material-icons">edit</i>
   </div>
-  <div *ngIf="item.image.length === 0" class="cover" [ngStyle]="{'background-color': '#f2264d'}">
+  <div *ngIf="item.image.length === 0" class="cover" [ngStyle]="{'background-color': '$main-color'}">
     <i class="icon material-icons">edit</i>
   </div>
   <p class="title">{{item.name}}</p>
@@ -22,7 +22,7 @@
   <div *ngIf="item.image.length !== 0" class="cover" [ngStyle]="{'background-image': 'url(' + item.image + ')'}">
     <i class="icon material-icons">edit</i>
   </div>
-  <div *ngIf="item.image.length === 0" class="cover" [ngStyle]="{'background-color': '#f2264d'}">
+  <div *ngIf="item.image.length === 0" class="cover" [ngStyle]="{'background-color': '$main-color'}">
     <i class="icon material-icons">edit</i>
   </div>
   <p class="title">{{item.name}}</p>
@@ -32,7 +32,7 @@
   <div *ngIf="item.image.length !== 0" class="image" [ngStyle]="{'background-image': 'url(' + item.image + ')', 'background-repeat': 'no-repeat'}">
     <i class="icon material-icons">edit</i>
   </div>
-  <div *ngIf="item.image.length === 0" class="image" [ngStyle]="{'background-color': '#f2264d'}">
+  <div *ngIf="item.image.length === 0" class="image" [ngStyle]="{'background-color': '$main-color'}">
     <i class="icon material-icons">edit</i>
   </div>
   <p class="title">{{item.name}}</p>

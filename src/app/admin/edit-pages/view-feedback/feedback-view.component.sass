@@ -1,3 +1,4 @@
+@import 'src/styles'
 .container
   margin: 20px 100px
 
@@ -7,15 +8,15 @@ button
   margin-bottom: 30px
   font-size: 18px
   padding: 10px
-  color: #f2264d
+  color: $main-color
   background: white
-  border: 1px solid #f2264d
+  border: 1px solid $main-color
   display: flex
   align-items: center
   justify-content: center
 button:hover
   color: white
-  background: #f2264d
+  background: $main-color
   i
     color: white
 .inline, .event
@@ -31,7 +32,7 @@ input
   margin-bottom: 20px
 
 .add i
-  color: #f2264d
+  color: $main-color
 table
   margin: 20px 0
   background: white
@@ -42,10 +43,10 @@ table
     padding: 0 10px
   tr
     height: 50px
-    border: 1px solid #f2264d
+    border: 1px solid $main-color
   thead
     font-size: 20px
-    background: #f2264d
+    background: $main-color
     color: white
 
   tbody
@@ -62,10 +63,10 @@ ngb-pagination::ng-deep
     margin-bottom: 40px
   .page-item.active .page-link
     color: #fff
-    background-color: #f2264d
+    background-color: $main-color
     border: none
   .page-link
-    color: #f2264d
+    color: $main-color
     background-color: transparent
     border: none
 
@@ -104,9 +105,9 @@ ngb-pagination::ng-deep
 .circle__true
   border-radius: 50%
   width: 10px
-  background-color: #f2264d
+  background-color: $main-color
 .circle__false
   border-radius: 50%
   width: 10px
-  border: 1px solid #f2264d
+  border: 1px solid $main-color
   background-color: white
