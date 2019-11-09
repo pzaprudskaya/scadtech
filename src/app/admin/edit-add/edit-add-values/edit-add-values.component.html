@@ -5,7 +5,7 @@
   <form [formGroup]="value">
     <div class="form-group">
       <h2>Фотография</h2>
-      <input type="file" formControlName="image">
+      <input type="file" formControlName="image" (change)="showPreview($event)">
     </div>
     <div class="form-group">
       <h2>Название</h2>

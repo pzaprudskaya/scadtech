@@ -10,6 +10,8 @@ import {ValuesService} from '../../services/values.service';
 })
 export class EditAddValuesComponent implements OnInit {
 
+  imageURL: any;
+
   valueModel = {
     image: [null, [Validators.required]],
     name: [null, [Validators.required]],
@@ -46,13 +48,22 @@ export class EditAddValuesComponent implements OnInit {
     }
   }
 
+  showPreview(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.imageURL = file;
+  }
+
   addValue() {
     this.value.markAllAsTouched();
+    const formData = new FormData();
+    formData.append('image', this.imageURL);
 
     if (this.value.invalid) {
       return;
     }
-    this.valuesService.addValue(this.value.value).subscribe( () => console.log('Add!'));
+    this.valuesService.addValue(this.value.value).subscribe((value) => {
+      this.valuesService.addImage(value._id, formData).subscribe(() => console.log('Add Image!'));
+    });
   }
 
   updateValue() {
@@ -62,7 +73,7 @@ export class EditAddValuesComponent implements OnInit {
       return;
     }
     const formData = new FormData();
-    formData.append('image', this.value.value.image);
+    formData.append('image', this.imageURL);
     this.worth.image = this.value.value.image;
     this.worth.name = this.value.value.name;
     this.worth.description = this.value.value.description;
