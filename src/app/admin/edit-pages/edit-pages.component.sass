@@ -1,4 +1,4 @@
-@import 'src/styles'
+@import 'src/app/app.component'
 .page
   min-height: 100%
   min-height: 100vh
@@ -7,15 +7,14 @@
   flex-direction: column
 
   .header p
-    padding-top: 20px
-    padding-left: 20px
-    font-size: 1.75rem
-    white-space: nowrap
-    text-decoration: none
-    color: #999
-  header
-    padding: 0 20px
     display: flex
+    align-items: center
+    font-size: 25px
+    color: gray
+  header
+    padding: 20px 20px
+    display: flex
+    width: 100%
   .header
     background: white
     min-height: 70px
@@ -33,13 +32,13 @@
 
   .side-bar
     min-width: 100px
-    width: 200px
+    max-width: 300px
     overflow-y: auto
     min-height: 0px
 
 
   .main-bar
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEUAAACZmZl+9SADAAAAAnRSTlMAM8lDrC4AAAAOSURBVAjXY0AGPCCEDAABkgAZ9NAiqAAAAABJRU5ErkJggg==)
+    background: $imageBack
     box-shadow: 5px 0 5px -5px rgba(44,51,73,.1)
     flex: 1 1 auto
     overflow-y: auto
@@ -67,3 +66,15 @@
     margin-left: 10px
   a:active, a:focus, i:active, i:focus
     color: $main-color
+
+
+.header
+  i
+    margin-left: auto
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 35px
+    color: $main-color
+    cursor: pointer
+

@@ -17,7 +17,9 @@ import {EditComponentsModule} from '../edit-components/edit-components.module';
 import {EditAddModule} from '../edit-add/edit-add-pages.module';
 import {EditProductionComponent} from './production/production.component';
 import { AuthComponent } from '../auth/auth.component';
-import {FeedbackViewComponent} from "./view-feedback/feedback-view.component";
+import {FeedbackViewComponent} from './view-feedback/feedback-view.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 
 
@@ -32,7 +34,8 @@ import {FeedbackViewComponent} from "./view-feedback/feedback-view.component";
     EditorModule,
     ReactiveFormsModule,
     EditComponentsModule,
-    EditAddModule
+    EditAddModule,
+    ColorPickerModule
   ],
   declarations: [
     EditPagesComponent,
@@ -43,7 +46,8 @@ import {FeedbackViewComponent} from "./view-feedback/feedback-view.component";
     EditOurLeadershipComponent,
     EditPartnersAndSertificatesComponent,
     EditProductionComponent,
-    FeedbackViewComponent
+    FeedbackViewComponent,
+    ProfileComponent
   ],
   exports: [
     EditPagesComponent,
@@ -54,7 +58,8 @@ import {FeedbackViewComponent} from "./view-feedback/feedback-view.component";
     EditOurLeadershipComponent,
     EditPartnersAndSertificatesComponent,
     EditProductionComponent,
-    FeedbackViewComponent
+    FeedbackViewComponent,
+    ProfileComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })

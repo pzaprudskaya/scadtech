@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="inline">
+    <app-headline [title]="'Change design'"></app-headline>
+    <button (click)="save()">Save</button>
+  </div>
+  <div class="color">
+    <h3>Change text color: </h3>
+    <input class="input-color" [style.background]="color" [(colorPicker)]="color" (colorPickerChange)="changeColor($event)"/>
+  </div>
+  <div class="logo">
+    <h3>Change logo (type ".svg"): </h3>
+    <input type="file" accept=".svg">
+  </div>
+  <form [formGroup]="profileForm">
+    <div class="background">
+      <h3>Change background (type ".png"): </h3>
+      <input type="file" accept=".png" (change)="changeBackground()" formControlName="background">
+    </div>
+  </form>
+
+</div>
