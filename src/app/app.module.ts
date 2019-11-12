@@ -1,18 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import 'hammerjs';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { PagesModule } from './pages/pages.module';
-import { ComponentsModule } from './components/components.module';
-import { FeedbackWindowComponent } from './components/feedback-window/feedback-window.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {AngularFullpageModule} from '@fullpage/angular-fullpage';
 import {EditPagesModule} from './admin/edit-pages/edit-pages.module';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {EditAddModule} from './admin/edit-add/edit-add-pages.module';
-import {AuthModule} from './admin/auth/auth.module';
+import {AuthModule} from './auth/auth.module';
+import {ComponentsModule} from './user/components/components.module';
+import {PagesModule} from './user/pages/pages.module';
+import {FeedbackWindowComponent} from './user/components/feedback-window/feedback-window.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +31,9 @@ import {AuthModule} from './admin/auth/auth.module';
     HttpClientModule
   ],
   providers: [],
-  entryComponents: [ FeedbackWindowComponent ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  bootstrap: [ AppComponent ]
+  entryComponents: [FeedbackWindowComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

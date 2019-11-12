@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
-import {IEvent} from '../../models/news-page.model';
-import {NewsPageService} from '../../services/news-page.service';
 import {ActivatedRoute} from '@angular/router';
+import {IEvent} from '../../../shared/models/news-page.model';
+import {NewsPageService} from '../../../shared/services/news-page.service';
 
 @Component({
   styleUrls: ['./edit-add-news.component.sass'],
@@ -75,11 +75,10 @@ export class EditAddNewsComponent implements OnInit {
     }
     this.event.title = this.addNews.value.title;
     this.event.date = this.addNews.value.date;
-    debugger;
     this.event.previewImage = this.addNews.value.previewImage;
     this.event.preview = this.addNews.value.preview;
     this.event.content = this.addNews.value.content;
-    this.newsService.updateEvent(this.event).subscribe((event) => {console.log('Update!')});
+    this.newsService.updateEvent(this.event).subscribe((event) => console.log('Update!'));
   }
 }
 

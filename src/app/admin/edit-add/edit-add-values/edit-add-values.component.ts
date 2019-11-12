@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {IValue} from '../../models/about-company-page.model';
-import {ValuesService} from '../../services/values.service';
+import {IValue} from '../../../shared/models/about-company-page.model';
+import {ValuesService} from '../../../shared/services/values.service';
 
 @Component({
   styleUrls: ['./edit-add-values.component.sass'],

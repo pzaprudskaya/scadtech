@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {ContactsPageService} from '../../services/contacts-page.service';
-import {IContact} from '../../models/contacts-page.model';
+import {IContact} from '../../../shared/models/contacts-page.model';
+import {ContactsPageService} from '../../../shared/services/contacts-page.service';
 
 @Component({
   styleUrls: ['./edit-add-conacts.component.sass'],

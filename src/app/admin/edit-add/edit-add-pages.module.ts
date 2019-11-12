@@ -3,7 +3,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {ComponentsModule} from '../../components/components.module';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {EditComponentsModule} from '../edit-components/edit-components.module';
 import {EditAddLeadershipsComponent} from './edit-add-leaderships/edit-add-leaderships.component';
@@ -11,9 +10,10 @@ import {EditAddPartnersComponent} from './edit-add-partners/edit-add-partners.co
 import {EditAddNewsComponent} from './edit-add-news/edit-add-news.component';
 import {EditAddConactsComponent} from './edit-add-conacts/edit-add-conacts.component';
 import {EditAddHistoryEventComponent} from './edit-add-history-event/edit-add-history-event.component';
-import {EditAddValuesComponent} from "./edit-add-values/edit-add-values.component";
-import {EditAddDocumentComponent} from "./edit-add-document/edit-add-document.component";
-import {EditAddProductComponent} from "./edit-add-product/edit-add-product.component";
+import {EditAddValuesComponent} from './edit-add-values/edit-add-values.component';
+import {EditAddProductComponent} from './edit-add-product/edit-add-product.component';
+import {EditAddDocumentComponent} from './edit-add-document/edit-add-document.component';
+import {ComponentsModule} from '../../user/components/components.module';
 
 
 @NgModule({

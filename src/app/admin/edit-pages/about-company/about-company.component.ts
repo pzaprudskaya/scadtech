@@ -1,9 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {AboutService} from '../../services/about.service';
-import {IAbout, IAllHistoryEvents, IAllValues, IHistoryEvent, IValue} from '../../models/about-company-page.model';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import {ValuesService} from '../../services/values.service';
-import {HistoryEventsService} from '../../services/history-events.service';
+import {ValuesService} from '../../../shared/services/values.service';
+import {
+  IAbout,
+  IAllHistoryEvents,
+  IAllValues,
+  IHistoryEvent,
+  IValue
+} from '../../../shared/models/about-company-page.model';
+import {AboutService} from '../../../shared/services/about.service';
+import {HistoryEventsService} from '../../../shared/services/history-events.service';
 
 
 @Component({
@@ -90,6 +96,7 @@ export class EditAboutCompanyComponent implements OnInit {
       this.historyEvents = historyEvents.data;
     });
   }
+
   changePageValues(page) {
     this.valuesService.getValues(this.pageSizeForValues, this.pageSizeForValues * (page - 1)).subscribe((values: IAllValues) => {
       this.values = values.data;

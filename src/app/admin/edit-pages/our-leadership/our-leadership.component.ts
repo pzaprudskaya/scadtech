@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {LeadershipsPageService} from '../../services/leaderships-page.service';
-import {IAllLeaderships, ILeadership} from '../../models/leaderships-page.model';
+import {LeadershipsPageService} from '../../../shared/services/leaderships-page.service';
+import {IAllLeaderships, ILeadership} from '../../../shared/models/leaderships-page.model';
 
 @Component({
   selector: 'app-edit-our-leadership',

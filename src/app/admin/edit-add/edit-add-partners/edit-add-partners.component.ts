@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {IPartners} from '../../models/partners-page.model';
-import {PartnersPageService} from '../../services/partners-page.service';
-
+import {PartnersPageService} from '../../../shared/services/partners-page.service';
+import {IPartners} from '../../../shared/models/partners-page.model';
 @Component({
   styleUrls: ['./edit-add-partners.component.sass'],
   templateUrl: './edit-add-partners.component.html',
@@ -41,7 +40,6 @@ export class EditAddPartnersComponent implements OnInit {
     } else {
       this.state = false;
       this.partnersService.getPartner(this.route.snapshot.params.id).subscribe((member: IPartners) => {
-        debugger;
         this.partner.controls.name.setValue(member[0].name);
         this.partner.controls.image.setValue(member[0].image);
         this.partner.controls.description.setValue(member[0].description);

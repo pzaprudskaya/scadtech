@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {IEvent} from '../../models/news-page.model';
-import {ProductsService} from '../../services/products.service';
-import {IProduct} from '../../models/products.model';
+import {IEvent} from '../../../shared/models/news-page.model';
+import {IProduct} from '../../../shared/models/products.model';
+import {ProductsService} from '../../../shared/services/products.service';
 
 @Component({
   styleUrls: ['./edit-add-product.component.sass'],

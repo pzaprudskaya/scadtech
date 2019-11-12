@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FeedbackService} from '../../services/feedback.service';
-import {IAllFeedbacks, IFeedback} from '../../models/feedback.model';
+import {FeedbackService} from '../../../shared/services/feedback.service';
+import {IAllFeedbacks, IFeedback} from '../../../shared/models/feedback.model';
 import {Router} from '@angular/router';
-import {__importDefault} from "tslib";
 
 
 @Component({

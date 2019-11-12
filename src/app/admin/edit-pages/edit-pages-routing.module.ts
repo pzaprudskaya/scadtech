@@ -16,7 +16,7 @@ import {EditAddValuesComponent} from '../edit-add/edit-add-values/edit-add-value
 import {EditAddDocumentComponent} from '../edit-add/edit-add-document/edit-add-document.component';
 import {EditProductionComponent} from './production/production.component';
 import {EditAddProductComponent} from '../edit-add/edit-add-product/edit-add-product.component';
-import {ProfileComponent} from "./profile/profile.component";
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
@@ -44,7 +44,7 @@ const routes: Routes = [
 ];
 const rootRouters: Routes = [
   {path: '', component: EditPagesComponent, children: routes}
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(rootRouters)],

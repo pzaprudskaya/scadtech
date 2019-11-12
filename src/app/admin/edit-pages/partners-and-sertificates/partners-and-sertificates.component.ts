@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {PartnersPageService} from '../../services/partners-page.service';
-import {IAllPartners} from '../../models/partners-page.model';
+import {PartnersPageService} from '../../../shared/services/partners-page.service';
+import {IAllPartners} from '../../../shared/models/partners-page.model';
 
 @Component({
   selector: 'app-partners-and-sertificates',

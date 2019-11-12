@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {IHistoryEvent} from '../../models/about-company-page.model';
-import {HistoryEventsService} from '../../services/history-events.service';
+import {HistoryEventsService} from '../../../shared/services/history-events.service';
+import {IHistoryEvent} from '../../../shared/models/about-company-page.model';
 
 @Component({
   styleUrls: ['./edit-add-history-event.component.sass'],

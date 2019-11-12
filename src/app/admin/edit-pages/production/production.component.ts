@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductsService} from '../../services/products.service';
-import {IAllProducts} from '../../models/products.model';
-import {ProductionService} from '../../services/production.service';
+import {ProductsService} from '../../../shared/services/products.service';
+import {IAllProducts} from '../../../shared/models/products.model';
+import {ProductionService} from '../../../shared/services/production.service';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import {IAbout} from '../../models/about-company-page.model';
+import {IAbout} from '../../../shared/models/about-company-page.model';
 
 @Component({
   templateUrl: './production.component.html',

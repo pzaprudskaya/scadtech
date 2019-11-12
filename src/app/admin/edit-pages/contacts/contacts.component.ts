@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {IAllContacts, IContact} from '../../models/contacts-page.model';
-import {ContactsPageService} from '../../services/contacts-page.service';
+import {IAllContacts} from '../../../shared/models/contacts-page.model';
+import {ContactsPageService} from '../../../shared/services/contacts-page.service';
 
 @Component({
   selector: 'app-edit-contacts',

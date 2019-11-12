@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {NewsPageService} from '../../services/news-page.service';
-import {IAllEvents, IEvent} from '../../models/news-page.model';
+import {NewsPageService} from '../../../shared/services/news-page.service';
+import {IAllEvents, IEvent} from '../../../shared/models/news-page.model';
 
 @Component({
   selector: 'app-news-page',

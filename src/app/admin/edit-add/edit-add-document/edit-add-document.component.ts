@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {DocumentService} from '../../services/document.service';
-import {IDocument} from '../../models/document.model';
+import {IDocument} from '../../../shared/models/document.model';
+import {DocumentService} from '../../../shared/services/document.service';
 
 @Component({
   styleUrls: ['./edit-add-document.component.sass'],

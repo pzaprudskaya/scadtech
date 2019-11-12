@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {ILeadership} from '../../models/leaderships-page.model';
-import {LeadershipsPageService} from '../../services/leaderships-page.service';
+import {LeadershipsPageService} from '../../../shared/services/leaderships-page.service';
+import {ILeadership} from '../../../shared/models/leaderships-page.model';
 
 @Component({
   styleUrls: ['./edit-add-leaderships.component.sass'],

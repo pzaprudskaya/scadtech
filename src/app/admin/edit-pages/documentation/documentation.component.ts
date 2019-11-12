@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {IAllDocuments} from '../../models/document.model';
-import {DocumentService} from '../../services/document.service';
+import {IAllDocuments} from '../../../shared/models/document.model';
+import {DocumentService} from '../../../shared/services/document.service';
 
 @Component({
   selector: 'app-edit-documentation',
