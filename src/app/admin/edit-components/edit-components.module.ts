@@ -21,7 +21,6 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     EditorModule,
   ],
   exports: [
-
     ItemComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

@@ -9,7 +9,6 @@ import {NewsPageService} from '../../../shared/services/news-page.service';
   templateUrl: './edit-add-news.component.html',
 })
 export class EditAddNewsComponent implements OnInit {
-
   newsModel = {
     title: [null, [Validators.required]],
     date: [null, [Validators.required]],
@@ -55,12 +54,14 @@ export class EditAddNewsComponent implements OnInit {
   }
 
   updateEvent() {
-    debugger;
     this.addNews.markAllAsTouched();
     if (this.addNews.invalid) {
       return;
     }
     this.newsService.updateEvent(this.route.snapshot.params.id, this.addNews.value).subscribe((event) => console.log('Update!'));
+  }
+
+  changeValue(file) {
   }
 }
 
