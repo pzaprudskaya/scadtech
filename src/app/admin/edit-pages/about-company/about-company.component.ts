@@ -31,7 +31,6 @@ export class EditAboutCompanyComponent implements OnInit {
   };
   aboutCompany = this.fb.group(this.aboutModel);
 
-  about;
   historyEvents: IHistoryEvent[];
   values: IValue[];
 
@@ -48,14 +47,11 @@ export class EditAboutCompanyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.about = {};
     this.historyEvents = [];
     this.values = [];
 
     this.aboutService.getAbout().subscribe((about: IAbout[]) => {
-      [this.about] = about;
-      this.aboutCompany.controls.title.setValue(this.about.title);
-      this.aboutCompany.controls.content.setValue(this.about.content);
+      this.aboutCompany.reset(about[0]);
     });
     this.valuesService.getValues(this.pageSizeForHistory, this.pageSizeForHistory * (this.pageValue - 1)).subscribe((values: IAllValues) => {
       this.countValues = values.count;
@@ -68,9 +64,7 @@ export class EditAboutCompanyComponent implements OnInit {
   }
 
   saveInformationAC() {
-    this.about.title = this.aboutCompany.value.title;
-    this.about.content = this.aboutCompany.value.content;
-    this.aboutService.updateAbout(this.about).subscribe(() => console.log('Update'));
+    this.aboutService.updateAbout(this.aboutCompany.value).subscribe(() => console.log('Update'));
   }
 
   deleteHistoryEvent(row) {

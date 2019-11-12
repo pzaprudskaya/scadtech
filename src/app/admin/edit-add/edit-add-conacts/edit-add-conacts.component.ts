@@ -19,7 +19,6 @@ export class EditAddConactsComponent implements OnInit {
   };
   state: boolean;
   contact = this.fb.group(this.contactModel);
-  member: IContact;
 
   get f() {
     return this.contact.controls as {
@@ -35,28 +34,17 @@ export class EditAddConactsComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
       this.state = true;
-      this.contact.controls.name.setValue('');
-      this.contact.controls.image.setValue('');
-      this.contact.controls.numbers.setValue('');
-      this.contact.controls.addresses.setValue('');
-      this.contact.controls.faxes.setValue('');
-      this.contact.controls.emails.setValue('');
+      this.contact.reset();
     } else {
       this.state = false;
       this.contactsService.getContact(this.route.snapshot.params.id).subscribe((member: IContact) => {
-        this.contact.controls.name.setValue(member[0].name);
-        this.contact.controls.image.setValue(member[0].image);
-        this.contact.controls.numbers.setValue(member[0].numbers);
-        this.contact.controls.addresses.setValue(member[0].addresses);
-        this.contact.controls.faxes.setValue(member[0].faxes);
-        this.contact.controls.emails.setValue(member[0].emails);
+        this.contact.reset(member[0]);
       });
     }
   }
 
   addContact() {
     this.contact.markAllAsTouched();
-
     if (this.contact.invalid) {
       return;
     }
@@ -65,17 +53,10 @@ export class EditAddConactsComponent implements OnInit {
 
   updateContact() {
     this.contact.markAllAsTouched();
-
     if (this.contact.invalid) {
       return;
     }
-    this.member.name = this.contact.value.name;
-    this.member.image = this.contact.value.image;
-    this.member.numbers = this.contact.value.numbers;
-    this.member.addresses = this.contact.value.addresses;
-    this.member.faxes = this.contact.value.faxes;
-    this.member.emails = this.contact.value.emails;
-    this.contactsService.updateContact(this.member).subscribe(() => console.log('Update!'));
+    this.contactsService.updateContact(this.route.snapshot.params.id, this.contact.value).subscribe(() => console.log('Update!'));
   }
 
 }

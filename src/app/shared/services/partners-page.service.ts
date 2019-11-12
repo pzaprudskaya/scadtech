@@ -48,8 +48,8 @@ export class PartnersPageService {
       catchError(this.handleError));
   }
 
-  updatePartner(partner: IPartners) {
-    return this.http.put<void>(`${this.API_URL}/${partner._id}`, JSON.stringify(partner), this.httpOptions).pipe(
+  updatePartner(id: string, partner: IPartners) {
+    return this.http.put<void>(`${this.API_URL}/${id}`, JSON.stringify(partner), this.httpOptions).pipe(
       tap(updatePartner => console.log('Update partner: ' + JSON.stringify(updatePartner))),
       catchError(this.handleError));
   }

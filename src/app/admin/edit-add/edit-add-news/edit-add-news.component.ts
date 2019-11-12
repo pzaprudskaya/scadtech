@@ -20,8 +20,6 @@ export class EditAddNewsComponent implements OnInit {
   state: boolean;
   events: IEvent[];
   addNews = this.fb.group(this.newsModel);
-  event: IEvent;
-
   get f() {
     return this.addNews.controls as {
       [K in keyof (this[ 'newsModel' ])]: AbstractControl;
@@ -37,27 +35,17 @@ export class EditAddNewsComponent implements OnInit {
     this.events = [];
     if (this.route.snapshot.params.id === 'add') {
       this.state = true;
-      this.addNews.controls.title.setValue('');
-      this.addNews.controls.date.setValue('');
-      this.addNews.controls.previewImage.setValue('');
-      this.addNews.controls.preview.setValue('');
-      this.addNews.controls.content.setValue('');
+      this.addNews.reset();
     } else {
       this.state = false;
       this.newsService.getEvent(this.route.snapshot.params.id).subscribe((news: IEvent) => {
-        this.event = news[0];
-        this.addNews.controls.title.setValue(this.event.title);
-        this.addNews.controls.date.setValue(this.event.date);
-        this.addNews.controls.previewImage.setValue(this.event.previewImage);
-        this.addNews.controls.preview.setValue(this.event.preview);
-        this.addNews.controls.content.setValue(this.event.content);
+        this.addNews.reset(news[0]);
       });
     }
   }
 
   addEvent() {
     this.addNews.markAllAsTouched();
-
     if (this.addNews.invalid) {
       return;
     }
@@ -67,18 +55,12 @@ export class EditAddNewsComponent implements OnInit {
   }
 
   updateEvent() {
-
+    debugger;
     this.addNews.markAllAsTouched();
-
     if (this.addNews.invalid) {
       return;
     }
-    this.event.title = this.addNews.value.title;
-    this.event.date = this.addNews.value.date;
-    this.event.previewImage = this.addNews.value.previewImage;
-    this.event.preview = this.addNews.value.preview;
-    this.event.content = this.addNews.value.content;
-    this.newsService.updateEvent(this.event).subscribe((event) => console.log('Update!'));
+    this.newsService.updateEvent(this.route.snapshot.params.id, this.addNews.value).subscribe((event) => console.log('Update!'));
   }
 }
 

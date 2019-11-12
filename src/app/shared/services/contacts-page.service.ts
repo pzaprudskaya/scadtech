@@ -48,8 +48,8 @@ export class ContactsPageService {
       catchError(this.handleError));
   }
 
-  updateContact(contact: IContact) {
-    return this.http.put<void>(`${this.API_URL}/${contact._id}`, JSON.stringify(contact), this.httpOptions).pipe(
+  updateContact(id: string, contact: IContact) {
+    return this.http.put<void>(`${this.API_URL}/${id}`, JSON.stringify(contact), this.httpOptions).pipe(
       tap(updateContact => console.log('Update contact: ' + JSON.stringify(updateContact))),
       catchError(this.handleError));
   }

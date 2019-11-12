@@ -48,8 +48,8 @@ export class ProductsService {
       catchError(this.handleError));
   }
 
-  updateProduct(product: IProduct) {
-    return this.http.put<void>(`${this.API_URL}/${product._id}`, JSON.stringify(product), this.httpOptions).pipe(
+  updateProduct(id: string, product: IProduct) {
+    return this.http.put<void>(`${this.API_URL}/${id}`, JSON.stringify(product), this.httpOptions).pipe(
       tap(updateProduct => console.log('Update product: ' + JSON.stringify(updateProduct))),
       catchError(this.handleError));
   }

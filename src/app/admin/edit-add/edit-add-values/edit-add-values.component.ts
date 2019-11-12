@@ -18,11 +18,10 @@ export class EditAddValuesComponent implements OnInit {
     description: [null, [Validators.required]],
   };
   state: boolean;
-  value = this.fb.group(this.valueModel);
-  worth: IValue;
+  worth = this.fb.group(this.valueModel);
 
   get f() {
-    return this.value.controls as {
+    return this.worth.controls as {
       [K in keyof (this[ 'valueModel' ])]: AbstractControl;
     };
   }
@@ -35,15 +34,11 @@ export class EditAddValuesComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
       this.state = true;
-      this.value.controls.image.setValue('');
-      this.value.controls.name.setValue('');
-      this.value.controls.description.setValue('');
+      this.worth.reset();
     } else {
       this.state = false;
       this.valuesService.getValue(this.route.snapshot.params.id).subscribe((value: IValue) => {
-        this.value.controls.image.setValue(value[0].image);
-        this.value.controls.name.setValue(value[0].name);
-        this.value.controls.description.setValue(value[0].description);
+        this.worth.reset(value[0]);
       });
     }
   }
@@ -54,30 +49,25 @@ export class EditAddValuesComponent implements OnInit {
   }
 
   addValue() {
-    this.value.markAllAsTouched();
+    this.worth.markAllAsTouched();
     const formData = new FormData();
     formData.append('image', this.imageURL);
-
-    if (this.value.invalid) {
+    if (this.worth.invalid) {
       return;
     }
-    this.valuesService.addValue(this.value.value).subscribe((value) => {
+    this.valuesService.addValue(this.worth.value).subscribe((value) => {
       this.valuesService.addImage(value._id, formData).subscribe(() => console.log('Add Image!'));
     });
   }
 
   updateValue() {
-    this.value.markAllAsTouched();
-
-    if (this.value.invalid) {
+    this.worth.markAllAsTouched();
+    if (this.worth.invalid) {
       return;
     }
     const formData = new FormData();
     formData.append('image', this.imageURL);
-    this.worth.image = this.value.value.image;
-    this.worth.name = this.value.value.name;
-    this.worth.description = this.value.value.description;
-    this.valuesService.updateValue(this.worth).subscribe((value) => {
+    this.valuesService.updateValue(this.route.snapshot.params.id, this.worth.value).subscribe((value) => {
       this.valuesService.addImage(value[0]._id, formData).subscribe(() => console.log('Add Image!'));
     });
 

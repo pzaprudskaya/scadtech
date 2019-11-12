@@ -17,6 +17,8 @@ import {EditAddDocumentComponent} from '../edit-add/edit-add-document/edit-add-d
 import {EditProductionComponent} from './production/production.component';
 import {EditAddProductComponent} from '../edit-add/edit-add-product/edit-add-product.component';
 import {ProfileComponent} from './profile/profile.component';
+import {FeedbackViewComponent} from './view-feedback/feedback-view.component';
+import {FeedbackIdComponent} from '../edit-add/feedback-id/feedback-id.component';
 
 const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
@@ -40,7 +42,10 @@ const routes: Routes = [
   {path: 'edit-about-company/values/:id', component: EditAddValuesComponent},
 
   {path: 'edit-production', component: EditProductionComponent},
-  {path: 'edit-products/:id', component: EditAddProductComponent}
+  {path: 'edit-products/:id', component: EditAddProductComponent},
+
+  {path: 'feedback', component: FeedbackViewComponent},
+  {path: 'feedback/:id', component: FeedbackIdComponent}
 ];
 const rootRouters: Routes = [
   {path: '', component: EditPagesComponent, children: routes}

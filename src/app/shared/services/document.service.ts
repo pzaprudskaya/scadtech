@@ -9,7 +9,7 @@ import {IAllDocuments, IDocument} from '../models/document.model';
 })
 
 export class DocumentService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/documents';
+  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/documentation';
 
   httpOptions = {
     mode: 'no-cors',
@@ -46,8 +46,8 @@ export class DocumentService {
       catchError(this.handleError));
   }
 
-  updateDocument(value: IDocument) {
-    return this.http.put<void>(`${this.API_URL}/${value._id}`, JSON.stringify(value), this.httpOptions).pipe(
+  updateDocument(id: string, value: IDocument) {
+    return this.http.put<void>(`${this.API_URL}/${id}`, JSON.stringify(value), this.httpOptions).pipe(
       tap(updateDocument => console.log('Update document: ' + JSON.stringify(updateDocument))),
       catchError(this.handleError));
   }

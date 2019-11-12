@@ -17,7 +17,6 @@ export class EditAddHistoryEventComponent implements OnInit {
   };
   state: boolean;
   historyEvent = this.fb.group(this.historyEventModel);
-  event: IHistoryEvent;
 
   get f() {
     return this.historyEvent.controls as {
@@ -33,22 +32,17 @@ export class EditAddHistoryEventComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
       this.state = true;
-      this.historyEvent.controls.year.setValue('');
-      this.historyEvent.controls.caption.setValue('');
-      this.historyEvent.controls.description.setValue('');
+      this.historyEvent.reset();
     } else {
       this.state = false;
       this.historyEventsService.getHistoryEvent(this.route.snapshot.params.id).subscribe((event: IHistoryEvent) => {
-        this.historyEvent.controls.year.setValue(event[0].year);
-        this.historyEvent.controls.caption.setValue(event[0].caption);
-        this.historyEvent.controls.description.setValue(event[0].description);
+        this.historyEvent.reset(event[0]);
       });
     }
   }
 
   addHistoryEvent() {
     this.historyEvent.markAllAsTouched();
-
     if (this.historyEvent.invalid) {
       return;
     }
@@ -57,14 +51,10 @@ export class EditAddHistoryEventComponent implements OnInit {
 
   updateHistoryEvent() {
     this.historyEvent.markAllAsTouched();
-
     if (this.historyEvent.invalid) {
       return;
     }
-    this.event.year = this.historyEvent.value.year;
-    this.event.caption = this.historyEvent.value.caption;
-    this.event.description = this.historyEvent.value.description;
-    this.historyEventsService.updateHistoryEvent(this.event).subscribe(() => console.log('Update!'));
+    this.historyEventsService.updateHistoryEvent(this.route.snapshot.params.id, this.historyEvent.value).subscribe(() => console.log('Update!'));
   }
 }
 

@@ -17,7 +17,6 @@ export class EditAddPartnersComponent implements OnInit {
   };
   state: boolean;
   partner = this.fb.group(this.partnerModel);
-  member: IPartners;
 
   get f() {
     return this.partner.controls as {
@@ -33,24 +32,17 @@ export class EditAddPartnersComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
       this.state = true;
-      this.partner.controls.name.setValue('');
-      this.partner.controls.image.setValue('');
-      this.partner.controls.description.setValue('');
-      this.partner.controls.file.setValue('');
+      this.partner.reset();
     } else {
       this.state = false;
       this.partnersService.getPartner(this.route.snapshot.params.id).subscribe((member: IPartners) => {
-        this.partner.controls.name.setValue(member[0].name);
-        this.partner.controls.image.setValue(member[0].image);
-        this.partner.controls.description.setValue(member[0].description);
-        this.partner.controls.file.setValue(member[0].file);
+        this.partner.reset(member[0]);
       });
     }
   }
 
   addPartner() {
     this.partner.markAllAsTouched();
-
     if (this.partner.invalid) {
       return;
     }
@@ -58,16 +50,12 @@ export class EditAddPartnersComponent implements OnInit {
   }
 
   updatePartner() {
+    debugger;
     this.partner.markAllAsTouched();
-
     if (this.partner.invalid) {
       return;
     }
-    this.member.name = this.partner.value.name;
-    this.member.image = this.partner.value.image;
-    this.member.description = this.partner.value.description;
-    this.member.file = this.partner.value.file;
-    this.partnersService.updatePartner(this.member).subscribe(() => console.log('Update!'));
+    this.partnersService.updatePartner(this.route.snapshot.params.id, this.partner.value).subscribe(() => console.log('Update!'));
   }
 }
 

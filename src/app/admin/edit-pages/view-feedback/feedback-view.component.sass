@@ -32,7 +32,7 @@ table
   background: white
   width: 100%
   td
-    padding: 10px
+    vertical-align: middle !important
   th
     padding: 0 10px
   tr
@@ -98,10 +98,15 @@ ngb-pagination::ng-deep
   height: 500px
 .circle__true
   border-radius: 50%
-  width: 10px
+  width: 15px
+  height: 15px
   background-color: $main-color
 .circle__false
   border-radius: 50%
-  width: 10px
+  width: 15px
+  height: 15px
+  display: flex
+  align-items: center
+  justify-content: center
   border: 1px solid $main-color
   background-color: white

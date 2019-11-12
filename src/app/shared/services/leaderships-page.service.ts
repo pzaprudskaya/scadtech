@@ -49,8 +49,8 @@ export class LeadershipsPageService {
       catchError(this.handleError));
   }
 
-  updateLeadership(event: ILeadership) {
-    return this.http.put<void>(`${this.API_URL}/${event._id}`, JSON.stringify(event), this.httpOptions).pipe(
+  updateLeadership(id: string, event: ILeadership) {
+    return this.http.put<void>(`${this.API_URL}/${id}`, JSON.stringify(event), this.httpOptions).pipe(
       tap(updateLeadership => console.log('Update leadership: ' + JSON.stringify(updateLeadership))),
       catchError(this.handleError));
   }

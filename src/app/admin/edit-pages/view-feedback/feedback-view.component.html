@@ -4,11 +4,11 @@
       <thead>
         <tr>
           <th></th>
+          <th>Date</th>
           <th>ФИО</th>
           <th>Эл. почта</th>
           <th>Моб. телефон</th>
           <th>Текст</th>
-          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -21,13 +21,13 @@
           <td *ngIf="feedback.unread === false">
             <div class="circle__false"></div>
           </td>
-          <td (click)="openFeedback(feedback)">{{feedback.surname}} {{feedback.name[0]}} {{feedback.middleName[0]}}</td>
+          <td>{{feedback.created}}</td>
+          <td routerLink="/feedback/{{feedback._id}}">{{feedback.surname}} {{feedback.name[0]}}. {{feedback.middleName[0]}}.</td>
           <td>{{feedback.email}}</td>
           <td>{{feedback.phone}}</td>
           <td>{{feedback.text.slice(0, 30)}}...</td>
-          <td ><i class="material-icons">edit</i></td>
           <td><i class="material-icons" (click)="deleteFeedback(feedback)">close</i></td>
-        </tr>x
+        </tr>
       </tbody>
     </table>
     <div class="navigation">

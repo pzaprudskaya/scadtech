@@ -48,8 +48,8 @@ export class NewsPageService {
       catchError(this.handleError));
   }
 
-  updateEvent(event: IEvent) {
-    return this.http.put<void>(`${this.API_URL}/${event._id}`, JSON.stringify(event), this.httpOptions).pipe(
+  updateEvent(id: string, event: IEvent) {
+    return this.http.put<void>(`${this.API_URL}/${id}`, JSON.stringify(event), this.httpOptions).pipe(
       tap(updateEvent => console.log('Update event: ' + JSON.stringify(updateEvent))),
       catchError(this.handleError));
   }

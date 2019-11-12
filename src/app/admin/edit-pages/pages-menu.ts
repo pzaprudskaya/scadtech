@@ -34,4 +34,9 @@ export const MENU_ITEMS = [
     icon: '',
     link: '/edit-production',
   },
+  {
+    title: 'Feedback',
+    icon: '',
+    link: '/feedback',
+  },
 ];

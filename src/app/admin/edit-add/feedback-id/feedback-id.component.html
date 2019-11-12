@@ -1,0 +1,14 @@
+<div class="container">
+  <app-headline [title]="'Message'"></app-headline>
+
+  <div>
+    <p>From: <input value="{{feedback.surname}} {{feedback.name}} {{feedback.middleName}}" readonly/></p>
+    <h3>Text</h3>
+    <textarea value="{{feedback.text}}" readonly></textarea>
+    <p>-------------------------------------</p>
+    <p>Information for connect</p>
+    <p>E-mail: {{feedback.email}}</p>
+    <p>Phone: {{feedback.phone}}</p>
+  </div>
+</div>
+

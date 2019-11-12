@@ -20,7 +20,7 @@ export class EditProductionComponent implements OnInit {
     content: ['<p>This is the initial content of the editor</p>', [Validators.required]],
   };
   production = this.fb.group(this.productionModel);
-  about;
+
   get f() {
     return this.production.controls as {
       [K in keyof (this[ 'productionModel' ])]: AbstractControl;
@@ -34,9 +34,7 @@ export class EditProductionComponent implements OnInit {
   ngOnInit() {
     this.products = [];
     this.productionService.getAbout().subscribe((about: IAbout[]) => {
-      [this.about] = about;
-      this.production.controls.title.setValue(this.about.title);
-      this.production.controls.content.setValue(this.about.content);
+      this.production.reset(about[0]);
     });
     this.productsService.getProducts(this.pageSize, this.pageSize * (this.page - 1)).subscribe((products: IAllProducts) => {
       this.countProducts = products.count;
@@ -60,8 +58,6 @@ export class EditProductionComponent implements OnInit {
   }
 
   saveInformation() {
-    this.about.title = this.production.value.title;
-    this.about.content = this.production.value.content;
-    this.productionService.updateAbout(this.about).subscribe(() => console.log('Update'));
+    this.productionService.updateAbout(this.production.value).subscribe(() => console.log('Update'));
   }
 }

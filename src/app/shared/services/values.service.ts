@@ -46,8 +46,8 @@ export class ValuesService {
       catchError(this.handleError));
   }
 
-  updateValue(value: IValue) {
-    return this.http.put<void>(`${this.API_URL}/${value._id}`, JSON.stringify(value), this.httpOptions).pipe(
+  updateValue(id: string, value: IValue) {
+    return this.http.put<void>(`${this.API_URL}/${id}`, JSON.stringify(value), this.httpOptions).pipe(
       tap(updateValue => console.log('Update value: ' + JSON.stringify(updateValue))),
       catchError(this.handleError));
   }
@@ -69,7 +69,7 @@ export class ValuesService {
     return throwError(errorMessage);
   }
   addImage(id: string, formData) {
-    return this.http.post<IValue>(`this.API_URL/${id}/image`, formData, this.httpOptions).pipe(
+    return this.http.post<IValue>(`${this.API_URL}/${id}/image`, formData, this.httpOptions).pipe(
       tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
       catchError(this.handleError));
   }

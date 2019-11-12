@@ -14,6 +14,7 @@ import {EditAddValuesComponent} from './edit-add-values/edit-add-values.componen
 import {EditAddProductComponent} from './edit-add-product/edit-add-product.component';
 import {EditAddDocumentComponent} from './edit-add-document/edit-add-document.component';
 import {ComponentsModule} from '../../user/components/components.module';
+import { FeedbackIdComponent } from './feedback-id/feedback-id.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {ComponentsModule} from '../../user/components/components.module';
     EditAddHistoryEventComponent,
     EditAddValuesComponent,
     EditAddDocumentComponent,
-    EditAddProductComponent
+    EditAddProductComponent,
+    FeedbackIdComponent
   ],
   exports: [
     EditAddNewsComponent,
@@ -45,7 +47,8 @@ import {ComponentsModule} from '../../user/components/components.module';
     EditAddHistoryEventComponent,
     EditAddValuesComponent,
     EditAddDocumentComponent,
-    EditAddProductComponent
+    EditAddProductComponent,
+    FeedbackIdComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
