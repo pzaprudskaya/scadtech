@@ -9,6 +9,7 @@ import {ContactsPageService} from '../../../shared/services/contacts-page.servic
   templateUrl: './edit-add-conacts.component.html',
 })
 export class EditAddConactsComponent implements OnInit {
+  fileName: string;
   contactModel = {
     name: [null, [Validators.required]],
     image: [null, [Validators.required]],
@@ -59,5 +60,8 @@ export class EditAddConactsComponent implements OnInit {
     this.contactsService.updateContact(this.route.snapshot.params.id, this.contact.value).subscribe(() => console.log('Update!'));
   }
 
+  changeValue(file) {
+    this.fileName = file.name;
+  }
 }
 

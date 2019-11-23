@@ -33,8 +33,8 @@ export class EditProductionComponent implements OnInit {
 
   ngOnInit() {
     this.products = [];
-    this.productionService.getAbout().subscribe((about: IAbout[]) => {
-      this.production.reset(about[0]);
+    this.productionService.getAbout().subscribe((about: IAbout) => {
+      this.production.reset(about);
     });
     this.productsService.getProducts(this.pageSize, this.pageSize * (this.page - 1)).subscribe((products: IAllProducts) => {
       this.countProducts = products.count;

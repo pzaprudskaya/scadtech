@@ -16,8 +16,12 @@
       <input type="text" formControlName="description">
     </div>
     <div class="form-group">
-      <h2>Сертификат(файл)</h2>
-      <input type="text" formControlName="file">
+      <div class="file-block">
+        <h2>Сертификат</h2>
+        <label for="uploadFile">Загрузить файл</label>
+        <span>{{fileName}}</span>
+        <input id="uploadFile" formControlName="file" name="uploadFile" class="uploadFile" type="file" accept=".doc, .docx, .pdf" (change)="changeValue($event.target.files[0])">
+      </div>
     </div>
   </form>
 

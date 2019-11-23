@@ -10,7 +10,7 @@ import {IAbout} from '../models/about-company-page.model';
 
 
 export class ProductionService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/production';
+  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/customization/production';
 
   httpOptions = {
     mode: 'no-cors',
@@ -19,15 +19,15 @@ export class ProductionService {
 
   constructor(private http: HttpClient) {}
 
-  getAbout(): Observable<IAbout[]> {
-    return this.http.get<IAbout[]>(`${this.API_URL}`, this.httpOptions).pipe(
-      tap((data: IAbout[]) => console.log('Content production: ' + JSON.stringify(data))),
+  getAbout(): Observable<IAbout> {
+    return this.http.get<IAbout>(`${this.API_URL}`, this.httpOptions).pipe(
+      tap((data: IAbout) => console.log('Content production: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
   updateAbout(value: IAbout) {
-    return this.http.put<void>(`${this.API_URL}/${value._id}`, JSON.stringify(value), this.httpOptions).pipe(
+    return this.http.post<IAbout>(`${this.API_URL}`, JSON.stringify(value), this.httpOptions).pipe(
       tap(updateValue => console.log('Update content production: ' + JSON.stringify(updateValue))),
       catchError(this.handleError));
   }

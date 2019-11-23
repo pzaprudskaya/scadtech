@@ -11,10 +11,11 @@
       <input type="text" formControlName="date">
     </div>
     <div class="image-block">
-        <h2>Фотография</h2>
-        <label for="uploadImage">Загрузить изображение</label>
-        <input id="uploadImage" name="uploadImage" class="uploadImage" formControlName="previewImage" type="file" accept=".png, .jpg, .jpeg" (change)="changeValue($event.target.files[0])">
-      </div>
+      <h2>Фотография</h2>
+      <label for="uploadImage">Загрузить изображение</label>
+      <span>{{fileName}}</span>
+      <input id="uploadImage" name="uploadImage" class="uploadImage" formControlName="previewImage" type="file" accept=".png, .jpg, .jpeg" (change)="changeValue($event.target.files[0])">
+    </div>
     <div class="form-group">
       <h2>Текст предпоказа</h2>
       <input type="text" formControlName="preview">

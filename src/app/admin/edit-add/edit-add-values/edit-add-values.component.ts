@@ -9,7 +9,7 @@ import {ValuesService} from '../../../shared/services/values.service';
   templateUrl: './edit-add-values.component.html',
 })
 export class EditAddValuesComponent implements OnInit {
-
+  fileName: string;
   imageURL: any;
 
   valueModel = {
@@ -38,17 +38,15 @@ export class EditAddValuesComponent implements OnInit {
     } else {
       this.state = false;
       this.valuesService.getValue(this.route.snapshot.params.id).subscribe((value: IValue) => {
-        this.worth.reset(value[0]);
+        this.worth.controls.name.setValue(value[0].name);
+        this.worth.controls.description.setValue(value[0].description);
+        this.fileName = value[0].image;
       });
     }
   }
 
-  showPreview(event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.imageURL = file;
-  }
-
   addValue() {
+    debugger;
     this.worth.markAllAsTouched();
     const formData = new FormData();
     formData.append('image', this.imageURL);
@@ -61,16 +59,24 @@ export class EditAddValuesComponent implements OnInit {
   }
 
   updateValue() {
+    debugger;
+    if (this.imageURL) {
+      const formData = new FormData();
+      formData.append('image', this.imageURL);
+      this.valuesService.addImage(this.route.snapshot.params.id, formData).subscribe(() => console.log('Add Image!'));
+    }
     this.worth.markAllAsTouched();
-    if (this.worth.invalid) {
+    if (this.worth.controls.name.invalid && this.worth.controls.description.invalid) {
       return;
     }
-    const formData = new FormData();
-    formData.append('image', this.imageURL);
-    this.valuesService.updateValue(this.route.snapshot.params.id, this.worth.value).subscribe((value) => {
-      this.valuesService.addImage(value[0]._id, formData).subscribe(() => console.log('Add Image!'));
-    });
+    this.valuesService.updateValue(this.route.snapshot.params.id, this.worth.value).subscribe(() => console.log(''));
 
+  }
+  changeValue(event) {
+    debugger;
+    const file = (event.target as HTMLInputElement).files[0];
+    this.imageURL = file;
+    this.fileName = file.name;
   }
 }
 

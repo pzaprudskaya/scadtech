@@ -8,7 +8,7 @@ import {IPartners} from '../../../shared/models/partners-page.model';
   templateUrl: './edit-add-partners.component.html',
 })
 export class EditAddPartnersComponent implements OnInit {
-
+  fileName: string;
   partnerModel = {
     name: [null, [Validators.required]],
     image: [null, [Validators.required]],
@@ -50,12 +50,14 @@ export class EditAddPartnersComponent implements OnInit {
   }
 
   updatePartner() {
-    debugger;
     this.partner.markAllAsTouched();
     if (this.partner.invalid) {
       return;
     }
     this.partnersService.updatePartner(this.route.snapshot.params.id, this.partner.value).subscribe(() => console.log('Update!'));
+  }
+  changeValue(file) {
+    this.fileName = file.name;
   }
 }
 

@@ -9,7 +9,7 @@ import {ILeadership} from '../../../shared/models/leaderships-page.model';
   templateUrl: './edit-add-leaderships.component.html',
 })
 export class EditAddLeadershipsComponent implements OnInit {
-
+  fileName: string;
   leaderModel = {
     name: [null, [Validators.required]],
     position: [null, [Validators.required]],
@@ -59,6 +59,10 @@ export class EditAddLeadershipsComponent implements OnInit {
       return;
     }
     this.leadershipsService.updateLeadership(this.route.snapshot.params.id, this.leader.value).subscribe(() => console.log('Update!'));
+  }
+
+  changeValue(file) {
+    this.fileName = file.name;
   }
 }
 

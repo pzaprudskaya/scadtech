@@ -9,7 +9,7 @@ import {DocumentService} from '../../../shared/services/document.service';
   templateUrl: './edit-add-document.component.html',
 })
 export class EditAddDocumentComponent implements OnInit {
-
+  fileName: string;
   documentModel = {
     title: [null, [Validators.required]],
     date: [null, [Validators.required]],
@@ -60,6 +60,10 @@ export class EditAddDocumentComponent implements OnInit {
       return;
     }
     this.documentService.updateDocument(this.route.snapshot.params.id, this.document.value).subscribe(() => console.log('Update!'));
+  }
+
+  changeValue(file) {
+    this.fileName = file.name;
   }
 }
 

@@ -9,6 +9,7 @@ import {NewsPageService} from '../../../shared/services/news-page.service';
   templateUrl: './edit-add-news.component.html',
 })
 export class EditAddNewsComponent implements OnInit {
+  fileName: string;
   newsModel = {
     title: [null, [Validators.required]],
     date: [null, [Validators.required]],
@@ -62,6 +63,7 @@ export class EditAddNewsComponent implements OnInit {
   }
 
   changeValue(file) {
+    this.fileName = file.name;
   }
 }
 

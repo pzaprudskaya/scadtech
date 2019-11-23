@@ -69,7 +69,7 @@ export class ValuesService {
     return throwError(errorMessage);
   }
   addImage(id: string, formData) {
-    return this.http.post<IValue>(`${this.API_URL}/${id}/image`, formData, this.httpOptions).pipe(
+    return this.http.post<IValue>(`${this.API_URL}/${id}/image`, formData).pipe(
       tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
       catchError(this.handleError));
   }

@@ -50,8 +50,8 @@ export class EditAboutCompanyComponent implements OnInit {
     this.historyEvents = [];
     this.values = [];
 
-    this.aboutService.getAbout().subscribe((about: IAbout[]) => {
-      this.aboutCompany.reset(about[0]);
+    this.aboutService.getAbout().subscribe((about: IAbout) => {
+      this.aboutCompany.reset(about);
     });
     this.valuesService.getValues(this.pageSizeForHistory, this.pageSizeForHistory * (this.pageValue - 1)).subscribe((values: IAllValues) => {
       this.countValues = values.count;
@@ -64,6 +64,7 @@ export class EditAboutCompanyComponent implements OnInit {
   }
 
   saveInformationAC() {
+    debugger;
     this.aboutService.updateAbout(this.aboutCompany.value).subscribe(() => console.log('Update'));
   }
 
