@@ -9,10 +9,12 @@ import {ContactsPageService} from '../../../shared/services/contacts-page.servic
   templateUrl: './edit-add-conacts.component.html',
 })
 export class EditAddConactsComponent implements OnInit {
-  fileName: string;
+  imageURL: any;
+  imagePreview: ArrayBuffer | string;
+
   contactModel = {
     name: [null, [Validators.required]],
-    image: [null, [Validators.required]],
+    image: [null, []],
     numbers: [null, [Validators.required]],
     addresses: [null, [Validators.required]],
     faxes: [null, [Validators.required]],
@@ -35,7 +37,6 @@ export class EditAddConactsComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
       this.state = true;
-      this.contact.reset();
     } else {
       this.state = false;
       this.contactsService.getContact(this.route.snapshot.params.id).subscribe((member: IContact) => {
@@ -46,10 +47,15 @@ export class EditAddConactsComponent implements OnInit {
 
   addContact() {
     this.contact.markAllAsTouched();
-    if (this.contact.invalid) {
+    if (this.contact.invalid || !this.imageURL) {
       return;
     }
-    this.contactsService.addContact(this.contact.value).subscribe( () => console.log('Add!'));
+    const formData = new FormData();
+    formData.append('image', this.imageURL);
+    console.log(this.contact.invalid);
+    this.contactsService.addContact(this.contact.value).subscribe((value) => {
+      this.contactsService.addImage(value._id, formData).subscribe(() => console.log('Add Image!'));
+    });
   }
 
   updateContact() {
@@ -57,11 +63,28 @@ export class EditAddConactsComponent implements OnInit {
     if (this.contact.invalid) {
       return;
     }
-    this.contactsService.updateContact(this.route.snapshot.params.id, this.contact.value).subscribe(() => console.log('Update!'));
+    if (this.imageURL) {
+      const formData = new FormData();
+      formData.append('image', this.imageURL);
+      return this.contactsService.addImage(this.route.snapshot.params.id, formData)
+        .subscribe((e) => {
+          this.contact.controls.image.setValue(e.image);
+          this.contactsService.updateContact(this.route.snapshot.params.id, this.contact.value).subscribe(() => console.log(''));
+        });
+    }
+    this.contactsService.updateContact(this.route.snapshot.params.id, this.contact.value).subscribe(() => console.log(''));
+
+
   }
 
-  changeValue(file) {
-    this.fileName = file.name;
+  changeValue(event) {
+    const file = (event.target as HTMLInputElement).files[ 0 ];
+    this.imageURL = file;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = file => {
+      this.imagePreview = reader.result;
+    };
   }
 }
 

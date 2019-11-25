@@ -3,15 +3,18 @@ import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {PartnersPageService} from '../../../shared/services/partners-page.service';
 import {IPartners} from '../../../shared/models/partners-page.model';
+
 @Component({
   styleUrls: ['./edit-add-partners.component.sass'],
   templateUrl: './edit-add-partners.component.html',
 })
 export class EditAddPartnersComponent implements OnInit {
-  fileName: string;
+  imageURL: any;
+  imagePreview: ArrayBuffer | string;
+
   partnerModel = {
     name: [null, [Validators.required]],
-    image: [null, [Validators.required]],
+    image: [null, []],
     description: [null, [Validators.required]],
     file: [null, [Validators.required]],
   };
@@ -24,15 +27,14 @@ export class EditAddPartnersComponent implements OnInit {
     };
   }
 
-  constructor( private fb: FormBuilder,
-               private partnersService: PartnersPageService,
-               private route: ActivatedRoute ) {
+  constructor(private fb: FormBuilder,
+              private partnersService: PartnersPageService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
       this.state = true;
-      this.partner.reset();
     } else {
       this.state = false;
       this.partnersService.getPartner(this.route.snapshot.params.id).subscribe((member: IPartners) => {
@@ -43,21 +45,42 @@ export class EditAddPartnersComponent implements OnInit {
 
   addPartner() {
     this.partner.markAllAsTouched();
-    if (this.partner.invalid) {
+    if (this.partner.invalid || !this.imageURL) {
       return;
     }
-    this.partnersService.addPartner(this.partner.value).subscribe((leader) => console.log('Add!'));
+    const formData = new FormData();
+    formData.append('image', this.imageURL);
+    console.log(this.partner.invalid);
+    this.partnersService.addPartner(this.partner.value).subscribe((partner) => {
+      this.partnersService.addImage(partner._id, formData).subscribe(() => console.log('Add Image!'));
+    });
   }
 
   updatePartner() {
-    this.partner.markAllAsTouched();
     if (this.partner.invalid) {
       return;
     }
-    this.partnersService.updatePartner(this.route.snapshot.params.id, this.partner.value).subscribe(() => console.log('Update!'));
+    this.partner.markAllAsTouched();
+    if (this.imageURL) {
+      const formData = new FormData();
+      formData.append('image', this.imageURL);
+      return this.partnersService.addImage(this.route.snapshot.params.id, formData)
+        .subscribe((e) => {
+          this.partner.controls.image.setValue(e.image);
+          this.partnersService.updatePartner(this.route.snapshot.params.id, this.partner.value).subscribe(() => console.log(''));
+        });
+    }
+    this.partnersService.updatePartner(this.route.snapshot.params.id, this.partner.value).subscribe(() => console.log(''));
   }
-  changeValue(file) {
-    this.fileName = file.name;
+
+  changeValue(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.imageURL = file;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = file => {
+      this.imagePreview = reader.result;
+    };
   }
 }
 

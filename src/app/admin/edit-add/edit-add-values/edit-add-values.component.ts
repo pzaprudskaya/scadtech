@@ -13,7 +13,7 @@ export class EditAddValuesComponent implements OnInit {
   imagePreview: ArrayBuffer | string;
 
   valueModel = {
-    image: [ 'paceholder', [] ],
+    image: [ null, [] ],
     name: [ null, [ Validators.required ] ],
     description: [ null, [ Validators.required ] ],
   };
@@ -35,9 +35,7 @@ export class EditAddValuesComponent implements OnInit {
     } else {
       this.state = false;
       this.valuesService.getValue(this.route.snapshot.params.id).subscribe((value: IValue) => {
-        this.worth.controls.name.setValue(value[ 0 ].name);
-        this.worth.controls.description.setValue(value[ 0 ].description);
-        this.worth.controls.image.setValue(value[ 0 ].image);
+        this.worth.reset(value[0]);
       });
     }
   }

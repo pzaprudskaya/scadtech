@@ -72,4 +72,10 @@ export class LeadershipsPageService {
     return throwError(errorMessage);
   }
 
+  addImage(id: string, formData) {
+    return this.http.post<ILeadership>(`${this.API_URL}/${id}/image`, formData).pipe(
+      tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+      catchError(this.handleError));
+  }
+
 }

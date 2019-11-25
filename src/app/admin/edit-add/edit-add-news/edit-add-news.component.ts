@@ -9,11 +9,13 @@ import {NewsPageService} from '../../../shared/services/news-page.service';
   templateUrl: './edit-add-news.component.html',
 })
 export class EditAddNewsComponent implements OnInit {
-  fileName: string;
+  imageURL: any;
+  imagePreview: ArrayBuffer | string;
+
   newsModel = {
     title: [null, [Validators.required]],
     date: [null, [Validators.required]],
-    previewImage: [null],
+    previewImage: [null, []],
     preview: [null, [Validators.required]],
     content: ['<p>This is the initial content of the editor</p>', [Validators.required]],
   };
@@ -32,10 +34,8 @@ export class EditAddNewsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.events = [];
     if (this.route.snapshot.params.id === 'add') {
       this.state = true;
-      this.addNews.reset();
     } else {
       this.state = false;
       this.newsService.getEvent(this.route.snapshot.params.id).subscribe((news: IEvent) => {
@@ -46,24 +46,43 @@ export class EditAddNewsComponent implements OnInit {
 
   addEvent() {
     this.addNews.markAllAsTouched();
-    if (this.addNews.invalid) {
+    if (this.addNews.invalid || !this.imageURL) {
       return;
     }
-    this.newsService.addEvent(this.addNews.value).subscribe((addEvent) => {
-      this.events.push(addEvent);
+    const formData = new FormData();
+    formData.append('image', this.imageURL);
+    this.newsService.addEvent(this.addNews.value).subscribe((news) => {
+      this.newsService.addImage(news._id, formData).subscribe(() => console.log('Add Image!'));
     });
   }
 
   updateEvent() {
-    this.addNews.markAllAsTouched();
     if (this.addNews.invalid) {
       return;
     }
-    this.newsService.updateEvent(this.route.snapshot.params.id, this.addNews.value).subscribe((event) => console.log('Update!'));
+    this.addNews.markAllAsTouched();
+    if (this.imageURL) {
+      const formData = new FormData();
+      formData.append('image', this.imageURL);
+      return this.newsService.addImage(this.route.snapshot.params.id, formData)
+        .subscribe((e) => {
+          this.addNews.controls.previewImage.setValue(e.previewImage);
+          this.newsService.updateEvent(this.route.snapshot.params.id, this.addNews.value).subscribe(() => console.log(''));
+        });
+    }
+    this.newsService.updateEvent(this.route.snapshot.params.id, this.addNews.value).subscribe(() => console.log(''));
+
+
   }
 
-  changeValue(file) {
-    this.fileName = file.name;
+  changeValue(event) {
+    const file = (event.target as HTMLInputElement).files[ 0 ];
+    this.imageURL = file;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = file => {
+      this.imagePreview = reader.result;
+    };
   }
 }
 

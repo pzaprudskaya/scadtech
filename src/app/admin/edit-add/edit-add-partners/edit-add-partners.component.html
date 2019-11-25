@@ -5,7 +5,18 @@
   <form [formGroup]="partner">
     <div class="form-group">
       <h2>Фотография</h2>
-      <input type="text" formControlName="image">
+      <div class="image-control-wrapper">
+        <label for="uploadImage">Загрузить изображение</label>
+        <div class="image-preview-block" *ngIf="!imagePreview && f.image.value">
+          <img class="image-preview" src="https://boxing-wizards-jump.herokuapp.com{{ f.image.value }}" alt="image">
+        </div>
+        <ng-template [ngIf]="imagePreview">
+          <div class="image-preview-block">
+            <img class="image-preview" src="{{ imagePreview }}" alt="image" />
+          </div>
+        </ng-template>
+        <input id="uploadImage" name="uploadImage" class="uploadImage" type="file" accept=".png, .jpg, .jpeg" (change)="changeValue($event)">
+      </div>
     </div>
     <div class="form-group">
       <h2>Название</h2>

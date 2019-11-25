@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/c
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {IAllEvents, IEvent} from '../models/news-page.model';
+import {IValue} from "../models/about-company-page.model";
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +70,11 @@ export class NewsPageService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
+  }
+  addImage(id: string, formData) {
+    return this.http.post<IEvent>(`${this.API_URL}/${id}/image`, formData).pipe(
+      tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+      catchError(this.handleError));
   }
 
 }

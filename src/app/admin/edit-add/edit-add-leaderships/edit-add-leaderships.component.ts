@@ -9,11 +9,13 @@ import {ILeadership} from '../../../shared/models/leaderships-page.model';
   templateUrl: './edit-add-leaderships.component.html',
 })
 export class EditAddLeadershipsComponent implements OnInit {
-  fileName: string;
+  imageURL: any;
+  imagePreview: ArrayBuffer | string;
+
   leaderModel = {
     name: [null, [Validators.required]],
     position: [null, [Validators.required]],
-    image: [null, [Validators.required]],
+    image: [ null, [] ],
   };
   state: boolean;
   leaderships: ILeadership[];
@@ -31,10 +33,8 @@ export class EditAddLeadershipsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.leaderships = [];
     if (this.route.snapshot.params.id === 'add') {
       this.state = true;
-      this.leader.reset();
     } else {
       this.state = false;
       this.leadershipsService.getLeadership(this.route.snapshot.params.id).subscribe((leadership: ILeadership) => {
@@ -45,11 +45,13 @@ export class EditAddLeadershipsComponent implements OnInit {
 
   addLeader() {
     this.leader.markAllAsTouched();
-    if (this.leader.invalid) {
+    if (this.leader.invalid || !this.imageURL) {
       return;
     }
+    const formData = new FormData();
+    formData.append('image', this.imageURL);
     this.leadershipsService.addLeadership(this.leader.value).subscribe((leader) => {
-      this.leaderships.push(leader);
+      this.leadershipsService.addImage(leader._id, formData).subscribe(() => console.log('Add Image!'));
     });
   }
 
@@ -58,11 +60,28 @@ export class EditAddLeadershipsComponent implements OnInit {
     if (this.leader.invalid) {
       return;
     }
-    this.leadershipsService.updateLeadership(this.route.snapshot.params.id, this.leader.value).subscribe(() => console.log('Update!'));
+    if (this.imageURL) {
+      const formData = new FormData();
+      formData.append('image', this.imageURL);
+      return this.leadershipsService.addImage(this.route.snapshot.params.id, formData)
+        .subscribe((e) => {
+          this.leader.controls.image.setValue(e.image);
+          this.leadershipsService.updateLeadership(this.route.snapshot.params.id, this.leader.value).subscribe(() => console.log(''));
+        });
+    }
+    this.leadershipsService.updateLeadership(this.route.snapshot.params.id, this.leader.value).subscribe(() => console.log(''));
+
+
   }
 
-  changeValue(file) {
-    this.fileName = file.name;
+  changeValue(event) {
+    const file = (event.target as HTMLInputElement).files[ 0 ];
+    this.imageURL = file;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = file => {
+      this.imagePreview = reader.result;
+    };
   }
 }
 

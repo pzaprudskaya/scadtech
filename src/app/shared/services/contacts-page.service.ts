@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/c
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {IAllContacts, IContact} from '../models/contacts-page.model';
+import {IPartners} from "../models/partners-page.model";
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +70,12 @@ export class ContactsPageService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
+  }
+
+  addImage(id: string, formData) {
+    return this.http.post<IContact>(`${this.API_URL}/${id}/image`, formData).pipe(
+      tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+      catchError(this.handleError));
   }
 
 }
