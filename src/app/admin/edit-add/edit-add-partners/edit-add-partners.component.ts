@@ -10,13 +10,14 @@ import {IPartners} from '../../../shared/models/partners-page.model';
 })
 export class EditAddPartnersComponent implements OnInit {
   imageURL: any;
+  fileURL: any;
   imagePreview: ArrayBuffer | string;
 
   partnerModel = {
     name: [null, [Validators.required]],
     image: [null, []],
     description: [null, [Validators.required]],
-    file: [null, [Validators.required]],
+    file: [null, []],
   };
   state: boolean;
   partner = this.fb.group(this.partnerModel);
@@ -45,14 +46,17 @@ export class EditAddPartnersComponent implements OnInit {
 
   addPartner() {
     this.partner.markAllAsTouched();
-    if (this.partner.invalid || !this.imageURL) {
+    if (this.partner.invalid || !this.imageURL || !this.fileURL) {
       return;
     }
     const formData = new FormData();
     formData.append('image', this.imageURL);
-    console.log(this.partner.invalid);
+    const formDataForFile = new FormData();
+    formData.append('file', this.fileURL);
+
     this.partnersService.addPartner(this.partner.value).subscribe((partner) => {
       this.partnersService.addImage(partner._id, formData).subscribe(() => console.log('Add Image!'));
+      this.partnersService.addFile(partner._id, formDataForFile).subscribe(() => console.log('Add file!'));
     });
   }
 
@@ -81,6 +85,11 @@ export class EditAddPartnersComponent implements OnInit {
     reader.onloadend = file => {
       this.imagePreview = reader.result;
     };
+  }
+
+  changeFile(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.fileURL = file;
   }
 }
 

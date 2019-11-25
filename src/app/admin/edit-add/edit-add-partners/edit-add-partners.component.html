@@ -30,8 +30,9 @@
       <div class="file-block">
         <h2>Сертификат</h2>
         <label for="uploadFile">Загрузить файл</label>
-        <span>{{fileName}}</span>
-        <input id="uploadFile" formControlName="file" name="uploadFile" class="uploadFile" type="file" accept=".doc, .docx, .pdf" (change)="changeValue($event.target.files[0])">
+        <span *ngIf="!fileURL && f.file.value">{{f.file.value}}</span>
+        <span *ngIf="fileURL">{{fileURL.name}}</span>
+        <input id="uploadFile" formControlName="file" name="uploadFile" class="uploadFile" type="file" accept=".doc, .docx, .pdf" (change)="changeFile($event)">
       </div>
     </div>
   </form>

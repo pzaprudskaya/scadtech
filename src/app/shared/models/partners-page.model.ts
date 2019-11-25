@@ -4,6 +4,7 @@ export interface IPartners {
   image: string;
   description: string;
   file: string;
+  originalName: string;
 }
 export interface IAllPartners {
   count: string;
