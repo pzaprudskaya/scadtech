@@ -38,7 +38,7 @@ export class EditAddLeadershipsComponent implements OnInit {
     } else {
       this.state = false;
       this.leadershipsService.getLeadership(this.route.snapshot.params.id).subscribe((leadership: ILeadership) => {
-        this.leader.reset(leadership[0]);
+        Object.keys(this.f).forEach(key => this.f[key].setValue(leadership[key]));
       });
     }
   }

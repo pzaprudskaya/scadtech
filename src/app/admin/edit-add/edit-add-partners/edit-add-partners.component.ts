@@ -39,7 +39,7 @@ export class EditAddPartnersComponent implements OnInit {
     } else {
       this.state = false;
       this.partnersService.getPartner(this.route.snapshot.params.id).subscribe((member: IPartners) => {
-        this.partner.reset(member[0]);
+        Object.keys(this.f).forEach(key => this.f[key].setValue(member[key]));
       });
     }
   }
@@ -49,18 +49,19 @@ export class EditAddPartnersComponent implements OnInit {
     if (this.partner.invalid || !this.imageURL || !this.fileURL) {
       return;
     }
-    const formData = new FormData();
-    formData.append('image', this.imageURL);
-    const formDataForFile = new FormData();
-    formData.append('file', this.fileURL);
+    const imageFormData = new FormData();
+    imageFormData.append('image', this.imageURL);
+    const fileFormData = new FormData();
+    fileFormData.append('file', this.fileURL);
 
     this.partnersService.addPartner(this.partner.value).subscribe((partner) => {
-      this.partnersService.addImage(partner._id, formData).subscribe(() => console.log('Add Image!'));
-      this.partnersService.addFile(partner._id, formDataForFile).subscribe(() => console.log('Add file!'));
+      this.partnersService.addImage(partner._id, imageFormData).subscribe(() => console.log('Add Image!'));
+      this.partnersService.addFile(partner._id, fileFormData).subscribe(() => console.log('Add file!'));
     });
   }
 
   updatePartner() {
+    console.log(this.partner);
     if (this.partner.invalid) {
       return;
     }
@@ -68,13 +69,23 @@ export class EditAddPartnersComponent implements OnInit {
     if (this.imageURL) {
       const formData = new FormData();
       formData.append('image', this.imageURL);
-      return this.partnersService.addImage(this.route.snapshot.params.id, formData)
+      this.partnersService.addImage(this.route.snapshot.params.id, formData)
         .subscribe((e) => {
-          this.partner.controls.image.setValue(e.image);
-          this.partnersService.updatePartner(this.route.snapshot.params.id, this.partner.value).subscribe(() => console.log(''));
+          console.log('');
         });
     }
-    this.partnersService.updatePartner(this.route.snapshot.params.id, this.partner.value).subscribe(() => console.log(''));
+    if (this.fileURL) {
+      const formData = new FormData();
+      formData.append('file', this.fileURL);
+      this.partnersService.addImage(this.route.snapshot.params.id, formData)
+        .subscribe((e) => {
+          console.log('');
+        });
+    }
+    const localPartner = { ...this.partner.value };
+    delete localPartner.file;
+    delete localPartner.image;
+    this.partnersService.updatePartner(this.route.snapshot.params.id, localPartner).subscribe(() => console.log(''));
   }
 
   changeValue(event) {

@@ -36,7 +36,7 @@ export class EditAddHistoryEventComponent implements OnInit {
     } else {
       this.state = false;
       this.historyEventsService.getHistoryEvent(this.route.snapshot.params.id).subscribe((event: IHistoryEvent) => {
-        this.historyEvent.reset(event[0]);
+        Object.keys(this.f).forEach(key => this.f[key].setValue(event[key]));
       });
     }
   }

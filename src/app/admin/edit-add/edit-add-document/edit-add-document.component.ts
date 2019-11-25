@@ -41,7 +41,7 @@ export class EditAddDocumentComponent implements OnInit {
     } else {
       this.state = false;
       this.documentService.getDocument(this.route.snapshot.params.id).subscribe((value: IDocument) => {
-        this.document.reset(value[0]);
+        Object.keys(this.f).forEach(key => this.f[key].setValue(value[key]));
       });
     }
   }

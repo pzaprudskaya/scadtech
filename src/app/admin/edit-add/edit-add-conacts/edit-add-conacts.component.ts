@@ -39,8 +39,8 @@ export class EditAddConactsComponent implements OnInit {
       this.state = true;
     } else {
       this.state = false;
-      this.contactsService.getContact(this.route.snapshot.params.id).subscribe((member: IContact) => {
-        this.contact.reset(member[0]);
+      this.contactsService.getContact(this.route.snapshot.params.id).subscribe((contact: IContact) => {
+        Object.keys(this.f).forEach(key => this.f[key].setValue(contact[key]));
       });
     }
   }
