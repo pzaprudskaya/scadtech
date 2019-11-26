@@ -3,7 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/c
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {IAllEvents, IEvent} from '../models/news-page.model';
-import {IValue} from "../models/about-company-page.model";
+import {IValue} from '../models/about-company-page.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ import {IValue} from "../models/about-company-page.model";
 
 
 export class NewsPageService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/news';
+  private API_URL = 'api/news';
 
   httpOptions = {
     mode: 'no-cors',

@@ -9,7 +9,7 @@ import {IAllDocuments, IDocument} from '../models/document.model';
 })
 
 export class DocumentService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/documentation';
+  private API_URL = '/api/documentation';
 
   httpOptions = {
     mode: 'no-cors',

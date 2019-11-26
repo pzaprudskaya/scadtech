@@ -9,7 +9,7 @@ import {IAllValues, IValue} from '../models/about-company-page.model';
 })
 
 export class ValuesService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/worths';
+  private API_URL = '/api/worths';
 
   httpOptions = {
     mode: 'no-cors',

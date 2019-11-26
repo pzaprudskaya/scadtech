@@ -10,7 +10,7 @@ import {IAllProducts, IProduct} from '../models/products.model';
 
 
 export class ProductsService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/products';
+  private API_URL = '/api/products';
 
   httpOptions = {
     mode: 'no-cors',

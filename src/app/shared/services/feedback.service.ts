@@ -10,7 +10,7 @@ import {IAllFeedbacks, IFeedback} from '../models/feedback.model';
 
 
 export class FeedbackService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/feedback';
+  private API_URL = '/api/feedback';
 
   httpOptions = {
     mode: 'no-cors',

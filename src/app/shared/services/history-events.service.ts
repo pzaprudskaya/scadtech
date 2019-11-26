@@ -10,7 +10,7 @@ import {IAllHistoryEvents, IHistoryEvent} from '../models/about-company-page.mod
 
 
 export class HistoryEventsService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/history-events';
+  private API_URL = '/api/history-events';
 
   httpOptions = {
     mode: 'no-cors',

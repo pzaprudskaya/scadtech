@@ -3,7 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/c
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {IEvent} from '../models/news-page.model';
-import {IAllLeaderships, ILeadership} from "../models/leaderships-page.model";
+import {IAllLeaderships, ILeadership} from '../models/leaderships-page.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ import {IAllLeaderships, ILeadership} from "../models/leaderships-page.model";
 
 
 export class LeadershipsPageService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/leaderships';
+  private API_URL = '/api/leaderships';
 
   httpOptions = {
     mode: 'no-cors',

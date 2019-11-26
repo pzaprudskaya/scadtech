@@ -3,7 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/c
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {IAllContacts, IContact} from '../models/contacts-page.model';
-import {IPartners} from "../models/partners-page.model";
+import {IPartners} from '../models/partners-page.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ import {IPartners} from "../models/partners-page.model";
 
 
 export class ContactsPageService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/contacts';
+  private API_URL = '/api/contacts';
 
   httpOptions = {
     mode: 'no-cors',

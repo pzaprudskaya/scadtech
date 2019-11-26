@@ -10,7 +10,7 @@ import {IAllPartners, IPartners} from '../models/partners-page.model';
 
 
 export class PartnersPageService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/partners';
+  private API_URL = '/api/partners';
 
   httpOptions = {
     mode: 'no-cors',

@@ -15,7 +15,7 @@
       <div class="image-control-wrapper">
         <label for="uploadImage">Загрузить изображение</label>
         <div class="image-preview-block" *ngIf="!imagePreview && f.previewImage.value">
-          <img class="image-preview" src="https://boxing-wizards-jump.herokuapp.com{{ f.previewImage.value }}" alt="image">
+          <img class="image-preview" src="{{ f.previewImage.value }}" alt="image">
         </div>
         <ng-template [ngIf]="imagePreview">
 

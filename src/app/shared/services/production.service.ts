@@ -10,7 +10,7 @@ import {IAbout} from '../models/about-company-page.model';
 
 
 export class ProductionService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/customization/production';
+  private API_URL = '/api/customization/production';
 
   httpOptions = {
     mode: 'no-cors',

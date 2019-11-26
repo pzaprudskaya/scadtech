@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {IProfile} from "../models/profile.model";
+import {IProfile} from '../models/profile.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import {IProfile} from "../models/profile.model";
 
 
 export class ProfileService {
-  private API_URL = 'https://boxing-wizards-jump.herokuapp.com/profile';
+  private API_URL = '/api/profile';
 
   httpOptions = {
     mode: 'no-cors',
