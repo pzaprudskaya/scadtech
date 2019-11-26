@@ -3,5 +3,15 @@
     "target": "https://boxing-wizards-jump.herokuapp.com",
     "secure": false,
     "changeOrigin": true
+  },
+  "/i": {
+    "target": "https://boxing-wizards-jump.herokuapp.com",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/files": {
+    "target": "https://boxing-wizards-jump.herokuapp.com",
+    "secure": false,
+    "changeOrigin": true
   }
 }

@@ -66,6 +66,7 @@ export class EditAddPartnersComponent implements OnInit {
       return;
     }
     this.partner.markAllAsTouched();
+    console.log(this.imageURL);
     if (this.imageURL) {
       const formData = new FormData();
       formData.append('image', this.imageURL);
@@ -77,7 +78,7 @@ export class EditAddPartnersComponent implements OnInit {
     if (this.fileURL) {
       const formData = new FormData();
       formData.append('file', this.fileURL);
-      this.partnersService.addImage(this.route.snapshot.params.id, formData)
+      this.partnersService.addFile(this.route.snapshot.params.id, formData)
         .subscribe((e) => {
           console.log('');
         });
