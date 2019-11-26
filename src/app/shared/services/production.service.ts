@@ -13,7 +13,6 @@ export class ProductionService {
   private API_URL = '/api/customization/production';
 
   httpOptions = {
-    mode: 'no-cors',
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 

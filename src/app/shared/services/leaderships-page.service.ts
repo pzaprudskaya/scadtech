@@ -14,7 +14,6 @@ export class LeadershipsPageService {
   private API_URL = '/api/leaderships';
 
   httpOptions = {
-    mode: 'no-cors',
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
@@ -26,7 +25,6 @@ export class LeadershipsPageService {
       .set('top', viewPages)
       .set('skip', skipPages);
     const httpOptions = {
-      mode: 'no-cors',
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
       params: p,
     };

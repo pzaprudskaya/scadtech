@@ -7,14 +7,19 @@
   flex-direction: column
 
   .header p
-    display: flex
-    align-items: center
-    font-size: 25px
+    margin: 0
+    font-size: 16px
     color: gray
+
+  img
+    height: 50px
   header
-    padding: 20px 20px
     display: flex
+    justify-content: space-between
+    align-items: center
     width: 100%
+    padding: 0 3rem
+
   .header
     background: white
     min-height: 70px
@@ -31,18 +36,19 @@
     flex-direction: row
 
   .side-bar
-    min-width: 100px
-    max-width: 300px
+    width: 300px
     overflow-y: auto
     min-height: 0px
 
 
   .main-bar
+    width: calc( 100% - 300px )
     background: $imageBack
     box-shadow: 5px 0 5px -5px rgba(44,51,73,.1)
     flex: 1 1 auto
     overflow-y: auto
     min-height: 0px
+    padding: 2rem
 
 .menu-link
   padding: 20px 10px 10px 10px
@@ -70,7 +76,6 @@
 
 .header
   i
-    margin-left: auto
     display: flex
     justify-content: center
     align-items: center
@@ -78,3 +83,5 @@
     color: $main-color
     cursor: pointer
 
+.edit-container
+  height: 100%

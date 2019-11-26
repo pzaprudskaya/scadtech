@@ -13,7 +13,6 @@ export class AboutService {
   private API_URL = '/api/customization/about';
 
   httpOptions = {
-    mode: 'no-cors',
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 

@@ -13,7 +13,6 @@ export class ProductsService {
   private API_URL = '/api/products';
 
   httpOptions = {
-    mode: 'no-cors',
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
@@ -25,7 +24,6 @@ export class ProductsService {
       .set('top', viewPages)
       .set('skip', skipPages);
     const httpOptions = {
-      mode: 'no-cors',
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
       params: p,
     };

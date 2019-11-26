@@ -13,7 +13,6 @@ export class PartnersPageService {
   private API_URL = '/api/partners';
 
   httpOptions = {
-    mode: 'no-cors',
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
@@ -25,7 +24,6 @@ export class PartnersPageService {
       .set('top', viewPages)
       .set('skip', skipPages);
     const httpOptions = {
-      mode: 'no-cors',
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
       params: p,
     };

@@ -13,7 +13,6 @@ export class ProfileService {
   private API_URL = '/api/profile';
 
   httpOptions = {
-    mode: 'no-cors',
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
