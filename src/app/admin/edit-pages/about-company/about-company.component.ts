@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {ValuesService} from '../../../shared/services/values.service';
 import {
@@ -10,6 +10,7 @@ import {
 } from '../../../shared/models/about-company-page.model';
 import {AboutService} from '../../../shared/services/about.service';
 import {HistoryEventsService} from '../../../shared/services/history-events.service';
+import {NotificationComponent} from '../../edit-components/notification/notification.component';
 
 
 @Component({
@@ -18,6 +19,7 @@ import {HistoryEventsService} from '../../../shared/services/history-events.serv
   templateUrl: './about-company.component.html',
 })
 export class EditAboutCompanyComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   pageSizeForHistory = 4;
   countHistoryEvents;
   pageSizeForValues = 3;
@@ -64,8 +66,10 @@ export class EditAboutCompanyComponent implements OnInit {
   }
 
   saveInformationAC() {
-    debugger;
-    this.aboutService.updateAbout(this.aboutCompany.value).subscribe(() => console.log('Update'));
+    this.notify.emit({type: 'success', message: 'Сохранено!'});
+    this.aboutService.updateAbout(this.aboutCompany.value).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Сохранено!'});
+    });
   }
 
   deleteHistoryEvent(row) {
@@ -97,4 +101,5 @@ export class EditAboutCompanyComponent implements OnInit {
       this.values = values.data;
     });
   }
+
 }

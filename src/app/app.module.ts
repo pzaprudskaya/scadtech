@@ -13,6 +13,7 @@ import {AuthModule} from './auth/auth.module';
 import {ComponentsModule} from './user/components/components.module';
 import {PagesModule} from './user/pages/pages.module';
 import {FeedbackWindowComponent} from './user/components/feedback-window/feedback-window.component';
+import {NotifierModule} from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -28,12 +29,51 @@ import {FeedbackWindowComponent} from './user/components/feedback-window/feedbac
     ComponentsModule,
     BrowserAnimationsModule,
     AngularFullpageModule,
-    HttpClientModule
+    HttpClientModule,
+    NotifierModule.withConfig({
+      position: {
+        horizontal: {
+          position: 'left',
+          distance: 12
+        },
+        vertical: {
+          position: 'bottom',
+          distance: 12,
+          gap: 10
+        }
+      },
+      theme: 'material',
+      behaviour: {
+        autoHide: 5000,
+        onClick: false,
+        onMouseover: 'pauseAutoHide',
+        showDismissButton: true,
+        stacking: 4
+      },
+      animations: {
+        enabled: true,
+        show: {
+          preset: 'slide',
+          speed: 300,
+          easing: 'ease'
+        },
+        hide: {
+          preset: 'fade',
+          speed: 300,
+          easing: 'ease',
+          offset: 50
+        },
+        shift: {
+          speed: 300,
+          easing: 'ease'
+        },
+        overlap: 150
+      }
+    })
   ],
   providers: [],
   entryComponents: [FeedbackWindowComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

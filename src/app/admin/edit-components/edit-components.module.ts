@@ -7,10 +7,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {ItemComponent} from './item/item.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
-    ItemComponent
+    ItemComponent,
+    NotificationComponent
   ],
   imports: [
     NgbModule,
@@ -21,7 +23,8 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     EditorModule,
   ],
   exports: [
-    ItemComponent
+    ItemComponent,
+    NotificationComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 
