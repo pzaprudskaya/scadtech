@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {partners} from 'src/app/data';
+import { partners } from 'src/app/data';
 
 @Component({
   selector: 'app-partners-and-certifications',
@@ -9,10 +9,9 @@ import {partners} from 'src/app/data';
 export class PartnersAndCertificationsComponent implements OnInit {
   headline = 'Партнеры и сертификаты';
   partners;
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.partners = partners;
   }
-
 }

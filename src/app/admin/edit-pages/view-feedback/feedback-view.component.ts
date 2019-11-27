@@ -1,13 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {FeedbackService} from '../../../shared/services/feedback.service';
-import {IAllFeedbacks, IFeedback} from '../../../shared/models/feedback.model';
-import {Router} from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
+import { FeedbackService } from '../../../shared/services/feedback.service';
+import {
+  IAllFeedbacks,
+  IFeedback
+} from '../../../shared/models/feedback.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feedback-view',
   styleUrls: ['./feedback-view.component.sass'],
-  templateUrl: './feedback-view.component.html',
+  templateUrl: './feedback-view.component.html'
 })
 export class FeedbackViewComponent implements OnInit {
   pageSizeFeedbacks = 4;
@@ -15,21 +17,29 @@ export class FeedbackViewComponent implements OnInit {
   page = 1;
   feedbacks: IFeedback[];
 
-  constructor(private feedbackService: FeedbackService,
-              private router: Router) {
-  }
+  constructor(
+    private feedbackService: FeedbackService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.feedbacks = [];
-    this.feedbackService.getFeedbacks(this.pageSizeFeedbacks, this.pageSizeFeedbacks * (this.page - 1)).subscribe((feedbacks: IAllFeedbacks) => {
-      this.countFeedbacks = feedbacks.count;
-      this.feedbacks = feedbacks.data;
-    });
+    this.feedbackService
+      .getFeedbacks(
+        this.pageSizeFeedbacks,
+        this.pageSizeFeedbacks * (this.page - 1)
+      )
+      .subscribe((feedbacks: IAllFeedbacks) => {
+        this.countFeedbacks = feedbacks.count;
+        this.feedbacks = feedbacks.data;
+      });
   }
 
   openFeedback(feedback: IFeedback) {
     feedback.unread = true;
-    this.feedbackService.updateFeedback(feedback).subscribe(() => console.log('Update'));
+    this.feedbackService
+      .updateFeedback(feedback)
+      .subscribe(() => console.log('Update'));
     this.router.navigate(['/feedback', feedback._id]);
   }
 
@@ -39,12 +49,16 @@ export class FeedbackViewComponent implements OnInit {
         this.feedbacks.splice(i, 1);
       }
     });
-    this.feedbackService.deleteFeedback(feedback).subscribe(() => console.log('Delete!'));
+    this.feedbackService
+      .deleteFeedback(feedback)
+      .subscribe(() => console.log('Delete!'));
   }
 
   changePage(page) {
-    this.feedbackService.getFeedbacks(this.pageSizeFeedbacks, this.pageSizeFeedbacks * (page - 1)).subscribe((feedbacks: IAllFeedbacks) => {
-      this.feedbacks = feedbacks.data;
-    });
+    this.feedbackService
+      .getFeedbacks(this.pageSizeFeedbacks, this.pageSizeFeedbacks * (page - 1))
+      .subscribe((feedbacks: IAllFeedbacks) => {
+        this.feedbacks = feedbacks.data;
+      });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {documents} from 'src/app/data';
+import { documents } from 'src/app/data';
 
 @Component({
   selector: 'app-documentation',
@@ -9,10 +9,9 @@ import {documents} from 'src/app/data';
 export class DocumentationComponent implements OnInit {
   headline = 'Разрешительная документация';
   documents;
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.documents = documents;
   }
-
 }

@@ -1,34 +1,45 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
-import {IAbout} from '../models/about-company-page.model';
+import { Injectable } from '@angular/core';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders
+} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { IAbout } from '../models/about-company-page.model';
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class ProductionService {
   private API_URL = '/api/customization/production';
 
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private http: HttpClient) {}
 
   getAbout(): Observable<IAbout> {
     return this.http.get<IAbout>(`${this.API_URL}`, this.httpOptions).pipe(
-      tap((data: IAbout) => console.log('Content production: ' + JSON.stringify(data))),
+      tap((data: IAbout) =>
+        console.log('Content production: ' + JSON.stringify(data))
+      ),
       catchError(this.handleError)
     );
   }
 
   updateAbout(value: IAbout) {
-    return this.http.post<IAbout>(`${this.API_URL}`, JSON.stringify(value), this.httpOptions).pipe(
-      tap(updateValue => console.log('Update content production: ' + JSON.stringify(updateValue))),
-      catchError(this.handleError));
+    return this.http
+      .post<IAbout>(`${this.API_URL}`, JSON.stringify(value), this.httpOptions)
+      .pipe(
+        tap(updateValue =>
+          console.log(
+            'Update content production: ' + JSON.stringify(updateValue)
+          )
+        ),
+        catchError(this.handleError)
+      );
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -41,5 +52,4 @@ export class ProductionService {
     console.error(errorMessage);
     return throwError(errorMessage);
   }
-
 }

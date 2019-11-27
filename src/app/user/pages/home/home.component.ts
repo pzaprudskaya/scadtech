@@ -11,10 +11,15 @@ export class HomeComponent implements OnInit {
 
   constructor() {
     this.config = {
-
       // fullpage options
       licenseKey: 'YOUR LICENSE KEY HERE',
-      anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'],
+      anchors: [
+        'firstPage',
+        'secondPage',
+        'thirdPage',
+        'fourthPage',
+        'lastPage'
+      ],
       menu: '#menu',
 
       // fullpage callbacks
@@ -27,10 +32,8 @@ export class HomeComponent implements OnInit {
     };
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   getRef(fullPageRef) {
     this.fullpage_api = fullPageRef;
   }
-
 }

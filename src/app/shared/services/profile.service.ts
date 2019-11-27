@@ -1,23 +1,25 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
-import {IProfile} from '../models/profile.model';
+import { Injectable } from '@angular/core';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpParams
+} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { IProfile } from '../models/profile.model';
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class ProfileService {
   private API_URL = '/api/profile';
 
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getData(): Observable<IProfile> {
     return this.http.get<IProfile>(this.API_URL, this.httpOptions).pipe(
@@ -27,9 +29,18 @@ export class ProfileService {
   }
 
   updateData(product: IProfile) {
-    return this.http.put<void>(`${this.API_URL}/${product._id}`, JSON.stringify(product), this.httpOptions).pipe(
-      tap(updateProduct => console.log('Update product: ' + JSON.stringify(updateProduct))),
-      catchError(this.handleError));
+    return this.http
+      .put<void>(
+        `${this.API_URL}/${product._id}`,
+        JSON.stringify(product),
+        this.httpOptions
+      )
+      .pipe(
+        tap(updateProduct =>
+          console.log('Update product: ' + JSON.stringify(updateProduct))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -42,5 +53,4 @@ export class ProfileService {
     console.error(errorMessage);
     return throwError(errorMessage);
   }
-
 }

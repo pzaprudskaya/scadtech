@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {contacts} from 'src/app/data';
+import { Component, OnInit } from '@angular/core';
+import { contacts } from 'src/app/data';
 
 @Component({
   selector: 'app-contacts',
@@ -11,8 +11,7 @@ export class ContactsComponent implements OnInit {
   contacts;
   selectedContact: number;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {
     this.contacts = contacts;
@@ -21,5 +20,4 @@ export class ContactsComponent implements OnInit {
   openInformation(index: number) {
     this.selectedContact = index;
   }
-
 }

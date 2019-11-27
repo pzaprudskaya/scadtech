@@ -6,12 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./event-item.component.sass']
 })
 export class EventItemComponent implements OnInit {
-
   @Input() event;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

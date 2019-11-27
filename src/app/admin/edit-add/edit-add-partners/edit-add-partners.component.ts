@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
-import {PartnersPageService} from '../../../shared/services/partners-page.service';
-import {IPartners} from '../../../shared/models/partners-page.model';
+import { Component, OnInit } from '@angular/core';
+import { Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { PartnersPageService } from '../../../shared/services/partners-page.service';
+import { IPartners } from '../../../shared/models/partners-page.model';
 
 @Component({
   styleUrls: ['./edit-add-partners.component.sass'],
-  templateUrl: './edit-add-partners.component.html',
+  templateUrl: './edit-add-partners.component.html'
 })
 export class EditAddPartnersComponent implements OnInit {
   imageURL: any;
@@ -17,30 +17,33 @@ export class EditAddPartnersComponent implements OnInit {
     name: [null, [Validators.required]],
     image: [null, []],
     description: [null, [Validators.required]],
-    file: [null, []],
+    file: [null, []]
   };
   state: boolean;
   partner = this.fb.group(this.partnerModel);
 
   get f() {
     return this.partner.controls as {
-      [K in keyof (this[ 'partnerModel' ])]: AbstractControl;
+      [K in keyof this['partnerModel']]: AbstractControl;
     };
   }
 
-  constructor(private fb: FormBuilder,
-              private partnersService: PartnersPageService,
-              private route: ActivatedRoute) {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private partnersService: PartnersPageService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
       this.state = true;
     } else {
       this.state = false;
-      this.partnersService.getPartner(this.route.snapshot.params.id).subscribe((member: IPartners) => {
-        Object.keys(this.f).forEach(key => this.f[key].setValue(member[key]));
-      });
+      this.partnersService
+        .getPartner(this.route.snapshot.params.id)
+        .subscribe((member: IPartners) => {
+          Object.keys(this.f).forEach(key => this.f[key].setValue(member[key]));
+        });
     }
   }
 
@@ -54,9 +57,13 @@ export class EditAddPartnersComponent implements OnInit {
     const fileFormData = new FormData();
     fileFormData.append('file', this.fileURL);
 
-    this.partnersService.addPartner(this.partner.value).subscribe((partner) => {
-      this.partnersService.addImage(partner._id, imageFormData).subscribe(() => console.log('Add Image!'));
-      this.partnersService.addFile(partner._id, fileFormData).subscribe(() => console.log('Add file!'));
+    this.partnersService.addPartner(this.partner.value).subscribe(partner => {
+      this.partnersService
+        .addImage(partner._id, imageFormData)
+        .subscribe(() => console.log('Add Image!'));
+      this.partnersService
+        .addFile(partner._id, fileFormData)
+        .subscribe(() => console.log('Add file!'));
     });
   }
 
@@ -70,23 +77,27 @@ export class EditAddPartnersComponent implements OnInit {
     if (this.imageURL) {
       const formData = new FormData();
       formData.append('image', this.imageURL);
-      this.partnersService.addImage(this.route.snapshot.params.id, formData)
-        .subscribe((e) => {
+      this.partnersService
+        .addImage(this.route.snapshot.params.id, formData)
+        .subscribe(e => {
           console.log('');
         });
     }
     if (this.fileURL) {
       const formData = new FormData();
       formData.append('file', this.fileURL);
-      this.partnersService.addFile(this.route.snapshot.params.id, formData)
-        .subscribe((e) => {
+      this.partnersService
+        .addFile(this.route.snapshot.params.id, formData)
+        .subscribe(e => {
           console.log('');
         });
     }
     const localPartner = { ...this.partner.value };
     delete localPartner.file;
     delete localPartner.image;
-    this.partnersService.updatePartner(this.route.snapshot.params.id, localPartner).subscribe(() => console.log(''));
+    this.partnersService
+      .updatePartner(this.route.snapshot.params.id, localPartner)
+      .subscribe(() => console.log(''));
   }
 
   changeValue(event) {
@@ -104,4 +115,3 @@ export class EditAddPartnersComponent implements OnInit {
     this.fileURL = file;
   }
 }
-

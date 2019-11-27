@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {FeedbackWindowComponent} from '../../components/feedback-window/feedback-window.component';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FeedbackWindowComponent } from '../../components/feedback-window/feedback-window.component';
 import { selectedFiles, files } from 'src/app/data';
 
 @Component({
@@ -21,11 +21,20 @@ export class ProcurementComponent implements OnInit {
     this.selectedFiles = selectedFiles;
   }
   open() {
-    this.modalService.open(FeedbackWindowComponent, {ariaLabelledBy: 'modal-basic-title', centered: true, size: 'lg'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    this.modalService
+      .open(FeedbackWindowComponent, {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true,
+        size: 'lg'
+      })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
   }
 
   private getDismissReason(reason: any): string {
@@ -34,8 +43,7 @@ export class ProcurementComponent implements OnInit {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
-
 }

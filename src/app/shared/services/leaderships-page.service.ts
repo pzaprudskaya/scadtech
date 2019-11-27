@@ -1,62 +1,87 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
-import {IEvent} from '../models/news-page.model';
-import {IAllLeaderships, ILeadership} from '../models/leaderships-page.model';
+import { Injectable } from '@angular/core';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpParams
+} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { IEvent } from '../models/news-page.model';
+import { IAllLeaderships, ILeadership } from '../models/leaderships-page.model';
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class LeadershipsPageService {
   private API_URL = '/api/leaderships';
 
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getLeaderships(viewPages, skipPages): Observable<IAllLeaderships> {
-    const p = new HttpParams()
-      .set('top', viewPages)
-      .set('skip', skipPages);
+    const p = new HttpParams().set('top', viewPages).set('skip', skipPages);
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'}),
-      params: p,
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: p
     };
     return this.http.get<IAllLeaderships>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllLeaderships) => console.log('Leaderships: ' + JSON.stringify(data))),
+      tap((data: IAllLeaderships) =>
+        console.log('Leaderships: ' + JSON.stringify(data))
+      ),
       catchError(this.handleError)
     );
   }
 
   getLeadership(id: string): Observable<ILeadership> {
-    return this.http.get<ILeadership>(`${this.API_URL}/${id}`, this.httpOptions).pipe(
-      tap((data: ILeadership) => console.log('Leadership: ' + JSON.stringify(data))),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<ILeadership>(`${this.API_URL}/${id}`, this.httpOptions)
+      .pipe(
+        tap((data: ILeadership) =>
+          console.log('Leadership: ' + JSON.stringify(data))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   addLeadership(event: ILeadership) {
-    return this.http.post<ILeadership>(this.API_URL, JSON.stringify(event), this.httpOptions).pipe(
-      tap(addLeadership => console.log('Add leadership: ' + JSON.stringify(addLeadership))),
-      catchError(this.handleError));
+    return this.http
+      .post<ILeadership>(this.API_URL, JSON.stringify(event), this.httpOptions)
+      .pipe(
+        tap(addLeadership =>
+          console.log('Add leadership: ' + JSON.stringify(addLeadership))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   updateLeadership(id: string, event: ILeadership) {
-    return this.http.put<void>(`${this.API_URL}/${id}`, JSON.stringify(event), this.httpOptions).pipe(
-      tap(updateLeadership => console.log('Update leadership: ' + JSON.stringify(updateLeadership))),
-      catchError(this.handleError));
+    return this.http
+      .put<void>(
+        `${this.API_URL}/${id}`,
+        JSON.stringify(event),
+        this.httpOptions
+      )
+      .pipe(
+        tap(updateLeadership =>
+          console.log('Update leadership: ' + JSON.stringify(updateLeadership))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   deleteLeadership(event: ILeadership) {
-    return this.http.delete<void>(`${this.API_URL}/${event._id}`, this.httpOptions).pipe(
-      tap(deleteLeadership => console.log('Delete leadership: ' + JSON.stringify(deleteLeadership))),
-      catchError(this.handleError));
+    return this.http
+      .delete<void>(`${this.API_URL}/${event._id}`, this.httpOptions)
+      .pipe(
+        tap(deleteLeadership =>
+          console.log('Delete leadership: ' + JSON.stringify(deleteLeadership))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -71,9 +96,11 @@ export class LeadershipsPageService {
   }
 
   addImage(id: string, formData) {
-    return this.http.post<ILeadership>(`${this.API_URL}/${id}/image`, formData).pipe(
-      tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
-      catchError(this.handleError));
+    return this.http
+      .post<ILeadership>(`${this.API_URL}/${id}/image`, formData)
+      .pipe(
+        tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+        catchError(this.handleError)
+      );
   }
-
 }

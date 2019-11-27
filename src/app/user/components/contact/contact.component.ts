@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -8,8 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ContactComponent implements OnInit {
   @Input() contact;
   @Input() selected: boolean;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
-
+  ngOnInit() {}
 }

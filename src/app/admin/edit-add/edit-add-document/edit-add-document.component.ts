@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
-import {IDocument} from '../../../shared/models/document.model';
-import {DocumentService} from '../../../shared/services/document.service';
+import { Component, OnInit } from '@angular/core';
+import { Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { IDocument } from '../../../shared/models/document.model';
+import { DocumentService } from '../../../shared/services/document.service';
 
 @Component({
   styleUrls: ['./edit-add-document.component.sass'],
-  templateUrl: './edit-add-document.component.html',
+  templateUrl: './edit-add-document.component.html'
 })
 export class EditAddDocumentComponent implements OnInit {
   fileName: string;
@@ -17,7 +17,7 @@ export class EditAddDocumentComponent implements OnInit {
     validity: [null, [Validators.required]],
     descriptionIssuedBy: [null, [Validators.required]],
     descriptionTypesOfJobs: [null, [Validators.required]],
-    link: [null, [Validators.required]],
+    link: [null, [Validators.required]]
   };
   state: boolean;
   document = this.fb.group(this.documentModel);
@@ -25,14 +25,15 @@ export class EditAddDocumentComponent implements OnInit {
 
   get f() {
     return this.document.controls as {
-      [K in keyof (this[ 'documentModel' ])]: AbstractControl;
+      [K in keyof this['documentModel']]: AbstractControl;
     };
   }
 
-  constructor(private fb: FormBuilder,
-              private documentService: DocumentService,
-              private route: ActivatedRoute) {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private documentService: DocumentService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
@@ -40,9 +41,11 @@ export class EditAddDocumentComponent implements OnInit {
       this.document.reset();
     } else {
       this.state = false;
-      this.documentService.getDocument(this.route.snapshot.params.id).subscribe((value: IDocument) => {
-        Object.keys(this.f).forEach(key => this.f[key].setValue(value[key]));
-      });
+      this.documentService
+        .getDocument(this.route.snapshot.params.id)
+        .subscribe((value: IDocument) => {
+          Object.keys(this.f).forEach(key => this.f[key].setValue(value[key]));
+        });
     }
   }
 
@@ -51,7 +54,9 @@ export class EditAddDocumentComponent implements OnInit {
     if (this.document.invalid) {
       return;
     }
-    this.documentService.addDocument(this.document.value).subscribe(() => console.log('Add!'));
+    this.documentService
+      .addDocument(this.document.value)
+      .subscribe(() => console.log('Add!'));
   }
 
   updateDocument() {
@@ -59,11 +64,12 @@ export class EditAddDocumentComponent implements OnInit {
     if (this.document.invalid) {
       return;
     }
-    this.documentService.updateDocument(this.route.snapshot.params.id, this.document.value).subscribe(() => console.log('Update!'));
+    this.documentService
+      .updateDocument(this.route.snapshot.params.id, this.document.value)
+      .subscribe(() => console.log('Update!'));
   }
 
   changeValue(file) {
     this.fileName = file.name;
   }
 }
-

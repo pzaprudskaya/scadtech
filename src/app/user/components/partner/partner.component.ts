@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-partner',
@@ -7,9 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PartnerComponent implements OnInit {
   @Input() partner;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

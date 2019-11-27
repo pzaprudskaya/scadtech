@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-value',
@@ -7,9 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ValueComponent implements OnInit {
   @Input() value;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

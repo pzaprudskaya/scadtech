@@ -1,10 +1,16 @@
-import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
-import {historyEvents} from 'src/app/data';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  HostListener
+} from '@angular/core';
+import { historyEvents } from 'src/app/data';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
-  styleUrls: [ './history.component.sass' ]
+  styleUrls: ['./history.component.sass']
 })
 export class HistoryComponent implements OnInit {
   historyEvents;
@@ -17,7 +23,7 @@ export class HistoryComponent implements OnInit {
   offset = { x: 0, y: 0 };
   innerWidth = 1920;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.historyEvents = historyEvents;
@@ -28,7 +34,9 @@ export class HistoryComponent implements OnInit {
   calculate() {
     const displayWidth = window.innerWidth;
     const spacing = (displayWidth - 1240) / 2;
-    spacing > 0 ? this.initialPosition.x = spacing : this.initialPosition.x = 0;
+    spacing > 0
+      ? (this.initialPosition.x = spacing)
+      : (this.initialPosition.x = 0);
     this.spacing = spacing;
     this.innerWidth = displayWidth;
   }
@@ -48,9 +56,5 @@ export class HistoryComponent implements OnInit {
     } else if (this.offset.x < this.innerWidth - 2200) {
       this.initialPosition = { x: this.innerWidth - 2200 - this.spacing, y: 0 };
     }
-
   }
-
-
-
 }

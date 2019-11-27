@@ -8,10 +8,9 @@ import { values } from 'src/app/data';
 })
 export class ValuesComponent implements OnInit {
   values;
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.values = values;
   }
-
 }
