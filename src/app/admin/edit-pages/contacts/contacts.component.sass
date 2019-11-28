@@ -3,13 +3,10 @@
 
 .contacts-list
   position: relative
-  height: 590px
 
 .contacts-list:not(.ie-detected)
-  display: -ms-grid
   display: grid
-  grid-template-columns: repeat(4, calc((100% - 30px*3)/4))
-  grid-template-row: repeat(4, calc((100% - 30px*3)/4))
+  grid-template-columns: repeat(auto-fit, 250px)
   grid-auto-rows: max-content
   grid-auto-flow: row dense
   grid-gap: 30px
@@ -65,13 +62,17 @@ button
 button:hover
   i
     color: white
+
 .inline, .event
   display: flex
   justify-content: space-between
-  align-items: center
+  position: relative
 
-i
-  color: $main-color
-  cursor: pointer
-
+.event
+  i
+    position: absolute
+    top: 0
+    right: 0
+    color: $main-color
+    cursor: pointer
 

@@ -16,10 +16,10 @@ export class EditAddConactsComponent implements OnInit {
   contactModel = {
     name: [null, [Validators.required]],
     image: [null, []],
-    numbers: [null, [Validators.required]],
-    addresses: [null, [Validators.required]],
-    faxes: [null, [Validators.required]],
-    emails: [null, [Validators.required]],
+    number: [null, [Validators.required]],
+    address: [null, [Validators.required]],
+    fax: [null, [Validators.required]],
+    email: [null, [Validators.required]],
   };
   state: boolean;
   contact = this.fb.group(this.contactModel);
