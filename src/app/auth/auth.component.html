@@ -6,14 +6,20 @@
         src="http://scadtech.ru/upload/iblock/648/64831c0ef8d72a7defc35754cca477af.svg"
       />
     </div>
-    <form [formGroup]="userForm" >
-      <input type="text" placeholder="Введите логин" formControlName="login">
-      <input type="password" placeholder="Введите пароль" formControlName="password">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        placeholder="Введите логин"
+        formControlName="email"
+      />
+      <input
+        type="password"
+        placeholder="Введите пароль"
+        formControlName="password"
+      />
+      <div class="button">
+        <button type="submit">Войти</button>
+      </div>
     </form>
-    <div class="button">
-      <button>Войти</button>
-    </div>
-
   </div>
-
 </div>

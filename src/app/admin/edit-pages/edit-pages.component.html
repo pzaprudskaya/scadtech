@@ -14,7 +14,7 @@
   <div class="content">
     <div id="sidebar" class="side-bar open">
       <div *ngFor="let itemMenu of menu" class="menu-link">
-        <a routerLink="/{{itemMenu.link}}" routerLinkActive="active"><i
+        <a routerLink="/admin/{{itemMenu.link}}" routerLinkActive="active"><i
           class="material-icons" routerLinkActive="active">{{itemMenu.icon}}</i>{{itemMenu.title}}</a>
       </div>
     </div>

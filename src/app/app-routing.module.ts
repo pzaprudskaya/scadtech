@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from 'src/_helpers/auth.guard';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin/edit-pages/edit-pages.module').then(
         m => m.EditPagesModule
-      )
+      ),
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'auth',
@@ -24,6 +26,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })
   ],
-  exports: [RouterModule]
+  exports: [ RouterModule ]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
