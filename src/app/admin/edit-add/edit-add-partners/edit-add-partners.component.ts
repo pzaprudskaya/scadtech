@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {PartnersPageService} from '../../../shared/services/partners-page.service';
@@ -9,6 +9,7 @@ import {IPartners} from '../../../shared/models/partners-page.model';
   templateUrl: './edit-add-partners.component.html',
 })
 export class EditAddPartnersComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   imageURL: any;
   fileURL: any;
   imagePreview: ArrayBuffer | string;
@@ -55,9 +56,11 @@ export class EditAddPartnersComponent implements OnInit {
     fileFormData.append('file', this.fileURL);
 
     this.partnersService.addPartner(this.partner.value).subscribe((partner) => {
+      this.notify.emit({type: 'success', message: 'Запись добавлена!'});
+
       this.partnersService.addImage(partner._id, imageFormData).subscribe(() => console.log('Add Image!'));
       this.partnersService.addFile(partner._id, fileFormData).subscribe(() => console.log('Add file!'));
-    });
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
 
   updatePartner() {
@@ -86,7 +89,9 @@ export class EditAddPartnersComponent implements OnInit {
     const localPartner = { ...this.partner.value };
     delete localPartner.file;
     delete localPartner.image;
-    this.partnersService.updatePartner(this.route.snapshot.params.id, localPartner).subscribe(() => console.log(''));
+    this.partnersService.updatePartner(this.route.snapshot.params.id, localPartner).subscribe((value) => {
+      this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
   }
 
   changeValue(event) {

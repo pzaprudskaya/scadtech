@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {PartnersPageService} from '../../../shared/services/partners-page.service';
 import {IAllPartners} from '../../../shared/models/partners-page.model';
 
@@ -8,6 +8,7 @@ import {IAllPartners} from '../../../shared/models/partners-page.model';
   templateUrl: './partners-and-sertificates.component.html',
 })
 export class EditPartnersAndSertificatesComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   headline = 'Партнеры и сертификаты';
   partners;
   countPartners;
@@ -31,7 +32,9 @@ export class EditPartnersAndSertificatesComponent implements OnInit {
         this.partners.splice(i, 1);
       }
     });
-    this.partnersService.deletePartner(partner).subscribe(() => console.log('Delete!'));
+    this.partnersService.deletePartner(partner).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Удалено!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка удаления!'} ) );
   }
   changePage(page) {
     this.partnersService.getPartners(this.pageSize, this.pageSize * (page - 1)).subscribe((partners: IAllPartners) => {

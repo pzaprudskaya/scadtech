@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {IDocument} from '../../../shared/models/document.model';
@@ -9,6 +9,7 @@ import {DocumentService} from '../../../shared/services/document.service';
   templateUrl: './edit-add-document.component.html',
 })
 export class EditAddDocumentComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   fileName: string;
   documentModel = {
     title: [null, [Validators.required]],
@@ -51,7 +52,9 @@ export class EditAddDocumentComponent implements OnInit {
     if (this.document.invalid) {
       return;
     }
-    this.documentService.addDocument(this.document.value).subscribe(() => console.log('Add!'));
+    this.documentService.addDocument(this.document.value).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Запись добавлена!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
 
   updateDocument() {
@@ -59,7 +62,9 @@ export class EditAddDocumentComponent implements OnInit {
     if (this.document.invalid) {
       return;
     }
-    this.documentService.updateDocument(this.route.snapshot.params.id, this.document.value).subscribe(() => console.log('Update!'));
+    this.documentService.updateDocument(this.route.snapshot.params.id, this.document.value).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
   }
 
   changeValue(file) {

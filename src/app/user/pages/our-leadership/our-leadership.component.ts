@@ -1,22 +1,28 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {leaderships} from 'src/app/data';
-import {NgbCarousel, NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { leaderships } from 'src/app/data';
+import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { IAllLeaderships } from "../../../shared/models/leaderships-page.model";
+import { LeadershipsPageService } from "../../../shared/services/leaderships-page.service";
 
-@Component({
+@Component( {
   selector: 'app-our-leadership',
   templateUrl: './our-leadership.component.html',
-  styleUrls: ['./our-leadership.component.sass'],
-  providers: [NgbCarouselConfig]
-})
+  styleUrls: [ './our-leadership.component.sass' ],
+  providers: [ NgbCarouselConfig ]
+} )
 export class OurLeadershipComponent implements OnInit {
   headline = 'Наше руководство';
   ourLeadership;
-  @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
+  @ViewChild( 'carousel', {static: true} ) carousel: NgbCarousel;
 
-  constructor() { }
+  constructor( private leadershipService: LeadershipsPageService ) {
+  }
 
   ngOnInit() {
-    this.ourLeadership = leaderships;
+    this.ourLeadership = [];
+    this.leadershipService.getLeaderships( 1000, 0).subscribe( ( leaderships: IAllLeaderships ) => {
+      this.ourLeadership = leaderships.data;
+    } );
     this.carousel.pause();
   }
 

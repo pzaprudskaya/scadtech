@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {IEvent} from '../../../shared/models/news-page.model';
@@ -10,6 +10,7 @@ import {ProductsService} from '../../../shared/services/products.service';
   templateUrl: './edit-add-product.component.html',
 })
 export class EditAddProductComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
 
   productModel = {
     title: [null, [Validators.required]],
@@ -49,9 +50,9 @@ export class EditAddProductComponent implements OnInit {
     if (this.productForm.invalid) {
       return;
     }
-    this.productService.addProduct(this.productForm.value).subscribe((addProduct) => {
-      this.events.push(addProduct);
-    });
+    this.productService.addProduct(this.productForm.value).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Запись добавлена!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
 
   updateProduct() {
@@ -59,7 +60,9 @@ export class EditAddProductComponent implements OnInit {
     if (this.productForm.invalid) {
       return;
     }
-    this.productService.updateProduct(this.route.snapshot.params.id, this.productForm.value).subscribe(() => console.log('Update!'));
+    this.productService.updateProduct(this.route.snapshot.params.id, this.productForm.value).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
   }
 }
 

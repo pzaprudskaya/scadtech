@@ -69,7 +69,7 @@ export class EditAboutCompanyComponent implements OnInit {
     this.notify.emit({type: 'success', message: 'Сохранено!'});
     this.aboutService.updateAbout(this.aboutCompany.value).subscribe(() => {
       this.notify.emit({type: 'success', message: 'Сохранено!'});
-    });
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка сохранения!'} ) );
   }
 
   deleteHistoryEvent(row) {
@@ -78,7 +78,9 @@ export class EditAboutCompanyComponent implements OnInit {
         this.historyEvents.splice(i, 1);
       }
     });
-    this.historyEventsService.deleteHistoryEvent(row).subscribe(() => console.log('Delete!'));
+    this.historyEventsService.deleteHistoryEvent(row).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Удалено!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка удаления!'} ) );
   }
 
   deleteValue(value) {
@@ -87,7 +89,9 @@ export class EditAboutCompanyComponent implements OnInit {
         this.values.splice(i, 1);
       }
     });
-    this.valuesService.deleteValue(value).subscribe(() => console.log('Delete!'));
+    this.valuesService.deleteValue(value).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Удалено!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка удаления!'} ) );
   }
 
   changePage(page) {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {LeadershipsPageService} from '../../../shared/services/leaderships-page.service';
 import {IAllLeaderships, ILeadership} from '../../../shared/models/leaderships-page.model';
 
@@ -8,6 +8,7 @@ import {IAllLeaderships, ILeadership} from '../../../shared/models/leaderships-p
   templateUrl: './our-leadership.component.html',
 })
 export class EditOurLeadershipComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   headline = 'Наше руководство';
   leaderships;
   countLeaderships;
@@ -30,7 +31,9 @@ export class EditOurLeadershipComponent implements OnInit {
         this.leaderships.splice(i, 1);
       }
     });
-    this.leadershipService.deleteLeadership(leader).subscribe(() => console.log('Delete!'));
+    this.leadershipService.deleteLeadership(leader).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Удалено!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка удаления!'} ) );
   }
 
   changePage(page) {

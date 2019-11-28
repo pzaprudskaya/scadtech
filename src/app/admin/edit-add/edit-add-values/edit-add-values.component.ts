@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IValue } from '../../../shared/models/about-company-page.model';
@@ -9,6 +9,7 @@ import { ValuesService } from '../../../shared/services/values.service';
   templateUrl: './edit-add-values.component.html',
 })
 export class EditAddValuesComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   imageURL: any;
   imagePreview: ArrayBuffer | string;
 
@@ -47,10 +48,10 @@ export class EditAddValuesComponent implements OnInit {
     }
     const formData = new FormData();
     formData.append('image', this.imageURL);
-    console.log(this.worth.invalid);
     this.valuesService.addValue(this.worth.value).subscribe((value) => {
+      this.notify.emit({type: 'success', message: 'Запись добавлена!'});
       this.valuesService.addImage(value._id, formData).subscribe(() => console.log('Add Image!'));
-    });
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
 
   updateValue() {
@@ -64,10 +65,14 @@ export class EditAddValuesComponent implements OnInit {
       return this.valuesService.addImage(this.route.snapshot.params.id, formData)
         .subscribe((e) => {
           this.worth.controls.image.setValue(e.image);
-          this.valuesService.updateValue(this.route.snapshot.params.id, this.worth.value).subscribe(() => console.log(''));
+          this.valuesService.updateValue(this.route.snapshot.params.id, this.worth.value).subscribe((value) => {
+            this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+          }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
         });
     }
-    this.valuesService.updateValue(this.route.snapshot.params.id, this.worth.value).subscribe(() => console.log(''));
+    this.valuesService.updateValue(this.route.snapshot.params.id, this.worth.value).subscribe((value) => {
+      this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
   }
   changeValue(event) {
     const file = (event.target as HTMLInputElement).files[ 0 ];

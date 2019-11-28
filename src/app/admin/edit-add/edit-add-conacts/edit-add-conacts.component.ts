@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {IContact} from '../../../shared/models/contacts-page.model';
@@ -9,6 +9,7 @@ import {ContactsPageService} from '../../../shared/services/contacts-page.servic
   templateUrl: './edit-add-conacts.component.html',
 })
 export class EditAddConactsComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   imageURL: any;
   imagePreview: ArrayBuffer | string;
 
@@ -52,10 +53,10 @@ export class EditAddConactsComponent implements OnInit {
     }
     const formData = new FormData();
     formData.append('image', this.imageURL);
-    console.log(this.contact.invalid);
     this.contactsService.addContact(this.contact.value).subscribe((value) => {
+      this.notify.emit({type: 'success', message: 'Запись добавлена!'});
       this.contactsService.addImage(value._id, formData).subscribe(() => console.log('Add Image!'));
-    });
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
 
   updateContact() {
@@ -69,10 +70,14 @@ export class EditAddConactsComponent implements OnInit {
       return this.contactsService.addImage(this.route.snapshot.params.id, formData)
         .subscribe((e) => {
           this.contact.controls.image.setValue(e.image);
-          this.contactsService.updateContact(this.route.snapshot.params.id, this.contact.value).subscribe(() => console.log(''));
+          this.contactsService.updateContact(this.route.snapshot.params.id, this.contact.value).subscribe((value) => {
+            this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+          }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
         });
     }
-    this.contactsService.updateContact(this.route.snapshot.params.id, this.contact.value).subscribe(() => console.log(''));
+    this.contactsService.updateContact(this.route.snapshot.params.id, this.contact.value).subscribe((value) => {
+      this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
 
 
   }
@@ -87,4 +92,3 @@ export class EditAddConactsComponent implements OnInit {
     };
   }
 }
-

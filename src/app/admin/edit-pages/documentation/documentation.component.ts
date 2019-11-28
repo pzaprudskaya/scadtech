@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {IAllDocuments} from '../../../shared/models/document.model';
 import {DocumentService} from '../../../shared/services/document.service';
 
@@ -8,6 +8,7 @@ import {DocumentService} from '../../../shared/services/document.service';
   templateUrl: './documentation.component.html',
 })
 export class EditDocumentationComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   documents;
   countDocuments;
   pageSize = 6;
@@ -30,7 +31,9 @@ export class EditDocumentationComponent implements OnInit {
         this.documents.splice(i, 1);
       }
     });
-    this.documentsService.deleteDocument(document).subscribe(() => console.log('Delete!'));
+    this.documentsService.deleteDocument(document).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Удалено!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка удаления!'} ) );
   }
 
   changePage(page) {

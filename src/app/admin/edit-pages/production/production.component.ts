@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {ProductsService} from '../../../shared/services/products.service';
 import {IAllProducts} from '../../../shared/models/products.model';
 import {ProductionService} from '../../../shared/services/production.service';
@@ -10,6 +10,7 @@ import {IAbout} from '../../../shared/models/about-company-page.model';
   styleUrls: ['./production.component.sass']
 })
 export class EditProductionComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   products;
   pageSize = 8;
   page = 1;
@@ -48,7 +49,9 @@ export class EditProductionComponent implements OnInit {
         this.products.splice(i, 1);
       }
     });
-    this.productsService.deleteProduct(event).subscribe(() => console.log('Delete!'));
+    this.productsService.deleteProduct(event).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Удалено!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка удаления!'} ) );
   }
 
   changePage(page) {
@@ -58,6 +61,8 @@ export class EditProductionComponent implements OnInit {
   }
 
   saveInformation() {
-    this.productionService.updateAbout(this.production.value).subscribe(() => console.log('Update'));
+    this.productionService.updateAbout(this.production.value).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Сохранено!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка сохранения!'} ) );
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {partners} from 'src/app/data';
+import { PartnersPageService } from '../../../shared/services/partners-page.service';
+import { IAllPartners, IPartners } from '../../../shared/models/partners-page.model';
 
 @Component({
   selector: 'app-partners-and-certifications',
@@ -8,11 +9,15 @@ import {partners} from 'src/app/data';
 })
 export class PartnersAndCertificationsComponent implements OnInit {
   headline = 'Партнеры и сертификаты';
-  partners;
-  constructor() { }
+  partners: IPartners[];
+
+  constructor(private partnersService: PartnersPageService) { }
 
   ngOnInit() {
-    this.partners = partners;
+    this.partners = [];
+    this.partnersService.getPartners(1000, 0).subscribe((partners: IAllPartners) => {
+      this.partners = partners.data;
+    });
   }
 
 }

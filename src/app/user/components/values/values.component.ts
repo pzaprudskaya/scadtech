@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { values } from 'src/app/data';
+import { IAllValues, IValue } from '../../../shared/models/about-company-page.model';
+import { ValuesService } from '../../../shared/services/values.service';
 
-@Component({
+@Component( {
   selector: 'app-values',
   templateUrl: './values.component.html',
-  styleUrls: ['./values.component.sass']
-})
+  styleUrls: [ './values.component.sass' ]
+} )
 export class ValuesComponent implements OnInit {
-  values;
-  constructor() { }
+  values: IValue[];
+
+  constructor( private valuesService: ValuesService, ) {  }
 
   ngOnInit() {
-    this.values = values;
+    this.values = [];
+
+    this.valuesService.getValues( 1000, 0 ).subscribe( ( values: IAllValues ) => {
+      this.values = values.data;
+    } );
   }
 
 }

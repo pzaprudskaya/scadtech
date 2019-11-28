@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {HistoryEventsService} from '../../../shared/services/history-events.service';
@@ -9,6 +9,7 @@ import {IHistoryEvent} from '../../../shared/models/about-company-page.model';
   templateUrl: './edit-add-history-event.component.html',
 })
 export class EditAddHistoryEventComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
 
   historyEventModel = {
     year: [null, [Validators.required]],
@@ -46,7 +47,9 @@ export class EditAddHistoryEventComponent implements OnInit {
     if (this.historyEvent.invalid) {
       return;
     }
-    this.historyEventsService.addHistoryEvent(this.historyEvent.value).subscribe( () => console.log('Add!'));
+    this.historyEventsService.addHistoryEvent(this.historyEvent.value).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Запись добавлена!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
 
   updateHistoryEvent() {
@@ -54,7 +57,8 @@ export class EditAddHistoryEventComponent implements OnInit {
     if (this.historyEvent.invalid) {
       return;
     }
-    this.historyEventsService.updateHistoryEvent(this.route.snapshot.params.id, this.historyEvent.value).subscribe(() => console.log('Update!'));
-  }
+    this.historyEventsService.updateHistoryEvent(this.route.snapshot.params.id, this.historyEvent.value).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );}
 }
 

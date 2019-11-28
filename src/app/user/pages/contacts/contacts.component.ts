@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {contacts} from 'src/app/data';
+import { ContactsPageService } from '../../../shared/services/contacts-page.service';
+import { IAllContacts, IContact } from '../../../shared/models/contacts-page.model';
 
 @Component({
   selector: 'app-contacts',
@@ -8,14 +9,16 @@ import {contacts} from 'src/app/data';
 })
 export class ContactsComponent implements OnInit {
   headline = 'Контакты';
-  contacts;
+  contacts: IContact[];
   selectedContact: number;
 
-  constructor() {
-  }
+  constructor(private contactsService: ContactsPageService) { }
 
   ngOnInit() {
-    this.contacts = contacts;
+    this.contacts = [];
+    this.contactsService.getContacts(1000, 0).subscribe((contacts: IAllContacts) => {
+      this.contacts = contacts.data;
+    });
   }
 
   openInformation(index: number) {

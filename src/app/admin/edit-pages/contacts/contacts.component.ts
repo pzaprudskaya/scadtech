@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {IAllContacts} from '../../../shared/models/contacts-page.model';
 import {ContactsPageService} from '../../../shared/services/contacts-page.service';
 
@@ -8,6 +8,7 @@ import {ContactsPageService} from '../../../shared/services/contacts-page.servic
   templateUrl: './contacts.component.html',
 })
 export class EditContactsComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   contacts;
   pageSize = 8;
   page = 1;
@@ -28,7 +29,9 @@ export class EditContactsComponent implements OnInit {
         this.contacts.splice(i, 1);
       }
     });
-    this.contactsService.deleteContact(contact).subscribe(() => console.log('Delete!'));
+    this.contactsService.deleteContact(contact).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Удалено!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка Удаления!'} ) );
   }
   changePage(page) {
     this.contactsService.getContacts(this.pageSize, this.pageSize * (page - 1)).subscribe((contacts: IAllContacts) => {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {ProfileService} from '../../../shared/services/profile.service';
 import {IProfile} from '../../../shared/models/profile.model';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
@@ -9,6 +9,7 @@ import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
   styleUrls: ['./profile.component.sass']
 })
 export class ProfileComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   color: string;
   background: string;
   profile: IProfile;
@@ -37,7 +38,9 @@ export class ProfileComponent implements OnInit {
   }
 
   save() {
-    this.profileService.updateData(this.profile).subscribe(() => console.log('Update!'));
+    this.profileService.updateData(this.profile).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Сохранено!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка сохранения!'} ) );
   }
 
   changeBackground() {

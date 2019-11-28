@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {NewsPageService} from '../../../shared/services/news-page.service';
 import {IAllEvents, IEvent} from '../../../shared/models/news-page.model';
 
@@ -8,6 +8,7 @@ import {IAllEvents, IEvent} from '../../../shared/models/news-page.model';
   styleUrls: ['./news-page.component.sass']
 })
 export class EditNewsPageComponent implements OnInit {
+  @Output() notify: EventEmitter<any> = new EventEmitter();
   headline = 'Новости';
   events;
   pageSize = 8;
@@ -30,7 +31,9 @@ export class EditNewsPageComponent implements OnInit {
         this.events.splice(i, 1);
       }
     });
-    this.newsService.deleteEvent(event).subscribe(() => console.log('Delete!'));
+    this.newsService.deleteEvent(event).subscribe(() => {
+      this.notify.emit({type: 'success', message: 'Удалено!'});
+    }, () => this.notify.emit( {type: 'error', message: 'Ошибка удаления!'} ) );
   }
 
   changePage(page) {
