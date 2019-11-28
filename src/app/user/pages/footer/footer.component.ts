@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {FeedbackWindowComponent} from '../../components/feedback-window/feedback-window.component';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FeedbackWindowComponent } from '../../components/feedback-window/feedback-window.component';
 
 @Component({
   selector: 'app-footer',
@@ -8,19 +8,26 @@ import {FeedbackWindowComponent} from '../../components/feedback-window/feedback
   styleUrls: ['./footer.component.sass']
 })
 export class FooterComponent implements OnInit {
-
   closeResult: string;
 
   constructor(private modalService: NgbModal) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   open() {
-    this.modalService.open(FeedbackWindowComponent, {ariaLabelledBy: 'modal-basic-title', centered: true, size: 'lg'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    this.modalService
+      .open(FeedbackWindowComponent, {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true,
+        size: 'lg'
+      })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
   }
 
   private getDismissReason(reason: any): string {
@@ -29,7 +36,7 @@ export class FooterComponent implements OnInit {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 }

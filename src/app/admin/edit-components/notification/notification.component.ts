@@ -1,6 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {NotifierService} from 'angular-notifier';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-notification',
@@ -15,8 +14,7 @@ export class NotificationComponent implements OnInit {
     this.notifier = notifier;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public showNotification(type: string, message: string): void {
     // this.notifier.notify(type, message);
@@ -52,12 +50,15 @@ export class NotificationComponent implements OnInit {
     });
   }
 
-  public showSpecificNotification(type: string, message: string, id: string): void {
-    this.notifier.show({id, message, type});
+  public showSpecificNotification(
+    type: string,
+    message: string,
+    id: string
+  ): void {
+    this.notifier.show({ id, message, type });
   }
 
   public hideSpecificNotification(id: string): void {
     this.notifier.hide(id);
   }
-
 }

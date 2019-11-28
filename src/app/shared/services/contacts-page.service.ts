@@ -1,62 +1,87 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
-import {IAllContacts, IContact} from '../models/contacts-page.model';
-import {IPartners} from '../models/partners-page.model';
+import { Injectable } from '@angular/core';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpParams
+} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { IAllContacts, IContact } from '../models/contacts-page.model';
+import { IPartners } from '../models/partners-page.model';
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class ContactsPageService {
   private API_URL = '/api/contacts';
 
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getContacts(viewPages, skipPages): Observable<IAllContacts> {
-    const p = new HttpParams()
-      .set('top', viewPages)
-      .set('skip', skipPages);
+    const p = new HttpParams().set('top', viewPages).set('skip', skipPages);
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'}),
-      params: p,
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: p
     };
     return this.http.get<IAllContacts>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllContacts) => console.log('Contacts: ' + JSON.stringify(data))),
+      tap((data: IAllContacts) =>
+        console.log('Contacts: ' + JSON.stringify(data))
+      ),
       catchError(this.handleError)
     );
   }
 
   getContact(id: string): Observable<IContact> {
-    return this.http.get<IContact>(`${this.API_URL}/${id}`, this.httpOptions).pipe(
-      tap((data: IContact) => console.log('Contact: ' + JSON.stringify(data))),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<IContact>(`${this.API_URL}/${id}`, this.httpOptions)
+      .pipe(
+        tap((data: IContact) =>
+          console.log('Contact: ' + JSON.stringify(data))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   addContact(contact: IContact) {
-    return this.http.post<IContact>(this.API_URL, JSON.stringify(contact), this.httpOptions).pipe(
-      tap(addContact => console.log('Add contact: ' + JSON.stringify(addContact))),
-      catchError(this.handleError));
+    return this.http
+      .post<IContact>(this.API_URL, JSON.stringify(contact), this.httpOptions)
+      .pipe(
+        tap(addContact =>
+          console.log('Add contact: ' + JSON.stringify(addContact))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   updateContact(id: string, contact: IContact) {
-    return this.http.put<void>(`${this.API_URL}/${id}`, JSON.stringify(contact), this.httpOptions).pipe(
-      tap(updateContact => console.log('Update contact: ' + JSON.stringify(updateContact))),
-      catchError(this.handleError));
+    return this.http
+      .put<void>(
+        `${this.API_URL}/${id}`,
+        JSON.stringify(contact),
+        this.httpOptions
+      )
+      .pipe(
+        tap(updateContact =>
+          console.log('Update contact: ' + JSON.stringify(updateContact))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   deleteContact(contact: IContact) {
-    return this.http.delete<void>(`${this.API_URL}/${contact._id}`, this.httpOptions).pipe(
-      tap(deleteContact => console.log('Delete contact: ' + JSON.stringify(deleteContact))),
-      catchError(this.handleError));
+    return this.http
+      .delete<void>(`${this.API_URL}/${contact._id}`, this.httpOptions)
+      .pipe(
+        tap(deleteContact =>
+          console.log('Delete contact: ' + JSON.stringify(deleteContact))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -71,9 +96,11 @@ export class ContactsPageService {
   }
 
   addImage(id: string, formData) {
-    return this.http.post<IContact>(`${this.API_URL}/${id}/image`, formData).pipe(
-      tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
-      catchError(this.handleError));
+    return this.http
+      .post<IContact>(`${this.API_URL}/${id}/image`, formData)
+      .pipe(
+        tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+        catchError(this.handleError)
+      );
   }
-
 }

@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -16,15 +16,11 @@ import { HistoryComponent } from './history/history.component';
 import { ValueComponent } from './value/value.component';
 import { FeedbackWindowComponent } from './feedback-window/feedback-window.component';
 import { HistoryItemComponent } from './history-item/history-item.component';
-import {FileComponent} from './file/file.component';
-import {HeadlineComponent} from './headline/headline.component';
-import {AboutUsComponent} from './about-us/about-us.component';
-import {EventItemComponent} from './event-item/event-item.component';
-import {EditorModule} from '@tinymce/tinymce-angular';
-
-
-
-
+import { FileComponent } from './file/file.component';
+import { HeadlineComponent } from './headline/headline.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { EventItemComponent } from './event-item/event-item.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -41,7 +37,7 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     FileComponent,
     HeadlineComponent,
     AboutUsComponent,
-    EventItemComponent,
+    EventItemComponent
   ],
   imports: [
     NgbModule,
@@ -51,7 +47,7 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     DragDropModule,
     EditorModule,
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule
   ],
   exports: [
     DocumentComponent,
@@ -67,11 +63,8 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     HistoryItemComponent,
     FileComponent,
     AboutUsComponent,
-    EventItemComponent,
+    EventItemComponent
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-
-
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ComponentsModule {
-}
+export class ComponentsModule {}

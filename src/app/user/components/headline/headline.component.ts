@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-headline',
@@ -6,11 +6,8 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./headline.component.sass']
 })
 export class HeadlineComponent implements OnInit {
-
   @Input() title: string;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

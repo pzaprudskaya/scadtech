@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ProfileService} from './shared/services/profile.service';
-import {IProfile} from './shared/models/profile.model';
+import { Component, OnInit } from '@angular/core';
+import { ProfileService } from './shared/services/profile.service';
+import { IProfile } from './shared/models/profile.model';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +14,14 @@ export class AppComponent implements OnInit {
   constructor(private profileService: ProfileService) {}
   ngOnInit(): void {
     document.documentElement.style.setProperty('--color', '#4682B4');
-    document.documentElement.style.setProperty('--background-image', `url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEUAAACZmZl+9SADAAAAAnRSTlMAM8lDrC4AAAAOSURBVAjXY0AGPCCEDAABkgAZ9NAiqAAAAABJRU5ErkJggg==)`);
+    document.documentElement.style.setProperty(
+      '--background-image',
+      `url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEUAAACZmZl+9SADAAAAAnRSTlMAM8lDrC4AAAAOSURBVAjXY0AGPCCEDAABkgAZ9NAiqAAAAABJRU5ErkJggg==)`
+    );
 
-   /* this.profileService.getData().subscribe((profile: IProfile) => {
+    /* this.profileService.getData().subscribe((profile: IProfile) => {
       document.documentElement.style.setProperty('--color', profile.color);
       document.documentElement.style.setProperty('--background-image', `url(${profile.background})`);
     });*/
   }
-
 }

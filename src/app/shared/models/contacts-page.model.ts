@@ -1,16 +1,16 @@
-interface  Address {
+interface Address {
   type: string;
   name: string;
 }
-interface  Phone {
+interface Phone {
   type: string;
   name: string;
 }
-interface  Fax {
+interface Fax {
   type: string;
   name: string;
 }
-interface  Email {
+interface Email {
   type: string;
   name: string;
 }

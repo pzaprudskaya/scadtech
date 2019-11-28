@@ -1,61 +1,86 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
-import {IAllProducts, IProduct} from '../models/products.model';
+import { Injectable } from '@angular/core';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpParams
+} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { IAllProducts, IProduct } from '../models/products.model';
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class ProductsService {
   private API_URL = '/api/products';
 
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getProducts(viewPages, skipPages): Observable<IAllProducts> {
-    const p = new HttpParams()
-      .set('top', viewPages)
-      .set('skip', skipPages);
+    const p = new HttpParams().set('top', viewPages).set('skip', skipPages);
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'}),
-      params: p,
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: p
     };
     return this.http.get<IAllProducts>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllProducts) => console.log('Products: ' + JSON.stringify(data))),
+      tap((data: IAllProducts) =>
+        console.log('Products: ' + JSON.stringify(data))
+      ),
       catchError(this.handleError)
     );
   }
 
   getProduct(id: string): Observable<IProduct> {
-    return this.http.get<IProduct>(`${this.API_URL}/${id}`, this.httpOptions).pipe(
-      tap((data: IProduct) => console.log('Product: ' + JSON.stringify(data))),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<IProduct>(`${this.API_URL}/${id}`, this.httpOptions)
+      .pipe(
+        tap((data: IProduct) =>
+          console.log('Product: ' + JSON.stringify(data))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   addProduct(product: IProduct) {
-    return this.http.post<IProduct>(this.API_URL, JSON.stringify(product), this.httpOptions).pipe(
-      tap(addProduct => console.log('Add product: ' + JSON.stringify(addProduct))),
-      catchError(this.handleError));
+    return this.http
+      .post<IProduct>(this.API_URL, JSON.stringify(product), this.httpOptions)
+      .pipe(
+        tap(addProduct =>
+          console.log('Add product: ' + JSON.stringify(addProduct))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   updateProduct(id: string, product: IProduct) {
-    return this.http.put<void>(`${this.API_URL}/${id}`, JSON.stringify(product), this.httpOptions).pipe(
-      tap(updateProduct => console.log('Update product: ' + JSON.stringify(updateProduct))),
-      catchError(this.handleError));
+    return this.http
+      .put<void>(
+        `${this.API_URL}/${id}`,
+        JSON.stringify(product),
+        this.httpOptions
+      )
+      .pipe(
+        tap(updateProduct =>
+          console.log('Update product: ' + JSON.stringify(updateProduct))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   deleteProduct(product: IProduct) {
-    return this.http.delete<void>(`${this.API_URL}/${product._id}`, this.httpOptions).pipe(
-      tap(deleteProduct => console.log('Delete product: ' + JSON.stringify(deleteProduct))),
-      catchError(this.handleError));
+    return this.http
+      .delete<void>(`${this.API_URL}/${product._id}`, this.httpOptions)
+      .pipe(
+        tap(deleteProduct =>
+          console.log('Delete product: ' + JSON.stringify(deleteProduct))
+        ),
+        catchError(this.handleError)
+      );
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -68,5 +93,4 @@ export class ProductsService {
     console.error(errorMessage);
     return throwError(errorMessage);
   }
-
 }
