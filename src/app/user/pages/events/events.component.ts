@@ -20,7 +20,7 @@ export class EventsComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params.event;
     this.newsService.getEvent(this.id).subscribe((event: IEvent) => {
-      this.event = event[0];
+      this.event = event;
     });
   }
 }

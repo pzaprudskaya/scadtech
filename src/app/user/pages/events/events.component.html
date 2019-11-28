@@ -1,9 +1,9 @@
 <app-block>
-    <app-headline [title]="event.title"></app-headline>
+    <app-headline [title]="event?.title"></app-headline>
     <div class="wysiwyg js-content">
       <div class="block-content">
-        <time>{{event.date}}</time>
-        <div class="html" [innerHTML]="event.content"></div>
+        <time>{{event?.date}}</time>
+        <div class="html" [innerHTML]="event?.content"></div>
       </div>
 
       <!--

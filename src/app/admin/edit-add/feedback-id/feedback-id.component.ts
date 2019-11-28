@@ -20,7 +20,7 @@ export class FeedbackIdComponent implements OnInit {
     this.feedbackService
       .getFeedback(this.route.snapshot.params.id)
       .subscribe(feedBack => {
-        this.feedback = feedBack[0];
+        this.feedback = feedBack;
         this.feedback.unread = false;
         this.feedbackService
           .updateFeedback(this.feedback)
