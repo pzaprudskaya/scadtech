@@ -36,7 +36,7 @@ import { FeedbackIdComponent } from './feedback-id/feedback-id.component';
     EditAddValuesComponent,
     EditAddDocumentComponent,
     EditAddProductComponent,
-    FeedbackIdComponent,
+    FeedbackIdComponent
   ],
   exports: [
     EditAddNewsComponent,

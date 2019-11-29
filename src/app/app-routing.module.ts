@@ -14,7 +14,7 @@ const routes: Routes = [
       import('./admin/edit-pages/edit-pages.module').then(
         m => m.EditPagesModule
       ),
-    canActivate: [ AuthGuard ]
+    canActivate: [AuthGuard]
   },
   {
     path: 'auth',
@@ -26,6 +26,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })
   ],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

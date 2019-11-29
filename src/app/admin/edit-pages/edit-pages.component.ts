@@ -11,7 +11,9 @@ export class EditPagesComponent implements OnInit {
   @ViewChild('notification', { static: true })
   notification: NotificationComponent;
   menu = MENU_ITEMS;
-  constructor() {}
+  constructor() {
+    console.log('sss');
+  }
 
   ngOnInit() {}
 

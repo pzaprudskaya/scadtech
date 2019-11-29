@@ -49,14 +49,19 @@ const routes: Routes = [
   { path: 'edit-products/:id', component: EditAddProductComponent },
 
   { path: 'feedback', component: FeedbackViewComponent },
-  { path: 'feedback/:id', component: FeedbackIdComponent },
+  { path: 'feedback/:id', component: FeedbackIdComponent }
 ];
 const rootRouters: Routes = [
-  { path: 'admin', component: EditPagesComponent, children: routes, canActivate: [ AuthGuard ] }
+  {
+    path: '',
+    component: EditPagesComponent,
+    children: routes,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(rootRouters) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forChild(rootRouters)],
+  exports: [RouterModule]
 })
-export class EditPagesRoutingModule { }
+export class EditPagesRoutingModule {}

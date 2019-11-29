@@ -11,13 +11,16 @@ import { ProductsService } from '../../../shared/services/products.service';
 export class ProduktsiyaComponent implements OnInit {
   product: IProduct;
 
-  constructor(  private route: ActivatedRoute,
-                private productsService: ProductsService ) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private productsService: ProductsService
+  ) {}
 
   ngOnInit() {
-    this.productsService.getProduct(this.route.snapshot.params.product).subscribe( ( product: IProduct ) => {
-      this.product = product;
-    } );
+    this.productsService
+      .getProduct(this.route.snapshot.params.product)
+      .subscribe((product: IProduct) => {
+        this.product = product;
+      });
   }
 }

@@ -7,7 +7,7 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: [ './auth.component.sass' ]
+  styleUrls: ['./auth.component.sass']
 })
 export class AuthComponent implements OnInit {
   loginForm: FormGroup;
@@ -24,22 +24,24 @@ export class AuthComponent implements OnInit {
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate([ '/' ]);
+      this.router.navigate(['/']);
     }
   }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: [ '', Validators.required ],
-      password: [ '', Validators.required ]
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams[ 'returnUrl' ] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -50,15 +52,17 @@ export class AuthComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.email.value, this.f.password.value)
+    this.authenticationService
+      .login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([ this.returnUrl ]);
+          this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
           this.loading = false;
-        });
+        }
+      );
   }
 }

@@ -18,7 +18,7 @@ import { JwtInterceptor } from 'src/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from 'src/_helpers/error.interceptor';
 
 @NgModule({
-  declarations: [ AppComponent ],
+  declarations: [AppComponent],
   imports: [
     AuthModule,
     BrowserModule,
@@ -73,10 +73,10 @@ import { ErrorInterceptor } from 'src/_helpers/error.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  entryComponents: [ FeedbackWindowComponent ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  bootstrap: [ AppComponent ]
+  entryComponents: [FeedbackWindowComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
