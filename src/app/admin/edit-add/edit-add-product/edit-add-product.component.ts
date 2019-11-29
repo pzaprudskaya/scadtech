@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {IEvent} from '../../../shared/models/news-page.model';
 import {IProduct} from '../../../shared/models/products.model';
 import {ProductsService} from '../../../shared/services/products.service';
+import { Location } from "@angular/common";
 
 @Component({
   styleUrls: ['./edit-add-product.component.sass'],
@@ -13,7 +14,7 @@ export class EditAddProductComponent implements OnInit {
   @Output() notify: EventEmitter<any> = new EventEmitter();
 
   productModel = {
-    title: [null, [Validators.required]],
+    name: [null, [Validators.required]],
     content: ['<p>This is the initial content of the editor</p>', [Validators.required]],
   };
   state: boolean;
@@ -28,8 +29,8 @@ export class EditAddProductComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
                private productService: ProductsService,
-               private route: ActivatedRoute ) {
-  }
+               private route: ActivatedRoute,
+               private location: Location ) {}
 
   ngOnInit() {
     this.events = [];
@@ -52,6 +53,7 @@ export class EditAddProductComponent implements OnInit {
     }
     this.productService.addProduct(this.productForm.value).subscribe(() => {
       this.notify.emit({type: 'success', message: 'Запись добавлена!'});
+      this.location.back();
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
 
@@ -62,6 +64,7 @@ export class EditAddProductComponent implements OnInit {
     }
     this.productService.updateProduct(this.route.snapshot.params.id, this.productForm.value).subscribe(() => {
       this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+      this.location.back();
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
   }
 }

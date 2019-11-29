@@ -3,6 +3,7 @@ import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {HistoryEventsService} from '../../../shared/services/history-events.service';
 import {IHistoryEvent} from '../../../shared/models/about-company-page.model';
+import { Location } from "@angular/common";
 
 @Component({
   styleUrls: ['./edit-add-history-event.component.sass'],
@@ -27,8 +28,8 @@ export class EditAddHistoryEventComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
                private historyEventsService: HistoryEventsService,
-               private route: ActivatedRoute ) {
-  }
+               private route: ActivatedRoute,
+               private location: Location ) {}
 
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
@@ -49,6 +50,7 @@ export class EditAddHistoryEventComponent implements OnInit {
     }
     this.historyEventsService.addHistoryEvent(this.historyEvent.value).subscribe(() => {
       this.notify.emit({type: 'success', message: 'Запись добавлена!'});
+      this.location.back();
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
 
@@ -59,6 +61,7 @@ export class EditAddHistoryEventComponent implements OnInit {
     }
     this.historyEventsService.updateHistoryEvent(this.route.snapshot.params.id, this.historyEvent.value).subscribe(() => {
       this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+      this.location.back();
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );}
 }
 

@@ -25,8 +25,8 @@ const routes: Routes = [
     component: PartnersAndCertificationsComponent
   },
   { path: 'about/our-leadership', component: OurLeadershipComponent },
-  { path: 'production/produktsiya-', component: ProduktsiyaComponent },
-  { path: 'production/procurement', component: ProcurementComponent },
+  { path: 'production/:product', component: ProduktsiyaComponent },
+  // { path: 'production/procurement', component: ProcurementComponent },
   { path: '', redirectTo: '/about', pathMatch: 'full' }
 ];
 

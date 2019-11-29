@@ -34,16 +34,29 @@
   <div>
     <div class="inline">
       <app-headline [title]="'Продукция'"></app-headline>
-      <button routerLink='/edit-products/add'><i class="material-icons">add</i> продукцию</button>
+      <button routerLink='/admin/edit-products/add'><i class="material-icons">add</i> продукцию</button>
     </div>
-    <div class="contacts-list">
-      <div *ngFor="let item of products" class="event">
-        <app-item routerLink='/edit-products/{{item._id}}'
-                  [item]="item"
-                  [key]="'products'"></app-item>
-        <i (click)="deleteItem(item)" class="close material-icons">close</i>
-      </div>
+    <div class="table">
+      <table>
+        <thead>
+        <tr>
+          <th>Название</th>
+          <th>Ссылка</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.name}}</td>
+          <td>localhost:4200/production/{{product._id}}</td>
+          <td routerLink='/admin/edit-products/{{product._id}}'><i class="material-icons">edit</i></td>
+          <td><i class="material-icons" (click)="deleteItem(product)">close</i></td>
+        </tr>
+        </tbody>
+      </table>
     </div>
+
     <ngb-pagination (pageChange)="changePage($event)" [collectionSize]="countProducts" [pageSize]="pageSize" [(page)]="page"
                     [boundaryLinks]="false"></ngb-pagination>
   </div>

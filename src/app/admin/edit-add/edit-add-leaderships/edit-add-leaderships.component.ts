@@ -3,6 +3,7 @@ import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {LeadershipsPageService} from '../../../shared/services/leaderships-page.service';
 import {ILeadership} from '../../../shared/models/leaderships-page.model';
+import { Location } from "@angular/common";
 
 @Component({
   styleUrls: ['./edit-add-leaderships.component.sass'],
@@ -30,8 +31,8 @@ export class EditAddLeadershipsComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
                private leadershipsService: LeadershipsPageService,
-               private route: ActivatedRoute ) {
-  }
+               private route: ActivatedRoute,
+               private location: Location ) {}
 
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
@@ -53,6 +54,7 @@ export class EditAddLeadershipsComponent implements OnInit {
     formData.append('image', this.imageURL);
     this.leadershipsService.addLeadership(this.leader.value).subscribe((leader) => {
       this.notify.emit({type: 'success', message: 'Запись добавлена!'});
+      this.location.back();
       this.leadershipsService.addImage(leader._id, formData).subscribe(() => console.log('Add Image!'));
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
@@ -70,11 +72,13 @@ export class EditAddLeadershipsComponent implements OnInit {
           this.leader.controls.image.setValue(e.image);
           this.leadershipsService.updateLeadership(this.route.snapshot.params.id, this.leader.value).subscribe((value) => {
             this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+            this.location.back();
           }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
         });
     }
     this.leadershipsService.updateLeadership(this.route.snapshot.params.id, this.leader.value).subscribe((value) => {
       this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+      this.location.back();
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
 
 

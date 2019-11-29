@@ -10,10 +10,6 @@
           <a href="tel:{{contact.number}}">
             {{contact.number}} </a>
         </div>
-        <div *ngIf="contact.secondNumber.length !== 0" class="contact phone">
-          <a href="tel:{{contact.secondNumber}}">
-            {{contact.secondNumber}} </a>
-        </div>
         <div class="contact location" data-marker-id="1174">{{contact.address}}</div>
         <div class="contact mail">
           <a href="mailto:{{contact.email}}">

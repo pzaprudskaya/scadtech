@@ -33,7 +33,7 @@
   <div>
     <div class="inline">
       <app-headline [title]="'История'"></app-headline>
-      <button class="add" routerLink="/edit-about-company/history-event/add"><i class="material-icons">add</i>событие</button>
+      <button class="add" routerLink="/admin/edit-about-company/history-event/add"><i class="material-icons">add</i>событие</button>
     </div>
 
     <table class="table">
@@ -54,7 +54,7 @@
         <td>{{row.year}}</td>
         <td>{{row.caption}}</td>
         <td>{{row.description}}</td>
-        <td routerLink='/edit-about-company/history-event/{{row._id}}'><i class="material-icons">edit</i></td>
+        <td routerLink='/admin/edit-about-company/history-event/{{row._id}}'><i class="material-icons">edit</i></td>
         <td><i class="material-icons" (click)="deleteHistoryEvent(row)">close</i></td>
       </tr>
       </tbody>
@@ -68,7 +68,7 @@
   <div>
     <div class="inline">
       <app-headline [title]="'Ценности'"></app-headline>
-      <button class="add" routerLink="/edit-about-company/values/add"><i class="material-icons">add</i>ценность</button>
+      <button class="add" routerLink="/admin/edit-about-company/values/add"><i class="material-icons">add</i>ценность</button>
     </div>
     <table class="table">
       <thead>
@@ -87,7 +87,7 @@
         <td><img src="{{value.image}}" class="image"/></td>
         <td>{{value.name}}</td>
         <td>{{value.description}}</td>
-        <td routerLink='/edit-about-company/values/{{value._id}}'><i class="material-icons">edit</i></td>
+        <td routerLink='/admin/edit-about-company/values/{{value._id}}'><i class="material-icons">edit</i></td>
         <td><i class="material-icons" (click)="deleteValue(value)">close</i></td>
       </tr>
       </tbody>

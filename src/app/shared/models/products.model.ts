@@ -1,10 +1,6 @@
 export interface IProduct {
   _id?: string;
-  created?: string;
-  title: string;
-  date: string;
-  previewImage?: string;
-  preview: string;
+  name: string;
   content: string;
 }
 

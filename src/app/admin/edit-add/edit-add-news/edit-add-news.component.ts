@@ -3,6 +3,7 @@ import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {IEvent} from '../../../shared/models/news-page.model';
 import {NewsPageService} from '../../../shared/services/news-page.service';
+import { Location } from "@angular/common";
 
 @Component({
   styleUrls: ['./edit-add-news.component.sass'],
@@ -31,8 +32,8 @@ export class EditAddNewsComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
                private newsService: NewsPageService,
-               private route: ActivatedRoute ) {
-  }
+               private route: ActivatedRoute,
+               private location: Location ) {}
 
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
@@ -54,6 +55,7 @@ export class EditAddNewsComponent implements OnInit {
     formData.append('image', this.imageURL);
     this.newsService.addEvent(this.addNews.value).subscribe((news) => {
       this.notify.emit({type: 'success', message: 'Запись добавлена!'});
+      this.location.back();
       this.newsService.addImage(news._id, formData).subscribe(() => console.log('Add Image!'));
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
@@ -71,11 +73,13 @@ export class EditAddNewsComponent implements OnInit {
           this.addNews.controls.previewImage.setValue(e.previewImage);
           this.newsService.updateEvent(this.route.snapshot.params.id, this.addNews.value).subscribe((value) => {
             this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+            this.location.back();
           }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
         });
     }
     this.newsService.updateEvent(this.route.snapshot.params.id, this.addNews.value).subscribe((value) => {
       this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+      this.location.back();
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
 
 

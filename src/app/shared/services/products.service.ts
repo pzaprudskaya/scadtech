@@ -13,7 +13,7 @@ import { IAllProducts, IProduct } from '../models/products.model';
   providedIn: 'root'
 })
 export class ProductsService {
-  private API_URL = '/api/products';
+  private API_URL = '/api/productions';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

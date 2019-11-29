@@ -1,6 +1,6 @@
 <div class="inline">
   <app-headline [title]="'Документация'"></app-headline>
-  <button routerLink='/edit-document/add'><i class="material-icons">add</i>документ</button>
+  <button routerLink='/admin/edit-document/add'><i class="material-icons">add</i>документ</button>
 </div>
 <div  >
   <div class="table">
@@ -19,7 +19,7 @@
           <td>{{doc.title}}</td>
           <td>{{doc.number}}</td>
           <td>{{doc.date}}</td>
-          <td routerLink='/edit-document/{{doc._id}}'><i class="material-icons">edit</i></td>
+          <td routerLink='/admin/edit-document/{{doc._id}}'><i class="material-icons">edit</i></td>
           <td><i class="material-icons" (click)="deleteDocument(doc)">close</i></td>
         </tr>
       </tbody>

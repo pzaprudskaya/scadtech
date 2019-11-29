@@ -35,7 +35,7 @@ export const MENU_ITEMS = [
     link: '/edit-production'
   },
   {
-    title: 'Feedback',
+    title: 'Обратная связь',
     icon: '',
     link: '/feedback'
   }

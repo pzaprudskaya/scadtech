@@ -3,6 +3,7 @@ import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {PartnersPageService} from '../../../shared/services/partners-page.service';
 import {IPartners} from '../../../shared/models/partners-page.model';
+import { Location } from "@angular/common";
 
 @Component({
   styleUrls: ['./edit-add-partners.component.sass'],
@@ -31,8 +32,8 @@ export class EditAddPartnersComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private partnersService: PartnersPageService,
-              private route: ActivatedRoute) {
-  }
+              private route: ActivatedRoute,
+              private location: Location ) {}
 
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
@@ -57,6 +58,7 @@ export class EditAddPartnersComponent implements OnInit {
 
     this.partnersService.addPartner(this.partner.value).subscribe((partner) => {
       this.notify.emit({type: 'success', message: 'Запись добавлена!'});
+      this.location.back();
 
       this.partnersService.addImage(partner._id, imageFormData).subscribe(() => console.log('Add Image!'));
       this.partnersService.addFile(partner._id, fileFormData).subscribe(() => console.log('Add file!'));
@@ -91,6 +93,7 @@ export class EditAddPartnersComponent implements OnInit {
     delete localPartner.image;
     this.partnersService.updatePartner(this.route.snapshot.params.id, localPartner).subscribe((value) => {
       this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+      this.location.back();
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
   }
 

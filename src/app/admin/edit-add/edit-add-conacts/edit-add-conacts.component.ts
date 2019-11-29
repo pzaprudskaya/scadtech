@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
+import { Location } from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import {IContact} from '../../../shared/models/contacts-page.model';
 import {ContactsPageService} from '../../../shared/services/contacts-page.service';
@@ -32,7 +33,8 @@ export class EditAddConactsComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
                private contactsService: ContactsPageService,
-               private route: ActivatedRoute) {
+               private route: ActivatedRoute,
+               private location: Location ) {
   }
 
   ngOnInit() {
@@ -55,6 +57,7 @@ export class EditAddConactsComponent implements OnInit {
     formData.append('image', this.imageURL);
     this.contactsService.addContact(this.contact.value).subscribe((value) => {
       this.notify.emit({type: 'success', message: 'Запись добавлена!'});
+      this.location.back();
       this.contactsService.addImage(value._id, formData).subscribe(() => console.log('Add Image!'));
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
@@ -72,11 +75,13 @@ export class EditAddConactsComponent implements OnInit {
           this.contact.controls.image.setValue(e.image);
           this.contactsService.updateContact(this.route.snapshot.params.id, this.contact.value).subscribe((value) => {
             this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+            this.location.back();
           }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
         });
     }
     this.contactsService.updateContact(this.route.snapshot.params.id, this.contact.value).subscribe((value) => {
       this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+      this.location.back();
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
 
 

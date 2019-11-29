@@ -1,11 +1,11 @@
 <div  >
   <div class="inline">
     <app-headline [title]="headline"></app-headline>
-    <button routerLink='/edit-news/add'><i class="material-icons">add</i>новость</button>
+    <button routerLink='/admin/edit-news/add'><i class="material-icons">add</i>новость</button>
   </div>
   <div class="contacts-list">
     <div *ngFor="let item of events" class="event">
-      <app-item routerLink='/edit-news/{{item._id}}'
+      <app-item routerLink='/admin/edit-news/{{item._id}}'
                 [item]="item"
                 [key]="'news'"></app-item>
       <i (click)="deleteItem(item)" class="close material-icons">close</i>

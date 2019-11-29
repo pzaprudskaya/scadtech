@@ -3,6 +3,7 @@ import {Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {IDocument} from '../../../shared/models/document.model';
 import {DocumentService} from '../../../shared/services/document.service';
+import { Location } from "@angular/common";
 
 @Component({
   styleUrls: ['./edit-add-document.component.sass'],
@@ -32,8 +33,9 @@ export class EditAddDocumentComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private documentService: DocumentService,
-              private route: ActivatedRoute) {
-  }
+              private route: ActivatedRoute,
+              private location: Location ) {}
+
 
   ngOnInit() {
     if (this.route.snapshot.params.id === 'add') {
@@ -54,6 +56,7 @@ export class EditAddDocumentComponent implements OnInit {
     }
     this.documentService.addDocument(this.document.value).subscribe(() => {
       this.notify.emit({type: 'success', message: 'Запись добавлена!'});
+      this.location.back();
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка добавления!'} ) );
   }
 
@@ -64,6 +67,7 @@ export class EditAddDocumentComponent implements OnInit {
     }
     this.documentService.updateDocument(this.route.snapshot.params.id, this.document.value).subscribe(() => {
       this.notify.emit({type: 'success', message: 'Запись обновлена!'});
+      this.location.back();
     }, () => this.notify.emit( {type: 'error', message: 'Ошибка обновления!'} ) );
   }
 
