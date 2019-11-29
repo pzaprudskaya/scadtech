@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { FeedbackService } from '../../../shared/services/feedback.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-feedback-window',
@@ -27,7 +28,8 @@ export class FeedbackWindowComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private feedbackService: FeedbackService
+    private feedbackService: FeedbackService,
+    public activeModal: NgbActiveModal
   ) {}
 
   ngOnInit() {
@@ -43,6 +45,6 @@ export class FeedbackWindowComponent implements OnInit {
     }
     this.feedbackService
       .addFeedback(this.feedbackForm.value)
-      .subscribe(() => console.log('Add!'));
+      .subscribe(() => this.activeModal.close('submit'));
   }
 }
