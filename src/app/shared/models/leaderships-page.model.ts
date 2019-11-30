@@ -5,6 +5,6 @@ export interface ILeadership {
   position: string;
 }
 export interface IAllLeaderships {
-  count: string;
+  count: number;
   data: ILeadership[];
 }

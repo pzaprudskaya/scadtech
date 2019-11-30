@@ -7,6 +7,6 @@ export interface IPartners {
   originalName: string;
 }
 export interface IAllPartners {
-  count: string;
+  count: number;
   data: IPartners[];
 }

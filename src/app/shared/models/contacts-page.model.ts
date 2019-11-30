@@ -9,6 +9,6 @@ export interface IContact {
 }
 
 export interface IAllContacts {
-  count: string;
+  count: number;
   data: IContact[];
 }

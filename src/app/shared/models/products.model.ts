@@ -5,6 +5,6 @@ export interface IProduct {
 }
 
 export interface IAllProducts {
-  count: string;
+  count: number;
   data: IProduct[];
 }

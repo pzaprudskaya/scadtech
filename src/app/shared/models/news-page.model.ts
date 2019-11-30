@@ -9,6 +9,6 @@ export interface IEvent {
 }
 
 export interface IAllEvents {
-  count: string;
+  count: number;
   data: IEvent[];
 }

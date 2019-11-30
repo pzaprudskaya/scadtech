@@ -11,6 +11,6 @@ export interface IFeedback {
 }
 
 export interface IAllFeedbacks {
-  count: string;
+  count: number;
   data: IFeedback[];
 }

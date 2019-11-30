@@ -18,10 +18,10 @@ export interface IHistoryEvent {
 }
 
 export interface IAllHistoryEvents {
-  count: string;
+  count: number;
   data: IHistoryEvent[];
 }
 export interface IAllValues {
-  count: string;
+  count: number;
   data: IValue[];
 }

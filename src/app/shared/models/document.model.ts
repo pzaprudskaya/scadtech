@@ -9,6 +9,6 @@ export interface IDocument {
   validity: string;
 }
 export interface IAllDocuments {
-  count: string;
+  count: number;
   data: IDocument[];
 }
