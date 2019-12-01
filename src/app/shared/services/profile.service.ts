@@ -7,6 +7,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { IProfile } from '../models/profile.model';
+import { IFile } from '../models/file.model';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +54,7 @@ export class ProfileService {
     return throwError(errorMessage);
   }
   addImage(formData) {
-    return this.http.post<IProfile>(`/i/upload`, formData).pipe(
+    return this.http.post<IFile>(`/i/upload`, formData).pipe(
       tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
       catchError(this.handleError)
     );

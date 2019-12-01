@@ -11,7 +11,6 @@ import { IValue } from "../../../shared/models/about-company-page.model";
 })
 export class ProfileComponent implements OnInit {
   @Output() notify: EventEmitter<any> = new EventEmitter();
-  color: string;
   profile: IProfile;
   imageURL: any;
   imagePreview: ArrayBuffer | string;
@@ -39,17 +38,16 @@ export class ProfileComponent implements OnInit {
 
   changeColor(color) {
     document.documentElement.style.setProperty('--color', color);
-    this.profile.color = color;
+    this.f.color.setValue(color);
   }
 
   save() {
-    debugger;
     if (this.imageURL) {
       const formData = new FormData();
       formData.append('image', this.imageURL);
       return this.profileService.addImage(formData)
         .subscribe(e => {
-          this.profileForm.controls.image.setValue(e.image);
+          this.f.image.setValue(`/i/${e.filename}`);
           this.profileService
             .updateData(this.profileForm.value)
             .subscribe(
