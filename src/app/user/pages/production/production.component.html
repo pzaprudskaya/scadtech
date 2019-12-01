@@ -2,7 +2,7 @@
   <app-headline [title]="'Производство'"></app-headline>
   <div class="wysiwyg js-content">
     <div class="block-content">
-      <div class="html" [innerHTML]="about.content"></div>
+      <div class="html" [innerHTML]="about.content | safeHtml"></div>
     </div>
   </div>
 </app-block>

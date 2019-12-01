@@ -45,7 +45,7 @@ import { HeaderComponent } from './header/header.component';
     PartnersAndCertificationsComponent,
     ProcurementComponent,
     ProductionComponent,
-    ProduktsiyaComponent
+    ProduktsiyaComponent,
   ],
   exports: [BlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

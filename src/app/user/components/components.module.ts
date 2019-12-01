@@ -21,6 +21,7 @@ import { HeadlineComponent } from './headline/headline.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { EventItemComponent } from './event-item/event-item.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { SafeHtmlPipe } from 'src/_helpers/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     FileComponent,
     HeadlineComponent,
     AboutUsComponent,
-    EventItemComponent
+    EventItemComponent,
+    SafeHtmlPipe
   ],
   imports: [
     NgbModule,
@@ -47,7 +49,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     DragDropModule,
     EditorModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     DocumentComponent,
@@ -63,7 +65,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     HistoryItemComponent,
     FileComponent,
     AboutUsComponent,
-    EventItemComponent
+    EventItemComponent,
+    SafeHtmlPipe
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -3,7 +3,7 @@
     <div class="wysiwyg js-content">
       <div class="block-content">
         <time>{{event?.date}}</time>
-        <div class="html" [innerHTML]="event?.content"></div>
+        <div class="html" [innerHTML]="event?.content | safeHtml"></div>
       </div>
 
       <!--
