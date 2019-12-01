@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { leaderships } from 'src/app/data';
 import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { IAllLeaderships } from '../../../shared/models/leaderships-page.model';
 import { LeadershipsPageService } from '../../../shared/services/leaderships-page.service';

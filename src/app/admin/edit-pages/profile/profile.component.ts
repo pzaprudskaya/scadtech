@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProfileService } from '../../../shared/services/profile.service';
 import { IProfile } from '../../../shared/models/profile.model';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { IValue } from "../../../shared/models/about-company-page.model";
 
 @Component({
   selector: 'app-profile',
@@ -11,14 +12,17 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 export class ProfileComponent implements OnInit {
   @Output() notify: EventEmitter<any> = new EventEmitter();
   color: string;
-  background: string;
   profile: IProfile;
+  imageURL: any;
+  imagePreview: ArrayBuffer | string;
+
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService
   ) {}
   profileModel = {
-    background: [null, [Validators.required]]
+    color: [null, []],
+    image: [null, []]
   };
   profileForm = this.fb.group(this.profileModel);
   get f() {
@@ -29,9 +33,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.profileService.getData().subscribe((profile: IProfile) => {
-      this.profile = profile;
-      this.color = profile.color;
-      this.background = profile.background;
+      Object.keys(this.f).forEach(key => this.f[key].setValue(profile[key]));
     });
   }
 
@@ -41,19 +43,40 @@ export class ProfileComponent implements OnInit {
   }
 
   save() {
-    this.profileService.updateData(this.profile).subscribe(
-      () => {
-        this.notify.emit({ type: 'success', message: 'Сохранено!' });
-      },
-      () => this.notify.emit({ type: 'error', message: 'Ошибка сохранения!' })
-    );
+    debugger;
+    if (this.imageURL) {
+      const formData = new FormData();
+      formData.append('image', this.imageURL);
+      return this.profileService.addImage(formData)
+        .subscribe(e => {
+          this.profileForm.controls.image.setValue(e.image);
+          this.profileService
+            .updateData(this.profileForm.value)
+            .subscribe(
+              value => {
+                this.notify.emit({ type: 'success', message: 'Запись обновлена!' });
+              },
+              () =>
+                this.notify.emit({ type: 'error', message: 'Ошибка обновления!' })
+            );
+        });
+    }
+    this.profileService
+      .updateData(this.profileForm.value)
+      .subscribe(
+        () => {
+          this.notify.emit({ type: 'success', message: 'Запись обновлена!' });
+        },
+        () => this.notify.emit({ type: 'error', message: 'Ошибка обновления!' })
+      );
   }
-
-  changeBackground() {
-    const background = this.profileForm.value.background;
-    document.documentElement.style.setProperty(
-      '--background-image',
-      `url(${background})`
-    );
+  changeValue(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.imageURL = file;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = file => {
+      this.imagePreview = reader.result;
+    };
   }
 }

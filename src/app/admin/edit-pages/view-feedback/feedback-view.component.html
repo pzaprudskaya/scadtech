@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th></th>
-          <th>Date</th>
+          <th>Дата</th>
           <th>ФИО</th>
           <th>Эл. почта</th>
           <th>Моб. телефон</th>
@@ -21,8 +21,8 @@
           <td *ngIf="feedback.unread === false">
             <div class="circle__false"></div>
           </td>
-          <td>{{feedback.created}}</td>
-          <td routerLink="/admin/feedback/{{feedback._id}}">{{feedback.surname}} {{feedback.name[0]}}. {{feedback.middleName[0]}}.</td>
+          <td>{{feedback.created.slice(0, 10)}}</td>
+          <td class="open_feedback" routerLink="/admin/feedback/{{feedback._id}}">{{feedback.surname}} {{feedback.name[0]}}. {{feedback.middleName[0]}}.</td>
           <td>{{feedback.email}}</td>
           <td>{{feedback.phone}}</td>
           <td>{{feedback.text.slice(0, 30)}}...</td>

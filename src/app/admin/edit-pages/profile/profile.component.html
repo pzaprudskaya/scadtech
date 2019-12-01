@@ -1,20 +1,30 @@
-<div  >
+<div>
   <div class="inline">
     <app-headline [title]="'Стиль сайта'"></app-headline>
     <button (click)="save()">Сохранить</button>
   </div>
-  <div class="color">
-    <h3>Изменить цвет текста: </h3>
-    <input class="input-color" [style.background]="color" [(colorPicker)]="color" (colorPickerChange)="changeColor($event)"/>
-  </div>
-  <div class="logo">
-    <h3>Изменить логотип (тип файла: ".svg"): </h3>
-    <input type="file" accept=".svg">
-  </div>
   <form [formGroup]="profileForm">
-    <div class="background">
-      <h3>Изменение фонового изображения (тип файла: ".png"): </h3>
-      <input type="file" accept=".png" (change)="changeBackground()" formControlName="background">
+    <div class="color">
+      <h3>Изменить цвет текста: </h3>
+      <input class="input-color" [style.background]="color" [(colorPicker)]="color" formControlName="color"
+             (colorPickerChange)="changeColor($event)"/>
+    </div>
+    <div class="logo">
+      <h3>Изменить логотип (тип файла: ".svg"): </h3>
+      <div class="image-control-wrapper">
+        <label for="uploadImage">Загрузить изображение</label>
+        <div class="image-preview-block" *ngIf="!imagePreview && f.image.value">
+          <img class="image-preview" src="{{ f.image.value }}" alt="image">
+        </div>
+        <ng-template [ngIf]="imagePreview">
+
+          <div class="image-preview-block">
+            <img class="image-preview" src="{{ imagePreview }}" alt="image"/>
+          </div>
+        </ng-template>
+        <input id="uploadImage" name="uploadImage" class="uploadImage" type="file" accept=".png, .jpg, .jpeg"
+               (change)="changeValue($event)">
+      </div>
     </div>
   </form>
 

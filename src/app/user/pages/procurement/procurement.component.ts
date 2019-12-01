@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FeedbackWindowComponent } from '../../components/feedback-window/feedback-window.component';
-import { selectedFiles, files } from 'src/app/data';
 
 @Component({
   selector: 'app-procurement',
@@ -17,8 +16,6 @@ export class ProcurementComponent implements OnInit {
   constructor(private modalService: NgbModal) {}
 
   ngOnInit() {
-    this.files = files;
-    this.selectedFiles = selectedFiles;
   }
   open() {
     this.modalService

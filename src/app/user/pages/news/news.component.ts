@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { events } from 'src/app/data';
 import { NewsPageService } from '../../../shared/services/news-page.service';
 import { IAllEvents } from '../../../shared/models/news-page.model';
 

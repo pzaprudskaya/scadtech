@@ -7,6 +7,7 @@ export interface IDocument {
   descriptionTypesOfJobs: string;
   link: string;
   validity: string;
+  fileType?: string;
 }
 export interface IAllDocuments {
   count: number;

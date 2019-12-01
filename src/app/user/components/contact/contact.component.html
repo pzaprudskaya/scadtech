@@ -7,16 +7,16 @@
     <div class="inner">
       <div class="office">
         <div class="contact phone">
-          <a href="tel:{{contact.number}}">
+          <a href="tel:{{contact.number}}"> <i class="material-icons">call</i>
             {{contact.number}} </a>
         </div>
-        <div class="contact location" data-marker-id="1174">{{contact.address}}</div>
+        <div class="contact location" data-marker-id="1174"> <i class="material-icons">my_location</i> {{contact.address}}</div>
         <div class="contact mail">
-          <a href="mailto:{{contact.email}}">
+          <a href="mailto:{{contact.email}}"> <i class="material-icons">mail</i>
             {{contact.email}} </a>
         </div>
         <div *ngIf="contact.fax.length !== 0" class="fax">
-          <a class="contact fax" href="tel:{{contact.fax}}">
+          <a class="contact fax" href="tel:{{contact.fax}}"> <i class="material-icons">print</i>
             {{contact.fax}} </a>
         </div>
       </div>

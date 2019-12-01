@@ -1,7 +1,7 @@
 <div class="block-content">
   <div class="document">
     <div>
-      <i class="icon-file-by-ext" data-ext="pdf"></i>
+      <i class="icon-file-by-ext" data-ext="{{document?.fileType.split('/')[1]}}"></i>
     </div>
     <div>
       <a href="{{document.link}}" class="title" target="_blank" download="">{{document.title}}</a>

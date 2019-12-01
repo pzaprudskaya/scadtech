@@ -3,7 +3,6 @@ import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
-  HttpParams
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -13,7 +12,7 @@ import { IProfile } from '../models/profile.model';
   providedIn: 'root'
 })
 export class ProfileService {
-  private API_URL = '/api/profile';
+  private API_URL = '/api/customization/profile';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -52,5 +51,11 @@ export class ProfileService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
+  }
+  addImage(formData) {
+    return this.http.post<IProfile>(`${this.API_URL}/image`, formData).pipe(
+      tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+      catchError(this.handleError)
+    );
   }
 }

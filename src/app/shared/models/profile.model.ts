@@ -1,9 +1,5 @@
 export interface IProfile {
   _id?: string;
-  logo: string;
+  image: string;
   color: string;
-  password: string;
-  phone: string;
-  email: string;
-  background: string;
 }

@@ -27,17 +27,17 @@ export class EditNewsPageComponent implements OnInit {
   }
 
   deleteItem(event) {
-    this.events.forEach((item, i) => {
-      if (item._id === event._id) {
-        this.events.splice(i, 1);
-      }
-    });
     this.newsService.deleteEvent(event).subscribe(
       () => {
         this.notify.emit({ type: 'success', message: 'Удалено!' });
       },
       () => this.notify.emit({ type: 'error', message: 'Ошибка удаления!' })
     );
+    this.events.forEach((item, i) => {
+      if (item._id === event._id) {
+        this.events.splice(i, 1);
+      }
+    });
   }
 
   changePage(page) {

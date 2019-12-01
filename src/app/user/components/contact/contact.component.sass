@@ -30,10 +30,7 @@
   font-size: 20px
   color: #666
   padding: 10px 0 10px 40px
-.contact.phone:before
-  width: 20px
-  height: 20px
-  background: url(/local/css/../images/sprite.svg?6bbfd266) -98px -711px no-repeat
+
 .contacts-list .contact:before
   content: ' '
   position: absolute
@@ -43,19 +40,6 @@
 .contact a
   color: #666
   text-decoration: none
-.contact.location:before
-  width: 18px
-  height: 23px
-  background: url(/local/css/../images/sprite.svg?6bbfd266) -76px -711px no-repeat
-.contact.fax:before
-  width: 23px
-  height: 21px
-  background: url(/local/css/../images/sprite.svg?6bbfd266) -480px -642px no-repeat
-.contact.mail:before
-  width: 23px
-  height: 16px
-  background: url(/local/css/../images/sprite.svg?6bbfd266) -507px -642px no-repeat
-  top: 15px
 
 .inner:before
   content: ' '
@@ -71,3 +55,8 @@
   padding-top: 25px
   max-height: 180px
   overflow-y: auto
+a, .contact .location
+  display: flex
+  align-items: center
+  i
+    margin-right: 10px

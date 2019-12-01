@@ -1,6 +1,5 @@
 @import 'src/app/app.component'
 @import '../common.styles'
-
 input
   margin: 0 20px
 .input-color
@@ -24,3 +23,39 @@ button:hover
   i
     color: white
 
+label
+  cursor: pointer
+  margin-bottom: 30px
+  font-size: 14px
+  padding: 10px 30px
+  color: $main-color
+  background: white
+  border: 1px solid $main-color
+
+label:hover
+  color: white
+  background: $main-color
+
+.uploadFile,.uploadImage
+  display: none
+
+span
+  padding: 0 20px
+
+.image-control-wrapper
+  display: flex
+  align-items: center
+  justify-content: space-between
+  width: 700px
+
+.image-preview
+  max-height: 200px
+
+.image-preview-block
+  height: 200px
+  border: 1px solid gray
+  background: #e0e0e0
+  min-width: 200px
+  display: flex
+  justify-content: center
+  align-items: center
