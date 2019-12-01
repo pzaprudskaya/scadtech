@@ -10,7 +10,7 @@
              (colorPickerChange)="changeColor($event)"/>
     </div>
     <div class="logo">
-      <h3>Изменить логотип (тип файла: ".svg"): </h3>
+      <h3>Изменить логотип: </h3>
       <div class="image-control-wrapper">
         <label for="uploadImage">Загрузить изображение</label>
         <div class="image-preview-block" *ngIf="!imagePreview && f.image.value">
@@ -22,7 +22,7 @@
             <img class="image-preview" src="{{ imagePreview }}" alt="image"/>
           </div>
         </ng-template>
-        <input id="uploadImage" name="uploadImage" class="uploadImage" type="file" accept=".png, .jpg, .jpeg"
+        <input id="uploadImage" name="uploadImage" class="uploadImage" type="file" accept=".png, .jpg, .jpeg, .svg"
                (change)="changeValue($event)">
       </div>
     </div>

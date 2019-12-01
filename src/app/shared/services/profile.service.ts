@@ -30,7 +30,7 @@ export class ProfileService {
   updateData(product: IProfile) {
     return this.http
       .put<void>(
-        `${this.API_URL}/${product._id}`,
+        `${this.API_URL}`,
         JSON.stringify(product),
         this.httpOptions
       )
@@ -53,7 +53,7 @@ export class ProfileService {
     return throwError(errorMessage);
   }
   addImage(formData) {
-    return this.http.post<IProfile>(`${this.API_URL}/image`, formData).pipe(
+    return this.http.post<IProfile>(`/i/upload`, formData).pipe(
       tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
       catchError(this.handleError)
     );
