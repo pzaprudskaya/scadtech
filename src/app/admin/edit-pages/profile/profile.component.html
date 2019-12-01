@@ -6,7 +6,7 @@
   <form [formGroup]="profileForm">
     <div class="color">
       <h3>Изменить цвет текста: </h3>
-      <input class="input-color" [style.background]="color" [(colorPicker)]="color" formControlName="color"
+      <input class="input-color" [style.background]="f.color.value" [(colorPicker)]="f.color.value" formControlName="color"
              (colorPickerChange)="changeColor($event)"/>
     </div>
     <div class="logo">
