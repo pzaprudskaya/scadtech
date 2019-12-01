@@ -14,7 +14,7 @@ import { ProcurementComponent } from './procurement/procurement.component';
 import { PagesComponent } from './pages.component';
 
 const routes: Routes = [
-  { path: 'about', component: AboutCompanyComponent },
+  { path: 'about', component: AboutCompanyComponent, data: { title: 'About' } },
   { path: 'production', component: ProductionComponent },
   { path: 'documentation', component: DocumentationComponent },
   { path: 'contacts', component: ContactsComponent },
