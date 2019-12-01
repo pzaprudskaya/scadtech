@@ -14,18 +14,18 @@ import { ProcurementComponent } from './procurement/procurement.component';
 import { PagesComponent } from './pages.component';
 
 const routes: Routes = [
-  { path: 'about', component: AboutCompanyComponent, data: { title: 'About' } },
-  { path: 'production', component: ProductionComponent },
-  { path: 'documentation', component: DocumentationComponent },
-  { path: 'contacts', component: ContactsComponent },
-  { path: 'about/news', component: NewsComponent },
-  { path: 'about/news/:event', component: EventsComponent },
+  { path: 'about', component: AboutCompanyComponent, data: { title: 'О компании' } },
+  { path: 'production', component: ProductionComponent, data: { title: 'Продукция' } },
+  { path: 'documentation', component: DocumentationComponent, data: { title: 'Документация' } },
+  { path: 'contacts', component: ContactsComponent, data: { title: 'Контакты' } },
+  { path: 'about/news', component: NewsComponent, data: { title: 'Новости' } },
+  { path: 'about/news/:event', component: EventsComponent, data: { title: 'Событие' } },
   {
     path: 'about/partners-and-certifications',
-    component: PartnersAndCertificationsComponent
+    component: PartnersAndCertificationsComponent, data: { title: 'Партнеры и сертификаты' }
   },
-  { path: 'about/our-leadership', component: OurLeadershipComponent },
-  { path: 'production/:product', component: ProduktsiyaComponent },
+  { path: 'about/our-leadership', component: OurLeadershipComponent, data: { title: 'Руководство' } },
+  { path: 'production/:product', component: ProduktsiyaComponent, data: { title: 'Продукт' } },
   // { path: 'production/procurement', component: ProcurementComponent },
   { path: '', redirectTo: '/about', pathMatch: 'full' }
 ];

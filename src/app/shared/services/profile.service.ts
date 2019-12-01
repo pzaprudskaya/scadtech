@@ -12,7 +12,7 @@ import { IProfile } from '../models/profile.model';
   providedIn: 'root'
 })
 export class ProfileService {
-  private API_URL = '/api/customization/profile';
+  private API_URL = '/api/customization/config';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

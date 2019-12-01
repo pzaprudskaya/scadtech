@@ -11,7 +11,7 @@ import { filter, map, mergeMap } from 'rxjs/operators';
   styleUrls: [ './app.component.sass' ]
 })
 export class AppComponent implements OnInit {
-  title = 'Scandtech';
+  title = 'Компания';
 
   constructor(
     private profileService: ProfileService,
@@ -31,10 +31,6 @@ export class AppComponent implements OnInit {
       );
     });
 
-    /* this.profileService.getData().subscribe((profile: IProfile) => {
-      document.documentElement.style.setProperty('--color', profile.color);
-      document.documentElement.style.setProperty('--background-image', `url(${profile.background})`);
-    });*/
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),

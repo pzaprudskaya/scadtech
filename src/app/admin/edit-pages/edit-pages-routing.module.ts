@@ -22,34 +22,34 @@ import { FeedbackIdComponent } from '../edit-add/feedback-id/feedback-id.compone
 import { AuthGuard } from 'src/_helpers/auth.guard';
 
 const routes: Routes = [
-  { path: 'profile', component: ProfileComponent },
-  { path: 'edit-news', component: EditNewsPageComponent },
-  { path: 'edit-news/:id', component: EditAddNewsComponent },
+  { path: 'profile', component: ProfileComponent, data: { title: 'Профиль' } },
+  { path: 'edit-news', component: EditNewsPageComponent, data: { title: 'Новости' } },
+  { path: 'edit-news/:id', component: EditAddNewsComponent, data: { title: 'Новость' } },
 
-  { path: 'edit-our-leadership', component: EditOurLeadershipComponent },
-  { path: 'edit-our-leaderships/:id', component: EditAddLeadershipsComponent },
+  { path: 'edit-our-leadership', component: EditOurLeadershipComponent, data: { title: 'Руководство' } },
+  { path: 'edit-our-leaderships/:id', component: EditAddLeadershipsComponent, data: { title: 'Руководитель' } },
 
-  { path: 'edit-partners', component: EditPartnersAndSertificatesComponent },
-  { path: 'edit-partners/:id', component: EditAddPartnersComponent },
+  { path: 'edit-partners', component: EditPartnersAndSertificatesComponent, data: { title: 'Партнеры и сертификаты' } },
+  { path: 'edit-partners/:id', component: EditAddPartnersComponent, data: { title: 'Партнер' } },
 
-  { path: 'edit-contacts', component: EditContactsComponent },
-  { path: 'edit-contacts/:id', component: EditAddConactsComponent },
+  { path: 'edit-contacts', component: EditContactsComponent, data: { title: 'Контакты' } },
+  { path: 'edit-contacts/:id', component: EditAddConactsComponent, data: { title: 'Контакт' } },
 
-  { path: 'edit-documentation', component: EditDocumentationComponent },
-  { path: 'edit-document/:id', component: EditAddDocumentComponent },
+  { path: 'edit-documentation', component: EditDocumentationComponent, data: { title: 'Документация' } },
+  { path: 'edit-document/:id', component: EditAddDocumentComponent, data: { title: 'Документ' } },
 
-  { path: 'edit-about-company', component: EditAboutCompanyComponent },
+  { path: 'edit-about-company', component: EditAboutCompanyComponent, data: { title: 'О Компании' } },
   {
     path: 'edit-about-company/history-event/:id',
-    component: EditAddHistoryEventComponent
+    component: EditAddHistoryEventComponent, data: { title: 'Историческое событие' }
   },
-  { path: 'edit-about-company/values/:id', component: EditAddValuesComponent },
+  { path: 'edit-about-company/values/:id', component: EditAddValuesComponent, data: { title: 'Ценность' } },
 
-  { path: 'edit-production', component: EditProductionComponent },
-  { path: 'edit-products/:id', component: EditAddProductComponent },
+  { path: 'edit-production', component: EditProductionComponent, data: { title: 'Продукция' } },
+  { path: 'edit-products/:id', component: EditAddProductComponent, data: { title: 'Продукт' } },
 
-  { path: 'feedback', component: FeedbackViewComponent },
-  { path: 'feedback/:id', component: FeedbackIdComponent }
+  { path: 'feedback', component: FeedbackViewComponent, data: { title: 'Обратная связь' } },
+  { path: 'feedback/:id', component: FeedbackIdComponent, data: { title: 'Сообщение' } }
 ];
 const rootRouters: Routes = [
   {
