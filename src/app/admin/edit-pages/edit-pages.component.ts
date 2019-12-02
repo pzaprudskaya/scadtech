@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MENU_ITEMS } from './pages-menu';
 import { NotificationComponent } from '../edit-components/notification/notification.component';
-import { ProfileService } from "../../shared/services/profile.service";
-import { IProfile } from "../../shared/models/profile.model";
-import { AuthenticationService } from "../../shared/services/authentication.service";
+import { ProfileService } from '../../shared/services/profile.service';
+import { IProfile } from '../../shared/models/profile.model';
+import { AuthenticationService } from '../../shared/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-pages',
@@ -16,7 +17,8 @@ export class EditPagesComponent implements OnInit {
   menu = MENU_ITEMS;
   logo: string;
   constructor(private profileService: ProfileService,
-              private authenticationService: AuthenticationService) {  }
+              private authenticationService: AuthenticationService,
+              private router: Router) {  }
 
   ngOnInit() {
     this.profileService.getData().subscribe((profile: IProfile) => {
@@ -31,5 +33,6 @@ export class EditPagesComponent implements OnInit {
   }
   logout() {
     this.authenticationService.logout();
+    this.router.navigate(['/auth']);
   }
 }
