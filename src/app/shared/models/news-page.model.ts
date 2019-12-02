@@ -6,6 +6,10 @@ export interface IEvent {
   previewImage?: string;
   preview: string;
   content: string;
+  prevId?: string;
+  nextId?: string;
+  prevTitle?: string;
+  nextTitle?: string;
 }
 
 export interface IAllEvents {
