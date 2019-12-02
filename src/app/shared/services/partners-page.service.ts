@@ -28,9 +28,7 @@ export class PartnersPageService {
       params: p
     };
     return this.http.get<IAllPartners>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllPartners) =>
-        console.log('Partners: ' + JSON.stringify(data))
-      ),
+      tap( ),
       catchError(this.handleError)
     );
   }
@@ -39,9 +37,7 @@ export class PartnersPageService {
     return this.http
       .get<IPartners>(`${this.API_URL}/${id}`, this.httpOptions)
       .pipe(
-        tap((data: IPartners) =>
-          console.log('Partner: ' + JSON.stringify(data))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -50,9 +46,7 @@ export class PartnersPageService {
     return this.http
       .post<IPartners>(this.API_URL, JSON.stringify(partner), this.httpOptions)
       .pipe(
-        tap(addPartner =>
-          console.log('Add partner: ' + JSON.stringify(addPartner))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -65,9 +59,7 @@ export class PartnersPageService {
         this.httpOptions
       )
       .pipe(
-        tap(updatePartner =>
-          console.log('Update partner: ' + JSON.stringify(updatePartner))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -76,9 +68,7 @@ export class PartnersPageService {
     return this.http
       .delete<void>(`${this.API_URL}/${partner._id}`, this.httpOptions)
       .pipe(
-        tap(deletePartner =>
-          console.log('Delete partner: ' + JSON.stringify(deletePartner))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -97,7 +87,7 @@ export class PartnersPageService {
     return this.http
       .post<IPartners>(`${this.API_URL}/${id}/image`, formData)
       .pipe(
-        tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -105,7 +95,7 @@ export class PartnersPageService {
     return this.http
       .post<IPartners>(`${this.API_URL}/${id}/file`, formData)
       .pipe(
-        tap(addFile => console.log('Add file: ' + JSON.stringify(addFile))),
+        tap( ),
         catchError(this.handleError)
       );
   }

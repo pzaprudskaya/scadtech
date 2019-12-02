@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FeedbackWindowComponent } from '../../components/feedback-window/feedback-window.component';
+import { IInformation } from '../../../shared/models/profile.model';
+import { InformationService } from '../../../shared/services/information.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,10 +11,18 @@ import { FeedbackWindowComponent } from '../../components/feedback-window/feedba
 })
 export class FooterComponent implements OnInit {
   closeResult: string;
+  phone: string;
+  email: string;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal,
+              private informationService: InformationService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.informationService.getInformation().subscribe((inf: IInformation) => {
+      this.email = inf.email;
+      this.phone = inf.phone;
+    });
+  }
   open() {
     this.modalService
       .open(FeedbackWindowComponent, {

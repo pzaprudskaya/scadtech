@@ -22,9 +22,7 @@ export class ProductionService {
 
   getAbout(): Observable<IAbout> {
     return this.http.get<IAbout>(`${this.API_URL}`, this.httpOptions).pipe(
-      tap((data: IAbout) =>
-        console.log('Content production: ' + JSON.stringify(data))
-      ),
+      tap( ),
       catchError(this.handleError)
     );
   }
@@ -33,11 +31,7 @@ export class ProductionService {
     return this.http
       .post<IAbout>(`${this.API_URL}`, JSON.stringify(value), this.httpOptions)
       .pipe(
-        tap(updateValue =>
-          console.log(
-            'Update content production: ' + JSON.stringify(updateValue)
-          )
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }

@@ -23,7 +23,7 @@ export class ProfileService {
 
   getData(): Observable<IProfile> {
     return this.http.get<IProfile>(this.API_URL, this.httpOptions).pipe(
-      tap((data: IProfile) => console.log('Products: ' + JSON.stringify(data))),
+      tap( ),
       catchError(this.handleError)
     );
   }
@@ -36,9 +36,7 @@ export class ProfileService {
         this.httpOptions
       )
       .pipe(
-        tap(updateProduct =>
-          console.log('Update product: ' + JSON.stringify(updateProduct))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -55,7 +53,7 @@ export class ProfileService {
   }
   addImage(formData) {
     return this.http.post<IFile>(`/i/upload`, formData).pipe(
-      tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+      tap( ),
       catchError(this.handleError)
     );
   }

@@ -3,3 +3,8 @@ export interface IProfile {
   image: string;
   color: string;
 }
+export interface IInformation {
+  _id?: string;
+  email: string;
+  phone: string;
+}

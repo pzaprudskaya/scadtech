@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MENU_ITEMS } from './pages-menu';
 import { NotificationComponent } from '../edit-components/notification/notification.component';
+import { ProfileService } from "../../shared/services/profile.service";
+import { IProfile } from "../../shared/models/profile.model";
 
 @Component({
   selector: 'app-edit-pages',
@@ -11,15 +13,16 @@ export class EditPagesComponent implements OnInit {
   @ViewChild('notification', { static: true })
   notification: NotificationComponent;
   menu = MENU_ITEMS;
-  constructor() {
-    console.log('sss');
+  logo: string;
+  constructor(private profileService: ProfileService) {  }
+
+  ngOnInit() {
+    this.profileService.getData().subscribe((profile: IProfile) => {
+      this.logo = profile.image;
+    });
   }
 
-  ngOnInit() {}
-
   onActivate(componentReference) {
-    console.log(componentReference);
-
     componentReference.notify.subscribe(data => {
       this.notification.showNotification(data.type, data.message);
     });

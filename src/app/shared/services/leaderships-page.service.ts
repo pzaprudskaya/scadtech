@@ -29,9 +29,7 @@ export class LeadershipsPageService {
       params: p
     };
     return this.http.get<IAllLeaderships>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllLeaderships) =>
-        console.log('Leaderships: ' + JSON.stringify(data))
-      ),
+      tap( ),
       catchError(this.handleError)
     );
   }
@@ -40,9 +38,7 @@ export class LeadershipsPageService {
     return this.http
       .get<ILeadership>(`${this.API_URL}/${id}`, this.httpOptions)
       .pipe(
-        tap((data: ILeadership) =>
-          console.log('Leadership: ' + JSON.stringify(data))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -51,9 +47,7 @@ export class LeadershipsPageService {
     return this.http
       .post<ILeadership>(this.API_URL, JSON.stringify(event), this.httpOptions)
       .pipe(
-        tap(addLeadership =>
-          console.log('Add leadership: ' + JSON.stringify(addLeadership))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -66,9 +60,7 @@ export class LeadershipsPageService {
         this.httpOptions
       )
       .pipe(
-        tap(updateLeadership =>
-          console.log('Update leadership: ' + JSON.stringify(updateLeadership))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -77,9 +69,7 @@ export class LeadershipsPageService {
     return this.http
       .delete<void>(`${this.API_URL}/${event._id}`, this.httpOptions)
       .pipe(
-        tap(deleteLeadership =>
-          console.log('Delete leadership: ' + JSON.stringify(deleteLeadership))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -99,7 +89,7 @@ export class LeadershipsPageService {
     return this.http
       .post<ILeadership>(`${this.API_URL}/${id}/image`, formData)
       .pipe(
-        tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+        tap( ),
         catchError(this.handleError)
       );
   }

@@ -28,9 +28,7 @@ export class FeedbackService {
       params: p
     };
     return this.http.get<IAllFeedbacks>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllFeedbacks) =>
-        console.log('Feedbacks: ' + JSON.stringify(data))
-      ),
+      tap( ),
       catchError(this.handleError)
     );
   }
@@ -39,9 +37,7 @@ export class FeedbackService {
     return this.http
       .get<IFeedback>(`${this.API_URL}/${id}`, this.httpOptions)
       .pipe(
-        tap((data: IFeedback) =>
-          console.log('Feedback: ' + JSON.stringify(data))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -50,9 +46,7 @@ export class FeedbackService {
     return this.http
       .post<IFeedback>(this.API_URL, JSON.stringify(feedback), this.httpOptions)
       .pipe(
-        tap(addFeedback =>
-          console.log('Add contact: ' + JSON.stringify(addFeedback))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -65,9 +59,7 @@ export class FeedbackService {
         this.httpOptions
       )
       .pipe(
-        tap(updateContact =>
-          console.log('Update feedback: ' + JSON.stringify(updateContact))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -76,9 +68,7 @@ export class FeedbackService {
     return this.http
       .delete<void>(`${this.API_URL}/${feedback._id}`, this.httpOptions)
       .pipe(
-        tap(deleteFeedback =>
-          console.log('Delete feedback: ' + JSON.stringify(deleteFeedback))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }

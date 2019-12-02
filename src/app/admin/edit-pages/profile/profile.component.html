@@ -10,8 +10,9 @@
              (colorPickerChange)="changeColor($event)"/>
     </div>
     <div class="logo">
-      <h3>Изменить логотип: </h3>
+
       <div class="image-control-wrapper">
+        <h3>Изменить логотип: </h3>
         <label for="uploadImage">Загрузить изображение</label>
         <div class="image-preview-block" *ngIf="!imagePreview && f.image.value">
           <img class="image-preview" src="{{ f.image.value }}" alt="image">
@@ -27,5 +28,28 @@
       </div>
     </div>
   </form>
-
+  <div class="inline">
+    <app-headline [title]="'Информация в шапке сайта'"></app-headline>
+    <button (click)="saveInf()">Сохранить</button>
+  </div>
+  <form [formGroup]="informationForm">
+    <div class="user-group">
+      <h3>Номер телефона:</h3>
+      <input type="phone" formControlName="phone" />
+    </div>
+    <div class="user-group">
+      <h3>Электронная почта:</h3>
+      <input type="email" formControlName="email" />
+    </div>
+  </form>
+ <!-- <div class="inline">
+    <app-headline [title]="'Смена пароля'"></app-headline>
+    <button (click)="savePassword()">Сохранить</button>
+  </div>
+  <form [formGroup]="userForm">
+    <div class="user-group">
+      <h3>Новый пароль:</h3>
+      <input type="password" formControlName="password" />
+    </div>
+  </form>-->
 </div>

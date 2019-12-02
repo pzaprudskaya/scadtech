@@ -2,17 +2,17 @@ import { Injectable } from '@angular/core';
 import {
   HttpClient,
   HttpErrorResponse,
-  HttpHeaders
+  HttpHeaders,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { IAbout } from '../models/about-company-page.model';
+import { IInformation } from '../models/profile.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AboutService {
-  private API_URL = '/api/customization/about';
+export class InformationService {
+  private API_URL = '/api/customization/information';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,18 +20,17 @@ export class AboutService {
 
   constructor(private http: HttpClient) {}
 
-  getAbout(): Observable<IAbout> {
-    return this.http.get<IAbout>(`${this.API_URL}`, this.httpOptions).pipe(
+  getInformation(): Observable<IInformation> {
+    return this.http.get<IInformation>(this.API_URL, this.httpOptions).pipe(
       tap( ),
       catchError(this.handleError)
     );
   }
 
-  updateAbout(value: IAbout) {
+  updateInformation(product: IInformation) {
     return this.http
-      .post<IAbout>(`${this.API_URL}`, JSON.stringify(value), this.httpOptions)
-      .pipe(
-        tap( ),
+      .put<void>(`${this.API_URL}`, JSON.stringify(product), this.httpOptions )
+      .pipe( tap( ),
         catchError(this.handleError)
       );
   }
@@ -46,4 +45,5 @@ export class AboutService {
     console.error(errorMessage);
     return throwError(errorMessage);
   }
+
 }

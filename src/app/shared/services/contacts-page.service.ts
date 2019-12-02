@@ -29,9 +29,8 @@ export class ContactsPageService {
       params: p
     };
     return this.http.get<IAllContacts>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllContacts) =>
-        console.log('Contacts: ' + JSON.stringify(data))
-      ),
+      tap( )
+      ,
       catchError(this.handleError)
     );
   }
@@ -40,9 +39,8 @@ export class ContactsPageService {
     return this.http
       .get<IContact>(`${this.API_URL}/${id}`, this.httpOptions)
       .pipe(
-        tap((data: IContact) =>
-          console.log('Contact: ' + JSON.stringify(data))
-        ),
+        tap( )
+        ,
         catchError(this.handleError)
       );
   }
@@ -51,9 +49,8 @@ export class ContactsPageService {
     return this.http
       .post<IContact>(this.API_URL, JSON.stringify(contact), this.httpOptions)
       .pipe(
-        tap(addContact =>
-          console.log('Add contact: ' + JSON.stringify(addContact))
-        ),
+        tap( )
+        ,
         catchError(this.handleError)
       );
   }
@@ -66,9 +63,8 @@ export class ContactsPageService {
         this.httpOptions
       )
       .pipe(
-        tap(updateContact =>
-          console.log('Update contact: ' + JSON.stringify(updateContact))
-        ),
+        tap( )
+        ,
         catchError(this.handleError)
       );
   }
@@ -77,9 +73,8 @@ export class ContactsPageService {
     return this.http
       .delete<void>(`${this.API_URL}/${contact._id}`, this.httpOptions)
       .pipe(
-        tap(deleteContact =>
-          console.log('Delete contact: ' + JSON.stringify(deleteContact))
-        ),
+        tap( )
+        ,
         catchError(this.handleError)
       );
   }
@@ -99,7 +94,7 @@ export class ContactsPageService {
     return this.http
       .post<IContact>(`${this.API_URL}/${id}/image`, formData)
       .pipe(
-        tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+        tap( ),
         catchError(this.handleError)
       );
   }

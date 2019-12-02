@@ -28,7 +28,7 @@ export class ValuesService {
       params: p
     };
     return this.http.get<IAllValues>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllValues) => console.log('Values: ' + JSON.stringify(data))),
+      tap( ),
       catchError(this.handleError)
     );
   }
@@ -37,7 +37,7 @@ export class ValuesService {
     return this.http
       .get<IValue>(`${this.API_URL}/${id}`, this.httpOptions)
       .pipe(
-        tap((data: IValue) => console.log('Value: ' + JSON.stringify(data))),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -46,7 +46,7 @@ export class ValuesService {
     return this.http
       .post<IValue>(this.API_URL, JSON.stringify(value), this.httpOptions)
       .pipe(
-        tap(addValue => console.log('Add value: ' + JSON.stringify(addValue))),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -59,9 +59,7 @@ export class ValuesService {
         this.httpOptions
       )
       .pipe(
-        tap(updateValue =>
-          console.log('Update value: ' + JSON.stringify(updateValue))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -70,9 +68,7 @@ export class ValuesService {
     return this.http
       .delete<void>(`${this.API_URL}/${value._id}`, this.httpOptions)
       .pipe(
-        tap(deleteValue =>
-          console.log('Delete value: ' + JSON.stringify(deleteValue))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -89,7 +85,7 @@ export class ValuesService {
   }
   addImage(id: string, formData) {
     return this.http.post<IValue>(`${this.API_URL}/${id}/image`, formData).pipe(
-      tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+      tap(),
       catchError(this.handleError)
     );
   }

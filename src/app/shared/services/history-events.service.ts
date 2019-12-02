@@ -31,9 +31,7 @@ export class HistoryEventsService {
       params: p
     };
     return this.http.get<IAllHistoryEvents>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllHistoryEvents) =>
-        console.log('History events: ' + JSON.stringify(data))
-      ),
+      tap( ),
       catchError(this.handleError)
     );
   }
@@ -42,9 +40,7 @@ export class HistoryEventsService {
     return this.http
       .get<IHistoryEvent>(`${this.API_URL}/${id}`, this.httpOptions)
       .pipe(
-        tap((data: IHistoryEvent) =>
-          console.log('History event: ' + JSON.stringify(data))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -57,7 +53,7 @@ export class HistoryEventsService {
         this.httpOptions
       )
       .pipe(
-        tap(addEvent => console.log('Add event: ' + JSON.stringify(addEvent))),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -70,9 +66,7 @@ export class HistoryEventsService {
         this.httpOptions
       )
       .pipe(
-        tap(updateEvent =>
-          console.log('Update event: ' + JSON.stringify(updateEvent))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -81,9 +75,7 @@ export class HistoryEventsService {
     return this.http
       .delete<void>(`${this.API_URL}/${event._id}`, this.httpOptions)
       .pipe(
-        tap(deleteEvent =>
-          console.log('Delete event: ' + JSON.stringify(deleteEvent))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }

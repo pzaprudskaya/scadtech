@@ -28,9 +28,7 @@ export class ProductsService {
       params: p
     };
     return this.http.get<IAllProducts>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllProducts) =>
-        console.log('Products: ' + JSON.stringify(data))
-      ),
+      tap( ),
       catchError(this.handleError)
     );
   }
@@ -39,9 +37,7 @@ export class ProductsService {
     return this.http
       .get<IProduct>(`${this.API_URL}/${id}`, this.httpOptions)
       .pipe(
-        tap((data: IProduct) =>
-          console.log('Product: ' + JSON.stringify(data))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -50,9 +46,7 @@ export class ProductsService {
     return this.http
       .post<IProduct>(this.API_URL, JSON.stringify(product), this.httpOptions)
       .pipe(
-        tap(addProduct =>
-          console.log('Add product: ' + JSON.stringify(addProduct))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -65,9 +59,7 @@ export class ProductsService {
         this.httpOptions
       )
       .pipe(
-        tap(updateProduct =>
-          console.log('Update product: ' + JSON.stringify(updateProduct))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -76,9 +68,7 @@ export class ProductsService {
     return this.http
       .delete<void>(`${this.API_URL}/${product._id}`, this.httpOptions)
       .pipe(
-        tap(deleteProduct =>
-          console.log('Delete product: ' + JSON.stringify(deleteProduct))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }

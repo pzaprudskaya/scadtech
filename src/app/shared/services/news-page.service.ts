@@ -28,7 +28,7 @@ export class NewsPageService {
       params: p
     };
     return this.http.get<IAllEvents>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllEvents) => console.log('Events: ' + JSON.stringify(data))),
+      tap( ),
       catchError(this.handleError)
     );
   }
@@ -37,7 +37,7 @@ export class NewsPageService {
     return this.http
       .get<IEvent>(`${this.API_URL}/${id}`, this.httpOptions)
       .pipe(
-        tap((data: IEvent) => console.log('Event: ' + JSON.stringify(data))),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -46,7 +46,7 @@ export class NewsPageService {
     return this.http
       .post<IEvent>(this.API_URL, JSON.stringify(event), this.httpOptions)
       .pipe(
-        tap(addEvent => console.log('Add event: ' + JSON.stringify(addEvent))),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -59,9 +59,7 @@ export class NewsPageService {
         this.httpOptions
       )
       .pipe(
-        tap(updateEvent =>
-          console.log('Update event: ' + JSON.stringify(updateEvent))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -70,9 +68,7 @@ export class NewsPageService {
     return this.http
       .delete<void>(`${this.API_URL}/${event._id}`, this.httpOptions)
       .pipe(
-        tap(deleteEvent =>
-          console.log('Delete event: ' + JSON.stringify(deleteEvent))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -89,7 +85,7 @@ export class NewsPageService {
   }
   addImage(id: string, formData) {
     return this.http.post<IEvent>(`${this.API_URL}/${id}/image`, formData).pipe(
-      tap(addImage => console.log('Add Image: ' + JSON.stringify(addImage))),
+      tap( ),
       catchError(this.handleError)
     );
   }

@@ -28,9 +28,7 @@ export class DocumentService {
       params: p
     };
     return this.http.get<IAllDocuments>(this.API_URL, httpOptions).pipe(
-      tap((data: IAllDocuments) =>
-        console.log('Documents: ' + JSON.stringify(data))
-      ),
+      tap( ),
       catchError(this.handleError)
     );
   }
@@ -39,9 +37,7 @@ export class DocumentService {
     return this.http
       .get<IDocument>(`${this.API_URL}/${id}`, this.httpOptions)
       .pipe(
-        tap((data: IDocument) =>
-          console.log('Document: ' + JSON.stringify(data))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -50,9 +46,7 @@ export class DocumentService {
     return this.http
       .post<IDocument>(this.API_URL, JSON.stringify(value), this.httpOptions)
       .pipe(
-        tap(addDocument =>
-          console.log('Add document: ' + JSON.stringify(addDocument))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -65,9 +59,7 @@ export class DocumentService {
         this.httpOptions
       )
       .pipe(
-        tap(updateDocument =>
-          console.log('Update document: ' + JSON.stringify(updateDocument))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }
@@ -76,9 +68,7 @@ export class DocumentService {
     return this.http
       .delete<void>(`${this.API_URL}/${value._id}`, this.httpOptions)
       .pipe(
-        tap(deleteDocument =>
-          console.log('Delete document: ' + JSON.stringify(deleteDocument))
-        ),
+        tap( ),
         catchError(this.handleError)
       );
   }

@@ -17,6 +17,5 @@ export interface IFile {
   filename: string;
   /** Location of the uploaded file (DiskStorage) */
   path: string;
-  /** A Buffer of the entire file (MemoryStorage) */
-  buffer: Buffer;
+
 }
