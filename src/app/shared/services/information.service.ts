@@ -29,7 +29,7 @@ export class InformationService {
 
   updateInformation(product: IInformation) {
     return this.http
-      .put<void>(`${this.API_URL}`, JSON.stringify(product), this.httpOptions )
+      .post<void>(`${this.API_URL}`, JSON.stringify(product), this.httpOptions )
       .pipe( tap( ),
         catchError(this.handleError)
       );

@@ -11,7 +11,7 @@ import { IInformation, IPassword } from '../models/profile.model';
 @Injectable({
   providedIn: 'root'
 })
-export class InformationService {
+export class PasswordService {
   private API_URL = '/api/auth/password';
 
   httpOptions = {

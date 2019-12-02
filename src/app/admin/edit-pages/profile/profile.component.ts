@@ -3,6 +3,8 @@ import { ProfileService } from '../../../shared/services/profile.service';
 import { IInformation, IProfile } from '../../../shared/models/profile.model';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { InformationService } from '../../../shared/services/information.service';
+import { PasswordService } from '../../../shared/services/password.service';
+
 
 @Component( {
   selector: 'app-profile',
@@ -18,7 +20,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
-    private informationService: InformationService
+    private informationService: InformationService,
+    private passwordService: PasswordService
   ) {
   }
 
@@ -110,13 +113,12 @@ export class ProfileComponent implements OnInit {
   }
 
   savePassword() {
-   this.informationService.updateInformation( this.userForm.value ).subscribe(
+   this.passwordService.updatePassword( this.userForm.value ).subscribe(
       () => this.notify.emit( {type: 'success', message: 'Пароль обновлен!'} ),
       () => this.notify.emit( {type: 'error', message: 'Пароль не обновлен!'} ) );
   }
 
   saveInf() {
-    debugger;
     this.informationService.updateInformation( this.informationForm.value ).subscribe(
       (value) => {
         console.log(value);
