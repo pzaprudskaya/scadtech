@@ -23,4 +23,7 @@ export class EventsComponent implements OnInit {
       this.event = event;
     });
   }
+  newEvent() {
+    this.ngOnInit();
+  }
 }

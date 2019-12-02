@@ -27,8 +27,8 @@ export class ProfileComponent implements OnInit {
     image: [null, []]
   };
   userModel = {
-    login: [null, []],
-    password: [null, []]
+    old: [null, []],
+    new: [null, []]
   };
   informationModel = {
     email: [null, []],
@@ -110,9 +110,9 @@ export class ProfileComponent implements OnInit {
   }
 
   savePassword() {
-   /* this.informationService.updateInformation( this.informationForm.value ).subscribe(
+   this.informationService.updateInformation( this.userForm.value ).subscribe(
       () => this.notify.emit( {type: 'success', message: 'Пароль обновлен!'} ),
-      () => this.notify.emit( {type: 'error', message: 'Пароль не обновлен!'} ) );*/
+      () => this.notify.emit( {type: 'error', message: 'Пароль не обновлен!'} ) );
   }
 
   saveInf() {

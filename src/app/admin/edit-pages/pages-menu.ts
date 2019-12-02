@@ -31,12 +31,12 @@ export const MENU_ITEMS = [
   },
   {
     title: 'Производство',
-    icon: '',
+    icon: 'account_tree',
     link: '/edit-production'
   },
   {
     title: 'Обратная связь',
-    icon: '',
+    icon: 'mail',
     link: '/feedback'
   }
 ];

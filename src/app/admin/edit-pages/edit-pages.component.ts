@@ -3,6 +3,7 @@ import { MENU_ITEMS } from './pages-menu';
 import { NotificationComponent } from '../edit-components/notification/notification.component';
 import { ProfileService } from "../../shared/services/profile.service";
 import { IProfile } from "../../shared/models/profile.model";
+import { AuthenticationService } from "../../shared/services/authentication.service";
 
 @Component({
   selector: 'app-edit-pages',
@@ -14,7 +15,8 @@ export class EditPagesComponent implements OnInit {
   notification: NotificationComponent;
   menu = MENU_ITEMS;
   logo: string;
-  constructor(private profileService: ProfileService) {  }
+  constructor(private profileService: ProfileService,
+              private authenticationService: AuthenticationService) {  }
 
   ngOnInit() {
     this.profileService.getData().subscribe((profile: IProfile) => {
@@ -26,5 +28,8 @@ export class EditPagesComponent implements OnInit {
     componentReference.notify.subscribe(data => {
       this.notification.showNotification(data.type, data.message);
     });
+  }
+  logout() {
+    this.authenticationService.logout();
   }
 }

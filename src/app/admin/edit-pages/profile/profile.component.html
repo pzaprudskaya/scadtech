@@ -46,14 +46,19 @@
       <input type="tagline" formControlName="tagline" />
     </div>
   </form>
- <!-- <div class="inline">
+  <div class="inline">
     <app-headline [title]="'Смена пароля'"></app-headline>
     <button (click)="savePassword()">Сохранить</button>
   </div>
   <form [formGroup]="userForm">
     <div class="user-group">
-      <h3>Новый пароль:</h3>
-      <input type="password" formControlName="password" />
+      <h3>Старый пароль:</h3>
+      <input type="password" formControlName="old" />
     </div>
-  </form>-->
+
+    <div class="user-group">
+      <h3>Новый пароль:</h3>
+      <input type="password" formControlName="new" />
+    </div>
+  </form>
 </div>
