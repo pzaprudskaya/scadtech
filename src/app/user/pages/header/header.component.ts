@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   logo: string;
   email: string;
   phone: string;
+  tagline: string;
   constructor( private  profileService: ProfileService,
                private informationService: InformationService) {}
 
@@ -34,6 +35,7 @@ export class HeaderComponent implements OnInit {
     this.informationService.getInformation().subscribe((inf: IInformation) => {
       this.email = inf.email;
       this.phone = inf.phone;
+      this.tagline = inf.tagline;
     });
 
   }

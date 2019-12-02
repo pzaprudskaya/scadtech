@@ -33,6 +33,7 @@ export class ProfileComponent implements OnInit {
   informationModel = {
     email: [null, []],
     phone: [null, []],
+    tagline: [null, []],
   };
   profileForm = this.fb.group( this.profileModel );
   userForm = this.fb.group( this.userModel );

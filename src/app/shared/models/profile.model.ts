@@ -7,4 +7,5 @@ export interface IInformation {
   _id?: string;
   email: string;
   phone: string;
+  tagline: string
 }
