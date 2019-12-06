@@ -20,9 +20,9 @@
                     </div>
                   </div>
                   <div class="image unsharp">
-                    <img *ngIf="ourLeadership.length > i+1" [src]='ourLeadership[i+1].image'
+                    <img *ngIf="ourLeadership.length > i+1" [src]="ourLeadership[i+1].image + '?preset=900'"
                          alt="{{ourLeadership[i+1].name}}">
-                    <img *ngIf="ourLeadership.length === i+1" [src]='ourLeadership[0].image'
+                    <img *ngIf="ourLeadership.length === i+1" [src]="ourLeadership[0].image + '?preset=900'"
                          alt="{{ourLeadership[0].name}}">
                   </div>
                 </div>
