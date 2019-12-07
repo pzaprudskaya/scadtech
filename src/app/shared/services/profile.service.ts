@@ -15,17 +15,27 @@ import { IFile } from '../models/file.model';
 export class ProfileService {
   private API_URL = '/api/customization/config';
 
+  profileSettings: IProfile;
+
+  get profile(): IProfile {
+    return this.profileSettings;
+  }
+
+  set profile(val: IProfile) {
+    this.profileSettings = val;
+  }
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getData(): Observable<IProfile> {
-    return this.http.get<IProfile>(this.API_URL, this.httpOptions).pipe(
-      tap( ),
-      catchError(this.handleError)
-    );
+  getData(): void {
+    this.http.get<IProfile>(this.API_URL, this.httpOptions).subscribe((profile: IProfile) => {
+      this.profile = profile;
+      this.updateStyles(profile);
+    });
   }
 
   updateData(product: IProfile) {
@@ -36,7 +46,7 @@ export class ProfileService {
         this.httpOptions
       )
       .pipe(
-        tap( ),
+        tap(),
         catchError(this.handleError)
       );
   }
@@ -53,8 +63,24 @@ export class ProfileService {
   }
   addImage(formData) {
     return this.http.post<IFile>(`/i/upload`, formData).pipe(
-      tap( ),
+      tap(),
       catchError(this.handleError)
     );
   }
+
+  updateStyles(value: IProfile) {
+    document.documentElement.style.setProperty('--color', value.color);
+    document.documentElement.style.setProperty('--rgb-color', this.hexToRgb(value.color));
+    document.documentElement.style.setProperty(
+      '--background-image',
+      `url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEUAAACZmZl+9SADAAAAAnRSTlMAM8lDrC4AAAAOSURBVAjXY0AGPCCEDAABkgAZ9NAiqAAAAABJRU5ErkJggg==)`
+    );
+  }
+
+  hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    const color = `${parseInt(result[ 1 ], 16)}, ${parseInt(result[ 2 ], 16)}, ${parseInt(result[ 3 ], 16)}`;
+    return color;
+  }
+
 }

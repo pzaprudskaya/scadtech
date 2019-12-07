@@ -19,8 +19,8 @@ export class HeaderComponent implements OnInit {
   email: string;
   phone: string;
   tagline: string;
-  constructor( private  profileService: ProfileService,
-               private informationService: InformationService) {}
+  constructor(private profileService: ProfileService,
+              private informationService: InformationService) { }
 
   @ViewChild('header', { static: false })
   header: ElementRef;
@@ -29,9 +29,6 @@ export class HeaderComponent implements OnInit {
   fixed: ElementRef;
 
   ngOnInit() {
-    this.profileService.getData().subscribe((profile: IProfile) => {
-      this.logo = profile.image;
-    });
     this.informationService.getInformation().subscribe((inf: IInformation) => {
       this.email = inf.email;
       this.phone = inf.phone;

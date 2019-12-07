@@ -20,11 +20,7 @@ export class EditPagesComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private router: Router) {  }
 
-  ngOnInit() {
-    this.profileService.getData().subscribe((profile: IProfile) => {
-      this.logo = profile.image;
-    });
-  }
+  ngOnInit() {}
 
   onActivate(componentReference) {
     componentReference.notify.subscribe(data => {

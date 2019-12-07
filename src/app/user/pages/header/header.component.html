@@ -2,8 +2,8 @@
   <div class="content-wrapper">
     <div class="logo-wrapper">
       <a href="/" class="header-logo">
-        <img src="{{logo}}"
-        /></a>
+        <img src="{{profileService.profile?.image}}" alt="logo">
+      </a>
     </div>
     <div class="menu-wrapper">
       <ul class="header-menu">
@@ -50,8 +50,7 @@
 <header class="header" #header>
   <div class="content-wrapper">
     <div class="logo-wrapper" routerLink="/">
-      <img src="{{logo}}"
-      />
+      <img src="{{profileService.profile?.image}}" alt="logo"/>
     </div>
     <div class="menu-wrapper">
       <div class="menu-title">
