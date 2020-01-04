@@ -1,16 +1,16 @@
 {
   "/api": {
-    "target": "https://boxing-wizards-jump.herokuapp.com",
+    "target": "https://daft-zebras-jump.herokuapp.com/",
     "secure": false,
     "changeOrigin": true
   },
   "/i": {
-    "target": "https://boxing-wizards-jump.herokuapp.com",
+    "target": "https://daft-zebras-jump.herokuapp.com/",
     "secure": false,
     "changeOrigin": true
   },
   "/files": {
-    "target": "https://boxing-wizards-jump.herokuapp.com",
+    "target": "https://daft-zebras-jump.herokuapp.com/",
     "secure": false,
     "changeOrigin": true
   }
