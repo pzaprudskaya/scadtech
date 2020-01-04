@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { IInformation, IProfile } from '../../../shared/models/profile.model';
 import { ProfileService } from '../../../shared/services/profile.service';
-import { InformationService } from "../../../shared/services/information.service";
+import { InformationService } from '../../../shared/services/information.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,6 @@ import { InformationService } from "../../../shared/services/information.service
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-  logo: string;
   email: string;
   phone: string;
   tagline: string;

@@ -119,7 +119,6 @@ export class ProfileComponent implements OnInit {
   saveInf() {
     this.informationService.updateInformation(this.informationForm.value).subscribe(
       (value) => {
-        console.log(value);
         this.notify.emit({ type: 'success', message: 'Информация обновлена!' })
       },
       () => this.notify.emit({ type: 'error', message: 'Информация не обновлена!' }));
