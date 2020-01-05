@@ -16,7 +16,7 @@ export class EditPagesComponent implements OnInit {
   notification: NotificationComponent;
   menu = MENU_ITEMS;
   logo: string;
-  constructor(private profileService: ProfileService,
+  constructor(public profileService: ProfileService,
               private authenticationService: AuthenticationService,
               private router: Router) {  }
 

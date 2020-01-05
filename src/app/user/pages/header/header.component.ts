@@ -5,7 +5,7 @@ import {
   ViewChild,
   ElementRef
 } from '@angular/core';
-import { IInformation, IProfile } from '../../../shared/models/profile.model';
+import { IInformation } from '../../../shared/models/profile.model';
 import { ProfileService } from '../../../shared/services/profile.service';
 import { InformationService } from '../../../shared/services/information.service';
 
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   email: string;
   phone: string;
   tagline: string;
-  constructor(private profileService: ProfileService,
+  constructor(public profileService: ProfileService,
               private informationService: InformationService) { }
 
   @ViewChild('header', { static: false })

@@ -82,8 +82,8 @@ export class ProfileComponent implements OnInit {
           this.profileService
             .updateData(this.profileForm.value)
             .subscribe(
-              value => {
-                this.notify.emit({ type: 'success', message: 'Запись обновлена!' });
+              () => {
+                this.notify.emit( {type: 'success', message: 'Запись обновлена!'} );
               },
               () =>
                 this.notify.emit({ type: 'error', message: 'Ошибка обновления!' })
@@ -118,7 +118,7 @@ export class ProfileComponent implements OnInit {
 
   saveInf() {
     this.informationService.updateInformation(this.informationForm.value).subscribe(
-      (value) => {
+      () => {
         this.notify.emit({ type: 'success', message: 'Информация обновлена!' })
       },
       () => this.notify.emit({ type: 'error', message: 'Информация не обновлена!' }));
