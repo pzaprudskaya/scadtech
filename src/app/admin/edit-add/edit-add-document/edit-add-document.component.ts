@@ -57,6 +57,9 @@ export class EditAddDocumentComponent implements OnInit {
     }
     const fileFormData = new FormData();
     fileFormData.append('file', this.fileURL);
+    this.documentService
+      .addFile(this.route.snapshot.params.id, fileFormData)
+      .subscribe();
 
     this.documentService.addDocument(this.document.value).subscribe(
       () => {

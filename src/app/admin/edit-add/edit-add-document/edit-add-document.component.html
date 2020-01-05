@@ -31,7 +31,7 @@
         <span *ngIf="!fileURL && f.link.value">{{f.link.value}}</span>
         <span *ngIf="fileURL">{{fileURL.name}}</span>
         <input id="uploadFile" formControlName="link" name="uploadFile" class="uploadFile" type="file" accept=".doc, .docx, .pdf" (change)="changeFile($event)">
-        <div *ngIf="!fileURL && !f.link.value" [ngStyle]="{'color': 'red'}"> Название обязательно </div>
+        <div *ngIf="!fileURL && !f.link.value" [ngStyle]="{'color': 'red'}"> Файл обязателен </div>
       </div>
     </div>
     <div class="form-group">
