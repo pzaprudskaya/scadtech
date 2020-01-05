@@ -54,7 +54,6 @@ export class EditAddPartnersComponent implements OnInit {
     if (this.partner.invalid || !this.imageURL) {
       return;
     }
-    console.log(this.partner.value);
     const imageFormData = new FormData();
     imageFormData.append('image', this.imageURL);
     const fileFormData = new FormData();

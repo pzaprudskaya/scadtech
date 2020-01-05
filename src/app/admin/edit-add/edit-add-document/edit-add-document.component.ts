@@ -55,12 +55,13 @@ export class EditAddDocumentComponent implements OnInit {
     if (this.document.invalid || !this.fileURL) {
       return;
     }
-    const fileFormData = new FormData();
-    fileFormData.append('file', this.fileURL);
-    this.documentService
-      .addFile(this.route.snapshot.params.id, fileFormData)
-      .subscribe();
-
+    if (this.fileURL) {
+      const formData = new FormData();
+      formData.append('file', this.fileURL);
+      this.documentService
+        .addFile(this.route.snapshot.params.id, formData)
+        .subscribe();
+    }
     this.documentService.addDocument(this.document.value).subscribe(
       () => {
         this.notify.emit({ type: 'success', message: 'Запись добавлена!' });
@@ -82,6 +83,8 @@ export class EditAddDocumentComponent implements OnInit {
         .addFile(this.route.snapshot.params.id, formData)
         .subscribe();
     }
+    const localPartner = { ...this.document.value };
+    delete localPartner.file;
     this.documentService
       .updateDocument(this.route.snapshot.params.id, this.document.value)
       .subscribe(
