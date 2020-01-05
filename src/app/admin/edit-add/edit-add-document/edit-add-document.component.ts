@@ -13,8 +13,8 @@ export class EditAddDocumentComponent implements OnInit {
   fileURL: any;
   documentModel = {
     title: [null, [Validators.required]],
-    date: [null, []],
-    number: [null, []],
+    date: [null, [Validators.required]],
+    number: [null, [Validators.required]],
     validity: [null, []],
     descriptionIssuedBy: [null, []],
     descriptionTypesOfJobs: [null, []],
@@ -55,17 +55,17 @@ export class EditAddDocumentComponent implements OnInit {
     if (this.document.invalid || !this.fileURL) {
       return;
     }
-    if (this.fileURL) {
-      const formData = new FormData();
-      formData.append('file', this.fileURL);
-      this.documentService
-        .addFile(this.route.snapshot.params.id, formData)
-        .subscribe();
-    }
+    const formData = new FormData();
+    formData.append('file', this.fileURL);
+
     this.documentService.addDocument(this.document.value).subscribe(
-      () => {
+      (document) => {
         this.notify.emit({ type: 'success', message: 'Запись добавлена!' });
         this.router.navigate(['/edit-documentation']);
+
+        this.documentService
+          .addFile(document._id, formData)
+          .subscribe();
       },
       () => this.notify.emit({ type: 'error', message: 'Ошибка добавления!' })
     );
