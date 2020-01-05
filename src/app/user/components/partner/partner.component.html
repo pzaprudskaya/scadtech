@@ -6,8 +6,7 @@
     <div class="caption">{{partner.name}}</div>
 
     <div class="description">{{partner.description}}</div>
-
-    <a href="javascript:void(0)" class="certificates js-link js-certificate-gallery" data-src="[{&quot;src&quot;:&quot;\/upload\/iblock\/775\/7759fcde916d0d856c27c0ac462b8f40.pdf&quot;},{&quot;src&quot;:&quot;\/upload\/iblock\/da0\/da092b1a27edc23f551bb793989b3b94.pdf&quot;},{&quot;src&quot;:&quot;\/upload\/iblock\/675\/675c80a693192275e55355e7d1850b30.pdf&quot;}]">
+    <a *ngIf="partner.file" href="{{partner.file}}" target="_blank" download="" class="certificates js-link js-certificate-gallery">
       <span>Сертификат партнера</span>
     </a>
   </div>

@@ -51,7 +51,7 @@ export class EditAddPartnersComponent implements OnInit {
 
   addPartner() {
     this.partner.markAllAsTouched();
-    if (this.partner.invalid || !this.imageURL || !this.fileURL) {
+    if (this.partner.invalid || !this.imageURL) {
       return;
     }
     const imageFormData = new FormData();
@@ -66,39 +66,33 @@ export class EditAddPartnersComponent implements OnInit {
 
         this.partnersService
           .addImage(partner._id, imageFormData)
-          .subscribe(() => console.log('Add Image!'));
+          .subscribe();
         this.partnersService
           .addFile(partner._id, fileFormData)
-          .subscribe(() => console.log('Add file!'));
+          .subscribe();
       },
       () => this.notify.emit({ type: 'error', message: 'Ошибка добавления!' })
     );
   }
 
   updatePartner() {
-    console.log(this.partner);
     if (this.partner.invalid) {
       return;
     }
     this.partner.markAllAsTouched();
-    console.log(this.imageURL);
     if (this.imageURL) {
       const formData = new FormData();
       formData.append('image', this.imageURL);
       this.partnersService
         .addImage(this.route.snapshot.params.id, formData)
-        .subscribe(e => {
-          console.log('');
-        });
+        .subscribe();
     }
     if (this.fileURL) {
       const formData = new FormData();
       formData.append('file', this.fileURL);
       this.partnersService
         .addFile(this.route.snapshot.params.id, formData)
-        .subscribe(e => {
-          console.log('');
-        });
+        .subscribe();
     }
     const localPartner = { ...this.partner.value };
     delete localPartner.file;

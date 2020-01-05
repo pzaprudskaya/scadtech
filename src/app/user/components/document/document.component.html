@@ -5,8 +5,8 @@
     </div>
     <div>
       <a href="{{document.link}}" class="title" target="_blank" download="">{{document.title}}</a>
-      <div class="title"> {{document.number}}</div>
-      <div class="date">{{document.date}}</div>
+      <div *ngIf="document.number.length !== 0" class="title"> {{document.number}}</div>
+      <div *ngIf="document.date.length !== 0" class="date">{{document.date}}</div>
       <div *ngIf="document.descriptionIssuedBy.length !== 0" class="description">
         Выдан: {{document.descriptionIssuedBy}}</div>
       <div *ngIf="document.descriptionTypesOfJobs.length !== 0" class="description">Виды

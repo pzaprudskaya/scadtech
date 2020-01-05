@@ -15,11 +15,11 @@ export class EditAddConactsComponent implements OnInit {
 
   contactModel = {
     name: [null, [Validators.required]],
-    image: [null, []],
-    number: [null, [Validators.required]],
-    address: [null, [Validators.required]],
-    fax: [null, [Validators.required]],
-    email: [null, [Validators.required]]
+    image: [null, [Validators.required]],
+    number: [null, []],
+    address: [null, []],
+    fax: [null, []],
+    email: [null, []]
   };
   state: boolean;
   contact = this.fb.group(this.contactModel);
@@ -65,7 +65,7 @@ export class EditAddConactsComponent implements OnInit {
         this.router.navigate(['/edit-contacts']);
         this.contactsService
           .addImage(value._id, formData)
-          .subscribe(() => console.log('Add Image!'));
+          .subscribe();
       },
       () => this.notify.emit({ type: 'error', message: 'Ошибка добавления!' })
     );

@@ -13,11 +13,11 @@ export class EditAddDocumentComponent implements OnInit {
   fileName: string;
   documentModel = {
     title: [null, [Validators.required]],
-    date: [null, [Validators.required]],
-    number: [null, [Validators.required]],
-    validity: [null, [Validators.required]],
-    descriptionIssuedBy: [null, [Validators.required]],
-    descriptionTypesOfJobs: [null, [Validators.required]],
+    date: [null, []],
+    number: [null, []],
+    validity: [null, []],
+    descriptionIssuedBy: [null, []],
+    descriptionTypesOfJobs: [null, []],
     link: [null, [Validators.required]]
   };
   state: boolean;
