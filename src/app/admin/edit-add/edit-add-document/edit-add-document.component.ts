@@ -10,7 +10,7 @@ import { DocumentService } from '../../../shared/services/document.service';
 })
 export class EditAddDocumentComponent implements OnInit {
   @Output() notify: EventEmitter<any> = new EventEmitter();
-  fileName: string;
+  fileURL: any;
   documentModel = {
     title: [null, [Validators.required]],
     date: [null, []],
@@ -22,7 +22,6 @@ export class EditAddDocumentComponent implements OnInit {
   };
   state: boolean;
   document = this.fb.group(this.documentModel);
-  file: IDocument;
 
   get f() {
     return this.document.controls as {
@@ -53,9 +52,12 @@ export class EditAddDocumentComponent implements OnInit {
 
   addDocument() {
     this.document.markAllAsTouched();
-    if (this.document.invalid) {
+    if (this.document.invalid || !this.fileURL) {
       return;
     }
+    const fileFormData = new FormData();
+    fileFormData.append('file', this.fileURL);
+
     this.documentService.addDocument(this.document.value).subscribe(
       () => {
         this.notify.emit({ type: 'success', message: 'Запись добавлена!' });
@@ -70,6 +72,13 @@ export class EditAddDocumentComponent implements OnInit {
     if (this.document.invalid) {
       return;
     }
+    if (this.fileURL) {
+      const formData = new FormData();
+      formData.append('file', this.fileURL);
+      this.documentService
+        .addFile(this.route.snapshot.params.id, formData)
+        .subscribe();
+    }
     this.documentService
       .updateDocument(this.route.snapshot.params.id, this.document.value)
       .subscribe(
@@ -81,7 +90,9 @@ export class EditAddDocumentComponent implements OnInit {
       );
   }
 
-  changeValue(file) {
-    this.fileName = file.name;
+
+  changeFile(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.fileURL = file;
   }
 }

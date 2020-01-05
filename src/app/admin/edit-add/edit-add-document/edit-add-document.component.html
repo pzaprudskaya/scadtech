@@ -6,6 +6,7 @@
     <div class="form-group">
       <h2>Название</h2>
       <input type="text" formControlName="title">
+      <div *ngIf="document.get('title').invalid" [ngStyle]="{'color': 'red'}"> Название обязательно </div>
     </div>
     <div class="form-group">
       <h2>Номер</h2>
@@ -27,8 +28,10 @@
       <div class="file-block">
         <h2>Файл</h2>
         <label for="uploadFile">Загрузить файл</label>
-        <span>{{fileName}}</span>
-        <input id="uploadFile" formControlName="file" name="uploadFile" class="uploadFile" type="file" accept=".pdf, .doc, .docx" (change)="changeValue($event.target.files[0])">
+        <span *ngIf="!fileURL && f.link.value">{{f.link.value}}</span>
+        <span *ngIf="fileURL">{{fileURL.name}}</span>
+        <input id="uploadFile" formControlName="link" name="uploadFile" class="uploadFile" type="file" accept=".doc, .docx, .pdf" (change)="changeFile($event)">
+        <div *ngIf="!fileURL && !f.link.value" [ngStyle]="{'color': 'red'}"> Название обязательно </div>
       </div>
     </div>
     <div class="form-group">

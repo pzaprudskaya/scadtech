@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IEvent } from '../../../shared/models/news-page.model';
 import { IProduct } from '../../../shared/models/products.model';
 import { ProductsService } from '../../../shared/services/products.service';
-import { Location } from '@angular/common';
 
 @Component({
   styleUrls: ['./edit-add-product.component.sass'],

@@ -7,6 +7,7 @@
     <div class="form-group">
       <h2>Название</h2>
       <input type="text" formControlName="name">
+      <div *ngIf="productForm.get('name').invalid" [ngStyle]="{'color': 'red'}"> Название обязательно </div>
     </div>
     <div class="form-group">
       <h2>Контент</h2>
@@ -26,6 +27,7 @@
       }"
       >
       </editor>
+      <div *ngIf="productForm.get('content').invalid" [ngStyle]="{'color': 'red'}"> Контент обязателен </div>
     </div>
   </form>
 

@@ -17,14 +17,17 @@
         </ng-template>
         <input id="uploadImage" name="uploadImage" class="uploadImage" type="file" accept=".png, .jpg, .jpeg" (change)="changeValue($event)">
       </div>
+      <div *ngIf="!imageURL && !f.image.value " [ngStyle]="{'color': 'red'}"> Фотография обязательна </div>
     </div>
     <div class="form-group">
       <h2>Название</h2>
       <input type="text" formControlName="name">
+      <div *ngIf="partner.get('name').invalid" [ngStyle]="{'color': 'red'}"> Название обязательно </div>
     </div>
     <div class="form-group">
       <h2>Описание</h2>
       <input type="text" formControlName="description">
+      <div *ngIf="partner.get('description').invalid" [ngStyle]="{'color': 'red'}"> Описание обязательно </div>
     </div>
     <div class="form-group">
       <div class="file-block">

@@ -8,6 +8,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { IAllDocuments, IDocument } from '../models/document.model';
+import { IPartners } from "../models/partners-page.model";
 
 @Injectable({
   providedIn: 'root'
@@ -82,5 +83,13 @@ export class DocumentService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
+  }
+  addFile(id: string, formData) {
+    return this.http
+      .post<IDocument>(`${this.API_URL}/${id}/file`, formData)
+      .pipe(
+        tap( ),
+        catchError(this.handleError)
+      );
   }
 }

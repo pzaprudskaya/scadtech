@@ -5,10 +5,12 @@
     <div class="form-group">
       <h2>Название</h2>
       <input type="text" formControlName="title">
+      <div *ngIf="addNews.get('title').invalid" [ngStyle]="{'color': 'red'}"> Заголовок обязателен </div>
     </div>
     <div class="form-group">
       <h2>Дата</h2>
       <input type="text" formControlName="date">
+      <div *ngIf="addNews.get('date').invalid" [ngStyle]="{'color': 'red'}"> Дата обязательна </div>
     </div>
     <div class="image-block">
       <h2>Фотография</h2>
@@ -25,10 +27,12 @@
         </ng-template>
         <input id="uploadImage" name="uploadImage" class="uploadImage" type="file" accept=".png, .jpg, .jpeg" (change)="changeValue($event)">
       </div>
+      <div *ngIf="!imageURL && !f.previewImage.value" [ngStyle]="{'color': 'red'}"> Фотография обязательно </div>
     </div>
     <div class="form-group">
       <h2>Текст предпоказа</h2>
       <input type="text" formControlName="preview">
+      <div *ngIf="addNews.get('preview').invalid" [ngStyle]="{'color': 'red'}"> Текст предпоказа обязателен </div>
     </div>
     <div class="form-group">
       <h2>Содержмое новости</h2>
@@ -48,6 +52,7 @@
       }"
       >
       </editor>
+      <div *ngIf="addNews.get('content').invalid" [ngStyle]="{'color': 'red'}"> Контент обязателен </div>
     </div>
   </form>
   <button *ngIf="state === true" (click)="addEvent()">Добавить</button>
