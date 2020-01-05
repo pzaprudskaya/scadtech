@@ -39,7 +39,7 @@ export class HistoryComponent implements OnInit {
     this.calculate();
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   calculate() {
     const displayWidth = window.innerWidth;
     const spacing = (displayWidth - 1240) / 2;

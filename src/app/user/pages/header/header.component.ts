@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  @HostListener('window:scroll', ['$event'])
+  @HostListener('window:scroll')
   onScroll() {
     const { offsetHeight } = this.header.nativeElement;
     if (offsetHeight + 20 < window.pageYOffset) {
