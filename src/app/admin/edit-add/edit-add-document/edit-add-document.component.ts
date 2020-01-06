@@ -18,7 +18,7 @@ export class EditAddDocumentComponent implements OnInit {
     validity: [null, []],
     descriptionIssuedBy: [null, []],
     descriptionTypesOfJobs: [null, []],
-    link: [null, [Validators.required]]
+    link: [null, []]
   };
   state: boolean;
   document = this.fb.group(this.documentModel);

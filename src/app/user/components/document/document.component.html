@@ -5,13 +5,13 @@
     </div>
     <div>
       <a href="{{document.link}}" class="title" target="_blank" download="">{{document.title}}</a>
-      <div *ngIf="document.number.length !== 0" class="title"> {{document.number}}</div>
-      <div *ngIf="document.date.length !== 0" class="date">{{document.date}}</div>
-      <div *ngIf="document.descriptionIssuedBy.length !== 0" class="description">
+      <div class="title"> {{document.number}}</div>
+      <div class="date">{{document.date}}</div>
+      <div *ngIf="state.descriptionIssuedBy" class="description">
         Выдан: {{document.descriptionIssuedBy}}</div>
-      <div *ngIf="document.descriptionTypesOfJobs.length !== 0" class="description">Виды
+      <div *ngIf="state.descriptionTypesOfJobs" class="description">Виды
         работ: {{document.descriptionTypesOfJobs}}</div>
-      <div *ngIf="document.validity.length !== 0" class="description">Срок действия: до {{document.validity}}</div>
+      <div *ngIf="state.validity" class="description">Срок действия: до {{document.validity}}</div>
     </div>
 
   </div>
