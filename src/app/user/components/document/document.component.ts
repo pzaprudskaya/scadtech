@@ -7,7 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DocumentComponent implements OnInit {
   @Input() document;
-  state = {};
+  state: {
+    title: boolean;
+    number: boolean;
+    date: boolean;
+    descriptionIssuedBy: boolean;
+    descriptionTypesOfJobs: boolean;
+    link: boolean;
+    validity: boolean;
+  };
   constructor() {}
 
   ngOnInit() {
