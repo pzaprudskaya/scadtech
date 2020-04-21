@@ -11,7 +11,6 @@ import { DocumentService } from '../../../shared/services/document.service';
   styleUrls: ['./documentation.component.sass']
 })
 export class DocumentationComponent implements OnInit {
-  headline = 'Разрешительная документация';
   documents: IDocument[];
 
   constructor(private documentsService: DocumentService) {}

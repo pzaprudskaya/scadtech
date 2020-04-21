@@ -10,27 +10,27 @@ export const MENU_ITEMS = [
     link: '/edit-contacts'
   },
   {
-    title: 'Документация',
+    title: 'Услуги',
     icon: 'list',
-    link: '/edit-documentation'
+    link: '/edit-services'
   },
-  {
+ /* {
     title: 'Партнеры и сертификаты',
     icon: 'work',
     link: '/edit-partners'
-  },
-  {
+  },*/
+/*  {
     title: 'Наше руководство',
     icon: 'supervised_user_circle',
     link: '/edit-our-leadership'
-  },
+  },*/
   {
     title: 'О компании',
     icon: 'account_balance',
     link: '/edit-about-company'
   },
   {
-    title: 'Производство',
+    title: 'Продукция',
     icon: 'account_tree',
     link: '/edit-production'
   },

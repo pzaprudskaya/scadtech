@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'edit-contacts', component: EditContactsComponent, data: { title: 'Контакты' } },
   { path: 'edit-contacts/:id', component: EditAddConactsComponent, data: { title: 'Контакт' } },
 
-  { path: 'edit-documentation', component: EditDocumentationComponent, data: { title: 'Документация' } },
+  { path: 'edit-services', component: EditDocumentationComponent, data: { title: 'Услуги' } },
   { path: 'edit-document/:id', component: EditAddDocumentComponent, data: { title: 'Документ' } },
 
   { path: 'edit-about-company', component: EditAboutCompanyComponent, data: { title: 'О Компании' } },

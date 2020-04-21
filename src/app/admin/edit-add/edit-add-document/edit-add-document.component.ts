@@ -61,7 +61,7 @@ export class EditAddDocumentComponent implements OnInit {
     this.documentService.addDocument(this.document.value).subscribe(
       (document) => {
         this.notify.emit({ type: 'success', message: 'Запись добавлена!' });
-        this.router.navigate(['/edit-documentation']);
+        this.router.navigate(['/edit-services']);
 
         this.documentService
           .addFile(document._id, formData)
@@ -90,7 +90,7 @@ export class EditAddDocumentComponent implements OnInit {
       .subscribe(
         () => {
           this.notify.emit({ type: 'success', message: 'Запись обновлена!' });
-          this.router.navigate(['/edit-documentation']);
+          this.router.navigate(['/edit-services']);
         },
         () => this.notify.emit({ type: 'error', message: 'Ошибка обновления!' })
       );

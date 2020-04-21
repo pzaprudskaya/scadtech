@@ -1,5 +1,5 @@
 <app-block>
-  <app-headline [title]="'Производство'"></app-headline>
+  <app-headline [title]="about?.title"></app-headline>
   <div class="wysiwyg js-content">
     <div class="block-content">
       <div class="html" [innerHTML]="about?.content | safeHtml"></div>

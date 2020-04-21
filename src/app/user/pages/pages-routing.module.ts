@@ -16,7 +16,7 @@ import { PagesComponent } from './pages.component';
 const routes: Routes = [
   { path: 'about', component: AboutCompanyComponent, data: { title: 'О компании' } },
   { path: 'production', component: ProductionComponent, data: { title: 'Продукция' } },
-  { path: 'documentation', component: DocumentationComponent, data: { title: 'Документация' } },
+  { path: 'services', component: DocumentationComponent, data: { title: 'Услуги' } },
   { path: 'contacts', component: ContactsComponent, data: { title: 'Контакты' } },
   { path: 'about/news', component: NewsComponent, data: { title: 'Новости' } },
   { path: 'about/news/:event', component: EventsComponent, data: { title: 'Событие' } },
